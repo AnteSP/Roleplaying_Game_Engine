@@ -14,7 +14,7 @@
 *.user
 *.userprefs
 *.csproj
-*.unityproj
+#*.unityproj
 *.asset
 *.sln
 *.swp

@@ -5,10 +5,12 @@
   "PickUps": {},
   "Items": {
     "17": 1,
-    "2": 5
+    "2": 5,
+    "25": 1
   },
   "Recipes": {
     "": true
   },
-  "Ch2OpeningDone": true
+  "Ch2OpeningDone": true,
+  "MRespect": -1
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Dialogue : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Dialogue : MonoBehaviour
 
     public AudioSource TypeNoise;
     public static Dialogue d;
+
+    [SerializeField] Animator DialogueChoiceNotif;
 
     public void showDisplay(bool b)
     {
@@ -434,6 +437,36 @@ public class Dialogue : MonoBehaviour
                 case 'I': //Information
                     Stats.DisplayMessage(Current);
                     Stats.current.CurrentCS.Next();
+                    break;
+                case 'V': //Variable Line. Syntax Example:    %V[A]. blah blah blah       (Everything in [A] will be replaced by the variable line of ID A. If we want to decide between multiple, list multiple. First takes priority)
+
+                    int closingBracketIndex = Current.IndexOf(']');
+
+                    string insideBrackets = Current.Substring(1, closingBracketIndex - 1);
+                    Current = Current.Substring(closingBracketIndex + 1);
+
+                    CutSceneVarDia[] vards = Stats.current.CurrentCS.GetComponents<CutSceneVarDia>();
+
+                    string fallback = "";
+                    bool foundGoodLine = false;
+                    foreach (char ch in insideBrackets)//Iterate over each ID
+                    {
+                        CutSceneVarDia v = vards.Where(a => a.ID == ch).FirstOrDefault();
+
+                        if (v.isValid())
+                        {
+                            Current += v.Line;
+                            foundGoodLine = true;
+                        }
+                        else
+                        {
+                            if (fallback == "") fallback = v.LineIfFalseAndFirstListed;
+                        }
+                    }
+
+                    if (!foundGoodLine) Current += fallback;
+                    DialogueChoiceNotif.SetTrigger("GoDec");
+
                     break;
             }
 
