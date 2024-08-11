@@ -1,0 +1,282 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+using UnityEngine.Playables;
+
+public class CutSceneTalker : MonoBehaviour
+{
+    [SerializeField] Dialogue D;
+    [SerializeField] bool DBoxOnTop = false;
+    [SerializeField] string[] Sentences;
+    [SerializeField] AudioSource[] As;
+    public int Index = 0;
+
+    [SerializeField] GameObject[] Disable;
+    [SerializeField] GameObject[] Enable;
+
+    [SerializeField] Transform[] CamPos;
+    Vector3 CamFocus;
+    int cpI = 0;
+
+    [SerializeField] CSMovement[] Movements;
+    int mpI = 0;
+    public CutSceneTalker alt = null;
+
+    public bool goodtoGo = true;
+    bool UseMouse = true;
+
+    Rigidbody2D Crb;
+
+    [SerializeField] int CamSize = 7;
+
+    Animator Anim;
+    public List<PlayableDirector> anims = new List<PlayableDirector>();
+
+    public List<AudioSource> musicsQueue = new List<AudioSource>();
+
+    public List<GameObject> destroyAfter = new List<GameObject>();
+
+    public bool Ending = false;
+    public bool skipPacking = false;
+    public bool EndingChapter = false;
+    public bool stopMusicOnStart = false;
+
+    PlayableDirector pd;
+
+    public string switchWhenDone = "";
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="b">Is a cutscene ending? False if entering. True if leaving</param>
+    public void PackUp(bool b)
+    {
+        Crb = Camera.main.GetComponent<Rigidbody2D>();
+        Anim = D.GetComponent<Animator>();
+
+        Slider.ForceBack();
+        Stats.current.AllowSelecting = b;
+
+        Stats.StartStopTime(b, "Cutscene");
+        //Stats.current.PassTime = b;
+
+        Camera.main.GetComponent<CamZoom>().SetSize(CamSize);
+        Camera.main.GetComponent<CamZoom>().allowZooming = b;
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+
+        foreach(GameObject i in Disable)
+        {
+            i.SetActive(b);
+        }
+        foreach (GameObject i in Enable)
+        {
+            i.SetActive(!b);
+        }
+        if(Stats.current.Player == null)Stats.current.Player = GameObject.FindGameObjectWithTag("Player");
+
+        if (Stats.current.Player != null)
+        {
+            Camera.main.transform.position = new Vector3(Stats.current.Player.transform.position.x, Stats.current.Player.transform.position.y, Camera.main.transform.position.z);
+        }
+
+        if (b)
+        {
+            CamZoom.setFocusPoint(Stats.current.Player.transform.position);
+        }
+        else
+        {
+            CamFocus = CamPos[0].position;
+            CamZoom.setFocusPoint(CamFocus,ignorePhysics:true);
+            if (stopMusicOnStart) Stats.changeBackgroundMusic(null);
+        }
+
+
+        UseMouse = b? UseMouse: Stats.current.Player.GetComponent<Movement>().UseMouse;
+
+        if(Stats.current.Filter != null) Stats.current.Filter.GetComponent<Animator>().enabled = !b;
+
+        this.enabled = b ? false : this.enabled; 
+
+        D.gameObject.SetActive(!b);
+        this.enabled = !b;
+        print(b ? "Packed up and finished cutscene" : "Packed up and ready to do cutscene");
+        if (!b)
+        {
+            //ObjectDepth.yeetSpaceBar();
+            D.transform.localPosition = new Vector3(D.transform.localPosition.x, DBoxOnTop ? Mathf.Abs(D.transform.localPosition.y) : -Mathf.Abs(D.transform.localPosition.y), D.transform.localPosition.z);
+        }
+
+        Stats.releaseLockedInObject();
+        ObjectDepth.yeetSpaceBar();
+
+        if (Dialogue.d != null) Dialogue.d.showDisplay(true);
+
+        if (b)
+        {
+            this.tag = "Untagged";
+            foreach (GameObject g in destroyAfter) Destroy(g);
+            if(switchWhenDone != "")
+            {
+                Progress.switchInPlay(switchWhenDone, true);
+            }
+
+            if(Index < As.Length)
+            {
+                print("AUDIO STOPPING " + As[Index].name);
+                As[Index].Stop();
+            }
+
+        }
+        
+    }
+
+    private void OnEnable()
+    {
+        if (Stats.current == null)
+        {
+            Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
+            Stats.current.Player = GameObject.FindGameObjectWithTag("Player");
+        }
+        if(!skipPacking)PackUp(false);
+        /*
+        Points = points;
+        if (TryGetComponent<NPCMovement>(out NPCMovement a))
+        {
+            N = a;
+            NE = true;
+        }
+
+        N.rb = GetComponent<Rigidbody2D>();
+        N.An = GetComponent<Animator>();
+
+        GameObject P = GameObject.FindGameObjectWithTag("Player");
+        P.GetComponent<Movement>().ShutDown();
+        Camera.main.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        */
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && goodtoGo)
+        {
+            Next();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !Ending && alt == null && goodtoGo)
+        {
+            if (Sentences.Last().StartsWith("%#")) EndingChapter = true;
+            Ending = true;
+            print("GOT HERE 1");
+            D.EndCutScene(this);
+            goodtoGo = false;
+        }
+        Vector2 temp = Offset();
+        //if (UseMouse) CamFocus = (Vector2)CamPos[cpI].position + temp * temp * temp * 40;
+        //Crb.position = Vector2.Lerp(Crb.position, CamPos[cpI].position, Vector2.Distance(Crb.position, CamPos[cpI].position)/10);
+        //CamZoom.setFocusPoint(CamFocus,false);
+        if (UseMouse) CamZoom.applyOffset(temp * temp * temp *40);
+
+        //D.transform.localPosition = new Vector3(D.transform.localPosition.x , Mathf.Abs(D.transform.localPosition.y) * -Mathf.Sign((Input.mousePosition.y - Screen.height / 2)), D.transform.localPosition.z);
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && goodtoGo)
+        {
+            if (Anim == null) Anim = D.GetComponent<Animator>();
+            Anim.Play("Flip");
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0) && goodtoGo)
+        {
+            if (Anim == null) Anim = D.GetComponent<Animator>();
+            Anim.Play("UnFlip");
+        }
+    }
+
+    Vector2 Offset()
+    {
+        return new Vector2(Mathf.Clamp((Input.mousePosition.x - Screen.width / 2) / Screen.width, -0.5f, 0.5f), Mathf.Clamp((Input.mousePosition.y - Screen.height / 2) / Screen.height, -0.5f, 0.5f));
+    }
+
+    public bool GoToNextScene()
+    {
+        if (Sentences.Last().StartsWith("%S"))
+        {
+            Stats.current.SceneChange(Sentences.Last().Substring(2));
+            return true;
+        }
+        return false;
+    }
+
+    public void Next()
+    {
+        D.gameObject.SetActive(true);
+
+        D.Current = Sentences[Index];
+        D.CS = this;
+
+        if (D.TypeNoise != null) D.TypeNoise.Stop();
+        if (As.Length <= Index) print("ERROR: MAKE SURE THERE'S AS MANY TYPE NOISE SHITS AS THERE ARE DIALOGUE BOXES DICKHEAD");
+        D.TypeNoise = As[Index++];
+        D.NextSentence();
+        try
+        {
+            
+        }
+        catch(System.Exception e)
+        {
+            D.EndCutScene(this);
+            print("CUTSCENE ENDED DUE TO ERROR: " + e.Message + " @ " + e.Source);
+        }
+        
+    }
+
+    public void NextCamPos(int time = 200)
+    {
+        CamFocus = CamPos[++cpI].position;
+        if(time == 0)
+        {
+            CamZoom.setFocusPoint(CamFocus, time, true,true);
+        }
+        else
+        {
+            CamZoom.setFocusPoint(CamFocus, time, true);
+        }
+        
+    }
+
+    public void NextNPCMove(bool n)
+    {
+        Movements[mpI].ensureAnimasAreReady();
+        Movements[mpI].movementPrep();
+        Movements[mpI].nOrN(n);
+        Movements[mpI].enabled = true;
+        mpI++;
+    }
+
+    public void NextAnim()
+    {
+        foreach(PlayableDirector a in anims)
+        {
+            if (!a.name.EndsWith("[DONE_ANIM]"))
+            {
+                a.Play();
+                a.name += "[DONE_ANIM]";
+                goodtoGo = false;
+                break;
+            }
+        }
+    }
+
+    public void setGoodToGo(bool b)
+    {
+        goodtoGo = b;
+        if (b)
+            Next();
+    }
+
+    public void setGoodToGoOnly(bool b)
+    {
+        goodtoGo = b;
+    }
+}

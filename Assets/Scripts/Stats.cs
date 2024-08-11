@@ -1,0 +1,889 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
+
+public class Stats : MonoBehaviour
+{
+    [SerializeField] Text MONEYTEXT;
+    [SerializeField] Text TIMETEXT;
+    [SerializeField] Text DAYTEXT;
+
+    static readonly string[] Days = { "Sunday" , "Monday", "Tueaday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+    public int Money;
+    public uint TimeFromMidNight = 0;
+    
+    uint Time = 480;
+    uint Day = 1;
+
+    int Digits;
+
+    float Timer;
+
+    [SerializeField] Animator BLACKBAR;
+    [SerializeField] GameObject DEADLINE;
+    [SerializeField] GameObject LOADING;
+
+    public CutSceneTalker CurrentCS;
+    [SerializeField] CutSceneTalker DefaultCS;
+
+    List<Deadline> Deds = new List<Deadline>();
+
+    [SerializeField] GameObject MESSAGE;
+    [SerializeField] GameObject GOMESSAGE;
+    [SerializeField] AudioSource ThereGoesMyHero;
+
+    public bool CanGoUp;
+    //public bool ChoosingSells;
+
+    public bool AllowSelecting = true;
+    public bool PassTime = true;
+
+    [SerializeField] public AudioSource KACHING;
+
+    public float timePassage = 1;
+
+    [SerializeField] Text DEBUGT;
+
+    static readonly string[] tips = { "I did nazi those Nazis coming",
+    " |  ||\n||  |_",
+    "Maybe the mafia could help...",
+    "who is skeptic?",
+    "Make money\nBuy supplies\nMake more money\nrepeat",
+    "Fuck Conker Koola bruh",
+    "",
+    "This is sodapressing",
+    "Loading...",
+    "loading...",
+    "Rendering...",
+    "CUT! great job",
+    "when does it end",
+    "End of cutscene",
+    "Black bar transition",
+    "...",
+    ":D",
+    "Is it pop or soda?",
+    "Is there something\n you should be\n doing right now?"};
+
+    static readonly string[] startCSTips = { "Starting cutscene...",
+    "Epic cutscene starting...",
+    "here we go...",
+    "Loading cutscene...",
+    "Oh shit is this a cutscene!?"};
+
+    static readonly string[] endCSTips = { "Ending cutscene...",
+    "Epic cutscene ending...",
+    "Back to regular gameplay...",
+    "Unpacking cutscene...",
+    "Leaving the cutscene..."};
+
+    static readonly string[] transCSTips = { "Some time later...",
+    "Hours later...",
+    "A while later..."};
+
+
+    [SerializeField] GameObject Sounds;
+
+    public GameObject Player;
+
+    public static Stats current;
+
+    int NazisDed = 0;
+    [SerializeField] GameObject NaziNotice;
+    [SerializeField] CutSceneTalker EndFail, EndSucceed;
+    [SerializeField] public Image Filter;
+
+    [SerializeField] GameObject SignRemind;
+
+    [SerializeField] bool StartWithoutInv = false;
+
+    Animator space = null;
+
+    Resource lockedInConvoWith = null;
+
+    [SerializeField] AudioSource specialSound = null;
+
+    public static float allTime = 0;
+    public static int allTimeInGame = 0;
+    public static bool freePlay = false;
+    public List<SellSodas> sodasSelling = new List<SellSodas>();
+
+    [SerializeField] GameObject[] disableOnFreePlay;
+    [SerializeField] GameObject[] enableOnlyOnFreePlay;
+
+    public bool doDayLight = false;
+    static readonly float noon = 0, midnight = 0.17f;
+    UnityEngine.Rendering.Universal.Light2D[] streetLights;
+    [SerializeField] GameObject streetLightsParent;
+    bool isday = true;
+
+    UnityEngine.Rendering.Volume camVol;
+    float suncoefficient = 0;
+
+    [SerializeField] AudioSource timeSkipSound;
+    Vector3 OGTimeTextScale;
+    Vector3 TargTimeTextScale;
+
+    static string teleportPoint = "";
+    [SerializeField] Transform TeleportPointsParent;
+
+    private void OnEnable()
+    {
+        suncoefficient = Mathf.Asin(1) * 4;
+        camVol = Camera.main.GetComponent<UnityEngine.Rendering.Volume>();
+        if (freePlay)
+        {
+            foreach (GameObject g in disableOnFreePlay)
+            {
+                g.SetActive(false);
+            }
+
+            camVol.weight = 0;
+
+            GameObject.FindGameObjectWithTag("SPECIAL").GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0.3f;
+        }
+        foreach (GameObject g in enableOnlyOnFreePlay)
+        {
+            g.SetActive(freePlay);
+        }
+
+        QualitySettings.vSyncCount = 1;
+        current = this;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        if( teleportPoint != "" && TeleportPointsParent != null)
+        {
+            print("GOT HERE");
+            foreach(Transform t in TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint))
+            {
+                Player.GetComponentInParent<Transform>().position = t.position;
+            }
+        }
+        Digits = MONEYTEXT.text.Length;
+        CurrentCS = DefaultCS;
+
+        //CreateDeadline("Pay 1000 for the soda machine", 7*24*60, -1000, EndFail,EndSucceed);
+        //DEADLINE.SetActive(false);
+
+        if (StartWithoutInv)
+        {
+            Transform invO = GameObject.FindGameObjectWithTag("Inventory").transform;
+            invO.position = new Vector3(invO.position.x - (250 * invO.lossyScale.x), invO.position.y, invO.position.z);
+        }
+        //print("load please");
+        if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
+        //print("did it tho?");
+
+        AudioSource aS = Stats.current.GetComponent<AudioSource>();
+        if (aS != null)
+        {
+            StartCoroutine(StartSong(aS, 0.02f, 0.5f));
+            OGVolume.Add("Stats", aS.volume);
+        }
+
+        if (ObjectDepth.Space != null) space = ObjectDepth.Space.GetComponent<Animator>();
+        
+        Transform card = Camera.main.transform.Find("Card");
+        if (card != null) OGVolume.Add("Card", card.GetComponent<AudioSource>().volume);
+
+        foreach (AudioSource i in Sounds.GetComponentsInChildren<AudioSource>())
+        {
+            OGVolume.Add(i.gameObject.name, i.volume);
+        }
+
+        SetVolume(Progress.getFloat("Volume"),false);
+
+        OGTimeTextScale = current.TIMETEXT.transform.localScale;
+        TargTimeTextScale = OGTimeTextScale * 1.4f;
+
+        if( streetLightsParent != null) streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
+
+        ChangeTime(TimeFromMidNight);
+        ChangeMoney(0);
+
+        if (!current.PassTime) StartStopTime(false, "Scene itself");
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+
+    public static float secSin = 1;
+    public static uint delayedTimeAnim = 0;
+    void Update()
+    {
+        if (AllowSelecting && !processingSelectable)
+            StartCoroutine(UpdateSelectableIcon());
+
+        if(ObjectDepth.Space != null && space == null) space = ObjectDepth.Space.GetComponent<Animator>();
+
+        if (Input.GetKeyDown(KeyCode.Space) && !processingSelectable && space != null) 
+            space.SetBool("Pressed", true);
+        else if (Input.GetKeyUp(KeyCode.Space) && space != null)
+            space.SetBool("Pressed", false);
+
+        if (PassTime)
+        {
+            Timer += UnityEngine.Time.deltaTime;
+            bool temp = Timer > 1f / (float)timePassage;
+            ChangeTime(temp ? (uint)timePassage : 0);
+            Timer = temp ? 0 : Timer;
+        }
+        allTime += UnityEngine.Time.deltaTime;
+
+        secSin = Mathf.Sin(allTime*2);
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            MESSAGE.SetActive(false);
+        }
+    }
+
+    public void SetupShop()
+    {
+        if (ChangeMoney(-SellSpot.current.CostToPrep))
+        {
+            KACHING.Play();
+            //ChooseSellSoda.example
+            //SellSpot.current.enabled = false;
+            //SellSpot.current.transform.parent
+            SellSpot.current.turnIntoMarket();
+            
+            //SellSpot.current.gameObject.AddComponent<ChooseSellSoda>(ChooseSellSoda.example);
+        }
+        else
+        {
+            Stats.DisplayMessage("You don't have enough money to setup shop here");
+        }
+        Stats.StartStopTime(true);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="source">Set this if you only want time to start again if it gets started again by your source string</param>
+    public static void StartStopTime(bool start,string source="")
+    {
+        print("START " + start + " source: " + source);
+        int comp = 0;
+        if(source != "")
+        {
+            if (!start)//if stopping
+            {
+                timeSources.Add(source);
+                comp = 1;
+            }
+            else//if starting
+            {
+                if(timeSources.Contains(source))
+                    timeSources.Remove(source);
+            }
+        }
+
+        if(timeSources.Count == comp)
+        {
+            current.PassTime = start;
+            current.TIMETEXT.color = start ? Color.black : Color.gray;
+            NameIndic.Indicate("");
+        }
+        else
+        {
+            if (start) print("Time START rejected due to " + timeSources[0] + " and " + (timeSources.Count-1) + " others");
+            else print("Time STOP rejected due to " + timeSources[0] + " and " + (timeSources.Count - 1) + " others");
+        }
+
+    }
+    static List<string> timeSources = new List<string>();
+
+    public static void EnableInventory()
+    {
+        if (!Stats.current.StartWithoutInv) return;
+        Stats.current.StartWithoutInv = false;
+        Transform inv = GameObject.FindGameObjectWithTag("Inventory").transform;
+        inv.position = new Vector3(inv.position.x + (250* inv.lossyScale.x), inv.position.y, inv.position.z);
+        print("ENABLING INVENTORY");
+    }
+
+    public static void KillNazi()
+    {
+        current.NazisDed++;
+        print(current.NazisDed + "dead");
+        if(current.NazisDed == 5)
+        {
+            current.NaziNotice.SetActive(false);
+            DisplayMessage("ALL THE NAZI'S ARE DEAD! You can finally use the lemonade stand in front of the shop. Make sure you make $1000 by the time your sister returns");
+            current.SignRemind.SetActive(true);
+        }
+    }
+
+    public static void Debug(string h)
+    {
+        current.DEBUGT.text = h;
+    }
+
+    public static void PlaySpecialSound()
+    {
+        Stats.current.specialSound.Play();
+    }
+
+    public static void doSelecting(bool b)
+    {
+        current.AllowSelecting = b;
+    }
+
+    public static void Transition(int type = 0)
+    {
+        if (current.CurrentCS == null) return;
+        Dialogue.d.showDisplay(false);
+        current.AllowSelecting = false;
+
+        if (current.Player != null) current.Player.GetComponent<Movement>().ShutDown();
+        else
+        {
+            GameObject g = GameObject.FindGameObjectWithTag("Player");
+            if (g != null) g.GetComponent<Movement>().ShutDown();
+        }
+
+        if (!current.CurrentCS.gameObject.activeInHierarchy)
+        {
+            //current.PassTime = false;
+        }
+        current.BLACKBAR.Play("BlackBarsDown");
+
+        string text = "";
+        switch (type)
+        {
+            case 0:
+                text = startCSTips[Random.Range(0, startCSTips.Length)];
+                break;
+            case 1:
+                text = endCSTips[Random.Range(0, endCSTips.Length)];
+                break;
+            case 2:
+                text = transCSTips[Random.Range(0, transCSTips.Length)];
+                break;
+            case 3:
+                text = "";
+                break;
+        }
+
+        current.BLACKBAR.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = text;
+    }
+
+    public static void AccelerateTime(float a)
+    {
+        current.timePassage = ((++a) * a * a * a * a);//t = (x+1)^5
+    }
+
+    bool processingSelectable = false;
+    IEnumerator UpdateSelectableIcon()
+    {
+        bool UseResource = Input.GetKeyUp(KeyCode.Space) && ObjectDepth.Selected.name != "Player" && ObjectDepth.Space.GetChild(0).GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("TimeGone");
+        processingSelectable = true;
+        SpriteRenderer spaceSpr = ObjectDepth.Space.GetComponent<SpriteRenderer>();
+        Color ogc = spaceSpr.color;
+        spaceSpr.color = new Color(1, 1, 1, 0.2f);
+
+        if (UseResource || (lockedInConvoWith != null && Input.GetKeyUp(KeyCode.Space) ))
+        {
+            ObjectDepth.Space.GetComponent<Animator>().SetBool("Pressed", true);
+
+            Animator temp = ObjectDepth.Space.GetComponent<Animator>();
+            temp = ObjectDepth.Space.GetChild(0).GetComponent<Animator>();
+            temp.SetTrigger("Go");
+            temp.SetFloat("Speed", 1f / (ObjectDepth.Selected.GetComponent<Resource>().CollectTime + 0.01f));
+            yield return new WaitForSeconds(ObjectDepth.Selected.GetComponent<Resource>().CollectTime * 1.3f);
+
+            if(lockedInConvoWith != null)
+            {
+                lockedInConvoWith.Use(1);//use locked in object
+            }
+            else
+            {
+                switch (ObjectDepth.Selected.tag)
+                {
+                    case "Machine":
+                        ObjectDepth.Selected.GetComponent<Resource>().Use(1);
+                        break;
+                    case "SodaMachine":
+                        ObjectDepth.Selected.GetComponent<SodaMachine>().ToggleMenu();
+                        break;
+                }
+            }
+        }
+
+        ObjectDepth.Space.GetComponent<SpriteRenderer>().color = ogc;
+        CanGoUp = Input.GetKeyUp(KeyCode.Space) ? true : CanGoUp;
+        processingSelectable = false;
+    }
+
+    public static void releaseLockedInObject()
+    {
+        current.lockedInConvoWith = null;
+    }
+
+    public static void setLockedInObject(Resource r)
+    {
+        current.lockedInConvoWith = r;
+    }
+    /*
+    void UpdateSelectableIcon()
+    {
+        bool UseResource = Input.GetKeyUp(KeyCode.Space) && ObjectDepth.Selected.name != "Player" && ObjectDepth.Space.GetChild(0).GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("TimeGone");
+
+        if (UseResource)
+        {
+            ObjectDepth.Space.GetComponent<Animator>().SetBool("Pressed", true);
+
+            Animator temp = ObjectDepth.Space.GetComponent<Animator>();
+            temp = ObjectDepth.Space.GetChild(0).GetComponent<Animator>();
+            temp.SetTrigger("Go");
+            temp.SetFloat("Speed", 1f / (ObjectDepth.Selected.GetComponent<Resource>().CollectTime + 0.01f));
+
+            if (ObjectDepth.Selected.tag == "Machine")
+            {
+                ObjectDepth.Selected.GetComponent<Resource>().Use(1);
+            }
+            else if (ObjectDepth.Selected.tag == "SodaMachine")
+            {
+                ObjectDepth.Selected.GetComponent<SodaMachine>().ToggleMenu();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ObjectDepth.Space.GetComponent<Animator>().SetBool("Pressed", true);
+        }else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            ObjectDepth.Space.GetComponent<Animator>().SetBool("Pressed", false);
+        }
+
+        CanGoUp = Input.GetKeyUp(KeyCode.Space) ? true : CanGoUp;
+    }*/
+
+    public static bool ChangeMoney(int Amount)
+    {
+
+        bool temp = current.Money + Amount < 0;
+
+        if (!temp)
+        {
+
+            current.Money = temp ? 0 : current.Money + Amount;
+
+            string Temp = "";
+            int overflow = 9;
+
+            for (int i = 1; i < current.Digits; i++)
+            {
+                if (current.Money >= Mathf.Pow(10, i))
+                {
+                }
+                else
+                {
+                    Temp += " ";
+                }
+                overflow += 9 * Mathf.RoundToInt(Mathf.Pow(10, i));
+            }
+
+            Temp += current.Money;
+
+            bool Overflown = Temp.Length > current.Digits;
+
+            current.MONEYTEXT.text = Overflown ? overflow + "" : Temp;
+            current.Money = Overflown ? overflow : current.Money;
+
+            current.MONEYTEXT.text = current.Money + "";
+        }
+
+        return (!temp);
+    }
+    /*
+    public static bool ChangeEnergy(float Amount)
+    {
+
+        bool temp = Energy + Amount < 0;
+
+        Energy = temp ? 0 : Energy + Amount;
+
+        Energy = Energy + Amount > EnergyLimit ? EnergyLimit : Energy;
+    
+        ProgressBar.DoLine(ENERGYBAR.rectTransform, Initial, 142, Energy / EnergyLimit, true);
+
+        ENERGYBAR.transform.parent.Find("Text").GetComponent<Text>().text = Energy + "/" + EnergyLimit;
+        
+        return (!temp);
+    }
+    */
+
+    public static string allTimeInGameToString(int t)
+    {
+        t = t % (24 * 60);//remove day information
+        int mins = t % 60;
+        t = t / 60;//get to the hour
+        return (t < 10? "0" + t : t )  + ":" + (mins < 10 ? "0" + mins : mins);
+    }
+    static bool timeAnimating = false;
+
+    public static void ChangeTimeAnim(int Amount, int frames = 40) => current.ChangeTimeAnimLocal(Amount, frames);
+    public void ChangeTimeAnimLocal(int Amount, int frames = 40)
+    {
+        if(Amount < 0)
+        {
+            Stats.DisplayMessage("CANNOT GO BACK IN TIME");
+            return;
+        }
+
+        if (timeAnimating)
+        {
+            timeSkipSound.Play();
+            ChangeTime((uint)Amount);
+        }
+        else
+        {
+            StartCoroutine(current.ChangeTimeAnim((uint)Amount, frames));
+        }
+       
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Amount"></param>
+    /// <param name="frames">at 50 fps (1 sec = 50 frames)</param>
+    /// <returns></returns>
+    IEnumerator ChangeTimeAnim(uint Amount,int frames)
+    {
+        //if (timeAnimating) frames = 0;//if we're already animating, don't do any animation
+        timeAnimating = true;
+        timeSkipSound.Play();
+        
+        if (frames >= 20)//enough time to do animations
+        {
+            int mpf = (int)Amount / frames;
+            int leftover = (int)Amount % frames;
+            float temp = 0;
+
+            for(int i = 0; i < frames; i++)
+            {
+
+                if(i < 10)
+                {
+                    temp = (float)i / 10f;
+                    print(temp);
+                    TIMETEXT.color = new Color(temp, temp, temp);
+                    TIMETEXT.transform.localScale = Vector3.Lerp(OGTimeTextScale, TargTimeTextScale, temp);
+                }
+                else if(i > frames - 10)
+                {
+                    temp = (float)(frames - i-1)/10f;
+                    print(temp);
+                    TIMETEXT.color = new Color(temp, temp, temp);
+                    TIMETEXT.transform.localScale = Vector3.Lerp(OGTimeTextScale, TargTimeTextScale, temp);
+                }
+
+                ChangeTime((uint)(mpf + ((i < leftover) ? 1 : 0) ));
+                yield return new WaitForSeconds(0.02f);
+            }
+        }
+        else
+        {
+            ChangeTime(Amount);
+        }
+        timeAnimating = false;
+    }
+
+    public static void ChangeTime(uint Amount)
+    {
+        allTimeInGame += (int)Amount;
+        current.Day = (uint)allTimeInGame/(24*60) + 1;
+
+        current.DAYTEXT.text = "Day: " + current.Day + " " + Days[current.Day % 7];
+
+        current.Time -= ( 24*60 * (uint)Mathf.FloorToInt((float)(current.Time + Amount) / (24f * 60f)));
+        current.Time += Amount;
+
+        current.TIMETEXT.text = allTimeInGameToString(allTimeInGame);
+
+        CheckDeadlines((int)Amount);
+
+        if (current.doDayLight)
+        {
+            float dayperc = ((float)allTimeInGame % (24f * 60f)) / (24f * 60f);
+            //Debug(dayperc + " ");
+            //dayperc += dayperc + 0.5f;
+            //dayperc = dayperc % 1;
+            dayperc = ( Mathf.Cos(dayperc * current.suncoefficient - 0.5f) /2) + 0.5f;
+            
+            current.camVol.weight = Mathf.Lerp(noon, midnight, dayperc);
+
+            if ((dayperc < 0.6f) != (current.isday))//if isday does not match whether it's actually day or not
+            {
+                current.isday = !current.isday;
+                foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
+            }
+
+        }
+    }
+    /*
+    public static void CreateAction(string Title,string Description,int Changemoney,float ChangeEnergy,uint ChangeTime)
+    {
+        GameObject Action = Instantiate(ACT, ACT.transform.parent);
+        Action.transform.Find("Title").GetComponent<Text>().text = Title;
+        Action.transform.Find("Description").GetComponent<Text>().text = Description;
+        Action temp = Action.transform.GetComponentInChildren<Action>();
+        temp.Money = Changemoney;
+        temp.Energy = ChangeEnergy;
+        temp.Time = ChangeTime;
+
+    }
+    */
+
+    public static void CreateDeadline(string Title,int Minutes,int ChangeMoney,CutSceneTalker Success,CutSceneTalker Failure)
+    {
+        GameObject Ded = Instantiate(current.DEADLINE, current.DEADLINE.transform.parent);
+        /*
+        bool Lessthan3days = Minutes < 24 * 60 * 3;
+        bool Lessthanhour = Minutes < 61;
+        print((Lessthanhour) ? Minutes : Minutes / 60);
+        string TimeLeft = (Lessthan3days ? ( (Lessthanhour) ? Minutes : Minutes/60 ) : Minutes/(24*60)) + (Lessthan3days ? ((Lessthanhour) ? " Minutes" : " Hours")  : " Days");
+        
+        string temp = Title + " (Due in " + TimeLeft + ")";
+        print(temp);
+        Ded.transform.Find("Text").GetComponent<Text>().text = "fuck";
+        */
+        Ded.SetActive(true);
+        current.Deds.Add( new Deadline(ChangeMoney,Minutes,Ded,Title, Success,Failure));
+        //Deds[Deds.Count - 1].Object.SetActive(true);
+        /*
+        Deds[Deds.Count - 1].Money = ChangeMoney;
+        Deds[Deds.Count - 1].Energy = ChangeEnergy;
+        Deds[Deds.Count - 1].Minutes = Minutes;
+        Deds[Deds.Count - 1].Object = Ded;
+        Deds[Deds.Count - 1].Title = Title;
+        Deds[Deds.Count - 1].FinishText = FinishText;
+        */
+    }
+
+    static void CheckDeadlines(int TimePassed)
+    {
+        for(int i = 0; i < current.Deds.Count; i++)
+        {
+            if(current.Deds[i].Minutes < TimePassed)
+            {
+                if(ChangeMoney(current.Deds[i].Money) )
+                {
+                    current.CurrentCS = current.Deds[i].SuccessCutScene;
+                    Destroy(current.Deds[i].Object);
+                    current.Deds.Remove(current.Deds[i]);
+                    Transition(0);
+                    //CurrentCS.gameObject.SetActive(true);
+                }
+                else
+                {
+                    current.CurrentCS = current.Deds[i].FailCutScene;
+                    Destroy(current.Deds[i].Object);
+                    current.Deds.Remove(current.Deds[i]);
+                    Transition(0);
+                    //CurrentCS.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                current.Deds[i].Minutes -= TimePassed;
+                current.Deds[i].Refresh();
+            }
+        }
+
+
+    }
+
+    static public void GameOver()
+    {
+
+        print("GAME OVER");
+        current.GOMESSAGE.SetActive(true);
+        current.GOMESSAGE.transform.Find("Text").GetComponent<Text>().text = "YOU FUCKING DIED\n\nconsider this a gameover... But feel free to still explore around";
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().ShutDown();
+        current.ThereGoesMyHero.Play();
+
+    }
+    /// <summary>
+    /// Display a message instantly with the text box thing
+    /// </summary>
+    /// <param name="text"></param>
+    static public void DisplayMessage(string text,bool stopTime = false)
+    {
+        if (stopTime)
+        {
+            Stats.StartStopTime(false);
+        }
+        current.MESSAGE.SetActive(text != null);
+        current.MESSAGE.transform.Find("Text").GetComponent<Text>().text = text;
+    }
+
+    static public void PendMessage(string text)
+    {
+
+        ForceHandlesBack.PendingMessage = text;
+    }
+
+    public void MuteSound(bool t)
+    {
+        foreach(AudioSource i in Sounds.GetComponentsInChildren<AudioSource>())
+        {
+            i.mute = t;
+        }
+    }
+
+    Dictionary<string, float> OGVolume = new Dictionary<string, float>();
+    public void SetVolume(float a, bool changeData)
+    {
+        if (float.IsNaN(a)) return;
+        if (changeData) Progress.setFloat("Volume", a);
+        Stats.current.GetComponent<AudioSource>().volume = a * 0.5f;
+
+        Transform card = Camera.main.transform.Find("Card");
+        if(card != null) card.GetComponent<AudioSource>().volume = a* OGVolume["Card"];
+
+        foreach (AudioSource i in Sounds.GetComponentsInChildren<AudioSource>())
+        {
+            i.volume = a * OGVolume[i.gameObject.name];
+        }
+    }
+
+    public void SetVolume(float a)
+    {
+        SetVolume(a, true);
+    }
+
+    public static void changeBackgroundMusic(AudioClip a)
+    {
+        AudioSource aS = Stats.current.GetComponent<AudioSource>();
+        aS.clip = a;
+        aS.mute = false;
+        aS.Play();
+    }
+
+    IEnumerator StartSong(AudioSource a,float time,float toVol)
+    {
+        float v = Progress.getFloat("Volume");
+        if (!float.IsNaN(v)) toVol *= v;
+        a.volume = 0;
+        for(int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(time);
+            a.volume += 0.01f*toVol;
+        }
+    }
+
+    public void SceneChange(string r)
+    {
+        LOADING.SetActive(true);
+        Player.SetActive(false);
+        timeSources.Clear();
+        SellUpgrade.FlushUpgrades();
+        Progress.saveData();
+        Slider.EmptyList();
+        Stats.current = null;
+        teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
+        
+        Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
+
+        print("UNLOADING DATA");
+        Progress.markDataAsUnloaded();
+    }
+
+    public void FilterColor(Color c)
+    {
+        Animator a = Filter.GetComponent<Animator>();
+        if (a != null) a.enabled = false;
+        Filter.color = c;
+    }
+
+    public IEnumerator fadeFilterColor(Color C1,Color C2, float secs, Sprite img = null)
+    {
+        Filter.GetComponent<Animator>().enabled = false;
+        Filter.sprite = img;
+        Filter.color = C1;
+        //print("GOT HERE");
+        for (int i = 0; i < 100; i++)
+        {
+            //print("GOT HERE2 " + (secs/100f));
+            yield return new WaitForSeconds(secs/100f);
+            //print("GOT HERE3");
+            //Filter.color = (C1*(100-i)) + (C2*(i));
+            float I = (float)i / 100f;
+            Filter.color = new Color( 
+                (C1.r * (1 - I)) + (C2.r * I) , 
+                (C1.g * (1 - I)) + (C2.g * I), 
+                (C1.b * (1 - I)) + (C2.b * I), 
+                (C1.a * (1 - I)) + (C2.a * I));
+            //Stats.Debug("" + Filter.color.g + " -- " + ((C1.g * (1 - I)) + (C2.g * I)) + " -- " + I + " -- " + (1-I) + " -- " + (C1.g * (1 - I)) + " -- " + "");
+            //print(Filter.color.r + "  --  " + Filter.color.b);
+            //print(Filter.color);
+        }
+        Filter.color = C2;
+        Filter.sprite = null;
+        Filter.GetComponent<Animator>().enabled = true;
+    }
+
+}
+
+class Deadline : MonoBehaviour
+{
+    public int Money;
+    public int Minutes;
+    public GameObject Object;
+    public string Title;
+    Text T;
+    public CutSceneTalker FailCutScene,SuccessCutScene;
+
+    public Deadline(int Mon,int Mins,GameObject Obj, string Titl, CutSceneTalker FailCS, CutSceneTalker SucceedCS)
+    {
+        Money = Mon;
+        Minutes = Mins;
+        Object = Obj;
+        Title = Titl;
+        T = Object.transform.Find("Text").GetComponent<Text>();
+        FailCutScene = FailCS;
+        SuccessCutScene = SucceedCS;
+    }
+
+    public void Refresh()
+    {
+        bool Lessthan3days = Minutes < 24 * 60 * 3;
+        bool Lessthanhour = Minutes < 61;
+        //string TimeLeft = (Lessthan3days ? Minutes / 60 : Minutes / (24 * 60)) + (Lessthan3days ? " Hours" : " Days");
+        string TimeLeft = (Lessthan3days ? ((Lessthanhour) ? Minutes : Minutes / 60) : Minutes / (24 * 60)) + (Lessthan3days ? ((Lessthanhour) ? " Minutes" : " Hours") : " Days");
+        T.text = Title + " (Due in " + TimeLeft + ")";
+    }
+
+}
+
+public class Recipe
+{
+
+    public int[] Ingredients;
+    public string Name;
+    public int BasePrice;
+    public Sprite Pic;
+    public int ItemID;
+
+    public Recipe(int[] ingredients, int itemID)
+    {
+        Item item = Items.ITEMS_DB[ItemID];
+        ItemID = itemID;
+        Ingredients = ingredients;
+        Name = item.Name;
+        BasePrice = (int)Items.SodaInfo[Items.IndexOfXinY(ItemID, Items.Sodas)].PriceChange;
+        Pic = item.icon;
+    }
+}

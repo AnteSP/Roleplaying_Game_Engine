@@ -1,0 +1,14 @@
+{
+  "FUN": 46,
+  "MONEY": 0,
+  "Upgrades": {},
+  "PickUps": {},
+  "Items": {
+    "17": 1,
+    "2": 5
+  },
+  "Recipes": {
+    "": true
+  },
+  "Ch2OpeningDone": true
+}

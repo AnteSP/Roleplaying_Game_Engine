@@ -1,0 +1,42 @@
+[K]??The King             +good at garering popularity        -selfish
+cesar
+Brother
+[Q]??The Queen            +good at manipulating people        -traitor
+regina
+CC head lawyer
+[J]??The con man          +good charisma and ideas            -decietful
+sycophanta
+shady crook the mafia dosen't like
+[10]??The mayor            +good at bringing ppl together      -unskilled (useless alone)
+caupona
+Chief of police
+[9]?The scientist        +skilled with technology            -asocial
+physicus
+mafia head chemist
+[8]??The explorer         +knows a lot of stuff/ppl           -unloyal
+indagator
+Uncle Tony
+[7]?The zealot           +fiercely loyal                     -fiercely loyal
+seraphicus
+Nazi
+[6]?The romantic         +good at befriending individual ppl -lazy
+amantis
+Local soda rival
+[5]??The npc              +predictable and reliable           -unambitious
+caterva
+Customer base
+[4]??The melancholic      +loyal to close friends             -unmotivated
+adflictus
+Optional rando
+[3]?The pawn             +avoids conflict                    -unreliable
+pignus
+Mobsters
+[2]??The drunkard         +easy to manipulate                 -easy to manipulate   
+ebriosus
+Drinking mate
+[A]??The companion        +loyal to close friends             -unskilled (useless alone)
+socius
+Your biggest fan
+
+
+[7]?Gaba Goon: Loves his family. Loves the mafia. Everyone else is scum
