@@ -115,6 +115,7 @@ public class CutSceneTalker : MonoBehaviour
 
         if (b)
         {
+
             this.tag = "Untagged";
             foreach (GameObject g in destroyAfter) Destroy(g);
             if(switchWhenDone != "")
