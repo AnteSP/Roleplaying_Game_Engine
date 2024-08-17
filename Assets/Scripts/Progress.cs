@@ -243,6 +243,7 @@ public class Progress : MonoBehaviour
 
         foreach(Recipe r in SodaMachine.getUnlockedRecipes())
         {
+            //print("GOT " + r + " AND " + r.Name);
             ((JObject)data["Recipes"]).Add(r.Name, true);
         }
 

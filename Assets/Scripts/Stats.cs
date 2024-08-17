@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class Stats : MonoBehaviour
 {
@@ -129,6 +130,8 @@ public class Stats : MonoBehaviour
     static string teleportPoint = "";
     [SerializeField] Transform TeleportPointsParent;
 
+    List<Image> deadlines = new List<Image>();
+
     private void OnEnable()
     {
         suncoefficient = Mathf.Asin(1) * 4;
@@ -162,6 +165,15 @@ public class Stats : MonoBehaviour
         }
         Digits = MONEYTEXT.text.Length;
         CurrentCS = DefaultCS;
+
+        Transform overlay = DAYTEXT.transform.parent;
+        for(int i = 1; i < 99; i++)
+        {
+            Transform t = overlay.Find("Deadline" + i);
+            if (t == null) break;
+            deadlines.Add(t.GetComponent<Image>());
+            t.gameObject.SetActive(false);
+        }
 
         //CreateDeadline("Pay 1000 for the soda machine", 7*24*60, -1000, EndFail,EndSucceed);
         //DEADLINE.SetActive(false);
@@ -658,7 +670,7 @@ public class Stats : MonoBehaviour
         Ded.transform.Find("Text").GetComponent<Text>().text = "fuck";
         */
         Ded.SetActive(true);
-        current.Deds.Add( new Deadline(ChangeMoney,Minutes,Ded,Title, Success,Failure));
+        current.Deds.Add( new Deadline("",Minutes,Ded,Title, Success,Failure));
         //Deds[Deds.Count - 1].Object.SetActive(true);
         /*
         Deds[Deds.Count - 1].Money = ChangeMoney;
@@ -672,35 +684,21 @@ public class Stats : MonoBehaviour
 
     static void CheckDeadlines(int TimePassed)
     {
-        for(int i = 0; i < current.Deds.Count; i++)
+        foreach(Deadline d in current.Deds)
         {
-            if(current.Deds[i].Minutes < TimePassed)
+            if (d.Minutes < TimePassed)
             {
-                if(ChangeMoney(current.Deds[i].Money) )
-                {
-                    current.CurrentCS = current.Deds[i].SuccessCutScene;
-                    Destroy(current.Deds[i].Object);
-                    current.Deds.Remove(current.Deds[i]);
-                    Transition(0);
-                    //CurrentCS.gameObject.SetActive(true);
-                }
-                else
-                {
-                    current.CurrentCS = current.Deds[i].FailCutScene;
-                    Destroy(current.Deds[i].Object);
-                    current.Deds.Remove(current.Deds[i]);
-                    Transition(0);
-                    //CurrentCS.gameObject.SetActive(true);
-                }
+                current.CurrentCS = d.fulfillRequirement() ? d.SuccessCutScene : d.FailCutScene;
+                Destroy(d.Object);
+                current.Deds.Remove(d);
+                Transition(0);
             }
             else
             {
-                current.Deds[i].Minutes -= TimePassed;
-                current.Deds[i].Refresh();
+                d.Minutes -= TimePassed;
+                d.Refresh();
             }
         }
-
-
     }
 
     static public void GameOver()
@@ -839,20 +837,32 @@ public class Stats : MonoBehaviour
 
 class Deadline : MonoBehaviour
 {
-    public int Money;
+    public string requirements;
     public int Minutes;
     public GameObject Object;
-    public string Title;
-    Text T;
+    TextMeshProUGUI label,time;
+    public string Description;
     public CutSceneTalker FailCutScene,SuccessCutScene;
 
-    public Deadline(int Mon,int Mins,GameObject Obj, string Titl, CutSceneTalker FailCS, CutSceneTalker SucceedCS)
+    Deadline[] presets = new Deadline[] { 
+        new Deadline()  { }, 
+        new Deadline()  ,
+    };
+
+    Deadline() { }
+    public Deadline(string requirements, int Mins,GameObject Obj, string Titl, CutSceneTalker FailCS, CutSceneTalker SucceedCS)
     {
-        Money = Mon;
+        this.requirements = requirements;
         Minutes = Mins;
         Object = Obj;
-        Title = Titl;
-        T = Object.transform.Find("Text").GetComponent<Text>();
+        Description = Titl;
+
+        foreach(TextMeshProUGUI t in Object.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            if (t.gameObject.name == "Label") label = t;
+            else time = t;
+        }
+
         FailCutScene = FailCS;
         SuccessCutScene = SucceedCS;
     }
@@ -861,9 +871,15 @@ class Deadline : MonoBehaviour
     {
         bool Lessthan3days = Minutes < 24 * 60 * 3;
         bool Lessthanhour = Minutes < 61;
-        //string TimeLeft = (Lessthan3days ? Minutes / 60 : Minutes / (24 * 60)) + (Lessthan3days ? " Hours" : " Days");
-        string TimeLeft = (Lessthan3days ? ((Lessthanhour) ? Minutes : Minutes / 60) : Minutes / (24 * 60)) + (Lessthan3days ? ((Lessthanhour) ? " Minutes" : " Hours") : " Days");
-        T.text = Title + " (Due in " + TimeLeft + ")";
+        time.text = ( Lessthan3days ? ( (Lessthanhour) ? Minutes : Minutes / 60 ) : Minutes / (24 * 60) ) + "";
+        label.text = (Lessthan3days ? ((Lessthanhour) ? "mins" : "hrs") : "days") + " left";
+    }
+
+    public bool fulfillRequirement()
+    {
+        if (this.requirements == "") return true;
+
+        return false;
     }
 
 }
