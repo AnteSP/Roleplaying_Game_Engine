@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using System;
 
 public class Stats : MonoBehaviour
 {
@@ -11,10 +12,8 @@ public class Stats : MonoBehaviour
     [SerializeField] Text TIMETEXT;
     [SerializeField] Text DAYTEXT;
 
-    static readonly string[] Days = { "Sunday" , "Monday", "Tueaday", "Wednesday", "Thursday", "Friday", "Saturday"};
-
     public int Money;
-    public uint TimeFromMidNight = 0;
+    //public uint TimeFromMidNight = 0;
     
     uint Time = 480;
     uint Day = 1;
@@ -107,7 +106,7 @@ public class Stats : MonoBehaviour
     [SerializeField] AudioSource specialSound = null;
 
     public static float allTime = 0;
-    public static int allTimeInGame = 0;
+    public static int allTimeInGame = 600;//Starts at 10:00am on ch2
     public static bool freePlay = false;
     public List<SellSodas> sodasSelling = new List<SellSodas>();
 
@@ -157,7 +156,6 @@ public class Stats : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         if( teleportPoint != "" && TeleportPointsParent != null)
         {
-            print("GOT HERE");
             foreach(Transform t in TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint))
             {
                 Player.GetComponentInParent<Transform>().position = t.position;
@@ -211,7 +209,8 @@ public class Stats : MonoBehaviour
 
         if( streetLightsParent != null) streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
 
-        ChangeTime(TimeFromMidNight);
+        //ChangeTime(TimeFromMidNight);
+        ChangeTime(0);
         ChangeMoney(0);
 
         if (!current.PassTime) StartStopTime(false, "Scene itself");
@@ -371,13 +370,13 @@ public class Stats : MonoBehaviour
         switch (type)
         {
             case 0:
-                text = startCSTips[Random.Range(0, startCSTips.Length)];
+                text = startCSTips[UnityEngine.Random.Range(0, startCSTips.Length)];
                 break;
             case 1:
-                text = endCSTips[Random.Range(0, endCSTips.Length)];
+                text = endCSTips[UnityEngine.Random.Range(0, endCSTips.Length)];
                 break;
             case 2:
-                text = transCSTips[Random.Range(0, transCSTips.Length)];
+                text = transCSTips[UnityEngine.Random.Range(0, transCSTips.Length)];
                 break;
             case 3:
                 text = "";
@@ -615,11 +614,13 @@ public class Stats : MonoBehaviour
         allTimeInGame += (int)Amount;
         current.Day = (uint)allTimeInGame/(24*60) + 1;
 
-        current.DAYTEXT.text = "Day: " + current.Day + " " + Days[current.Day % 7];
+        DateTime resultDate = new DateTime(1979, 6, 1).AddDays(current.Day);
+        current.DAYTEXT.text = resultDate.ToString("ddd MMM dd, yyyy");
 
         current.Time -= ( 24*60 * (uint)Mathf.FloorToInt((float)(current.Time + Amount) / (24f * 60f)));
         current.Time += Amount;
 
+        //+ 605 since we begin at 10am in ch2
         current.TIMETEXT.text = allTimeInGameToString(allTimeInGame);
 
         CheckDeadlines((int)Amount);
@@ -831,55 +832,6 @@ public class Stats : MonoBehaviour
         Filter.color = C2;
         Filter.sprite = null;
         Filter.GetComponent<Animator>().enabled = true;
-    }
-
-}
-
-class Deadline : MonoBehaviour
-{
-    public string requirements;
-    public int Minutes;
-    public GameObject Object;
-    TextMeshProUGUI label,time;
-    public string Description;
-    public CutSceneTalker FailCutScene,SuccessCutScene;
-
-    Deadline[] presets = new Deadline[] { 
-        new Deadline()  { }, 
-        new Deadline()  ,
-    };
-
-    Deadline() { }
-    public Deadline(string requirements, int Mins,GameObject Obj, string Titl, CutSceneTalker FailCS, CutSceneTalker SucceedCS)
-    {
-        this.requirements = requirements;
-        Minutes = Mins;
-        Object = Obj;
-        Description = Titl;
-
-        foreach(TextMeshProUGUI t in Object.GetComponentsInChildren<TextMeshProUGUI>())
-        {
-            if (t.gameObject.name == "Label") label = t;
-            else time = t;
-        }
-
-        FailCutScene = FailCS;
-        SuccessCutScene = SucceedCS;
-    }
-
-    public void Refresh()
-    {
-        bool Lessthan3days = Minutes < 24 * 60 * 3;
-        bool Lessthanhour = Minutes < 61;
-        time.text = ( Lessthan3days ? ( (Lessthanhour) ? Minutes : Minutes / 60 ) : Minutes / (24 * 60) ) + "";
-        label.text = (Lessthan3days ? ((Lessthanhour) ? "mins" : "hrs") : "days") + " left";
-    }
-
-    public bool fulfillRequirement()
-    {
-        if (this.requirements == "") return true;
-
-        return false;
     }
 
 }

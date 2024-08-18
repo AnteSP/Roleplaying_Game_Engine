@@ -1542,7 +1542,7 @@ Tilemap:
     m_Data: {r: 0, g: 0, b: 0, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2206746, g: 0.41947013, b: 0.8207547, a: 1}
   m_Origin: {x: -3, y: -6, z: 0}
   m_Size: {x: 8, y: 11, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -10529,7 +10529,7 @@ Tilemap:
     m_Data: {r: 3.5884e-41, g: 3.5884e-41, b: 3.5884e-41, a: 3.5884e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4056604, g: 0.17795478, b: 0.18957159, a: 1}
   m_Origin: {x: -2, y: -6, z: 0}
   m_Size: {x: 6, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -36966,7 +36966,6 @@ MonoBehaviour:
   TIMETEXT: {fileID: 712748809}
   DAYTEXT: {fileID: 1217174243}
   Money: 0
-  TimeFromMidNight: 0
   BLACKBAR: {fileID: 485517752}
   DEADLINE: {fileID: 522835495}
   LOADING: {fileID: 947760197}
