@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
@@ -90,13 +90,11 @@ public class Dialogue : MonoBehaviour
 
     public void EndCutScene(CutSceneTalker cs)
     {
-        print("GOT HERE 2");
         cs.Ending = true;
         CS = cs;
         cs.goodtoGo = false;
         textDisplay.text = "";
         Stats.Transition(1);
-        print("GOT HERE 3");
         gameObject.SetActive(false);
         forceStopSounds();
 
@@ -432,7 +430,7 @@ public class Dialogue : MonoBehaviour
                     break;
                 case 'S': //Current sentene will be used to switch to next scene
                     EndCutScene(CS);
-                    EndConvo();
+                    //EndConvo();
                     break;
                 case 'I': //Information
                     Stats.DisplayMessage(Current);

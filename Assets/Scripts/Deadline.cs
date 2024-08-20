@@ -6,12 +6,36 @@ using TMPro;
 class Deadline : MonoBehaviour
 {
     public char ID = 'A';
+    public string Description;
     public string requirements;
+    public int hour;
+    public int day;
+    public CutSceneTalker FailCutScene, SuccessCutScene;
+
+    [Header("==Everything below auto-generates==")]
     public int Minutes;
     public GameObject Object;
     TextMeshProUGUI label, time;
-    public string Description;
-    public CutSceneTalker FailCutScene, SuccessCutScene;
+    Tooltip tooltip;
+
+    private void OnEnable()
+    {
+        Minutes = ((day - 1) * 24 * 60) + (hour * 60);
+
+        Object = Stats.GetStickyNote();
+        if (Object == null) print("DEADLINE GET STICKY NOTES FUCKED UP ");
+        foreach (TextMeshProUGUI t in Object.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            if (t.gameObject.name == "Label") label = t;
+            else time = t;
+        }
+        tooltip = Object.GetComponent<Tooltip>();
+
+        tooltip.tooltip = Description;
+        label.text = "hrs left";
+        time.text = "" + Minutes;
+
+    }
 
     private void Start()
     {

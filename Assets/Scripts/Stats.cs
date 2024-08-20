@@ -172,6 +172,7 @@ public class Stats : MonoBehaviour
             deadlines.Add(t.GetComponent<Image>());
             t.gameObject.SetActive(false);
         }
+        print("Got " + deadlines.Count + " deads");
 
         //CreateDeadline("Pay 1000 for the soda machine", 7*24*60, -1000, EndFail,EndSucceed);
         //DEADLINE.SetActive(false);
@@ -656,6 +657,18 @@ public class Stats : MonoBehaviour
 
     }
     */
+
+    public static GameObject GetStickyNote()
+    {
+        foreach(Image i in current.deadlines)
+        {
+            if (i.gameObject.activeInHierarchy) continue;
+            i.gameObject.SetActive(true);
+            return i.gameObject;
+        }
+
+        return null;
+    }
 
     public static void CreateDeadline(string Title,int Minutes,int ChangeMoney,CutSceneTalker Success,CutSceneTalker Failure)
     {

@@ -23,7 +23,6 @@ public class EndScreen : MonoBehaviour
     private void OnEnable()
     {
         //Progress.readData();
-
         
         if(Progress.getInt("Chapter") < 1)
         {

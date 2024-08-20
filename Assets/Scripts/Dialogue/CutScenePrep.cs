@@ -21,20 +21,22 @@ public class CutScenePrep : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         bool Ending;
-        Stats.doSelecting(true);
         if (Stats.current.CurrentCS.EndingChapter)
         {
+            Stats.Debug("OPT 1");
             Ending = true;
             Stats.current.CurrentCS.enabled = false;
             animator.transform.parent.Find("End screen").gameObject.SetActive(true);
         }
         else if (!Stats.current.CurrentCS.gameObject.activeInHierarchy)
         {
+            Stats.Debug("OPT 2");
             Ending = false;
             Stats.current.CurrentCS.gameObject.SetActive(true);
             Stats.current.CurrentCS.enabled = true;
         }else if (Stats.current.CurrentCS.gameObject.activeInHierarchy && !Stats.current.CurrentCS.enabled)
         {
+            Stats.Debug("OPT 3");
             Ending = false;
             Stats.current.CurrentCS.enabled = true;
         }
@@ -42,19 +44,29 @@ public class CutScenePrep : StateMachineBehaviour
         {
             if (Stats.current.CurrentCS.Ending)//finish cutscene. Back to normal gameplay
             {
+                Stats.Debug("OPT 4");
                 Ending = true;
                 if (Stats.current.CurrentCS.GoToNextScene())
                 {
+                    MonoBehaviour.print("Switching to scene ");
+                    System.Console.WriteLine("CS");
+                    Stats.current.AllowSelecting = false;
                     Stats.current.FilterColor(new Color(0,0,0,1));
+                }
+                else
+                {
+                    MonoBehaviour.print("No scene switching");
+                    Stats.doSelecting(true);
                 }
                 Stats.current.CurrentCS.PackUp(true);
                 Stats.StartStopTime(true, "Cutscene");
                 //Stats.current.PassTime = true;
-                Stats.current.AllowSelecting = true;
+                
                 Stats.current.Player.GetComponent<Movement>().enabled = true;
             }
             else//we are doing just a simple transition
             {
+                Stats.Debug("OPT 5");
                 Ending = false;
                 Stats.current.CurrentCS.NextCamPos(0);
                 Stats.current.FilterColor(Color.black);

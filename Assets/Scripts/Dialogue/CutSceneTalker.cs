@@ -102,10 +102,11 @@ public class CutSceneTalker : MonoBehaviour
         D.gameObject.SetActive(!b);
         this.enabled = !b;
         print(b ? "Packed up and finished cutscene" : "Packed up and ready to do cutscene");
-        if (!b)
+        if (!b)//if entering
         {
             //ObjectDepth.yeetSpaceBar();
             D.transform.localPosition = new Vector3(D.transform.localPosition.x, DBoxOnTop ? Mathf.Abs(D.transform.localPosition.y) : -Mathf.Abs(D.transform.localPosition.y), D.transform.localPosition.z);
+            Stats.current.CurrentCS = this;
         }
 
         Stats.releaseLockedInObject();
@@ -113,7 +114,7 @@ public class CutSceneTalker : MonoBehaviour
 
         if (Dialogue.d != null) Dialogue.d.showDisplay(true);
 
-        if (b)
+        if (b)//if exiting
         {
             this.tag = "Untagged";
             foreach (GameObject g in destroyAfter) Destroy(g);
@@ -200,6 +201,7 @@ public class CutSceneTalker : MonoBehaviour
 
     public bool GoToNextScene()
     {
+        print("CHECKING SCENE" + Sentences.Last());
         if (Sentences.Last().StartsWith("%S"))
         {
             Stats.current.SceneChange(Sentences.Last().Substring(2));
