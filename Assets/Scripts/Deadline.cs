@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using System.Collections.Generic;
 
 class Deadline : MonoBehaviour
 {
@@ -13,69 +12,54 @@ class Deadline : MonoBehaviour
     public CutSceneTalker FailCutScene, SuccessCutScene;
 
     [Header("==Everything below auto-generates==")]
-    public int Minutes;
-    public GameObject Object;
+    public int TriggerAtMinute;
+    public int MinutesLeft;
+    public int stickyNote;
     TextMeshProUGUI label, time;
     Tooltip tooltip;
 
+    static Deadline[] deadlines = new Deadline[4];
+
     private void OnEnable()
     {
-        Minutes = ((day - 1) * 24 * 60) + (hour * 60);
+        TriggerAtMinute = ((day - 1) * 24 * 60) + (((hour) * 60));
 
-        Object = Stats.GetStickyNote();
-        if (Object == null) print("DEADLINE GET STICKY NOTES FUCKED UP ");
-        foreach (TextMeshProUGUI t in Object.GetComponentsInChildren<TextMeshProUGUI>())
+        stickyNote = Stats.GetStickyNote();
+        if (stickyNote == -1) print("DEADLINE GET STICKY NOTES FUCKED UP ");
+        foreach (TextMeshProUGUI t in Stats.current.stickyNotes[stickyNote].GetComponentsInChildren<TextMeshProUGUI>())
         {
             if (t.gameObject.name == "Label") label = t;
             else time = t;
         }
-        tooltip = Object.GetComponent<Tooltip>();
+        tooltip = Stats.current.stickyNotes[stickyNote].GetComponent<Tooltip>();
 
         tooltip.tooltip = Description;
-        label.text = "hrs left";
-        time.text = "" + Minutes;
-
-    }
-
-    private void Start()
-    {
-        foreach (TextMeshProUGUI t in Object.GetComponentsInChildren<TextMeshProUGUI>())
-        {
-            if (t.gameObject.name == "Label") label = t;
-            else time = t;
-        }
-    }
-
-    Deadline(int day, int hour, int min, string Title, string requirements = "")
-    {
-        this.requirements = requirements;
-        this.Description = Title;
-        this.Minutes = (day * 24 * 60) + (hour * 60) + min;
-    }
-
-    public Deadline(string requirements, int Mins, GameObject Obj, string Titl, CutSceneTalker FailCS, CutSceneTalker SucceedCS)
-    {
-        this.requirements = requirements;
-        Minutes = Mins;
-        Object = Obj;
-        Description = Titl;
-
-        foreach (TextMeshProUGUI t in Object.GetComponentsInChildren<TextMeshProUGUI>())
-        {
-            if (t.gameObject.name == "Label") label = t;
-            else time = t;
-        }
-
-        FailCutScene = FailCS;
-        SuccessCutScene = SucceedCS;
+        Refresh();
+        deadlines[stickyNote] = this;
     }
 
     public void Refresh()
     {
-        bool Lessthan3days = Minutes < 24 * 60 * 3;
-        bool Lessthanhour = Minutes < 61;
-        time.text = (Lessthan3days ? ((Lessthanhour) ? Minutes : Minutes / 60) : Minutes / (24 * 60)) + "";
+        if (MinutesLeft == TriggerAtMinute - Stats.allTimeInGame) return;
+        if (time == null) return;
+        MinutesLeft = TriggerAtMinute - Stats.allTimeInGame;
+        bool Lessthan3days = MinutesLeft < 24 * 60 * 3;
+        bool Lessthanhour = MinutesLeft < 61;
+        time.text = (Lessthan3days ? ((Lessthanhour) ? MinutesLeft : MinutesLeft / 60) : MinutesLeft / (24 * 60)) + "";
         label.text = (Lessthan3days ? ((Lessthanhour) ? "mins" : "hrs") : "days") + " left";
+
+        if(MinutesLeft <= 0)
+        {
+            print("THROWING AWAY DEADLINE");
+
+            Stats.current.CurrentCS = fulfillRequirement() ? SuccessCutScene : FailCutScene;
+            Stats.current.CurrentCS.enabled = true;
+            Stats.Transition(0);
+
+            Stats.current.stickyNotes[stickyNote].gameObject.SetActive(false);
+            deadlines[stickyNote] = null;
+            enabled = false;
+        }
     }
 
     public bool fulfillRequirement()

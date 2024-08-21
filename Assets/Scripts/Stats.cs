@@ -29,8 +29,6 @@ public class Stats : MonoBehaviour
     public CutSceneTalker CurrentCS;
     [SerializeField] CutSceneTalker DefaultCS;
 
-    List<Deadline> Deds = new List<Deadline>();
-
     [SerializeField] GameObject MESSAGE;
     [SerializeField] GameObject GOMESSAGE;
     [SerializeField] AudioSource ThereGoesMyHero;
@@ -129,7 +127,8 @@ public class Stats : MonoBehaviour
     static string teleportPoint = "";
     [SerializeField] Transform TeleportPointsParent;
 
-    List<Image> deadlines = new List<Image>();
+    [HideInInspector] public List<Image> stickyNotes = new List<Image>();
+    List<Deadline> Deds = new List<Deadline>();
 
     private void OnEnable()
     {
@@ -165,14 +164,15 @@ public class Stats : MonoBehaviour
         CurrentCS = DefaultCS;
 
         Transform overlay = DAYTEXT.transform.parent;
-        for(int i = 1; i < 99; i++)
+        overlay.GetComponent<MakeTrans>().forceStart();
+        for(int i = 0; i < 99; i++)
         {
-            Transform t = overlay.Find("Deadline" + i);
+            Transform t = overlay.Find("Deadline (" + i + ")");
             if (t == null) break;
-            deadlines.Add(t.GetComponent<Image>());
+            stickyNotes.Add(t.GetComponent<Image>());
             t.gameObject.SetActive(false);
         }
-        print("Got " + deadlines.Count + " deads");
+        Deds = GetComponents<Deadline>().ToList();
 
         //CreateDeadline("Pay 1000 for the soda machine", 7*24*60, -1000, EndFail,EndSucceed);
         //DEADLINE.SetActive(false);
@@ -347,7 +347,10 @@ public class Stats : MonoBehaviour
     {
         current.AllowSelecting = b;
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="type">0 = Start CS, 1 = End CS, 2 = Transition</param>
     public static void Transition(int type = 0)
     {
         if (current.CurrentCS == null) return;
@@ -624,7 +627,7 @@ public class Stats : MonoBehaviour
         //+ 605 since we begin at 10am in ch2
         current.TIMETEXT.text = allTimeInGameToString(allTimeInGame);
 
-        CheckDeadlines((int)Amount);
+        CheckDeadlines();
 
         if (current.doDayLight)
         {
@@ -658,60 +661,22 @@ public class Stats : MonoBehaviour
     }
     */
 
-    public static GameObject GetStickyNote()
+    public static int GetStickyNote()
     {
-        foreach(Image i in current.deadlines)
+        for(int i = 0; i < current.stickyNotes.Count; i++)
         {
-            if (i.gameObject.activeInHierarchy) continue;
-            i.gameObject.SetActive(true);
-            return i.gameObject;
+            if (current.stickyNotes[i].gameObject.activeInHierarchy) continue;
+            current.stickyNotes[i].gameObject.SetActive(true);
+            return i;
         }
-
-        return null;
+        return -1;
     }
 
-    public static void CreateDeadline(string Title,int Minutes,int ChangeMoney,CutSceneTalker Success,CutSceneTalker Failure)
+    static void CheckDeadlines()
     {
-        GameObject Ded = Instantiate(current.DEADLINE, current.DEADLINE.transform.parent);
-        /*
-        bool Lessthan3days = Minutes < 24 * 60 * 3;
-        bool Lessthanhour = Minutes < 61;
-        print((Lessthanhour) ? Minutes : Minutes / 60);
-        string TimeLeft = (Lessthan3days ? ( (Lessthanhour) ? Minutes : Minutes/60 ) : Minutes/(24*60)) + (Lessthan3days ? ((Lessthanhour) ? " Minutes" : " Hours")  : " Days");
-        
-        string temp = Title + " (Due in " + TimeLeft + ")";
-        print(temp);
-        Ded.transform.Find("Text").GetComponent<Text>().text = "fuck";
-        */
-        Ded.SetActive(true);
-        current.Deds.Add( new Deadline("",Minutes,Ded,Title, Success,Failure));
-        //Deds[Deds.Count - 1].Object.SetActive(true);
-        /*
-        Deds[Deds.Count - 1].Money = ChangeMoney;
-        Deds[Deds.Count - 1].Energy = ChangeEnergy;
-        Deds[Deds.Count - 1].Minutes = Minutes;
-        Deds[Deds.Count - 1].Object = Ded;
-        Deds[Deds.Count - 1].Title = Title;
-        Deds[Deds.Count - 1].FinishText = FinishText;
-        */
-    }
-
-    static void CheckDeadlines(int TimePassed)
-    {
-        foreach(Deadline d in current.Deds)
+        foreach(Deadline d in current.Deds.Where(a=> a.enabled))
         {
-            if (d.Minutes < TimePassed)
-            {
-                current.CurrentCS = d.fulfillRequirement() ? d.SuccessCutScene : d.FailCutScene;
-                Destroy(d.Object);
-                current.Deds.Remove(d);
-                Transition(0);
-            }
-            else
-            {
-                d.Minutes -= TimePassed;
-                d.Refresh();
-            }
+            d.Refresh();
         }
     }
 
