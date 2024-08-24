@@ -219,6 +219,8 @@ public class ChooseSellSoda : Resource
             Stats.current.Player.GetComponent<Movement>().enabled = true;
             //Stats.StopStartTime(true);
             SellSodas.SLevel = float.NaN;
+            Stats.StartStopTime(true, "ChooseSellSoda");
+            
         }
         else
         {
@@ -226,8 +228,9 @@ public class ChooseSellSoda : Resource
             SellSodas.SLevel = SLevel;
             //Stats.StopStartTime(false);
             loadStats();
+            Stats.StartStopTime(false, "ChooseSellSoda");
         }
-        Stats.StartStopTime(true);
+        
     }
 
     float lastM = 0;

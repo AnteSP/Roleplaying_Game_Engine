@@ -129,6 +129,7 @@ public class Stats : MonoBehaviour
 
     [HideInInspector] public List<Image> stickyNotes = new List<Image>();
     List<Deadline> Deds = new List<Deadline>();
+    [SerializeField] GameObject DeadlineNotification;
 
     private void OnEnable()
     {
@@ -215,6 +216,33 @@ public class Stats : MonoBehaviour
         ChangeMoney(0);
 
         if (!current.PassTime) StartStopTime(false, "Scene itself");
+
+        foreach (Deadline.DeadlineData dd in Deadline.activeDeadlineData.Where(a=> a != null))
+        {
+            bool foundOne = false;
+            foreach(Deadline ded in Deds.Where(a=> a.isSameEventAs(dd)))
+            {
+                ded.enabled = true;
+                foundOne = true;
+            }
+
+            if (!foundOne )
+            {
+                if (current.PassTime)
+                {
+                    throw new Exception("HEY DUMBASS! There's no corresponding deadline script on the stats object for [" + dd.Description + "]");
+                }
+                else
+                {
+                    Deadline newDed = gameObject.AddComponent<Deadline>();
+                    //at this point, newDed is (enabled = false) because of the OnEnable() Deadline function
+                    newDed = dd.cloneVariaiblesTo(newDed);
+                    newDed.enabled = true;
+                    Deds.Add(newDed);
+                }
+                
+            }
+        }
     }
 
     // Start is called before the first frame update
@@ -272,7 +300,7 @@ public class Stats : MonoBehaviour
         {
             Stats.DisplayMessage("You don't have enough money to setup shop here");
         }
-        Stats.StartStopTime(true);
+        Stats.StartStopTime(true,"SellSpot");
     }
     /// <summary>
     /// 
@@ -590,14 +618,14 @@ public class Stats : MonoBehaviour
                 if(i < 10)
                 {
                     temp = (float)i / 10f;
-                    print(temp);
+                    //print(temp);
                     TIMETEXT.color = new Color(temp, temp, temp);
                     TIMETEXT.transform.localScale = Vector3.Lerp(OGTimeTextScale, TargTimeTextScale, temp);
                 }
                 else if(i > frames - 10)
                 {
                     temp = (float)(frames - i-1)/10f;
-                    print(temp);
+                    //print(temp);
                     TIMETEXT.color = new Color(temp, temp, temp);
                     TIMETEXT.transform.localScale = Vector3.Lerp(OGTimeTextScale, TargTimeTextScale, temp);
                 }
@@ -680,6 +708,20 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public static void StartDeadline(char ID)
+    {
+        Deadline d = current.Deds.Where(a => a.ID == ID).First();
+        if(d == null)
+        {
+            throw new Exception("NO DEADLINE FOUND OF ID " + ID);
+        }
+        else
+        {
+            current.DeadlineNotification.gameObject.SetActive(true);
+            d.enabled = true;
+        }
+    }
+
     static public void GameOver()
     {
 
@@ -698,7 +740,7 @@ public class Stats : MonoBehaviour
     {
         if (stopTime)
         {
-            Stats.StartStopTime(false);
+            Stats.StartStopTime(false,"Message");
         }
         current.MESSAGE.SetActive(text != null);
         current.MESSAGE.transform.Find("Text").GetComponent<Text>().text = text;

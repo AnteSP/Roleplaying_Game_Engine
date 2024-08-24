@@ -7,10 +7,13 @@ using TMPro;
 public class SellSpot : Resource
 {
     [SerializeField] GameObject SellSpotPrompt;
-    public float MLevel = 1f;//1-10s
+    [Tooltip ("0 means no people. 1 means max people")]
+    public float MLevel = 1f;//0 means no people. 1 means max people
+    [Tooltip("0 means no stealing. 1 means literally everything gets stolen")]
     public float SLevel = 0.1f;//1-10
     public int MinsToPrep = 30;
     public int CostToPrep = 0;
+    public string triggerOnSetup = "";
     float ogY;
 
     public static SellSpot current = null;
@@ -28,7 +31,7 @@ public class SellSpot : Resource
 
     public override void Use(float Amount)
     {
-        Stats.StartStopTime(false);
+        Stats.StartStopTime(false,"SellSpot");
         current = this;
         
         SellSpotPrompt.SetActive(true);
@@ -59,6 +62,12 @@ public class SellSpot : Resource
         css.MLevel = MLevel;
         css.SLevel = SLevel;
         Destroy(gameObject);
+        if (triggerOnSetup != "") Progress.switchInPlay(triggerOnSetup, true);
+    }
+
+    public static void closeSetUpScreen()
+    {
+        Stats.StartStopTime(true, "SellSpot");
     }
 
 }

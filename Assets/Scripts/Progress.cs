@@ -310,7 +310,6 @@ public class Progress : MonoBehaviour
 
                     // Now you can use 'key' and 'value' as needed
                     Items.AddNoAnim(int.Parse(key), value);
-                    print("Adding " + key);
                 }
                 loadedItems = true;
             }

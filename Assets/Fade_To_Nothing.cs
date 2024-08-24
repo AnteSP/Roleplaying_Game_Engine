@@ -19,6 +19,8 @@ public class Fade_To_Nothing : MonoBehaviour
     // Reference to the Renderer component
     private Image objectRenderer;
 
+    [SerializeField] int repetitions = 1;
+
     private void OnEnable()
     {
         au.Play();
@@ -52,9 +54,20 @@ public class Fade_To_Nothing : MonoBehaviour
         // Check if the disappear duration has been reached
         if (elapsedTime >= disappearDuration)
         {
+            repetitions -= 1;
+
+            if(repetitions <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                au.Play();
+                startTime = Time.time;
+            }
             // Disable the GameObject
             //gameObject.SetActive(false);
-            gameObject.SetActive(false);
+            
         }
     }
 

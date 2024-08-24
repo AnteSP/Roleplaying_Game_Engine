@@ -21,20 +21,38 @@ public class Dialogue : MonoBehaviour
 
     bool End = false;
 
-    public AudioSource TypeNoise;
+    AudioSource TypeNoise;
     public static Dialogue d;
 
     [SerializeField] Animator DialogueChoiceNotif;
+
+    string delayedPercEvent = null;
 
     public void showDisplay(bool b)
     {
         im.enabled = b;
     }
 
+    public void DisplayOnTop(bool b)
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, b ? Mathf.Abs(transform.localPosition.y) : -Mathf.Abs(transform.localPosition.y), transform.localPosition.z);
+    }
+
+    public void DisplayOnTop()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, (Camera.main.transform.position.y > Stats.current.Player.transform.position.y) ? Mathf.Abs(transform.localPosition.y) : -Mathf.Abs(transform.localPosition.y), transform.localPosition.z);
+    }
+
     private void Start()
     {
         d = this;
         im = GetComponent<Image>();
+    }
+
+    public void SetTypeNoise(AudioSource ntn)
+    {
+        forceStopSounds();
+        TypeNoise = ntn;
     }
 
     IEnumerator Type()
@@ -51,6 +69,13 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSeconds(TypeSpeed);
         }
 
+        if(delayedPercEvent != null)
+        {
+            Current = delayedPercEvent;
+            if (CS == null) ProcessPerc(); else ProcessPercCS();
+            delayedPercEvent = null;
+        }
+
         if (TN)
         {
             TypeNoise.Stop();
@@ -60,8 +85,10 @@ public class Dialogue : MonoBehaviour
 
     public void NextSentence()
     {
+        QuickTalker.ONLYACTIVETALKER = false;
         textDisplay.text = "";
         StopAllCoroutines();
+        TypeNoise.Stop();
         End = false;
         textDisplay.enableWordWrapping = true;
 
@@ -323,6 +350,22 @@ public class Dialogue : MonoBehaviour
                     break;
                 case '%':
                     EndConvo();
+                    break;
+                case 'd'://Start deadline
+                    /*
+                    if (delayedPercEvent == null)
+                    {
+                        delayedPercEvent = "%d" + Current;
+                    }
+                    else
+                    {
+                        char ID = Current[0];
+                        Stats.StartDeadline(ID);
+                    }*/
+                    char ID = Current[0];
+                    Stats.StartDeadline(ID);
+                    Current = Current.Remove(0, 1);
+
                     break;
             }
 

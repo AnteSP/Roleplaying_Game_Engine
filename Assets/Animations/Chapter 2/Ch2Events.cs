@@ -20,10 +20,8 @@ public class Ch2Events : MonoBehaviour
     {
         if (TurnTimeOff)
         {
-            print("GOT HERE");
             Stats.StartStopTime(false, "Ch2 Opening");
         }
-        print(gameObject.name + " AAAAAAAAAAAAAA");
         an = GetComponent<Animation>();
     }
 

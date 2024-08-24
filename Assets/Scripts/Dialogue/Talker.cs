@@ -45,8 +45,8 @@ public class Talker : Resource
         Camera.main.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         D.gameObject.SetActive(true);
-        D.transform.localPosition = new Vector3(D.transform.localPosition.x, (Camera.main.transform.position.y > P.transform.position.y) ? Mathf.Abs(D.transform.localPosition.y) : -Mathf.Abs(D.transform.localPosition.y), D.transform.localPosition.z);
-        D.TypeNoise = TypeNoise;
+        D.DisplayOnTop((Camera.main.transform.position.y > P.transform.position.y));
+        D.SetTypeNoise(TypeNoise);
 
 
         D.Current = sentences[Index++ % sentences.Length];

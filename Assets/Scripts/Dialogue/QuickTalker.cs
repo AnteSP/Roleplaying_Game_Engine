@@ -14,6 +14,15 @@ public class QuickTalker : Resource
     Collider2D col;
     public int messageTime = 5;
 
+    static public bool ONLYACTIVETALKER = false;
+    static QuickTalker currentlyWaiting = null;
+    public enum DialogueBoxPosition
+    {
+        AlwaysTop, Dynamic, AlwaysBottom
+    }
+
+    [SerializeField] DialogueBoxPosition dPosition = DialogueBoxPosition.Dynamic;
+
     private void Start()
     {
         col = GetComponent<Collider2D>();
@@ -27,8 +36,10 @@ public class QuickTalker : Resource
     public override void Use(float Amount)
     {
         D.gameObject.SetActive(true);
-        D.transform.localPosition = new Vector3(D.transform.localPosition.x, (Camera.main.transform.position.y > Stats.current.Player.transform.position.y) ? Mathf.Abs(D.transform.localPosition.y) : -Mathf.Abs(D.transform.localPosition.y), D.transform.localPosition.z);
-        D.TypeNoise = TypeNoise;
+
+        if (dPosition == DialogueBoxPosition.Dynamic) D.DisplayOnTop();
+        else D.DisplayOnTop(dPosition == DialogueBoxPosition.AlwaysTop);
+        D.SetTypeNoise(TypeNoise);
         D.Current = sentence;
 
         if (NE)
@@ -39,7 +50,15 @@ public class QuickTalker : Resource
             D.NPC = N;
         }
 
+        if (currentlyWaiting != null)
+        {
+            print("STOPPING FOR " + currentlyWaiting.gameObject.name);
+            currentlyWaiting.StopAllCoroutines();
+            Destroy(currentlyWaiting.gameObject);
+        }
+        currentlyWaiting = this;
         D.NextSentence();
+        ONLYACTIVETALKER = true;
 
         try
         {
@@ -54,16 +73,19 @@ public class QuickTalker : Resource
     {
         if (collision.gameObject.name != "Player") return;
         col.enabled = false;
+        
         Use(0);
         StartCoroutine(ExampleCoroutine());
-
-
     }
 
     IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(messageTime);
-        D.EndConvo();
+
+        if(ONLYACTIVETALKER) D.EndConvo();
+        currentlyWaiting = null;
+
         Destroy(gameObject);
+        
     }
 }

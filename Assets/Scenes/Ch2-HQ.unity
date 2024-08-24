@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 30165790}
   - component: {fileID: 30165789}
   m_Layer: 5
-  m_Name: Deadline3
+  m_Name: Deadline (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2683,7 @@ GameObject:
   - component: {fileID: 144640473}
   - component: {fileID: 144640475}
   m_Layer: 5
-  m_Name: Deadline1
+  m_Name: Deadline (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13959,7 +13959,7 @@ GameObject:
   - component: {fileID: 657733921}
   - component: {fileID: 657733920}
   m_Layer: 5
-  m_Name: Deadline2
+  m_Name: Deadline (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20262,7 +20262,7 @@ GameObject:
   - component: {fileID: 912918847}
   - component: {fileID: 912918846}
   m_Layer: 5
-  m_Name: Deadline4
+  m_Name: Deadline (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36966,7 +36966,6 @@ MonoBehaviour:
   TIMETEXT: {fileID: 712748809}
   DAYTEXT: {fileID: 1217174243}
   Money: 0
-  TimeFromMidNight: 0
   BLACKBAR: {fileID: 485517752}
   DEADLINE: {fileID: 522835495}
   LOADING: {fileID: 947760197}
@@ -37007,6 +37006,7 @@ MonoBehaviour:
   streetLightsParent: {fileID: 0}
   timeSkipSound: {fileID: 0}
   TeleportPointsParent: {fileID: 0}
+  stickyNotes: []
 --- !u!4 &1700876590
 Transform:
   m_ObjectHideFlags: 0
@@ -38523,10 +38523,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

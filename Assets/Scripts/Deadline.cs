@@ -4,6 +4,26 @@ using System.Collections.Generic;
 
 class Deadline : MonoBehaviour
 {
+    public class DeadlineData
+    {
+        public string Description;
+        public int hour;
+        public int day;
+
+        public static implicit operator DeadlineData(Deadline d)
+        {
+            return new DeadlineData { Description = d.Description, day=d.day, hour=d.hour};
+        }
+
+        public Deadline cloneVariaiblesTo(Deadline d)
+        {
+            d.Description = this.Description;
+            d.hour = this.hour;
+            d.day = this.day;
+            return d;
+        }
+    }
+
     public char ID = 'A';
     public string Description;
     public string requirements;
@@ -18,10 +38,21 @@ class Deadline : MonoBehaviour
     TextMeshProUGUI label, time;
     Tooltip tooltip;
 
-    static Deadline[] deadlines = new Deadline[4];
+    static public DeadlineData[] activeDeadlineData = new DeadlineData[4] {null,null,null,null};
+
+    public bool isSameEventAs(DeadlineData a)
+    {
+        return (a.hour == this.hour && a.day == this.day && a.Description == this.Description);
+    }
 
     private void OnEnable()
     {
+        //When Component is generated in-code, it gets enabled by default. If this happens, just disable and keep going
+        if (day == 0)
+        {
+            enabled = false;
+            return;
+        }
         TriggerAtMinute = ((day - 1) * 24 * 60) + (((hour) * 60));
 
         stickyNote = Stats.GetStickyNote();
@@ -35,7 +66,7 @@ class Deadline : MonoBehaviour
 
         tooltip.tooltip = Description;
         Refresh();
-        deadlines[stickyNote] = this;
+        activeDeadlineData[stickyNote] = this;
     }
 
     public void Refresh()
@@ -50,14 +81,14 @@ class Deadline : MonoBehaviour
 
         if(MinutesLeft <= 0)
         {
-            print("THROWING AWAY DEADLINE");
+            print("THROWING AWAY DEADLINE " + MinutesLeft + " / " + TriggerAtMinute);
 
             Stats.current.CurrentCS = fulfillRequirement() ? SuccessCutScene : FailCutScene;
             Stats.current.CurrentCS.enabled = true;
             Stats.Transition(0);
 
             Stats.current.stickyNotes[stickyNote].gameObject.SetActive(false);
-            deadlines[stickyNote] = null;
+            activeDeadlineData[stickyNote] = null;
             enabled = false;
         }
     }

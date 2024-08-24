@@ -105,7 +105,7 @@ public class CutSceneTalker : MonoBehaviour
         if (!b)//if entering
         {
             //ObjectDepth.yeetSpaceBar();
-            D.transform.localPosition = new Vector3(D.transform.localPosition.x, DBoxOnTop ? Mathf.Abs(D.transform.localPosition.y) : -Mathf.Abs(D.transform.localPosition.y), D.transform.localPosition.z);
+            D.DisplayOnTop(DBoxOnTop);
             Stats.current.CurrentCS = this;
         }
 
@@ -180,8 +180,6 @@ public class CutSceneTalker : MonoBehaviour
         //CamZoom.setFocusPoint(CamFocus,false);
         if (UseMouse) CamZoom.applyOffset(temp * temp * temp *40);
 
-        //D.transform.localPosition = new Vector3(D.transform.localPosition.x , Mathf.Abs(D.transform.localPosition.y) * -Mathf.Sign((Input.mousePosition.y - Screen.height / 2)), D.transform.localPosition.z);
-
         if (Input.GetKeyDown(KeyCode.Mouse0) && goodtoGo)
         {
             if (Anim == null) Anim = D.GetComponent<Animator>();
@@ -217,9 +215,8 @@ public class CutSceneTalker : MonoBehaviour
         D.Current = Sentences[Index];
         D.CS = this;
 
-        if (D.TypeNoise != null) D.TypeNoise.Stop();
         if (As.Length <= Index) print("ERROR: MAKE SURE THERE'S AS MANY TYPE NOISE SHITS AS THERE ARE DIALOGUE BOXES DICKHEAD");
-        D.TypeNoise = As[Index++];
+        D.SetTypeNoise(As[Index++]);
         D.NextSentence();
         try
         {
