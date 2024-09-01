@@ -4110,6 +4110,8 @@ MonoBehaviour:
   sentence: 'You: (In the meantime, maybe I can start my soda selling business...)'
   TypeNoise: {fileID: 662037077}
   messageTime: 6
+  stopPlayer: 0
+  stopPlayerTime: 0
   dPosition: 0
 --- !u!1 &154046185
 GameObject:
@@ -11384,7 +11386,7 @@ RectTransform:
   m_GameObject: {fileID: 446982909}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58457, y: 0.58457, z: 0.58457}
+  m_LocalScale: {x: 0.78607124, y: 0.78607124, z: 0.78607124}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 651135145}
@@ -11392,7 +11394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 215, y: -4.0000153}
+  m_AnchoredPosition: {x: 134.8, y: 8.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446982911
@@ -11415,7 +11417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f2b5fa6192c7f3418eea0cec3f43740, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70362f6d08a283c428ebe06a2ecc8cf7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14677,6 +14679,8 @@ MonoBehaviour:
     just have to wait and hope for an escape opportunity to present itself...)'
   TypeNoise: {fileID: 662037077}
   messageTime: 8
+  stopPlayer: 1
+  stopPlayerTime: 2
   dPosition: 2
 --- !u!1 &596876469
 GameObject:
@@ -15920,7 +15924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed007c1d9782244418b0175cb26bd511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  D: {fileID: 0}
+  D: {fileID: 119110231}
   DBoxOnTop: 0
   Sentences:
   - ...
@@ -15928,7 +15932,7 @@ MonoBehaviour:
   - 'Gaba Goon: Ugh, Britain'
   - '%N???: Gaba Goon! You bloody brute, you whacked a copper!?'
   - 'G.G: Oh gimme a break, you guys still give a shit about all that?'
-  - '???: Bloody hell, the family is held to strict STANDARDS! We have honour! Honour
+  - '???: Oh sod off! the family is held to strict STANDARDS! We have honour! Honour
     which we must MAINTAIN! '
   - "%nG.G: Oh, shut it tea sipper, I\u2019ll g-"
   - '%AYou: *Gasp!'
@@ -15942,8 +15946,7 @@ MonoBehaviour:
   - "G.G: You ain\u2019t the least bit curious \u2018bout who dat guy wit me is?"
   - "???: I don\u2019t much care, and you won\u2019t avoid the consequences of what
     you\u2019ve done"
-  - "%nG.G: Dis is Uncle Tony\u2019s actual honest to God nephew, and I saved him,
-    Danny"
+  - "%nG.G: Dis is Uncle Tony\u2019s honest to God nephew, and I saved him, Danny"
   - "Danny: \u2026 "
   - '%N...'
   - "Danny: \u2026 My word\u2026 He really is his nephew"
@@ -16010,6 +16013,7 @@ MonoBehaviour:
   - {fileID: 680135420}
   - {fileID: 1143779436}
   - {fileID: 342183432}
+  - {fileID: 2059182269}
   Enable:
   - {fileID: 893450131}
   - {fileID: 183182128}
@@ -16046,6 +16050,8 @@ MonoBehaviour:
   destroyAfter:
   - {fileID: 790601808}
   - {fileID: 1475409175}
+  - {fileID: 982427765}
+  - {fileID: 2059182269}
   Ending: 0
   skipPacking: 0
   EndingChapter: 0
@@ -17396,7 +17402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680135420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.38, y: -4.06, z: 0}
+  m_LocalPosition: {x: -9.49, y: -6.585, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21958,7 +21964,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1895253516}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &885422775
 EdgeCollider2D:
@@ -24731,6 +24737,7 @@ GameObject:
   - component: {fileID: 982427768}
   - component: {fileID: 982427767}
   - component: {fileID: 982427770}
+  - component: {fileID: 982427771}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -24841,6 +24848,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &982427771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982427765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa8fe3ac6145ad4888a79179d8c3a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &995777715
 GameObject:
   m_ObjectHideFlags: 0
@@ -25156,6 +25175,8 @@ MonoBehaviour:
     to be able to get out of here)'
   TypeNoise: {fileID: 662037077}
   messageTime: 7
+  stopPlayer: 1
+  stopPlayerTime: 2
   dPosition: 0
 --- !u!114 &1000033910
 MonoBehaviour:
@@ -41522,8 +41543,8 @@ GameObject:
   - component: {fileID: 1700876592}
   - component: {fileID: 1700876594}
   - component: {fileID: 1700876595}
-  - component: {fileID: 1700876596}
   - component: {fileID: 1700876597}
+  - component: {fileID: 1700876596}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -41864,6 +41885,7 @@ MonoBehaviour:
   - {fileID: 365763100}
   - {fileID: 1973509438}
   - {fileID: 910032752}
+  - {fileID: 2059182269}
 --- !u!114 &1700876596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43915,6 +43937,8 @@ MonoBehaviour:
     I have to defeat Conker Koola!)'
   TypeNoise: {fileID: 662037077}
   messageTime: 5
+  stopPlayer: 1
+  stopPlayerTime: 2
   dPosition: 0
 --- !u!114 &1818280784
 MonoBehaviour:
@@ -45738,8 +45762,8 @@ Transform:
   m_Children:
   - {fileID: 342183433}
   - {fileID: 1040578222}
-  - {fileID: 885422774}
   - {fileID: 2059182270}
+  - {fileID: 885422774}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49278,7 +49302,7 @@ Transform:
   - {fileID: 152446860}
   - {fileID: 2069960480}
   m_Father: {fileID: 1895253516}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2059182271
 PolygonCollider2D:

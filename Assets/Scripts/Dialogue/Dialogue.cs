@@ -88,7 +88,7 @@ public class Dialogue : MonoBehaviour
         QuickTalker.ONLYACTIVETALKER = false;
         textDisplay.text = "";
         StopAllCoroutines();
-        TypeNoise.Stop();
+        if(TypeNoise != null) TypeNoise.Stop();
         End = false;
         textDisplay.enableWordWrapping = true;
 
@@ -478,6 +478,7 @@ public class Dialogue : MonoBehaviour
                 case 'I': //Information
                     Stats.DisplayMessage(Current);
                     Stats.current.CurrentCS.Next();
+                    Stats.current.CurrentCS.setGoodToGo(false);
                     break;
                 case 'V': //Variable Line. Syntax Example:    %V[A]. blah blah blah       (Everything in [A] will be replaced by the variable line of ID A. If we want to decide between multiple, list multiple. First takes priority)
 

@@ -13,6 +13,8 @@ public class QuickTalker : Resource
     [SerializeField] AudioSource TypeNoise;
     Collider2D col;
     public int messageTime = 5;
+    [SerializeField] bool stopPlayer = false;
+    [SerializeField] int stopPlayerTime = 0;
 
     static public bool ONLYACTIVETALKER = false;
     static QuickTalker currentlyWaiting = null;
@@ -36,6 +38,8 @@ public class QuickTalker : Resource
     public override void Use(float Amount)
     {
         D.gameObject.SetActive(true);
+
+        if (stopPlayer) Stats.StartStopPlayerMovement(false);
 
         if (dPosition == DialogueBoxPosition.Dynamic) D.DisplayOnTop();
         else D.DisplayOnTop(dPosition == DialogueBoxPosition.AlwaysTop);
@@ -76,6 +80,11 @@ public class QuickTalker : Resource
         
         Use(0);
         StartCoroutine(ExampleCoroutine());
+        if(stopPlayerTime > 0)
+        {
+            StartCoroutine(PlayerMovementCoroutine());
+            
+        }
     }
 
     IEnumerator ExampleCoroutine()
@@ -87,5 +96,13 @@ public class QuickTalker : Resource
 
         Destroy(gameObject);
         
+    }
+
+    IEnumerator PlayerMovementCoroutine()
+    {
+        yield return new WaitForSeconds(stopPlayerTime);
+
+        Stats.StartStopPlayerMovement(true);
+
     }
 }

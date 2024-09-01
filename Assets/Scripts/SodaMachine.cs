@@ -100,14 +100,8 @@ public class SodaMachine : MonoBehaviour
     public void ToggleMenu()
     {
         Open = !Open;
-        if (Open)
-        {
-            Stats.current.Player.GetComponent<Movement>().ShutDown();
-        }
-        else
-        {
-            Stats.current.Player.GetComponent<Movement>().enabled = true;
-        }
+        Stats.StartStopPlayerMovement(!Open);
+
         SelectRec.Selecting = !SelectRec.Selecting;
         A.SetBool("Open", Open);
         A.SetTrigger("Go");

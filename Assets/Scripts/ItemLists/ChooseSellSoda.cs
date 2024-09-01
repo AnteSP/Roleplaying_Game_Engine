@@ -213,10 +213,10 @@ public class ChooseSellSoda : Resource
     {
         bool On = (Menu.transform.localPosition.y > -100);
         Menu.transform.localPosition = On ? new Vector3(0, -999999, 0) : new Vector3(100,0,0);
+        Stats.StartStopPlayerMovement(On);
 
         if (On)
         {
-            Stats.current.Player.GetComponent<Movement>().enabled = true;
             //Stats.StopStartTime(true);
             SellSodas.SLevel = float.NaN;
             Stats.StartStopTime(true, "ChooseSellSoda");
@@ -224,7 +224,6 @@ public class ChooseSellSoda : Resource
         }
         else
         {
-            Stats.current.Player.GetComponent<Movement>().ShutDown();
             SellSodas.SLevel = SLevel;
             //Stats.StopStartTime(false);
             loadStats();

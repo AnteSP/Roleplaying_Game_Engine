@@ -4,13 +4,14 @@
   "Upgrades": {},
   "PickUps": {},
   "Items": {
-    "17": 1,
-    "2": 5,
-    "25": 1
+    "17": 3,
+    "2": 24,
+    "25": 2
   },
   "Recipes": {
     "": true
   },
+  "MRespect": -1,
   "Ch2OpeningDone": true,
-  "MRespect": -1
+  "Ch2TutorialDone": true
 }

@@ -85,6 +85,7 @@ public class Stats : MonoBehaviour
     [SerializeField] GameObject Sounds;
 
     public GameObject Player;
+    Movement playerMovement;
 
     public static Stats current;
 
@@ -154,6 +155,7 @@ public class Stats : MonoBehaviour
         QualitySettings.vSyncCount = 1;
         current = this;
         Player = GameObject.FindGameObjectWithTag("Player");
+        if (Player != null) playerMovement = Player.GetComponent<Movement>();
         if( teleportPoint != "" && TeleportPointsParent != null)
         {
             foreach(Transform t in TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint))
@@ -385,12 +387,7 @@ public class Stats : MonoBehaviour
         Dialogue.d.showDisplay(false);
         current.AllowSelecting = false;
 
-        if (current.Player != null) current.Player.GetComponent<Movement>().ShutDown();
-        else
-        {
-            GameObject g = GameObject.FindGameObjectWithTag("Player");
-            if (g != null) g.GetComponent<Movement>().ShutDown();
-        }
+        Stats.StartStopPlayerMovement(false);
 
         if (!current.CurrentCS.gameObject.activeInHierarchy)
         {
@@ -728,9 +725,30 @@ public class Stats : MonoBehaviour
         print("GAME OVER");
         current.GOMESSAGE.SetActive(true);
         current.GOMESSAGE.transform.Find("Text").GetComponent<Text>().text = "YOU FUCKING DIED\n\nconsider this a gameover... But feel free to still explore around";
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().ShutDown();
+        StartStopPlayerMovement(false);
         current.ThereGoesMyHero.Play();
 
+    }
+
+    static public void StartStopPlayerMovement(bool start)
+    {
+        if (current == null) return;
+
+        if(current.Player == null)
+        {
+            GameObject g = GameObject.FindGameObjectWithTag("Player");
+            if (g != null)
+            {
+                current.Player = g;
+                current.playerMovement = g.GetComponent<Movement>();
+            }
+            else return;
+        }
+
+        if (start)
+            current.playerMovement.enabled = true;
+        else
+            current.playerMovement.ShutDown();
     }
     /// <summary>
     /// Display a message instantly with the text box thing
@@ -852,6 +870,12 @@ public class Stats : MonoBehaviour
         Filter.color = C2;
         Filter.sprite = null;
         Filter.GetComponent<Animator>().enabled = true;
+    }
+
+    public void setCurrentCSGoodToGo(bool b)
+    {
+        if (CurrentCS == null) return;
+        CurrentCS.setGoodToGoOnly(b);
     }
 
 }

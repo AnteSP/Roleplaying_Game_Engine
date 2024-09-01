@@ -104,15 +104,8 @@ public class StoreMenu : Resource
 
     public override void Use(float Amount)
     {
-        if (Menu.activeSelf)
-        {
-            Stats.current.Player.GetComponent<Movement>().enabled = true;
-            print("ON");
-        }
-        else
-        {
-            Stats.current.Player.GetComponent<Movement>().ShutDown();
-        }
+        Stats.StartStopPlayerMovement(Menu.activeSelf);
+
         Menu.SetActive(!Menu.activeSelf);
         UpdateShop();
     }
