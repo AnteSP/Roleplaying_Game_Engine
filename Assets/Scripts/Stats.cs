@@ -1,10 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
-using TMPro;
-using System;
 
 public class Stats : MonoBehaviour
 {
@@ -451,7 +450,8 @@ public class Stats : MonoBehaviour
                         ObjectDepth.Selected.GetComponent<Resource>().Use(1);
                         break;
                     case "SodaMachine":
-                        ObjectDepth.Selected.GetComponent<SodaMachine>().ToggleMenu();
+                        ObjectDepth.Selected.GetComponent<SodaMachine>().MakeActiveSM();
+                        SodaMachine.ToggleMenu();
                         break;
                 }
             }
@@ -891,11 +891,14 @@ public class Recipe
 
     public Recipe(int[] ingredients, int itemID)
     {
-        Item item = Items.ITEMS_DB[ItemID];
+        Items.EnsureItemsAreInstantiated();
+        Item item = Items.ITEMS_DB[itemID];
         ItemID = itemID;
         Ingredients = ingredients;
         Name = item.Name;
         BasePrice = (int)Items.SodaInfo[Items.IndexOfXinY(ItemID, Items.Sodas)].PriceChange;
         Pic = item.icon;
+        //MonoBehaviour.print("CREATED "  + Pic.name + " " + Name + " " + itemID);
+        //MonoBehaviour.print("CREATED " + Items.ITEMS_DB[3].icon.name + " " + Items.ITEMS_DB[3].Name + " " + 3);
     }
 }

@@ -17,7 +17,7 @@ public class SodaMachine : MonoBehaviour
     static Image SodaPrev;
     static TextMeshProUGUI SodaPr;
 
-    bool Open;
+    [SerializeField] bool Open;
 
     public static int[] Ings = new int[1];
     public static List<Recipe> Recipes = new List<Recipe>();
@@ -31,6 +31,8 @@ public class SodaMachine : MonoBehaviour
 
     static Transform GridParent;
     bool started = false;
+
+    static SodaMachine activeSM = null;
 
     private void Start()
     {
@@ -97,25 +99,101 @@ public class SodaMachine : MonoBehaviour
         }
     }
 
-    public void ToggleMenu()
+    public static void ToggleMenu()
     {
-        Open = !Open;
-        Stats.StartStopPlayerMovement(!Open);
+        activeSM.Open = !activeSM.Open;
+
+        Stats.StartStopPlayerMovement(!activeSM.Open);
 
         SelectRec.Selecting = !SelectRec.Selecting;
-        A.SetBool("Open", Open);
-        A.SetTrigger("Go");
+        activeSM.A.SetBool("Open", activeSM.Open);
+        activeSM.A.SetTrigger("Go");
         Slider.ForceBack();
         NameIndic.Indicate("");
+
+        if (!activeSM.Open)
+        {
+            activeSM.Open = false;
+            activeSM = null;
+        }
+    }
+
+    public void MakeActiveSM()
+    {
+        activeSM = this;
     }
 
     public void ForceMenu(bool state)
     {
-
+        throw new System.Exception("SHOULD NOT HAVE REACHED THIS");
         A.SetBool("Open", state);
         A.SetTrigger("Go");
-        Open = state;
+        //Open = state;
 
+    }
+
+    public static void ChooseRecipe(int Ind)
+    {
+        if (Ind == -1)
+        {
+            SodaPrev.sprite = Items.ITEMS_DB[0].icon;
+            SodaPrev.GetComponent<Tooltip>().tooltip = "";
+            SodaPr.text = "";
+            Ings = new int[1];
+            SellBut.GetComponent<Tooltip>().tooltip = "Select recipe first";
+            SellBut.interactable = false;
+        }
+        else
+        {
+            SodaPrev.sprite = Recipes[Ind].Pic;
+            SodaPrev.GetComponent<Tooltip>().tooltip = Recipes[Ind].Name;
+            SodaPr.text = "Base Price: " + Recipes[Ind].BasePrice;
+            print("Tried to change prev image");
+
+            Ings = Recipes[Ind].Ingredients;
+
+            SellBut.interactable = true;
+            SellBut.GetComponent<Tooltip>().tooltip = "";
+        }
+        ActiveSoda = Ind;
+    }
+    /// <summary>
+    /// R MUST EXIST WITHIN SodaMachine.Recipes
+    /// </summary>
+    /// <param name="R"></param>
+    public static bool CreateRecipe(Recipe R)
+    {
+        void SetToItem(Transform G, Sprite S, string T)
+        {
+            G.GetComponent<Image>().sprite = S;
+            G.GetComponent<Tooltip>().tooltip = T;
+        }
+
+        if (RecipesU.Contains(R)) return false;
+        RecipesU.Add(R);
+
+        GameObject temp = Instantiate(RePrefab, RePrefab.transform.parent);
+        temp.GetComponent<SelectRec>().RecipeIndex = Recipes.IndexOf(R);
+
+        temp.SetActive(true);
+
+        Transform Prev = temp.transform.GetChild(0);
+        Transform IngPar = temp.transform.GetChild(1);
+
+        SetToItem(Prev, R.Pic, R.Name + "\nSellTime: " + Items.SodaInfo[Items.IndexOfXinY(R.ItemID, Items.Sodas)].TimeChange + "s" + "\nSellPrice: " + Items.SodaInfo[Items.IndexOfXinY(R.ItemID, Items.Sodas)].PriceChange);
+        //print(R.Pic.name + " " + R.Name);
+
+        Item item = Items.ITEMS_DB[R.Ingredients[0]];
+        SetToItem(IngPar.GetChild(0), item.icon, item.Name);
+
+        for (int i = 1; i < R.Ingredients.Length; i++)
+        {
+            item = Items.ITEMS_DB[R.Ingredients[i]];
+            Instantiate(IngPar.GetChild(0), IngPar);
+            SetToItem(IngPar.GetChild(i), item.icon, item.Name);
+        }
+        UpdateRecipeAvailability();
+        return true;
     }
     /*
     public static void Subtract(string name)
@@ -299,68 +377,5 @@ public class SodaMachine : MonoBehaviour
         print("CHANGED MONEY " + (int)(price * 100));
     }
     */
-
-    public static void ChooseRecipe(int Ind)
-    {
-        if(Ind == -1)
-        {
-            SodaPrev.sprite = Items.ITEMS_DB[0].icon;
-            SodaPrev.GetComponent<Tooltip>().tooltip = "";
-            SodaPr.text = "";
-            Ings = new int[1];
-            SellBut.GetComponent<Tooltip>().tooltip = "Select recipe first";
-            SellBut.interactable = false;
-        }
-        else
-        {
-            SodaPrev.sprite = Recipes[Ind].Pic;
-            SodaPrev.GetComponent<Tooltip>().tooltip = Recipes[Ind].Name;
-            SodaPr.text = "Base Price: " + Recipes[Ind].BasePrice;
-            print("Tried to change prev image");
-
-            Ings = Recipes[Ind].Ingredients;
-
-            SellBut.interactable = true;
-            SellBut.GetComponent<Tooltip>().tooltip = "";
-        }
-        ActiveSoda = Ind;
-    }
-    /// <summary>
-    /// R MUST EXIST WITHIN SodaMachine.Recipes
-    /// </summary>
-    /// <param name="R"></param>
-    public static bool CreateRecipe(Recipe R)
-    {
-        void SetToItem(Transform G, Sprite S, string T)
-        {
-            G.GetComponent<Image>().sprite = S;
-            G.GetComponent<Tooltip>().tooltip = T;
-        }
-
-        if (RecipesU.Contains(R)) return false;
-        RecipesU.Add(R);
-
-        GameObject temp = Instantiate(RePrefab, RePrefab.transform.parent);
-        temp.GetComponent<SelectRec>().RecipeIndex = Recipes.IndexOf(R);
-
-        temp.SetActive(true);
-
-        Transform Prev = temp.transform.GetChild(0);
-        Transform IngPar = temp.transform.GetChild(1);
-
-        SetToItem(Prev, R.Pic,R.Name + "\nSellTime: " + Items.SodaInfo[Items.IndexOfXinY(R.ItemID, Items.Sodas)].TimeChange + "s" + "\nSellPrice: " + Items.SodaInfo[Items.IndexOfXinY(R.ItemID, Items.Sodas)].PriceChange);
-
-        Item item = Items.ITEMS_DB[R.Ingredients[0]];
-        SetToItem(IngPar.GetChild(0), item.icon, item.Name);
-        
-        for (int i = 1; i < R.Ingredients.Length; i++)
-        {
-            item = Items.ITEMS_DB[R.Ingredients[i]];
-            Instantiate(IngPar.GetChild(0) , IngPar);
-            SetToItem(IngPar.GetChild(i), item.icon, item.Name);
-        }
-        UpdateRecipeAvailability();
-        return true;
-    }
 
 }

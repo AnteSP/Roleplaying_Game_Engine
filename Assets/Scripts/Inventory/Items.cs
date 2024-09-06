@@ -51,19 +51,27 @@ public class Items : MonoBehaviour
     public static Item[] ITEMS_DB = new Item[1];
 
 
-    private void OnEnable()
+    public static void EnsureItemsAreInstantiated()
+    {
+        if(ITEMS_DB.Length == 1)
+        {
+            print("THIS IS BAD");
+        }
+    }
+
+    void StartOverride()
     {
         for (int i = 0; i < 50; i++)
         {
             SodaInfo[i] = new Soda(SODAPCHANGE[i], SODATCHANGE[i]);
         }
-/*
-        NAMES = NAMESI;
-        DESCRIPTS = DESCRIPTSI;
-        PICS = PICSI;
-        Price = PRICE;
-        MLevel = MLEVEL;
-*/
+        /*
+                NAMES = NAMESI;
+                DESCRIPTS = DESCRIPTSI;
+                PICS = PICSI;
+                Price = PRICE;
+                MLevel = MLEVEL;
+        */
         TITLE = Title;
         DESCP = Descp;
 
@@ -80,16 +88,23 @@ public class Items : MonoBehaviour
             int index = fName.IndexOf('-');
             //print(fName);
 
-            int id = int.Parse(fName.Substring(0, index) );
-            
+            int id = int.Parse(fName.Substring(0, index));
+
             Item item = AssetDatabase.LoadAssetAtPath<Item>(path);
 
+            //print("PROCESSING " + id + " " + item.Name + " " + item.icon.name);
             ITEMS_DB[id] = item;
         }
 
         SodaMach?.StartOverride();
         Progress.loadData();
         UpdatePics();
+    }
+
+
+    private void OnEnable()
+    {
+        StartOverride();
     }
 
     // Update is called once per frame

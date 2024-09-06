@@ -49,8 +49,12 @@ public class DrawColl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        time = 1f;
-        this.enabled = true;
+        if(collision.gameObject.name == "Player")
+        {
+            time = 1f;
+            this.enabled = true;
+        }
+
     }
 
     private void OnDrawGizmos()

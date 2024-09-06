@@ -15,6 +15,7 @@ public class SellSpot : Resource
     public int CostToPrep = 0;
     public string triggerOnSetup = "";
     float ogY;
+    [SerializeField] GameObject SodaMachine;
 
     public static SellSpot current = null;
 
@@ -63,6 +64,7 @@ public class SellSpot : Resource
         css.SLevel = SLevel;
         Destroy(gameObject);
         if (triggerOnSetup != "") Progress.switchInPlay(triggerOnSetup, true);
+        if (SodaMachine != null) SodaMachine.SetActive(true);
     }
 
     public static void closeSetUpScreen()

@@ -9,7 +9,9 @@ public class SodaOpen : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SodaMachine.SodaMenu.SetActive(stateInfo.IsName("SodaOpen"));
+        bool opening = stateInfo.IsName("SodaOpen");
+        SodaMachine.SodaMenu.SetActive(opening);
+        if(opening) animator.gameObject.GetComponent<SodaMachine>().MakeActiveSM();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
