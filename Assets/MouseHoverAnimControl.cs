@@ -24,8 +24,10 @@ public class MouseHoverAnimControl : MonoBehaviour
         if (Inside && Stats.current.PassTime)
         {
             Stats.StartStopTime(false,"ItemNotification");
+            Stats.StartStopPlayerMovement(false);
         }else if(!Inside && !Stats.current.PassTime){
             Stats.StartStopTime(true, "ItemNotification");
+            Stats.StartStopPlayerMovement(true);
         }
     }
 
