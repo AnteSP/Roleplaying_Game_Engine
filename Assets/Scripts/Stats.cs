@@ -210,7 +210,17 @@ public class Stats : MonoBehaviour
         OGTimeTextScale = current.TIMETEXT.transform.localScale;
         TargTimeTextScale = OGTimeTextScale * 1.4f;
 
-        if( streetLightsParent != null) streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
+        if (streetLightsParent != null)
+        {
+            streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
+
+            float dayperc = ((float)allTimeInGame % (24f * 60f)) / (24f * 60f);
+            dayperc = (Mathf.Cos(dayperc * current.suncoefficient - 0.5f) / 2) + 0.5f;
+
+            isday = dayperc < 0.6f;
+
+            foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
+        }
 
         //ChangeTime(TimeFromMidNight);
         ChangeTime(0);
