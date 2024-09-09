@@ -44,11 +44,23 @@ public class swingset : MonoBehaviour
         {
             rb.AddForce((OGPos - rb.position) * intensity);
 
-            ydist = Mathf.Abs(OGPos.y - rb.position.y);
-            if (ydist > 0.1f)
+            ydist = OGPos.y - rb.position.y;
+
+            if(ydist > 0.1f)
             {
-                transform.localScale = new Vector3(1, 1 / (ydist * 10), 1);
+                transform.localScale = new Vector3(1, -ydist + 1.1f, 1);
+            }else if(ydist < 0.4f)
+            {
+                transform.localScale = new Vector3(1, ydist + 1.4f, 1);
             }
+            //y = mx + b
+            //1 = 0.1m + b 
+            //b = 1 - 0.1m
+            //0.1 = m + 1 - 0.1m
+            //-0.9 = m - 0.1m
+            //-0.9 = 0.9m
+            //m = -1
+            //y = -x + 1.1
                 
         }
         else

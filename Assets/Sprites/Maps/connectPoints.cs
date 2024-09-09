@@ -18,16 +18,16 @@ public class connectPoints : MonoBehaviour
         lineRenderer.positionCount = 2;
     }
 
-    Vector3 s1, t1;
+    Vector3 s, t;
 
     // Update is called once per frame
     void Update()
     {
-        s1 = source.position + (behind ? new Vector3(0, -0.05f, 0.1f) : Vector3.zero);
-        s1 = new Vector3(s1.x, s1.y, getZFrom.position.z - 0.0001f);
-        t1 = target.position + (behind ? new Vector3(0, 0, 0.1f) : Vector3.zero);
-        t1 = new Vector3(t1.x, t1.y, getZFrom.position.z - 0.0001f );
-        lineRenderer.SetPosition(0, s1);
-        lineRenderer.SetPosition(1, t1);
+        //s = source.position + (behind ? new Vector3(0, -0.05f, 0.1f) : Vector3.zero);
+        s = new Vector3(source.position.x, source.position.y - (behind ? 0.05f : 0), (getZFrom.position.z - 0.0001f) +  (behind ? 0.1f : 0) );
+        //t = target.position + (behind ? new Vector3(0, 0, 0.1f) : Vector3.zero);
+        t = new Vector3(target.position.x, target.position.y, (getZFrom.position.z - 0.0001f) +  (behind ? 0.1f : 0) );
+        lineRenderer.SetPosition(0, s);
+        lineRenderer.SetPosition(1, t);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class TimeSanctum : MonoBehaviour
 {
     [SerializeField] AudioSource DingNoise;
+    [SerializeField] List<GameObject> LoadOnEntry;
+    [SerializeField] List<GameObject> LoadOffEntry;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,16 @@ public class TimeSanctum : MonoBehaviour
             Stats.StartStopTime(false, "sanctum");
             DingNoise.pitch = 2;
             DingNoise.Play();
+
+            foreach(GameObject g in LoadOnEntry)
+            {
+                g.SetActive(true);
+            }
+
+            foreach (GameObject g in LoadOffEntry)
+            {
+                g.SetActive(false);
+            }
         }
             
     }
@@ -34,6 +46,16 @@ public class TimeSanctum : MonoBehaviour
             Stats.StartStopTime(true, "sanctum");
             DingNoise.pitch = 3;
             DingNoise.Play();
+
+            foreach (GameObject g in LoadOnEntry)
+            {
+                g.SetActive(false);
+            }
+
+            foreach (GameObject g in LoadOffEntry)
+            {
+                g.SetActive(true);
+            }
         }
             
     }

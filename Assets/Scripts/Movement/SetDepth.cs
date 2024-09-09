@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetDepth : MonoBehaviour
 {
-    Transform P;
+    BoxCollider2D P;
     [SerializeField] Transform T;
 
     private void Awake()
@@ -13,16 +13,27 @@ public class SetDepth : MonoBehaviour
         {
             try
             {
-                P = GameObject.FindGameObjectWithTag("Player").transform;
+
+                foreach (BoxCollider2D b in GameObject.FindGameObjectWithTag("Player").GetComponents<BoxCollider2D>())
+                {
+                    if (b.isTrigger) continue;
+                    P = b;
+                }
             }
             catch (System.Exception e2)
             {
-                P = Camera.main.transform;
+                P = Camera.main.GetComponent<BoxCollider2D>();
                 print("Camera backup being used " + gameObject.name);
             }
         }
         else
-            P = Stats.current.Player.transform;
+        {
+            foreach (BoxCollider2D b in Stats.current.Player.GetComponents<BoxCollider2D>())
+            {
+                if (b.isTrigger) continue;
+                P = b;
+            }
+        }
 
         if (T == null)
         {
@@ -32,6 +43,6 @@ public class SetDepth : MonoBehaviour
 
     private void OnWillRenderObject()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, -(P.position.y - T.position.y) / 100);
+        transform.position = new Vector3(transform.position.x, transform.position.y, -(P.bounds.center.y - T.position.y) / 100);
     }
 }
