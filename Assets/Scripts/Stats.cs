@@ -157,10 +157,8 @@ public class Stats : MonoBehaviour
         if (Player != null) playerMovement = Player.GetComponent<Movement>();
         if( teleportPoint != "" && TeleportPointsParent != null)
         {
-            foreach(Transform t in TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint))
-            {
-                Player.GetComponentInParent<Transform>().position = t.position;
-            }
+            Vector2 targ = TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint).First().position;
+            Player.GetComponentInParent<Transform>().position = new Vector3(targ.x, targ.y, 0);
         }
         Digits = MONEYTEXT.text.Length;
         CurrentCS = DefaultCS;
@@ -474,11 +472,13 @@ public class Stats : MonoBehaviour
 
     public static void releaseLockedInObject()
     {
+        print("Released locked in");
         current.lockedInConvoWith = null;
     }
 
     public static void setLockedInObject(Resource r)
     {
+        print("Locked in " + r.gameObject.name);
         current.lockedInConvoWith = r;
     }
     /*

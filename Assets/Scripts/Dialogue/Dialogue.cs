@@ -330,9 +330,10 @@ public class Dialogue : MonoBehaviour
                             talker.resetIndex();
                             EndConvo();
                         }
-                        else
+                        else if(mode == 'C')//alternate special object's activeness
                         {
-
+                            Current = Current.Remove(0, 1);
+                            talker.specialObj.SetActive(!talker.specialObj.activeSelf);
                         }
 
                     }

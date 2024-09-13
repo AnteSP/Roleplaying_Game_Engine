@@ -22019,7 +22019,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5625, y: 1.5625}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.5625, y: 1.5625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -22045,7 +22045,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5625, y: 1.5625}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.5625, y: 1.5625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -24800,6 +24800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 1000000
   ID: Are you scared of me?
+  launchOnAwake: 0
 --- !u!1 &1140956872
 GameObject:
   m_ObjectHideFlags: 0
@@ -35387,6 +35388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 1000000
   ID: Are you scared of me?
+  launchOnAwake: 0
 --- !u!1 &1649076207
 GameObject:
   m_ObjectHideFlags: 0
@@ -36833,6 +36835,7 @@ MonoBehaviour:
   boysToTurn: []
   PlayerActor: {fileID: 1310431872}
   TurnTimeOff: 0
+  BeerSprite: {fileID: 21300000, guid: 5d9542c61b633c24bb3ccf8fe85ec715, type: 3}
 --- !u!114 &1700876595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38165,10 +38168,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

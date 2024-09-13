@@ -139,6 +139,7 @@ public class ObjectDepth : MonoBehaviour
     {
         float dist = Mathf.Infinity;
         bool activeNearbyExists = false;
+
         for (int i = 0; i < Nearby.Count; i++)
         {
             if (!Nearby[i].activeSelf) continue;

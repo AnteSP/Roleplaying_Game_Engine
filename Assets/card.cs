@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class card : MonoBehaviour
 {
+    char kind = 'c';
     Rigidbody2D rb = null;
     Collider2D col;
     public int power = 1000000;
@@ -12,6 +13,25 @@ public class card : MonoBehaviour
     float t = 0;
     public static bool allowClick = true;
     [SerializeField] string ID;
+    [SerializeField] bool launchOnAwake = false;
+    Vector3 OGPos;
+
+    private void OnEnable()
+    {
+        OGPos = transform.position;
+        if (launchOnAwake)
+        {
+            launch();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if(launchOnAwake)
+            transform.position = OGPos;
+    }
+    //0.733
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +101,7 @@ public class card : MonoBehaviour
 
     public void launch()
     {
+        print("launched");
         if(rb == null)
         {
             rb = GetComponent<Rigidbody2D>();

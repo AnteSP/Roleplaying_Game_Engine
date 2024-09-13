@@ -49,6 +49,10 @@ public class Automation_png : EditorWindow
             {
                 pixels[i] = new Color(1f, 1f, 1f, 0f);
             }
+            else
+            {
+                pixels[i] = new Color(pixels[i].r, pixels[i].g, pixels[i].b, 1f);
+            }
         }
 
         image.SetPixels(pixels);

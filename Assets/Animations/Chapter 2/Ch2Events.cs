@@ -14,6 +14,7 @@ public class Ch2Events : MonoBehaviour
     [SerializeField] List<SpriteRenderer> boysToTurn;
     [SerializeField] NPCMovement PlayerActor;
     public bool TurnTimeOff = false;
+    [SerializeField] Sprite BeerSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +68,8 @@ public class Ch2Events : MonoBehaviour
 
     public void PGetBeer()
     {
-        Items.Add(25, 1);
+        Items.ShiftAnim(BeerSprite, "BEER!", "Finally no more withdrawal symptoms");
+        //Items.Add(25, 1);
         PlayerActor.Face("down");
     }
 }
