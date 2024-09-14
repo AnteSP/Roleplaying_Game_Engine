@@ -16,6 +16,7 @@ public class Progress : MonoBehaviour
     public List<GameObject> disable = new List<GameObject>();
 
     static bool loadedItems = false;
+    static bool loadedDeadlines = false;
 
     class Node
     {
@@ -42,7 +43,7 @@ public class Progress : MonoBehaviour
         //readData();
     }
 
-    public static void markDataAsUnloaded() { loaded = false; progressComps = null; loadedItems = false; }
+    public static void markDataAsUnloaded() { loaded = false; progressComps = null; loadedItems = false;loadedDeadlines = false; }
 
     public static bool wasDataLoaded() => loaded;
 
@@ -255,6 +256,13 @@ public class Progress : MonoBehaviour
             ((JObject)data["Upgrades"]).Add(u.Name, true);
         }
 
+        if (!data.ContainsKey("Deadlines")) data.Add("Deadlines", new JObject());
+        data["Deadlines"] = new JObject();
+        foreach (Deadline d in Stats.current.GetComponents<Deadline>().Where(a => a.enabled))
+        {
+            ((JObject)data["Deadlines"]).Add(d.ID + "-" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, true);
+        }
+
         File.WriteAllText(SName,data.ToString());
     }
 
@@ -296,6 +304,24 @@ public class Progress : MonoBehaviour
             if (data.ContainsKey(p.Id))
                 p.on = data[p.Id].Value<bool>();
             else print("ERROR: Missing field [" + p.Id + "] in save data");
+        }
+   
+        if (!loadedDeadlines && data["Deadlines"] != null)
+        {
+            List<char> deadlines = new List<char>();
+
+            foreach (var child in data["Deadlines"].Children())
+            {
+                // 'child' is of type JProperty, which represents a key-value pair
+                string key = ((JProperty)child).Name;
+
+                if (key.Remove(0, 2) == UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
+                {
+                    Stats.current.GetComponents<Deadline>()
+                        .Where(a => a.ID == key.ToCharArray()[0]).First().enabled = true;
+                }
+            }
+            loadedDeadlines = true;
         }
 
         if (!excludeItems)

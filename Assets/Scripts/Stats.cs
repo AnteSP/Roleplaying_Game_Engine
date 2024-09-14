@@ -99,7 +99,7 @@ public class Stats : MonoBehaviour
 
     Animator space = null;
 
-    Resource lockedInConvoWith = null;
+    public Resource lockedInConvoWith = null;
 
     [SerializeField] AudioSource specialSound = null;
 
@@ -472,8 +472,12 @@ public class Stats : MonoBehaviour
 
     public static void releaseLockedInObject()
     {
+        if (current.lockedInConvoWith == null) return;
         print("Released locked in");
+        GameObject lockedInObjectPointer = current.lockedInConvoWith.gameObject;
         current.lockedInConvoWith = null;
+        ObjectDepth.forceRemoveFromNearby(lockedInObjectPointer);
+        
     }
 
     public static void setLockedInObject(Resource r)

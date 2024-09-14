@@ -15,6 +15,8 @@ public class ObjectDepth : MonoBehaviour
     static public Transform Space;
 
     static Vector3 Innactive;
+
+    static ObjectDepth current;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class ObjectDepth : MonoBehaviour
         Selected = gameObject;
         Innactive = SpaceBarPrompt.position;
         Space = SpaceBarPrompt;
+        current = this;
     }
     /*
     private void LateUpdate()
@@ -91,8 +94,17 @@ public class ObjectDepth : MonoBehaviour
         if(Space != null)Space.position = Innactive;
     }
 
+    public static void forceRemoveFromNearby(GameObject g)
+    {
+        yeetSpaceBar();
+        current.removeFromNearby(g);
+        current.NearestSelect();
+    }
+
     void removeFromNearby(GameObject g)
     {
+        if (g == Stats.current.lockedInConvoWith?.gameObject) return;
+
         Selected = g == Selected ? gameObject : Selected;
 
         if (Nearby.IndexOf(g) != -1)
@@ -104,6 +116,11 @@ public class ObjectDepth : MonoBehaviour
         Nearby.Remove(g);
     }
 
+    /// <summary>
+    /// update Nearby list
+    /// </summary>
+    /// <param name="g"></param>
+    /// <param name="enter"></param>
     void Interactable(GameObject g, bool enter)
     {
         bool objSelectable = (g.tag == "Machine" || g.tag == "SodaMachine");
@@ -137,6 +154,13 @@ public class ObjectDepth : MonoBehaviour
 
     void NearestSelect()
     {
+        if(Stats.current.lockedInConvoWith != null)
+        {
+            Selected = Stats.current.lockedInConvoWith.gameObject;
+            SpaceBarPrompt.position = new Vector3(Selected.transform.position.x, Selected.transform.position.y + SpaceBarPromptHeight, SpaceBarPrompt.position.z);
+            return;
+        }
+
         float dist = Mathf.Infinity;
         bool activeNearbyExists = false;
 

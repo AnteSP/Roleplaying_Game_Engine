@@ -47,6 +47,7 @@ public class Dialogue : MonoBehaviour
     {
         d = this;
         im = GetComponent<Image>();
+        gameObject.SetActive(false);
     }
 
     public void SetTypeNoise(AudioSource ntn)

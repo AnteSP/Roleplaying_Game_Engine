@@ -68,12 +68,16 @@ public class CutScenePrep : StateMachineBehaviour
             {
                 Stats.Debug("OPT 5");
                 Ending = false;
-                Stats.current.CurrentCS.NextCamPos(0);
+                //Stats.current.CurrentCS.NextCamPos(0);
                 Stats.current.FilterColor(Color.black);
                 //play next music track
-                AudioSource a = Stats.current.CurrentCS.musicsQueue[0];
-                Stats.current.CurrentCS.musicsQueue.RemoveAt(0);
-                Stats.changeBackgroundMusic(a.clip);
+                if(Stats.current.CurrentCS.musicsQueue.Count > 0)
+                {
+                    AudioSource a = Stats.current.CurrentCS.musicsQueue[0];
+                    Stats.current.CurrentCS.musicsQueue.RemoveAt(0);
+                    Stats.changeBackgroundMusic(a.clip);
+                }
+
                 Dialogue.forceGoodToGo(true);
             }
 

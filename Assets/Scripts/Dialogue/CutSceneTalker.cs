@@ -64,7 +64,8 @@ public class CutSceneTalker : MonoBehaviour
         Camera.main.GetComponent<CamZoom>().SetSize(CamSize);
         Camera.main.GetComponent<CamZoom>().allowZooming = b;
 
-        GetComponent<SpriteRenderer>().color = Color.white;
+        if(GetComponent<SpriteRenderer>() != null)
+            GetComponent<SpriteRenderer>().color = Color.white;
 
         foreach(GameObject i in Disable)
         {

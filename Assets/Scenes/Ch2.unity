@@ -3066,7 +3066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &119110230
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19035,6 +19035,7 @@ MonoBehaviour:
   - {fileID: 2448825}
   PlayerActor: {fileID: 0}
   TurnTimeOff: 1
+  BeerSprite: {fileID: 0}
 --- !u!95 &686907890
 Animator:
   serializedVersion: 4
@@ -31127,7 +31128,6 @@ GameObject:
   - component: {fileID: 1134383923}
   - component: {fileID: 1134383928}
   - component: {fileID: 1134383927}
-  - component: {fileID: 1134383926}
   - component: {fileID: 1134383925}
   - component: {fileID: 1134383924}
   m_Layer: 0
@@ -31195,32 +31195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   T: {fileID: 466550238}
---- !u!61 &1134383926
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134383922}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.076976776, y: -1.3721914}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 0.58, y: 0.91}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.8876114, y: 1.0227203}
-  m_EdgeRadius: 0
 --- !u!61 &1134383927
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46269,6 +46243,7 @@ MonoBehaviour:
   Filter: {fileID: 1700250075}
   SignRemind: {fileID: 0}
   StartWithoutInv: 0
+  lockedInConvoWith: {fileID: 0}
   specialSound: {fileID: 0}
   sodasSelling: []
   disableOnFreePlay: []
@@ -48090,10 +48065,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
