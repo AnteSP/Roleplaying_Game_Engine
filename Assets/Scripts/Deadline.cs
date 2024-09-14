@@ -90,6 +90,7 @@ class Deadline : MonoBehaviour
             Stats.current.stickyNotes[stickyNote].gameObject.SetActive(false);
             activeDeadlineData[stickyNote] = null;
             enabled = false;
+            Stats.ChangeTime((uint) (Stats.allTimeInGame - TriggerAtMinute) );
         }
     }
 

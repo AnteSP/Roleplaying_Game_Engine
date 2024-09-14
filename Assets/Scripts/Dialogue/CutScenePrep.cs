@@ -21,66 +21,51 @@ public class CutScenePrep : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         bool Ending;
-        if (Stats.current.CurrentCS.EndingChapter)
+        CutSceneTalker cs = Stats.current.CurrentCS;
+        if (cs.EndingChapter)
         {
             Stats.Debug("OPT 1");
             Ending = true;
-            Stats.current.CurrentCS.enabled = false;
+            cs.enabled = false;
             animator.transform.parent.Find("End screen").gameObject.SetActive(true);
         }
-        else if (!Stats.current.CurrentCS.gameObject.activeInHierarchy)
+        else if (cs.Ending)
         {
-            Stats.Debug("OPT 2");
-            Ending = false;
-            Stats.current.CurrentCS.gameObject.SetActive(true);
-            Stats.current.CurrentCS.enabled = true;
-        }else if (Stats.current.CurrentCS.gameObject.activeInHierarchy && !Stats.current.CurrentCS.enabled)
-        {
-            Stats.Debug("OPT 3");
-            Ending = false;
-            Stats.current.CurrentCS.enabled = true;
+            Stats.Debug("OPT 4");
+            Ending = true;
+            if (cs.GoToNextScene())
+            {
+                MonoBehaviour.print("Switching to scene ");
+                System.Console.WriteLine("CS");
+                Stats.current.AllowSelecting = false;
+                Stats.current.FilterColor(new Color(0, 0, 0, 1));
+            }
+            else
+            {
+                MonoBehaviour.print("No scene switching");
+                Stats.doSelecting(true);
+            }
+            cs.PackUp(true);
+            Stats.StartStopTime(true, "Cutscene");
+            //Stats.current.PassTime = true;
+
+            Stats.current.Player.GetComponent<Movement>().enabled = true;
         }
-        else
+        else//CS Starting
         {
-            if (Stats.current.CurrentCS.Ending)//finish cutscene. Back to normal gameplay
-            {
-                Stats.Debug("OPT 4");
-                Ending = true;
-                if (Stats.current.CurrentCS.GoToNextScene())
-                {
-                    MonoBehaviour.print("Switching to scene ");
-                    System.Console.WriteLine("CS");
-                    Stats.current.AllowSelecting = false;
-                    Stats.current.FilterColor(new Color(0,0,0,1));
-                }
-                else
-                {
-                    MonoBehaviour.print("No scene switching");
-                    Stats.doSelecting(true);
-                }
-                Stats.current.CurrentCS.PackUp(true);
-                Stats.StartStopTime(true, "Cutscene");
-                //Stats.current.PassTime = true;
-                
-                Stats.current.Player.GetComponent<Movement>().enabled = true;
-            }
-            else//we are doing just a simple transition
-            {
-                Stats.Debug("OPT 5");
-                Ending = false;
-                //Stats.current.CurrentCS.NextCamPos(0);
-                Stats.current.FilterColor(Color.black);
-                //play next music track
-                if(Stats.current.CurrentCS.musicsQueue.Count > 0)
-                {
-                    AudioSource a = Stats.current.CurrentCS.musicsQueue[0];
-                    Stats.current.CurrentCS.musicsQueue.RemoveAt(0);
-                    Stats.changeBackgroundMusic(a.clip);
-                }
+            Ending = false;
+            cs.gameObject.SetActive(true);
+            cs.enabled = true;
 
-                Dialogue.forceGoodToGo(true);
+            Dialogue.d.showDisplay(true);
+            if (cs.musicsQueue.Count > 0)
+            {
+                AudioSource a = cs.musicsQueue[0];
+                cs.musicsQueue.RemoveAt(0);
+                Stats.changeBackgroundMusic(a.clip);
             }
 
+            Dialogue.forceGoodToGo(true);
         }
 
         if(Ending) Stats.current.CurrentCS = null;

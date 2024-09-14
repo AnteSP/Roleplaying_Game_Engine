@@ -108,6 +108,7 @@ public class CutSceneTalker : MonoBehaviour
             //ObjectDepth.yeetSpaceBar();
             D.DisplayOnTop(DBoxOnTop);
             Stats.current.CurrentCS = this;
+            D.CS = this;
         }
 
         Stats.releaseLockedInObject();

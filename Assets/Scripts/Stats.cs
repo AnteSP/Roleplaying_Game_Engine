@@ -279,8 +279,9 @@ public class Stats : MonoBehaviour
         if (PassTime)
         {
             Timer += UnityEngine.Time.deltaTime;
-            bool temp = Timer > 1f / (float)timePassage;
-            ChangeTime(temp ? (uint)timePassage : 0);
+            bool temp = Timer > 1f/(float)timePassage;
+            //ChangeTime(temp ? (uint)timePassage : 0);
+            ChangeTime(temp ? 1u : 0u);
             Timer = temp ? 0 : Timer;
         }
         allTime += UnityEngine.Time.deltaTime;
@@ -424,7 +425,8 @@ public class Stats : MonoBehaviour
 
     public static void AccelerateTime(float a)
     {
-        current.timePassage = ((++a) * a * a * a * a);//t = (x+1)^5
+        //current.timePassage = ((++a) * a * a * a * a);//t = (x+1)^5
+        current.timePassage = a*a*a;
     }
 
     bool processingSelectable = false;

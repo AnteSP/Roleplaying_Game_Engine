@@ -30,6 +30,7 @@ public class Dialogue : MonoBehaviour
 
     public void showDisplay(bool b)
     {
+        textDisplay.enabled = b;
         im.enabled = b;
     }
 
