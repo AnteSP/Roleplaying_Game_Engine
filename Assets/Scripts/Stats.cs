@@ -133,6 +133,8 @@ public class Stats : MonoBehaviour
 
     private void OnEnable()
     {
+
+
         suncoefficient = Mathf.Asin(1) * 4;
         camVol = Camera.main.GetComponent<UnityEngine.Rendering.Volume>();
         if (freePlay)

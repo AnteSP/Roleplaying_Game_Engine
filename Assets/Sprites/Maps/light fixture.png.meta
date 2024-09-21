@@ -1,27 +1,12 @@
 fileFormatVersion: 2
-guid: 7b6d57212c41a4c4481542e9982134d1
+guid: 4497e08f8be41954fa0ca83620739108
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8390787399254224635
-    second: front run-Sheet_0
-  - first:
-      213: 4497284914456310101
-    second: front run-Sheet_1
-  - first:
-      213: 6227020596570923116
-    second: front run-Sheet_2
-  - first:
-      213: 7237211954839031831
-    second: front run-Sheet_3
-  - first:
-      213: -4655040957486314243
-    second: front run-Sheet_4
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -57,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -81,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -93,9 +78,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -105,9 +90,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Windows Store Apps
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -117,9 +102,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: tvOS
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -129,9 +114,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -141,9 +126,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Lumin
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -153,9 +138,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -165,9 +150,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -177,9 +162,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -191,7 +176,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gaba Goon poses_0
+      name: Bar_table_0
       rect:
         serializedVersion: 2
         x: 0
@@ -205,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db9203b7fabe0744b9f9d9af9d6d75ea
-      internalID: 2085736760
+      spriteID: 006eb2ac3035c0f488580f667f3009b0
+      internalID: 749617940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gaba Goon poses_1
+      name: Bar_table_1
       rect:
         serializedVersion: 2
         x: 32
@@ -226,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad13446e2a993e0408203181534ae345
-      internalID: -759100027
+      spriteID: fb88cd7f3ad62ea4a9a982ea8c82b2b8
+      internalID: -1273832566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gaba Goon poses_2
+      name: Bar_table_2
       rect:
         serializedVersion: 2
         x: 64
@@ -247,14 +232,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cec7ed9a1cf179343b1e192fd4ee26e6
-      internalID: 660923503
+      spriteID: 70f274559c903084c8b1b700db7387f5
+      internalID: -680397421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gaba Goon poses_3
+      name: Bar_table_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ba5c59e4f3c7541be27afd111121c5
+      internalID: -1497456491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bar_table_4
       rect:
         serializedVersion: 2
         x: 0
@@ -268,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58a270f7490b2c845a006b39d52a095a
-      internalID: 1221844537
+      spriteID: 2d473d37e1cf57b47933b71a470b8b8c
+      internalID: -1169849117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gaba Goon poses_4
+      name: Bar_table_5
       rect:
         serializedVersion: 2
         x: 32
@@ -289,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14bb5b2ef1f5e7b4181b5c6f6ef017e6
-      internalID: -1926976183
+      spriteID: 9db006b474ba4924fa61569b7c874d56
+      internalID: 1274608566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gaba Goon poses_5
+      name: Bar_table_6
       rect:
         serializedVersion: 2
         x: 64
@@ -310,8 +316,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89b0f6b5d8e8ee44d9b4c3aea89dab0d
-      internalID: 667826742
+      spriteID: 3e250b730502d514f962654bcc771c5d
+      internalID: -1246749144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bar_table_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef2f40280ef9c743a67e9359f909ebc
+      internalID: 2096601821
       vertices: []
       indices: 
       edges: []
@@ -327,12 +354,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gaba Goon poses_5: 667826742
-      Gaba Goon poses_4: -1926976183
-      Gaba Goon poses_1: -759100027
-      Gaba Goon poses_0: 2085736760
-      Gaba Goon poses_3: 1221844537
-      Gaba Goon poses_2: 660923503
+      Bar_table_6: -1246749144
+      Bar_table_0: 749617940
+      Bar_table_3: -1497456491
+      Bar_table_1: -1273832566
+      Bar_table_7: 2096601821
+      Bar_table_2: -680397421
+      Bar_table_4: -1169849117
+      Bar_table_5: 1274608566
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

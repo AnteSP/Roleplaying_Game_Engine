@@ -104,7 +104,7 @@ public class NPCMovement : MonoBehaviour
     public void ResetAn()
     {
         if (ResetAfterTalk) {
-            print("GOT HERE" + overwriteResetAnim + (overwriteResetAnim != ""));
+            //print("GOT HERE" + overwriteResetAnim + (overwriteResetAnim != ""));
             if(overwriteResetAnim != "")
                 An.Play(overwriteResetAnim);
             else
