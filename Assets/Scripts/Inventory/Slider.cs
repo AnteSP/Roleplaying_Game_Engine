@@ -160,7 +160,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
         ObjToMove.position = new Vector3(!gotostart ? EndPoint.position.x : altStart, ObjToMove.position.y, ObjToMove.position.z);
         BumpSound.Play();
-
+        outfit.checkOutfits();
     }
     
     public static void EmptyList()

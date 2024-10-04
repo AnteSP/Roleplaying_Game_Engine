@@ -22,7 +22,7 @@ public class StoreItem : MonoBehaviour
 
     public enum ItemType
     {
-        Disposable,Recipe,Upgrade
+        Disposable,Recipe,Upgrade,Clothing
     }
 
     public ItemType Type;
@@ -40,8 +40,11 @@ public class StoreItem : MonoBehaviour
             {
                 SodaMachine.CreateRecipe(SodaMachine.Recipes[RecipeNum]);
                 Menu.RemoveItem(ItemID);
-            }
-            else if (Type == ItemType.Upgrade)
+            }else if(Type == ItemType.Clothing)
+            {
+                Items.Add(ItemID, 1);
+                Menu.RemoveItem(ItemID);
+            } else if (Type == ItemType.Upgrade)
             {
                 SellUpgrade.enableUpgrade(ItemID);
                 SellUpgrade su = SellUpgrade.getUpgrade(ItemID);
