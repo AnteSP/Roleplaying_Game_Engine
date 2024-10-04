@@ -30,6 +30,7 @@ public class StoreMenu : Resource
     float Ratio;
 
     public List<ItemForSale> ItemsForSale = new List<ItemForSale>();
+    static StoreMenu current;
 
     public void setItem(GameObject temp, int DisplayItemID, int recipeNum, StoreItem.ItemType type, Transform obj = null, StoreItem SMen = null)
     {
@@ -104,10 +105,17 @@ public class StoreMenu : Resource
 
     public override void Use(float Amount)
     {
-        Stats.StartStopPlayerMovement(Menu.activeSelf);
+        current = this;
+        Stats.StartStopPlayerMovement(Menu.activeSelf,"StoreMenu");
 
         Menu.SetActive(!Menu.activeSelf);
         UpdateShop();
+        if (!Menu.activeSelf) current = null;
+    }
+
+    public static void Use_Current()
+    {
+        if (current != null) current.Use(0);
     }
 
     public void RemoveItem(int ItemForSaleID)

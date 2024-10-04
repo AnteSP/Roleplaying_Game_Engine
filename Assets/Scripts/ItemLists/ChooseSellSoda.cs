@@ -213,7 +213,7 @@ public class ChooseSellSoda : Resource
     {
         bool On = (Menu.transform.localPosition.y > -100);
         Menu.transform.localPosition = On ? new Vector3(0, -999999, 0) : new Vector3(100,0,0);
-        Stats.StartStopPlayerMovement(On);
+        Stats.StartStopPlayerMovement(On,"ChooseSellSoda");
 
         if (On)
         {

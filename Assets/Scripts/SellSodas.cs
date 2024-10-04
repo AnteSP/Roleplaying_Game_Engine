@@ -26,15 +26,18 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         text = transform.GetChild(0).GetChild(0).GetComponent<Text>();
     }
 
+    bool justGotStolenFrom = false;
     void finishSell()
     {
         TimeLeft = 0;
-        if (Random.Range(0f, 1f) < SLevel)//if stolen
+        if (Random.Range(0f, 1f) < SLevel && !( SLevel < 0.5f && justGotStolenFrom ))//if stolen AND (The following is false: Stealing should be rare And we just got stolen from)
         {
             Stats.DisplayMessage("Oh no! The soda you were selling got randomly stolen. ( " + (int)(SLevel*100) + "% chance of happening). You can move to a different spot or buy upgrades to decrease these chances",true);
+            justGotStolenFrom = true;
         }
         else
         {
+            justGotStolenFrom = false;
             Stats.ChangeMoney((int)SodaInfo.PriceChange);
             List.CashSound.Play();
         }

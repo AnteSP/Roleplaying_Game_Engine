@@ -30,7 +30,7 @@ public class ItemPickUp : Resource
         }
         else
         {
-            Stats.DisplayMessage("Not enough room for this item");
+            Stats.DisplayMessage("Not enough room for this item",true);
         }
     }
 }

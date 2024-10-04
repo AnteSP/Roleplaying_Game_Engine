@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Stats : MonoBehaviour
 {
     [SerializeField] Text MONEYTEXT;
+    TextMeshProUGUI MoneyAdd;
     [SerializeField] Text TIMETEXT;
+    TextMeshProUGUI TimeAdd;
     [SerializeField] Text DAYTEXT;
 
     public int Money;
@@ -133,8 +136,6 @@ public class Stats : MonoBehaviour
 
     private void OnEnable()
     {
-
-
         suncoefficient = Mathf.Asin(1) * 4;
         camVol = Camera.main.GetComponent<UnityEngine.Rendering.Volume>();
         if (freePlay)
@@ -223,6 +224,12 @@ public class Stats : MonoBehaviour
         }
 
         //ChangeTime(TimeFromMidNight);
+
+        MoneyAdd = MONEYTEXT.GetComponentInChildren<TextMeshProUGUI>();
+        TimeAdd = TIMETEXT.GetComponentInChildren<TextMeshProUGUI>();
+        MoneyAdd.gameObject.SetActive(false);
+        TimeAdd.gameObject.SetActive(false);
+
         ChangeTime(0);
         ChangeMoney(0);
 
@@ -292,7 +299,7 @@ public class Stats : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            MESSAGE.SetActive(false);
+            CloseMessage();
         }
     }
 
@@ -325,7 +332,7 @@ public class Stats : MonoBehaviour
         int comp = 0;
         if(source != "")
         {
-            if (!start)//if stopping
+            if (!start && !timeSources.Contains(source))//if stopping
             {
                 timeSources.Add(source);
                 comp = 1;
@@ -340,7 +347,8 @@ public class Stats : MonoBehaviour
         if(timeSources.Count == comp)
         {
             current.PassTime = start;
-            current.TIMETEXT.color = start ? Color.black : Color.gray;
+            //current.TIMETEXT.color = start ? Color.black : Color.gray;
+            UpdateTimeColor();
             NameIndic.Indicate("");
         }
         else
@@ -351,6 +359,11 @@ public class Stats : MonoBehaviour
 
     }
     static List<string> timeSources = new List<string>();
+
+    public static void UpdateTimeColor()
+    {
+        current.TIMETEXT.color = current.PassTime ? Color.black : Color.gray;
+    }
 
     public static void EnableInventory()
     {
@@ -397,7 +410,7 @@ public class Stats : MonoBehaviour
         Dialogue.d.showDisplay(false);
         current.AllowSelecting = false;
 
-        Stats.StartStopPlayerMovement(false);
+        Stats.StartStopPlayerMovement(false,"Transition");
 
         if (!current.CurrentCS.gameObject.activeInHierarchy)
         {
@@ -557,6 +570,14 @@ public class Stats : MonoBehaviour
             current.Money = Overflown ? overflow : current.Money;
 
             current.MONEYTEXT.text = current.Money + "";
+
+            if (Amount != 0)
+            {
+                current.MoneyAdd.gameObject.SetActive(false);
+                current.MoneyAdd.text = "+ " + Amount;
+                current.MoneyAdd.gameObject.SetActive(true);
+            }
+
         }
 
         return (!temp);
@@ -595,6 +616,13 @@ public class Stats : MonoBehaviour
         {
             Stats.DisplayMessage("CANNOT GO BACK IN TIME");
             return;
+        }
+
+        if (Amount > 1)
+        {
+            current.TimeAdd.gameObject.SetActive(false);
+            current.TimeAdd.text = "+ " + allTimeInGameToString((int)Amount);
+            current.TimeAdd.gameObject.SetActive(true);
         }
 
         if (timeAnimating)
@@ -654,6 +682,7 @@ public class Stats : MonoBehaviour
             ChangeTime(Amount);
         }
         timeAnimating = false;
+        UpdateTimeColor();
     }
 
     public static void ChangeTime(uint Amount)
@@ -748,7 +777,7 @@ public class Stats : MonoBehaviour
 
     }
 
-    static public void StartStopPlayerMovement(bool start)
+    static public void StartStopPlayerMovement(bool start, string source="")
     {
         if (current == null) return;
 
@@ -763,11 +792,39 @@ public class Stats : MonoBehaviour
             else return;
         }
 
-        if (start)
-            current.playerMovement.enabled = true;
+        print("M-START " + start + " SOURCE " + source);
+        int comp = 0;
+        if(source != "")
+        {
+            if (!start && !moveSources.Contains(source))//stopping
+            {
+                moveSources.Add(source);
+                comp = 1;
+            }
+            else//starting
+            {
+                if (moveSources.Contains(source))
+                    moveSources.Remove(source);
+            }
+        }
+
+        if(moveSources.Count == comp)//accept action
+        {
+            if (start)
+                current.playerMovement.enabled = true;
+            else
+                current.playerMovement.ShutDown();
+        }
         else
-            current.playerMovement.ShutDown();
+        {
+            if (start) print("Movement START rejected due to " + moveSources[0] + " and " + (moveSources.Count - 1) + " others");
+            else print("Movement STOP rejected due to " + moveSources[0] + " and " + (moveSources.Count - 1) + " others");
+        }
+
+
     }
+    static List<string> moveSources = new List<string>();
+
     /// <summary>
     /// Display a message instantly with the text box thing
     /// </summary>
@@ -778,8 +835,17 @@ public class Stats : MonoBehaviour
         {
             Stats.StartStopTime(false,"Message");
         }
-        current.MESSAGE.SetActive(text != null);
+        current.MESSAGE.SetActive(true);
         current.MESSAGE.transform.Find("Text").GetComponent<Text>().text = text;
+        StartStopPlayerMovement(false,"Message");
+    }
+
+    public void CloseMessage()
+    {
+        StartStopTime(true, "Message");
+        StartStopPlayerMovement(true, "Message");
+        NameIndic.Indicate("");
+        current.MESSAGE.SetActive(false);
     }
 
     static public void PendMessage(string text)
@@ -801,7 +867,9 @@ public class Stats : MonoBehaviour
     {
         if (float.IsNaN(a)) return;
         if (changeData) Progress.setFloat("Volume", a);
-        Stats.current.GetComponent<AudioSource>().volume = a * 0.5f;
+
+        AudioSource StatsA = Stats.current.GetComponent<AudioSource>();
+        if(StatsA != null) StatsA.volume = a * 0.5f;
 
         Transform card = Camera.main.transform.Find("Card");
         if(card != null) card.GetComponent<AudioSource>().volume = a* OGVolume["Card"];

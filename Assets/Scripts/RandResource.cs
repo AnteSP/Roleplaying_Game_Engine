@@ -18,7 +18,7 @@ public class RandResource : Resource
         if (!Items.Add(ItemPool[Random.Range(0, ItemPool.Length)], Quantity))
         {
 
-            Stats.DisplayMessage("Not enough Inventory space");
+            Stats.DisplayMessage("Not enough Inventory space",true);
 
         }
 

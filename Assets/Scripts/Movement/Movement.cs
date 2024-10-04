@@ -131,9 +131,16 @@ public class Movement : MonoBehaviour
         An.GetBool("Drunk");
 
         if (Mathf.Abs(a.x) > Mathf.Abs(a.y))
+        {
+            An.Play((a.x < 0) ? "Idle_Walk_Left" : "Idle_Walk_Right");
             An.Play((a.x < 0) ? "Idle left" : "Idle right");
+        }
         else
+        {
             An.Play((a.y < 0) ? (An.GetBool("Drunk") ? "Idle Drunk Down" : "Idle down") : "Idle up");
+            An.Play((a.y < 0) ? "Idle_Walk_Down" : "Idle_Walk_Up");
+        }
+            
     }
 
 }

@@ -103,10 +103,8 @@ public class Dialogue : MonoBehaviour
     {
         textDisplay.text = "";
         gameObject.SetActive(false);
-        if (Stats.current.Player != null)
-        {
-            Stats.current.Player.GetComponent<Movement>().enabled = true;
-        }
+        Stats.StartStopPlayerMovement(true, "Talker");
+
         End = true;
         try
         {
@@ -269,7 +267,7 @@ public class Dialogue : MonoBehaviour
                     else
                     {
                         print("ERROR FROM LACK OF ITEM");
-                        Stats.DisplayMessage(Current);
+                        Stats.DisplayMessage(Current,true);
                         throw new System.Exception();
                     }
 
@@ -479,7 +477,7 @@ public class Dialogue : MonoBehaviour
                     //EndConvo();
                     break;
                 case 'I': //Information
-                    Stats.DisplayMessage(Current);
+                    Stats.DisplayMessage(Current,true);
                     Stats.current.CurrentCS.Next();
                     Stats.current.CurrentCS.setGoodToGo(false);
                     break;

@@ -65,5 +65,6 @@ public class MakeTrans : MonoBehaviour
         for (int i = 0; i < childTexts.Count; i++) childTexts[i].color = LbOg[i];
 
         for (int i = 0; i < Words.Length; i++) Words[i].color = WOg[i];
+        Stats.UpdateTimeColor();
     }
 }

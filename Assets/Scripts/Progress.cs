@@ -59,7 +59,7 @@ public class Progress : MonoBehaviour
 
     public static void readData()
     {
-        print("READING DATA");
+        //print("READING DATA");
         if (SName == "U") SName = Application.dataPath + "/saveData.kurger";
         if (!File.Exists(SName)) File.WriteAllText(SName, "{}");
 
@@ -70,7 +70,7 @@ public class Progress : MonoBehaviour
             data = JObject.Parse(content);
             if (!data.ContainsKey("FUN")) data.Add("FUN", (int)Random.Range(1, 100));
             //if (!data.ContainsKey("FUN")) data.Add("FUN", 14);
-            print(data.ToString(Newtonsoft.Json.Formatting.Indented,null));
+            //print(data.ToString(Newtonsoft.Json.Formatting.Indented,null));
         }
         catch
         {
@@ -287,7 +287,7 @@ public class Progress : MonoBehaviour
 
     public static void loadData(bool excludeItems = false)
     {
-        print("LOADING DATA");
+        //print("LOADING DATA");
         loaded = true;
         readData();
 

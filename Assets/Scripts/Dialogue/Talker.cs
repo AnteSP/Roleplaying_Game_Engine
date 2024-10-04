@@ -41,7 +41,7 @@ public class Talker : Resource
     {
         if (Index == 0) Stats.setLockedInObject(this);
         GameObject P = Stats.current.Player;
-        Stats.StartStopPlayerMovement(false);
+        Stats.StartStopPlayerMovement(false,"Talker");
         Camera.main.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         D.gameObject.SetActive(true);

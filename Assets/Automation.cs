@@ -194,7 +194,7 @@ public class Automation_anim : EditorWindow
         AnimatorStateTransition transitionFromAny = rootStateMachine.AddAnyStateTransition(state);
         transitionFromAny.hasExitTime = false;
         transitionFromAny.canTransitionToSelf = false;
-        //transitionFromAny.duration = 0;
+        transitionFromAny.duration = 0;
 
         transitionFromAny.AddCondition((parameterValue > 0) ? AnimatorConditionMode.Greater : AnimatorConditionMode.Less, 0, parameterName);
 

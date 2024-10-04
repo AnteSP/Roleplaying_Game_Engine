@@ -27,7 +27,7 @@ public class SodaMake : StateMachineBehaviour
             if(!Items.Add(SodaMachine.Ings[i], -1))
             {
 
-                Stats.DisplayMessage("Inventory Error! You don't have enough stuff to do that");
+                Stats.DisplayMessage("Inventory Error! You don't have enough stuff to do that",true);
                 
 
                 //return used up items to player
@@ -46,7 +46,7 @@ public class SodaMake : StateMachineBehaviour
             if (!Items.Add(SodaMachine.Recipes[SodaMachine.ActiveSoda].ItemID, 1))
             {
 
-                Stats.DisplayMessage("Inventory Error! you don't have enough space for this!");
+                Stats.DisplayMessage("Inventory Error! you don't have enough space for this!",true);
 
                 //return used up items to player
                 for (int i = 0; i < SodaMachine.Ings.Length; i++)

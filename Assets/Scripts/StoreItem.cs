@@ -52,7 +52,7 @@ public class StoreItem : MonoBehaviour
         }
         else
         {
-            Stats.DisplayMessage("Not enough money :(");
+            Stats.DisplayMessage("Not enough money :(",true);
         }
     }
 }

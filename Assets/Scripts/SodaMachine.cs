@@ -103,7 +103,7 @@ public class SodaMachine : MonoBehaviour
     {
         activeSM.Open = !activeSM.Open;
 
-        Stats.StartStopPlayerMovement(!activeSM.Open);
+        Stats.StartStopPlayerMovement(!activeSM.Open,"SodaMachine");
 
         SelectRec.Selecting = !SelectRec.Selecting;
         activeSM.A.SetBool("Open", activeSM.Open);

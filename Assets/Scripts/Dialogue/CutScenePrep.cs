@@ -49,7 +49,8 @@ public class CutScenePrep : StateMachineBehaviour
             Stats.StartStopTime(true, "Cutscene");
             //Stats.current.PassTime = true;
 
-            Stats.current.Player.GetComponent<Movement>().enabled = true;
+            Stats.StartStopPlayerMovement(true, "Transition");
+            //Stats.current.Player.GetComponent<Movement>().enabled = true;
         }
         else//CS Starting
         {

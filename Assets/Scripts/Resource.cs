@@ -29,7 +29,7 @@ public class Resource : MonoBehaviour
         if(!Items.Add(ItemID, Quantity))
         {
 
-            Stats.DisplayMessage("Not enough Inventory space");
+            Stats.DisplayMessage("Not enough Inventory space",true);
 
         }
     }
