@@ -10,7 +10,7 @@ public class outfit : MonoBehaviour
     readonly static int noItemNeeded = 30 ;
 
     static List<int> outfitsOwned = new List<int>() { noItemNeeded };
-    static int outfitInd = 0;
+    static int outfitInd = 4;
 
     static GameObject current;
 
@@ -26,6 +26,17 @@ public class outfit : MonoBehaviour
         current = gameObject;
         checkOutfits();
         desc = img.GetComponent<Tooltip>();
+    }
+
+    public static List<int> getOutfitsOwned()
+    {
+        return outfitsOwned;
+    }
+
+    public static int getActiveOutfit()
+    {
+        print("Giving " + outfitInd);
+        return outfitItemIDs[outfitInd];
     }
 
     static void resetOutfitsOwned()

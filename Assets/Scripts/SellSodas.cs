@@ -26,7 +26,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         text = transform.GetChild(0).GetChild(0).GetComponent<Text>();
     }
 
-    bool justGotStolenFrom = false;
+    bool justGotStolenFrom = true;
     void finishSell()
     {
         TimeLeft = 0;
@@ -71,7 +71,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
 
     void IPointerExitHandler.OnPointerExit(PointerEventData p)
     {
-        List.Time.text = "Sell Speed: ";
+        List.Time.text = "Sell Time: ";
         List.Money.text = "Sell Price: ";
         go = false;
     }
@@ -85,8 +85,16 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
     void updateText()
     {
         float total = SodaInfo.TimeChange * (1f/List.TimeMult);
-
-        List.Time.text = "Sell Speed: " + total + " base(" + SodaInfo.TimeChange + ")";
+        
+        if(total < 5)
+        {
+            List.Time.text = "Sell Time (mins): +" + total  + "   base(+" + SodaInfo.TimeChange + ")";
+        }
+        else
+        {
+            List.Time.text = "Sell Time: +" + Stats.allTimeInGameToString((int)total) + "   base(+" + Stats.allTimeInGameToString((int)SodaInfo.TimeChange) + ")";
+        }
+        
 
         List.Money.text = "Sell Price: " + SodaInfo.PriceChange ;
     }

@@ -274,6 +274,13 @@ public class ChooseSellSoda : Resource
             NewStat(u.ItemID,TimeMult,SMult);
         }
 
+        int outfitID = outfit.getActiveOutfit();
+        Item oFit = Items.ITEMS_DB[outfitID];
+        TimeMult *= ((float)oFit.MLevel)/100f;
+        SMult *= ((float)oFit.SodaPChange) / 100f;
+        NewStat(outfitID, TimeMult, SMult);
+
+
         StatsEmptyNotif.SetActive(activeCount <= 0);
 
         StatFinalResult.text = "Sell Time (mins): " + (int)(TimeMult * 100) + "%. Theft Chance: " + (int)(SMult * 100) + "%";

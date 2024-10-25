@@ -8,6 +8,7 @@ public class Item : ScriptableObject
     public string description;
     public int price;
     public int MLevel;
+    [Header("SodaPChange is used as SLevel for outfits")]
     public int SodaPChange;
     public int SodaTChange;
 }
