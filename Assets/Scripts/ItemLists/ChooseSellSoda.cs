@@ -153,7 +153,7 @@ public class ChooseSellSoda : Resource
             else
             {
                 NameIndic.Indicate("");
-                Time.text = "Sell Speed:";
+                Time.text = "Sell Time (mins):";
                 Money.text = "Sell Price:";
                 DeleteCell(BeingSold[i].transform.parent.gameObject, i);
                 i -= 1;
@@ -276,7 +276,7 @@ public class ChooseSellSoda : Resource
 
         StatsEmptyNotif.SetActive(activeCount <= 0);
 
-        StatFinalResult.text = "Sell Speed: " + (int)(TimeMult * 100) + "%. Theft Chance: " + (int)(SMult * 100) + "%";
+        StatFinalResult.text = "Sell Time (mins): " + (int)(TimeMult * 100) + "%. Theft Chance: " + (int)(SMult * 100) + "%";
 
 
     }

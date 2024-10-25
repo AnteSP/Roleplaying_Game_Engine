@@ -487,13 +487,14 @@ public class Stats : MonoBehaviour
         processingSelectable = false;
     }
 
-    public static void releaseLockedInObject()
+    public static void releaseLockedInObject(bool removeFromNearby = true)
     {
         if (current.lockedInConvoWith == null) return;
         print("Released locked in");
         GameObject lockedInObjectPointer = current.lockedInConvoWith.gameObject;
         current.lockedInConvoWith = null;
-        ObjectDepth.forceRemoveFromNearby(lockedInObjectPointer);
+        if(removeFromNearby)
+            ObjectDepth.forceRemoveFromNearby(lockedInObjectPointer);
         
     }
 
@@ -571,7 +572,7 @@ public class Stats : MonoBehaviour
 
             current.MONEYTEXT.text = current.Money + "";
 
-            if (Amount != 0)
+            if (Amount != 0 && current.MoneyAdd != null)
             {
                 current.MoneyAdd.gameObject.SetActive(false);
                 current.MoneyAdd.text = "+ " + Amount;

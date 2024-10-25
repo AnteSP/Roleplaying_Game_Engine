@@ -112,7 +112,8 @@ public class Dialogue : MonoBehaviour
             NPC.ResetAn();
         } catch(System.Exception e){ }
         forceStopSounds();
-        Stats.releaseLockedInObject();
+        
+        Stats.releaseLockedInObject(talker.unfocusAfterUse);
     }
 
     public void EndCutScene(CutSceneTalker cs)

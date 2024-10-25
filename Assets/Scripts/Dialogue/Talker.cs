@@ -50,6 +50,7 @@ public class Talker : Resource
 
 
         D.Current = sentences[Index++ % sentences.Length];
+
         if (NE)
         {
             N.enabled = false;

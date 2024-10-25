@@ -31066,12 +31066,12 @@ PrefabInstance:
     - target: {fileID: 8304182047419352753, guid: 6061eb302253efa45a3da3c4d238d0a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.08
+      value: 20.17
       objectReference: {fileID: 0}
     - target: {fileID: 8304182047419352753, guid: 6061eb302253efa45a3da3c4d238d0a0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.49
+      value: 23.66
       objectReference: {fileID: 0}
     - target: {fileID: 8304182047419352753, guid: 6061eb302253efa45a3da3c4d238d0a0,
         type: 3}
@@ -31112,6 +31112,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304182047419352760, guid: 6061eb302253efa45a3da3c4d238d0a0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304182047419352760, guid: 6061eb302253efa45a3da3c4d238d0a0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.077388376
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304182047419352760, guid: 6061eb302253efa45a3da3c4d238d0a0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8304182048283972005, guid: 6061eb302253efa45a3da3c4d238d0a0,
         type: 3}
@@ -31161,6 +31176,7 @@ MonoBehaviour:
   sentences:
   - IM EEEEEVIL AND SHIT FUCK YEAH BITCH... Im gonna m,ake this really long btw so
     we can hear lotsa the typenoise playing out
+  - '%dA this gives you a deadline'
   - '%%'
   TypeNoise: {fileID: 441633880}
   talkOnAwake: 0
@@ -49094,10 +49110,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

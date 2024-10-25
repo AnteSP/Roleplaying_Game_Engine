@@ -10,6 +10,7 @@ public class Resource : MonoBehaviour
 
     public float CollectTime;
     [Range(1,100)]public int FUNMin=0,FUNMax=100;
+    public bool unfocusAfterUse = true;
 
     private void Start()
     {
