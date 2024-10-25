@@ -238,6 +238,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Oi, your an odd fellow
@@ -743,6 +744,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%:Ch2-HQ'
@@ -4161,6 +4163,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentence: 'You: (In the meantime, maybe I can start my soda selling business...)'
   TypeNoise: {fileID: 662037077}
@@ -7669,6 +7672,151 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &248451126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248451127}
+  - component: {fileID: 248451130}
+  - component: {fileID: 248451129}
+  - component: {fileID: 248451128}
+  m_Layer: 5
+  m_Name: Left Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &248451127
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248451126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.43}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2061825624}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: -15}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &248451128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248451126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 248451129}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1458313671}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2061825630}
+        m_TargetAssemblyTypeName: outfit, Assembly-CSharp
+        m_MethodName: incrementOutfit
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &248451129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248451126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9ad99357c88bd7641be554d60ed776b6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &248451130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248451126}
+  m_CullTransparentMesh: 0
 --- !u!1 &256809323
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,6 +8802,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Oi, your an odd fellow
@@ -10489,6 +10638,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - These geezers aint built for this loif
@@ -14573,6 +14723,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%T+60 mins'
@@ -14900,6 +15051,151 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531599777}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &541673550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541673551}
+  - component: {fileID: 541673553}
+  - component: {fileID: 541673552}
+  - component: {fileID: 541673554}
+  m_Layer: 5
+  m_Name: Right Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &541673551
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541673550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.43}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2061825624}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 20, y: -15}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &541673552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541673550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0d7b34e39e341be48a48e97ddaeaa220, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &541673553
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541673550}
+  m_CullTransparentMesh: 0
+--- !u!114 &541673554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541673550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 541673552}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1458313671}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2061825630}
+        m_TargetAssemblyTypeName: outfit, Assembly-CSharp
+        m_MethodName: incrementOutfit
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &544830492
 GameObject:
   m_ObjectHideFlags: 0
@@ -16179,6 +16475,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentence: '%dAYou: (At 9, I''m gonna have to check-in with them too... I might
     just have to wait and hope for an escape opportunity to present itself...)'
@@ -17929,6 +18226,7 @@ MonoBehaviour:
   CollectTime: 0.1
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
 --- !u!61 &669083048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18180,6 +18478,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%PGET TO WORK'
@@ -21055,6 +21354,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%PMy papa told me not to talk to strangers'
@@ -21209,6 +21509,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%T+60 mins'
@@ -22209,6 +22510,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   Menu: {fileID: 580482973}
   ItemPrefab: {fileID: 1527186455}
   HorizScroll: {fileID: 1058700542}
@@ -23193,6 +23495,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%sProgress Saved'
@@ -25568,6 +25871,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Blimey what a chewsday this is
@@ -25924,6 +26228,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
 --- !u!114 &920598947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27179,6 +27484,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   ItemPool: 02000000020000000200000002000000
 --- !u!95 &972935966
 Animator:
@@ -28039,6 +28345,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentence: 'You: (Oh God, there''s mafia people all over the place. I''m never going
     to be able to get out of here)'
@@ -29563,6 +29870,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Hah! You look like one of the blokes who's wanted by interpol, take a look
@@ -30197,6 +30505,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   Menu: {fileID: 130576551}
   ItemsForSale: 
   ItemPrefab: {fileID: 8631238340491753899, guid: 28e2b010313e8d04794412ab4beb6706,
@@ -30462,6 +30771,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%:Ch2-HQ'
@@ -30767,6 +31077,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 1
   FUNMax: 100
+  unfocusAfterUse: 1
   Money: 100000
   savePickUp: 0
 --- !u!61 &1093064830
@@ -31172,6 +31483,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - IM EEEEEVIL AND SHIT FUCK YEAH BITCH... Im gonna m,ake this really long btw so
@@ -31838,6 +32150,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Time stopped progressing when you entered this park
@@ -32916,6 +33229,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   SellSpotPrompt: {fileID: 1689416614}
   MLevel: 0.5
   SLevel: 0.3
@@ -34156,6 +34470,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Outta my way, wanker
@@ -36928,6 +37243,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 1
   FUNMax: 100
+  unfocusAfterUse: 1
   Money: 100000
   savePickUp: 0
 --- !u!61 &1336623729
@@ -37244,6 +37560,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   SellSpotPrompt: {fileID: 1689416614}
   MLevel: 0.3
   SLevel: 0.3
@@ -38570,6 +38887,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Open letter from Father John
@@ -42223,6 +42541,7 @@ MonoBehaviour:
   CollectTime: 2
   FUNMin: 1
   FUNMax: 100
+  unfocusAfterUse: 1
   Money: 0
   savePickUp: 1
 --- !u!61 &1541152512
@@ -43971,6 +44290,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - '%#'
@@ -48110,6 +48430,7 @@ MonoBehaviour:
   CollectTime: 2
   FUNMin: 23
   FUNMax: 48
+  unfocusAfterUse: 1
   Money: 0
   savePickUp: 1
 --- !u!61 &1714027210
@@ -48521,6 +48842,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   Menu: {fileID: 580482973}
   ItemPrefab: {fileID: 1527186455}
   HorizScroll: {fileID: 1058700542}
@@ -49110,10 +49432,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -50116,6 +50438,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentence: 'You: (This is crazy, I need to get out of here. I can''t join the mafia,
     I have to defeat Conker Koola!)'
@@ -51108,6 +51431,7 @@ MonoBehaviour:
   CollectTime: 2
   FUNMin: 48
   FUNMax: 78
+  unfocusAfterUse: 1
   Money: 0
   savePickUp: 1
 --- !u!61 &1843511170
@@ -51706,6 +52030,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - I FOUND A REALLY COOL BUG AAAAAH
@@ -53632,6 +53957,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - What are you lookin at, yank?
@@ -56229,7 +56555,6 @@ GameObject:
   - component: {fileID: 2061825624}
   - component: {fileID: 2061825628}
   - component: {fileID: 2061825627}
-  - component: {fileID: 2061825629}
   - component: {fileID: 2061825630}
   m_Layer: 5
   m_Name: Outfit
@@ -56252,6 +56577,8 @@ RectTransform:
   m_Children:
   - {fileID: 304761904}
   - {fileID: 700441313}
+  - {fileID: 541673551}
+  - {fileID: 248451127}
   m_Father: {fileID: 966299290}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56280,7 +56607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b6b2d37b5be9a9146a6f62d01c90803c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8769a6274929ece48adc77abc03506a2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -56298,74 +56625,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061825623}
   m_CullTransparentMesh: 0
---- !u!114 &2061825629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2061825623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2061825627}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1458313671}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2061825630}
-        m_TargetAssemblyTypeName: outfit, Assembly-CSharp
-        m_MethodName: incrementOutfit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2061825630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56382,9 +56641,9 @@ MonoBehaviour:
   img: {fileID: 304761905}
   playerOutfitAnims:
   - {fileID: 9100000, guid: 947369c1c68bd374cb547091f855d1f2, type: 2}
-  - {fileID: 9100000, guid: 947369c1c68bd374cb547091f855d1f2, type: 2}
-  - {fileID: 9100000, guid: 947369c1c68bd374cb547091f855d1f2, type: 2}
-  - {fileID: 9100000, guid: 947369c1c68bd374cb547091f855d1f2, type: 2}
+  - {fileID: 9100000, guid: 95a9711ed6503894192e0b07884032c8, type: 2}
+  - {fileID: 9100000, guid: ff054f0c69a15164590fc2801de67ba2, type: 2}
+  - {fileID: 9100000, guid: 8c93053d03ce2a2419054d930ad0d0b3, type: 2}
   - {fileID: 9100000, guid: fea47e5d271cbc64cb6cbb6ad5aa4d22, type: 2}
 --- !u!1 &2062431873
 GameObject:
@@ -56598,6 +56857,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 100
+  unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
   - Oim watchin' yous. Don't think you can get away from us
@@ -57697,6 +57957,7 @@ MonoBehaviour:
   CollectTime: 2
   FUNMin: 79
   FUNMax: 100
+  unfocusAfterUse: 1
   Money: 0
   savePickUp: 1
 --- !u!61 &2099843757
@@ -58909,6 +59170,7 @@ MonoBehaviour:
   CollectTime: 0
   FUNMin: 0
   FUNMax: 0
+  unfocusAfterUse: 1
 --- !u!114 &2135738429
 MonoBehaviour:
   m_ObjectHideFlags: 0

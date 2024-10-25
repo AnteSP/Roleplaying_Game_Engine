@@ -62,9 +62,9 @@ public class outfit : MonoBehaviour
         
     }
 
-    public void incrementOutfit()
+    public void incrementOutfit(bool decrement = false)
     {
-        outfitInd++;
+        outfitInd = outfitInd + ( decrement ? -1 : 1);
         outfitInd = outfitInd % outfitsOwned.Count;
         int itemInd = outfitsOwned[outfitInd];
 

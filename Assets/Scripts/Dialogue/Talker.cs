@@ -35,6 +35,8 @@ public class Talker : Resource
             NE = true;
         }
         if (talkOnAwake) Use(0);
+
+        if (FUNMax != FUNMin && !Progress.checkFUN(FUNMin, FUNMax)) Destroy(gameObject);
     }
 
     public override void Use(float Amount)

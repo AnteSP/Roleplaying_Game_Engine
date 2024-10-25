@@ -14,6 +14,7 @@ public class Resource : MonoBehaviour
 
     private void Start()
     {
+        //I dont think this works unless this is for a pure Resource object
         if (FUNMax != FUNMin && !Progress.checkFUN(FUNMin, FUNMax)) Destroy(gameObject);
     }
 
