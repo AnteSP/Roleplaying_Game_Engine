@@ -261,7 +261,11 @@ public class Items : MonoBehaviour
         }
         return -1;
     }
-
+    /// <summary>
+    /// Check if the player has an item of this ID
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
     public static bool Contains(int a)
     {
         foreach(int b in ITEMS)

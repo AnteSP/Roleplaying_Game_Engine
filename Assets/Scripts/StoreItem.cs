@@ -44,6 +44,16 @@ public class StoreItem : MonoBehaviour
             {
                 Items.Add(ItemID, 1);
                 Menu.RemoveItem(ItemID);
+
+                int count = 0;
+                foreach(int id in outfit.outfitItemIDs)
+                {
+                    if (Items.Contains(id)) count++;
+                }
+                if(count == 1)
+                {
+                    Stats.DisplayMessage("Check your inventory to put on the new clothes you just bought!");
+                }
             } else if (Type == ItemType.Upgrade)
             {
                 SellUpgrade.enableUpgrade(ItemID);

@@ -575,7 +575,16 @@ public class Stats : MonoBehaviour
             if (Amount != 0 && current.MoneyAdd != null)
             {
                 current.MoneyAdd.gameObject.SetActive(false);
-                current.MoneyAdd.text = "+ " + Amount;
+                if (Amount > 0)
+                {
+                    current.MoneyAdd.text = "+ " + Amount;
+                    current.MoneyAdd.color = Color.green;
+                }
+                else
+                {
+                    current.MoneyAdd.text = "- " + -Amount;
+                    current.MoneyAdd.color = Color.red;
+                }
                 current.MoneyAdd.gameObject.SetActive(true);
             }
 
@@ -851,7 +860,6 @@ public class Stats : MonoBehaviour
 
     static public void PendMessage(string text)
     {
-
         ForceHandlesBack.PendingMessage = text;
     }
 

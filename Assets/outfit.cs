@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class outfit : MonoBehaviour
 {
-    static readonly int[] outfitItemIDs = new int[] { 26, 27,28,29,30 };
+    public static readonly int[] outfitItemIDs = new int[] { 26, 27,28,29,30 };
     readonly static int noItemNeeded = 30 ;
 
     static List<int> outfitsOwned = new List<int>() { noItemNeeded };
