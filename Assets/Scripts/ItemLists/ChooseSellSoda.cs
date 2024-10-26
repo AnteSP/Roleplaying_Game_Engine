@@ -283,7 +283,7 @@ public class ChooseSellSoda : Resource
 
         StatsEmptyNotif.SetActive(activeCount <= 0);
 
-        StatFinalResult.text = "Sell Time (mins): " + (int)(TimeMult * 100) + "%. Theft Chance: " + (int)(SMult * 100) + "%";
+        StatFinalResult.text = "Sell Time: " + (int)(TimeMult * 100) + "%. Theft Chance: " + (int)(SMult * 100) + "%";
 
 
     }

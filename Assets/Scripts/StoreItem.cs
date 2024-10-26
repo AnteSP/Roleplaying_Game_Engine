@@ -45,6 +45,7 @@ public class StoreItem : MonoBehaviour
                 Items.Add(ItemID, 1);
                 Menu.RemoveItem(ItemID);
 
+                outfit.checkOutfits();
                 if(outfit.getOutfitsOwned().Count == 2)
                 {
                     Stats.DisplayMessage("Check your inventory to put on the new clothes you just bought!");
