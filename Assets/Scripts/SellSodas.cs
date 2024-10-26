@@ -88,7 +88,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         
         if(total < 5)
         {
-            List.Time.text = "Sell Time (mins): +" + total.ToString("F1") + "   base(+" + SodaInfo.TimeChange + ")";
+            List.Time.text = "Sell Time: +" + total.ToString("F1") + " mins   base(+" + SodaInfo.TimeChange + ")";
         }
         else
         {
