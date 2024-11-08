@@ -35,6 +35,8 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     [SerializeField] Sprite Retracted, Detracted;
 
+    public bool stopTime = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +87,11 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         I.color = Selected;
         NewForcePosition(Out = !Out);
         I.sprite = Out ? Retracted : Detracted;
+        if (stopTime)
+        {
+            Stats.StartStopTime(Out, "Slider_" + ObjToMove.name);
+            Stats.StartStopPlayerMovement(Out, "Slider_" + ObjToMove.name);
+        }
 
     }
     /*

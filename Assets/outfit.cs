@@ -10,7 +10,7 @@ public class outfit : MonoBehaviour
     readonly static int noItemNeeded = 30 ;
 
     static List<int> outfitsOwned = new List<int>() { noItemNeeded };
-    static int outfitInd = 4;
+    static int outfitInd = 0;
 
     static GameObject current;
 
@@ -70,12 +70,12 @@ public class outfit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void incrementOutfit(bool decrement = false)
     {
         outfitInd = outfitInd + ( decrement ? -1 : 1);
+        if (outfitInd < 0) outfitInd = outfitsOwned.Count-1;
         outfitInd = outfitInd % outfitsOwned.Count;
         int itemInd = outfitsOwned[outfitInd];
 
@@ -89,7 +89,7 @@ public class outfit : MonoBehaviour
         if(Stats.current.Player != null)
         {
             Animator anim = Stats.current.Player.GetComponent<Animator>();
-            print("X IN Y " + Items.IndexOfXinY(itemInd, outfitItemIDs));
+            //print("X IN Y " + Items.IndexOfXinY(itemInd, outfitItemIDs));
             anim.runtimeAnimatorController = playerOutfitAnims[ Items.IndexOfXinY(itemInd, outfitItemIDs) ];
         }
         
