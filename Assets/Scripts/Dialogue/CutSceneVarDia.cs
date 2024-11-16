@@ -11,20 +11,19 @@ public class CutSceneVarDia : MonoBehaviour
     public string Line;
     public string LineIfFalseAndFirstListed;
 
+    [Header("Line conditions config")]
     [Range(1, 100)] public int FUNMin = 0, FUNMax = 100;
 
     /// <summary>
     /// If doing multiple, separate their string IDs with ;
     /// </summary>
     public string boolVarIds = "";
+    public bool expectedTrue = true;
     public string floatVarIds = "";
     public string intVarIds = "";
     public string switchVarIds = "";
     public string itemsNeeded = "";
     public string upgradesNeeded = "";
-
-
-    public List<bool> boolConditions = new List<bool>();
 
     public List<float> minFloatVals = new List<float>();
     public List<float> maxFloatVals = new List<float>();
@@ -40,6 +39,8 @@ public class CutSceneVarDia : MonoBehaviour
     public bool isValid()
     {
         if (FUNMax != FUNMin && !Progress.checkFUN(FUNMin, FUNMax)) return false;
+
+        if (boolVarIds != "") return Progress.getBool(boolVarIds) == expectedTrue;
 
         return true;
     }

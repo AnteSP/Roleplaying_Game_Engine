@@ -33,6 +33,7 @@ public class Talker : Resource
         {
             N = a;
             NE = true;
+            
         }
         if (talkOnAwake) Use(0);
 
@@ -55,7 +56,6 @@ public class Talker : Resource
 
         if (NE)
         {
-            N.enabled = false;
             N.Face(P.GetComponent<Rigidbody2D>().position);
             N.ShutDown();
             D.NPC = N;

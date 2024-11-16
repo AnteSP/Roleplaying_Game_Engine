@@ -3522,6 +3522,7 @@ MonoBehaviour:
   ObjToMove: {fileID: 319491353}
   Retracted: {fileID: 21300000, guid: e144ea054b159ca4fa753efb97232834, type: 3}
   Detracted: {fileID: 21300000, guid: ef1c8d03d9840d248ba0c976ac005ec7, type: 3}
+  stopTime: 1
 --- !u!114 &133178034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8347,6 +8348,7 @@ MonoBehaviour:
   ObjToMove: {fileID: 2072402852}
   Retracted: {fileID: 21300000, guid: 8c2956522192bb9409812c7c1caaeef5, type: 3}
   Detracted: {fileID: 21300000, guid: 3393d53a33cd32e4287bb7b813ebe60c, type: 3}
+  stopTime: 1
 --- !u!114 &271873021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26279,6 +26281,7 @@ MonoBehaviour:
   ObjToMove: {fileID: 0}
   Retracted: {fileID: 0}
   Detracted: {fileID: 0}
+  stopTime: 1
 --- !u!114 &909930505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30400,7 +30403,8 @@ MonoBehaviour:
   - Hah! You look like one of the blokes who's wanted by interpol, take a look
   - '%#CYou: ...'
   - '%#CYou: Uh!... That''s definitely not me, nope! Haha'
-  - Don't worry lad, everyone 'ere's wise enough to not mess with the mob
+  - '%[Ch2Newspaper1]Don''t worry lad, everyone ''ere''s wise enough to not mess
+    with the mob'
   - '%%'
   TypeNoise: {fileID: 0}
   talkOnAwake: 0
@@ -42141,6 +42145,7 @@ MonoBehaviour:
   ObjToMove: {fileID: 555292274}
   Retracted: {fileID: 21300000, guid: a33652d758762a44daad49eb5ce3fc17, type: 3}
   Detracted: {fileID: 21300000, guid: 78d65929204be304cbf476a2b159e517, type: 3}
+  stopTime: 1
 --- !u!114 &1497248623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45214,6 +45219,7 @@ MonoBehaviour:
   ObjToMove: {fileID: 966299290}
   Retracted: {fileID: 21300000, guid: 3166940e00835de48b5b23dd64958c23, type: 3}
   Detracted: {fileID: 21300000, guid: 77dc2325206c7d045a1adaec51dcef40, type: 3}
+  stopTime: 1
 --- !u!114 &1597104845
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 351112b4a85177340952650166130784
+guid: 137a602b6d41f414aac60744930b0f67
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -779307447391265086
-    second: left run-Sheet 1_0
+      213: 8390787399254224635
+    second: front run-Sheet_0
   - first:
-      213: -1347249293686419182
-    second: left run-Sheet 1_1
+      213: 4497284914456310101
+    second: front run-Sheet_1
   - first:
-      213: -8835294034069245820
-    second: left run-Sheet 1_2
+      213: 6227020596570923116
+    second: front run-Sheet_2
   - first:
-      213: -217649460185621584
-    second: left run-Sheet 1_3
+      213: 7237211954839031831
+    second: front run-Sheet_3
   - first:
-      213: -1109656472424122630
-    second: left run-Sheet 1_4
+      213: -4655040957486314243
+    second: front run-Sheet_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -35,7 +35,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -175,11 +175,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: left run-Sheet 1_0
+      name: front run-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -187,20 +199,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ce5d6b61085f25f0800000000000000
-      internalID: -779307447391265086
+      spriteID: bfe2f5eeea0127470800000000000000
+      internalID: 8390787399254224635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: left run-Sheet 1_1
+      name: front run-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -208,20 +220,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 211dce9c7eb9d4de0800000000000000
-      internalID: -1347249293686419182
+      spriteID: 55134e35dc0996e30800000000000000
+      internalID: 4497284914456310101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: left run-Sheet 1_2
+      name: front run-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -229,20 +241,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 480bc2d23eab26580800000000000000
-      internalID: -8835294034069245820
+      spriteID: c60a6ab8d32da6650800000000000000
+      internalID: 6227020596570923116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: left run-Sheet 1_3
+      name: front run-Sheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -250,20 +262,24 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bb941818f0cafcf0800000000000000
-      internalID: -217649460185621584
+      spriteID: 7101464bdedbf6460800000000000000
+      internalID: 7237211954839031831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: left run-Sheet 1_4
+      name: front run-Sheet_4
       rect:
         serializedVersion: 2
         x: 32
@@ -271,14 +287,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af6727a4155b990f0800000000000000
-      internalID: -1109656472424122630
+      spriteID: dfc4222a9e8f56fb0800000000000000
+      internalID: -4655040957486314243
       vertices: []
       indices: 
       edges: []
@@ -294,11 +310,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      left run-Sheet 1_3: -217649460185621584
-      left run-Sheet 1_4: -1109656472424122630
-      left run-Sheet 1_0: -779307447391265086
-      left run-Sheet 1_2: -8835294034069245820
-      left run-Sheet 1_1: -1347249293686419182
+      front run-Sheet_1: 4497284914456310101
+      front run-Sheet_3: 7237211954839031831
+      front run-Sheet_0: 8390787399254224635
+      front run-Sheet_2: 6227020596570923116
+      front run-Sheet_4: -4655040957486314243
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

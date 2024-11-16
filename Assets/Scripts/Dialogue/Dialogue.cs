@@ -172,7 +172,8 @@ public class Dialogue : MonoBehaviour
                     NPC.GetComponent<Movement>().FocusPoint = NPC.transform.position;
                     break;
                 case 'S'://Start cutscene
-                    Stats.current.CurrentCS = talker.GetComponent<CutSceneTalker>();
+                    CutSceneTalker cst = talker.GetComponent<CutSceneTalker>();
+                    if (cst != null) Stats.current.CurrentCS = cst;
                     Stats.current.AllowSelecting = false;
                     talker.gameObject.tag = "Untagged";
                     talker = null;
@@ -336,7 +337,6 @@ public class Dialogue : MonoBehaviour
                             Current = Current.Remove(0, 1);
                             talker.specialObj.SetActive(!talker.specialObj.activeSelf);
                         }
-
                     }
                     else
                     {
