@@ -201,10 +201,14 @@ public class CutSceneTalker : MonoBehaviour
 
     public bool GoToNextScene()
     {
-        print("CHECKING SCENE" + Sentences.Last());
-        if (Sentences.Last().StartsWith("%S"))
+        string lastSent = Sentences.Last();
+        print("CHECKING SCENE" + lastSent);
+        if (lastSent.StartsWith("%S"))
         {
-            Stats.current.SceneChange(Sentences.Last().Substring(2));
+            if(lastSent.StartsWith("%S>")) 
+                Stats.current.SceneChange(Sentences.Last().Substring(3));
+            else
+                Stats.current.SceneChange(Sentences.Last().Substring(2));
             return true;
         }
         return false;

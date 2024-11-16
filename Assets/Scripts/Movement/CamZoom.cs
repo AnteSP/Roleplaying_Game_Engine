@@ -24,6 +24,30 @@ public class CamZoom : MonoBehaviour
 
     static Vector2 heldZoomPos = new Vector2(999,999);
 
+    float old = -1;
+    public void TempSetSize(int New)
+    {
+        if(New == -1)
+        {
+            SetSize((int)old);
+            old = -1;
+        }
+        else
+        {
+            if (old == -1)
+            {
+                old = MTracker-1;
+                SetSize(New);
+            }
+            else
+            {
+                SetSize((int)old);
+                old = -1;
+            }
+        }
+
+    }
+
     public void ChangeMax(int New)
     {
         MTracker = New;

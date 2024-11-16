@@ -83,6 +83,10 @@ public class Stats : MonoBehaviour
     "Hours later...",
     "A while later..."};
 
+    static readonly string[] nextDayCSTips = { "The next morning...",
+    "You leave for bed\nand wake up the next day...",
+    "You sleep\nand wake up in the morning..."};
+
 
     [SerializeField] GameObject Sounds;
 
@@ -431,6 +435,9 @@ public class Stats : MonoBehaviour
                 text = transCSTips[UnityEngine.Random.Range(0, transCSTips.Length)];
                 break;
             case 3:
+                text = nextDayCSTips[UnityEngine.Random.Range(0, nextDayCSTips.Length)];
+                break;
+            case 4:
                 text = "";
                 break;
         }

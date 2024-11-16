@@ -63,6 +63,7 @@ public class card : MonoBehaviour
                 }
                 transform.parent.gameObject.SetActive(false);
                 Dialogue.forceGoodToGo(true);
+                //CamZoom.cz.TempSetSize(-1);
                 //Stats.current.CurrentCS
             }
         }
@@ -71,6 +72,12 @@ public class card : MonoBehaviour
     public void click()
     {
         if (!allowClick) return;
+
+        foreach(Button b in transform.parent.GetComponentsInChildren<Button>())
+        {
+            b.interactable = false;
+        }
+
         rb.AddForce(new Vector2(0, -power));
         col.enabled = false;
         counting = true;

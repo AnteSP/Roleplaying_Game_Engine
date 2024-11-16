@@ -11,7 +11,6 @@ public class CutSceneVarDia : MonoBehaviour
     public string Line;
     public string LineIfFalseAndFirstListed;
 
-    [Header("Line conditions config")]
     [Range(1, 100)] public int FUNMin = 0, FUNMax = 100;
 
     /// <summary>

@@ -123,6 +123,177 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3388333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3388334}
+  - component: {fileID: 3388337}
+  - component: {fileID: 3388336}
+  - component: {fileID: 3388335}
+  m_Layer: 5
+  m_Name: Card alt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3388334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388333}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -2.1389, y: 9.4629, z: 4.6836}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1065563189}
+  - {fileID: 2120892229}
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &3388335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388333}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5482b12c12728aa47a9026a8fcdcae4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 519420034}
+  shakeDuration: 4
+  shakeAmount: 0.2
+  decreaseFactor: 1
+  disableAll: 0
+  SD: 0
+  originalPos: {x: 0, y: 0, z: 0}
+--- !u!82 &3388336
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388333}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 23a6db2f7d34da74fae3087c36c3d3b4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!95 &3388337
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a21e100a68e6b2249a84077a6dc860ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6082154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4041,6 +4212,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175069584}
   m_CullTransparentMesh: 0
+--- !u!1 &176255704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176255705}
+  m_Layer: 0
+  m_Name: Cam pos (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &176255705
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176255704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1597082573}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -11.67, y: -1.9}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &179829369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5828,7 +6035,8 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - We'll get ya a free drink. But only one! Danny said you got a drinking problem
+  - Oi! You, soda lad. We'll get ya a free drink. But only one! Danny said you got
+    a drinking problem
   - '%%'
   TypeNoise: {fileID: 1345590412}
   talkOnAwake: 0
@@ -6152,13 +6360,13 @@ Transform:
   - {fileID: 1322229498}
   - {fileID: 767433646}
   - {fileID: 408353721}
+  - {fileID: 729209202}
   - {fileID: 481152458}
   - {fileID: 462476581}
   - {fileID: 1310479378}
   - {fileID: 1391899598}
   - {fileID: 1538479395}
   - {fileID: 1913977272}
-  - {fileID: 729209202}
   - {fileID: 258674023}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -9119,7 +9327,7 @@ PrefabInstance:
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
@@ -9937,6 +10145,184 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &489639995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489639996}
+  - component: {fileID: 489639998}
+  - component: {fileID: 489639997}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &489639996
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489639995}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.080764, y: 0.080764, z: 0.080764}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2120892229}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.00144}
+  m_SizeDelta: {x: 11.9439, y: 12.26681}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &489639997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489639995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Soda Lad - Drunken Vagabond
+
+
+    Obsessed with being better than his
+    brother, CEO of Conker Koola, the world''s largest soda company. Failure after
+    failure, drinking has always been his coping method of choice. Maybe his mom
+    was right about him never amounting to anything...'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 8.56
+  m_fontSizeBase: 8.56
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 489639998}
+  m_maskType: 0
+--- !u!23 &489639998
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489639995}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &494303553
 GameObject:
   m_ObjectHideFlags: 0
@@ -10256,6 +10642,7 @@ Transform:
   m_Children:
   - {fileID: 12033115}
   - {fileID: 809508207}
+  - {fileID: 3388334}
   - {fileID: 1797622728}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -10557,7 +10944,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2ca4b425b93a8543a9675fbc68f0525, type: 2}
+  - {fileID: 2100000, guid: d6cc5da783f69b04d8c498cab40fb381, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11520,7 +11907,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.569
-  m_Color: {r: 1, g: 0.79884464, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.5914831, b: 1, a: 1}
   m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 1
@@ -14364,6 +14751,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721458736}
   m_CullTransparentMesh: 0
+--- !u!1 &725815280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725815281}
+  m_Layer: 0
+  m_Name: Cam pos (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &725815281
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725815280}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1597082573}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.02, y: 8.23}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &728661540
 GameObject:
   m_ObjectHideFlags: 0
@@ -14439,7 +14862,7 @@ RectTransform:
   - {fileID: 1124573909}
   - {fileID: 1096640884}
   m_Father: {fileID: 282622428}
-  m_RootOrder: 23
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14468,8 +14891,9 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - Heard Uncle Tony's taken a liking to ya
-  - Don't let it get to yer head. You're still nothing
+  - Heard Uncle Tony's takin' you into the family so you don't drink yourself to
+    death
+  - Psh, good for nothin'
   - '%%'
   TypeNoise: {fileID: 1345590412}
   talkOnAwake: 0
@@ -15533,8 +15957,8 @@ Transform:
   m_GameObject: {fileID: 809508206}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.1389, y: 9.4629, z: 4.6836}
-  m_LocalScale: {x: 0.65529, y: 0.65529, z: 0.65529}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 531599778}
   - {fileID: 914910199}
@@ -19085,7 +19509,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1322229498}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &999698084
 SpriteRenderer:
@@ -20455,6 +20879,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058700540}
   m_CullTransparentMesh: 0
+--- !u!1 &1065563188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1065563189}
+  - component: {fileID: 1065563192}
+  - component: {fileID: 1065563191}
+  - component: {fileID: 1065563190}
+  m_Layer: 5
+  m_Name: Front
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1065563189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065563188}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1.3580017, y: 0.7628002, z: 3.31}
+  m_LocalScale: {x: 6.1239004, y: 7.6145, z: 0.20907001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3388334}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1065563190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065563188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1065563191
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065563188}
+  m_Enabled: 1
+  m_CastShadows: 2
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0672196470b285f459ff716a27021dbe, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1065563192
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065563188}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1066790516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066790517}
+  m_Layer: 0
+  m_Name: Cam pos (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1066790517
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066790516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1597082573}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.02, y: -0.9}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1096640883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21416,7 +21973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1000000
-  ID: Are you scared of me?
+  ID: FredIntro
   launchOnAwake: 0
 --- !u!1 &1149982680
 GameObject:
@@ -23138,13 +23695,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Danny Denaro - English Mafia UnderBoss
+  m_text: 'Fred - Friendly Pub Mate
 
 
-    A professional. He sees the
-    mafia, not as criminal, but as an honourable institution equal to the government.
-    Desperate to be taken seriously, he despises anyone who makes the mafia look
-    bad. While not violent, he has many other ways of dealing with enemies'
+    From Yorkshire but here in Islington to
+    take care of a sick relative. He''s a rare ray of sunshine in this unwelcoming
+    place. If you can play your cards right, he might even be your ticket out of
+    here'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23817,7 +24374,7 @@ PrefabInstance:
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
@@ -23912,7 +24469,6 @@ RectTransform:
   m_Children:
   - {fileID: 706202277}
   - {fileID: 52189355}
-  - {fileID: 1994379899}
   - {fileID: 999698083}
   - {fileID: 2032102572}
   m_Father: {fileID: 282622428}
@@ -23947,7 +24503,7 @@ MonoBehaviour:
   sentences:
   - ...
   - '%#C...!'
-  - Oh you're that odd bloke who's been wanderin' the streets. What's your dealio?
+  - Oh you're that odd bloke who's been wanderin' the streets. Ow's it goin on
   - '%S'
   TypeNoise: {fileID: 1570525495}
   talkOnAwake: 0
@@ -25036,7 +25592,7 @@ PrefabInstance:
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
@@ -25625,6 +26181,165 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1452525337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1452525338}
+  - component: {fileID: 1452525341}
+  - component: {fileID: 1452525340}
+  - component: {fileID: 1452525339}
+  m_Layer: 0
+  m_Name: Fred 1 CS (bad)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1452525338
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452525337}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1597082573}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1452525339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452525337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465876450696b0546a2c086383aae2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 66
+  Line: 
+  LineIfFalseAndFirstListed: 
+  FUNMin: 0
+  FUNMax: 100
+  boolVarIds: 
+  expectedTrue: 1
+  floatVarIds: 
+  intVarIds: 
+  switchVarIds: 
+  itemsNeeded: 
+  upgradesNeeded: 
+  minFloatVals: []
+  maxFloatVals: []
+  minIntVals: 
+  maxIntVals: 
+--- !u!114 &1452525340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452525337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465876450696b0546a2c086383aae2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 65
+  Line: 'You: ... Yeah... Yeah that was me'
+  LineIfFalseAndFirstListed: 'You: Wait, was I? I actually don''t know'
+  FUNMin: 0
+  FUNMax: 100
+  boolVarIds: Ch2Newspaper1
+  expectedTrue: 1
+  floatVarIds: 
+  intVarIds: 
+  switchVarIds: 
+  itemsNeeded: 
+  upgradesNeeded: 
+  minFloatVals: []
+  maxFloatVals: []
+  minIntVals: 
+  maxIntVals: 
+--- !u!114 &1452525341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452525337}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed007c1d9782244418b0175cb26bd511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  D: {fileID: 119110231}
+  DBoxOnTop: 0
+  Sentences:
+  - 'You: Do you have a car?'
+  - 'Fred: I don'' like where this is goin''...'
+  - 'You: I mean, I-I could hide in the trunk, nobody would know'
+  - 'Fred: You''re mental mate, I''m sorry, I''m not tryin'' to mess with the mob.
+    Leave me be please'
+  - 'You: I-I''ll pay you!'
+  - 'Fred: Sigh... I''m not entertainin'' this'
+  - 'You: You said you want to help me right?'
+  - 'Fred: Aye, and I''m regrettin'' it'
+  - '%C(After a lot of convincing. Fred offers to sneak you out for 20''000p) '
+  - (20'000p is pretty unreasonable. Try to befriend him so that he lowers the price)
+  - '%S>Ch2-HQ'
+  As:
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Index: 0
+  Disable:
+  - {fileID: 1322229497}
+  - {fileID: 680135420}
+  - {fileID: 1471180649}
+  - {fileID: 495647583}
+  - {fileID: 2109651472}
+  Enable:
+  - {fileID: 767433645}
+  - {fileID: 408353720}
+  CamPos:
+  - {fileID: 1066790517}
+  - {fileID: 725815281}
+  Movements: []
+  alt: {fileID: 0}
+  goodtoGo: 1
+  CamSize: 1
+  anims: []
+  musicsQueue: []
+  destroyAfter: []
+  Ending: 0
+  skipPacking: 0
+  EndingChapter: 0
+  stopMusicOnStart: 0
+  switchWhenDone: 
 --- !u!1 &1458313669
 GameObject:
   m_ObjectHideFlags: 0
@@ -26148,6 +26863,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1471180649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8254590546648745105, guid: 7184b2a159bc0e74982f3732c77ccbf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 17303402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478192744
 GameObject:
   m_ObjectHideFlags: 0
@@ -27417,7 +28138,7 @@ PrefabInstance:
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
@@ -27837,7 +28558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yes, I'm scared of you
+  m_text: I'll pay you to sneak me out
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27956,10 +28677,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 32046726c5ea3d14181ac5c4ec2778d3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e04fda6c97834a245aa288bad6d6fae0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.08
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -28272,6 +28993,7 @@ GameObject:
   - component: {fileID: 1597082573}
   - component: {fileID: 1597082574}
   - component: {fileID: 1597082575}
+  - component: {fileID: 1597082576}
   m_Layer: 0
   m_Name: Fred 1 CS
   m_TagString: Untagged
@@ -28290,7 +29012,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -4.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1994379899}
+  - {fileID: 176255705}
+  - {fileID: 1066790517}
+  - {fileID: 1452525338}
+  - {fileID: 725815281}
   m_Father: {fileID: 282622428}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28314,29 +29041,105 @@ MonoBehaviour:
   D: {fileID: 119110231}
   DBoxOnTop: 0
   Sentences:
-  - '???: Whoa... So you''re American... Kidnapped by the mafia... Wait... This sounds
+  - '???: Whoa... So you''re American... Kidnapped by the mob... Wait... This sounds
     awfully familiar- were you on this morning''s paper?'
   - '%V[A]'
-  - oh mah god
-  - oh mah god
-  - oh mah god
+  - '???: I think I see it now... It IS ya. By heck, ow''d ya get into a situation
+    like this?'
+  - 'You: It all just sort of happened. I was just living a normal life before'
+  - '???: Ya were?... Must be strange goin'' through all this, ''ow are ya feelin?'
+  - 'You: I...'
+  - 'You: You know... Nobody has asked me that actually... I... I don''t know...'
+  - 'You: ...'
+  - 'You: What''s your name?'
+  - '%i '
+  - 'Fred: Yeah, I don'' have a back story nearly as interestin'' as yours'
+  - '%iFred: What''s your name then'
+  - 'You: Haha... Thats... Another question nobody''s really asked me...'
+  - 'You: Know what, everyone just calls me...'
+  - '%i '
+  - 'You: Heh, yeah...'
+  - '%iFred: Well Soda Lad, ya certainly are an interestin'' bloke... But...'
+  - 'Fred: I don'' want any trouble with the mob. I''ll stay out of yer way, don''
+    mind me none'
+  - 'You: Sigh... I really wish I wasn''t mixed up with them. Once my uncle comes
+    here in a few days, he''s going to induct me into the mafia'
+  - 'You: If I''m a mafioso, then how will I have time to make my rival soda empire!?'
+  - 'Fred: By heck man, just leave then'
+  - '%CYou: I can''t! They''re watching me'
+  - 'Fred: Wow. Not an enviable situation eh. That eye patch fellow looks scary'
+  - '%CYou: I''ve been trying to think of a way out but, I got nothing'
+  - 'Fred: Hm... Listen mate, am I going to get in trouble by talkin'' to ya?'
+  - 'You: Sigh... I''m sorry. I don''t need to drag you into this'
+  - 'Fred: I do pity you though, I''d be in proper fear in your situation. If there''s
+    something that''s not risky I can do to help, I''m willin'''
+  - 'You: ...'
+  - '%dYou: ... Hey Fred...'
+  - 'You: I will pay you to sneak me out'
+  - 'Fred: Sneak you out!? Past the mob!? Are you mental?'
+  - 'You: Name a price'
+  - 'Fred: By heck, gimme a million if I''m doin somethin'' so rash'
+  - 'You: Hey! You know what, when I make my soda empire, I''ll give you two million'
+  - 'Fred: Bahaha! '
+  - '%C(After some convincing. Fred offers to sneak you out for 10''000p) '
+  - (10'000p is kinda unreasonable. Try to befriend him so that he lowers the price)
+  - '%S>Ch2-HQ'
   As:
   - {fileID: 1570525495}
   - {fileID: 662037077}
   - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
   - {fileID: 1570525495}
   - {fileID: 1570525495}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Index: 0
   Disable:
   - {fileID: 1322229497}
   - {fileID: 680135420}
+  - {fileID: 1471180649}
+  - {fileID: 495647583}
+  - {fileID: 2109651472}
   Enable:
   - {fileID: 767433645}
   - {fileID: 408353720}
   CamPos:
   - {fileID: 1994379899}
+  - {fileID: 176255705}
+  - {fileID: 1066790517}
+  - {fileID: 725815281}
   Movements: []
-  alt: {fileID: 0}
+  alt: {fileID: 1452525341}
   goodtoGo: 1
   CamSize: 1
   anims: []
@@ -28365,12 +29168,40 @@ MonoBehaviour:
   FUNMin: 0
   FUNMax: 100
   boolVarIds: Ch2Newspaper1
+  expectedTrue: 1
   floatVarIds: 
   intVarIds: 
   switchVarIds: 
   itemsNeeded: 
   upgradesNeeded: 
-  boolConditions: 00
+  minFloatVals: []
+  maxFloatVals: []
+  minIntVals: 
+  maxIntVals: 
+--- !u!114 &1597082576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597082572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465876450696b0546a2c086383aae2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 66
+  Line: 
+  LineIfFalseAndFirstListed: 
+  FUNMin: 0
+  FUNMax: 100
+  boolVarIds: 
+  expectedTrue: 1
+  floatVarIds: 
+  intVarIds: 
+  switchVarIds: 
+  itemsNeeded: 
+  upgradesNeeded: 
   minFloatVals: []
   maxFloatVals: []
   minIntVals: 
@@ -29359,7 +30190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1000000
-  ID: Are you scared of me?
+  ID: FredIntro
   launchOnAwake: 0
 --- !u!1 &1654245151
 GameObject:
@@ -29968,6 +30799,7 @@ GameObject:
   - component: {fileID: 1700876591}
   - component: {fileID: 1700876592}
   - component: {fileID: 1700876594}
+  - component: {fileID: 1700876595}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -30198,6 +31030,102 @@ MonoBehaviour:
   PlayerActor: {fileID: 0}
   TurnTimeOff: 0
   BeerSprite: {fileID: 0}
+--- !u!82 &1700876595
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e143e78008fdad4f94e2fb6d8f2e555, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.685
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1705963232
 GameObject:
   m_ObjectHideFlags: 0
@@ -31185,7 +32113,7 @@ Transform:
   m_Children:
   - {fileID: 421103394}
   m_Father: {fileID: 519420032}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1798942661
 GameObject:
@@ -32188,7 +33116,7 @@ PrefabInstance:
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
@@ -33833,13 +34761,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994379898}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1322229498}
-  m_RootOrder: 2
+  m_Father: {fileID: 1597082573}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -34197,7 +35125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: No, I'm not scared of you
+  m_text: Do you have a car?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -34304,7 +35232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1322229498}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2032102573
 SpriteRenderer:
@@ -36070,6 +36998,104 @@ RectTransform:
   m_AnchoredPosition: {x: -0.02, y: -0.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2120892228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120892229}
+  - component: {fileID: 2120892232}
+  - component: {fileID: 2120892231}
+  - component: {fileID: 2120892230}
+  m_Layer: 5
+  m_Name: Back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2120892229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120892228}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1.271, y: 0.7628002, z: 3.31}
+  m_LocalScale: {x: 6.1239004, y: 7.6145, z: 0.20907001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 489639996}
+  m_Father: {fileID: 3388334}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &2120892230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120892228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2120892231
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120892228}
+  m_Enabled: 1
+  m_CastShadows: 2
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2120892232
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120892228}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2134719546
 GameObject:
   m_ObjectHideFlags: 0
@@ -36778,7 +37804,7 @@ PrefabInstance:
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6679043867497791743, guid: 70449e1a1db3e784a888cdd6f5fcd705,
         type: 3}

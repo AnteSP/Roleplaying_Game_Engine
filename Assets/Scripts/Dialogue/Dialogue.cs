@@ -116,13 +116,14 @@ public class Dialogue : MonoBehaviour
         Stats.releaseLockedInObject(talker.unfocusAfterUse);
     }
 
-    public void EndCutScene(CutSceneTalker cs)
+    public void EndCutScene(CutSceneTalker cs,bool nextDay=false)
     {
         cs.Ending = true;
         CS = cs;
         cs.goodtoGo = false;
         textDisplay.text = "";
-        Stats.Transition(1);
+        
+        Stats.Transition( nextDay ? 3 : 1);
         gameObject.SetActive(false);
         forceStopSounds();
 
@@ -427,11 +428,20 @@ public class Dialogue : MonoBehaviour
                     break;
                 case 'i'://card intro seq. Do once to trigger. Once to end
 
+                    CamZoom.cz.TempSetSize(3);
+
                     GameObject cardObj = Camera.main.transform.Find("Card").gameObject;
 
                     if (cardObj.activeSelf)//clean up
                     {
+                        cardObj.name = "Card [USED]";
                         cardObj.SetActive(false);
+                        if(Camera.main.transform.Find("Card alt") != null)
+                        {
+                            cardObj = Camera.main.transform.Find("Card alt").gameObject;
+                            cardObj.name = "Card";
+                        }
+
                         End = false;
                     }
                     else//start anim
@@ -470,11 +480,17 @@ public class Dialogue : MonoBehaviour
                     break;
                 case '#':
                     forceGoodToGo(false);
-                    Stats.Transition(3);
+                    Stats.Transition(4);
                     Stats.current.CurrentCS.EndingChapter = true;
                     break;
                 case 'S': //Current sentene will be used to switch to next scene
-                    EndCutScene(CS);
+                    if (Current[0] == '>') //Indicates next day
+                    {
+                        Current = Current.Remove(0, 1);
+                        EndCutScene(CS,true);
+                    }
+                    else
+                        EndCutScene(CS);
                     //EndConvo();
                     break;
                 case 'I': //Information
