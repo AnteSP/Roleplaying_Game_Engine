@@ -89,6 +89,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         I.sprite = Out ? Retracted : Detracted;
         if (stopTime)
         {
+            SocialCell.refreshSocial();
             Stats.StartStopTime(Out, "Slider_" + ObjToMove.name);
             Stats.StartStopPlayerMovement(Out, "Slider_" + ObjToMove.name);
         }

@@ -90,6 +90,9 @@ public class card : MonoBehaviour
                 case "Are you scared of me?":
                     Progress.setInt("MRespect", -1);
                     break;
+                case "FredIntro":
+                    Progress.setInt("FredF", 0);
+                    break;
 
             }
         }
@@ -99,6 +102,9 @@ public class card : MonoBehaviour
             {
                 case "Are you scared of me?":
                     Progress.setInt("MRespect", -2);
+                    break;
+                case "FredIntro":
+                    Progress.setInt("FredF", 1);
                     break;
             }
         }

@@ -139,6 +139,8 @@ public class Progress : MonoBehaviour
         }
     }
 
+    static public bool doesFieldExist(string Id) => data.ContainsKey(Id);
+
     static public int getInt(string Id)
     {
         if (data.ContainsKey(Id))

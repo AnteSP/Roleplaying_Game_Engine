@@ -46,6 +46,7 @@ public class outfit : MonoBehaviour
 
     public static void checkOutfits()
     {
+        if (current == null) return;
         int count = 0;
         resetOutfitsOwned();
         foreach(int id in outfitItemIDs)
