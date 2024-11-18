@@ -137,6 +137,7 @@ public class Stats : MonoBehaviour
     [HideInInspector] public List<Image> stickyNotes = new List<Image>();
     List<Deadline> Deds = new List<Deadline>();
     [SerializeField] GameObject DeadlineNotification;
+    [SerializeField] GameObject SocialNotification;
 
     private void OnEnable()
     {
@@ -978,6 +979,28 @@ public class Stats : MonoBehaviour
     {
         if (CurrentCS == null) return;
         CurrentCS.setGoodToGoOnly(b);
+    }
+
+    //SocialNotification
+    public static void changeFriendship(string Id,int amount)
+    {
+        print("GOT HERE BLEGH");
+        current.SocialNotification.transform.parent.gameObject.SetActive(true);//The parent should be the social menu handle
+        current.SocialNotification.gameObject.SetActive(false);
+
+        if (Progress.doesFieldExist(Id))
+        {
+            Progress.setInt(Id, Progress.getInt(Id) + amount);
+        }
+        else
+        {
+            Progress.setInt(Id, amount);
+        }
+
+        current.SocialNotification.gameObject.SetActive(true);
+        current.SocialNotification.GetComponent<TextMeshProUGUI>().text = "Friendship " + (amount < 0 ? "" : "+") + amount;
+
+        
     }
 
 }

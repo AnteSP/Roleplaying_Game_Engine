@@ -129,7 +129,7 @@ public class Progress : MonoBehaviour
 
     static public void setInt(string Id, int num)
     {
-        print("Setting int " + Id + " contains: " + data);
+        print("Setting int " + Id + " to " + num + " contains: " + data);
         if (data.ContainsKey(Id))
             data[Id] = num;
         else

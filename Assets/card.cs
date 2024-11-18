@@ -55,17 +55,39 @@ public class card : MonoBehaviour
                     Stats.current.CurrentCS.enabled = true;
                     Progress.setInt(ID, 1);
                     print("GOT HERE 1" + ID);
+                    MakeChoiceChanges(false);
                 }
                 else
                 {
                     Progress.setInt(ID, 2);
                     print("GOT HERE 2" + ID);
+                    MakeChoiceChanges(true);
                 }
                 transform.parent.gameObject.SetActive(false);
                 Dialogue.forceGoodToGo(true);
                 //CamZoom.cz.TempSetSize(-1);
                 //Stats.current.CurrentCS
             }
+        }
+    }
+
+    void MakeChoiceChanges(bool positive)
+    {
+        switch (ID)
+        {
+            case "Are you scared of me?":
+                if (positive)
+                    Stats.changeFriendship("MRespect", -1);
+                else
+                    Stats.changeFriendship("MRespect", -2);
+                break;
+            case "FredIntro":
+                if (positive)
+                    Stats.changeFriendship("FredF", 1);
+                else
+                    Stats.changeFriendship("FredF", 0);
+                break;
+
         }
     }
 
@@ -82,32 +104,6 @@ public class card : MonoBehaviour
         col.enabled = false;
         counting = true;
         allowClick = false;
-
-        if(gameObject.name == "1")//negative
-        {
-            switch (ID)
-            {
-                case "Are you scared of me?":
-                    Progress.setInt("MRespect", -1);
-                    break;
-                case "FredIntro":
-                    Progress.setInt("FredF", 0);
-                    break;
-
-            }
-        }
-        else//positive
-        {
-            switch (ID)
-            {
-                case "Are you scared of me?":
-                    Progress.setInt("MRespect", -2);
-                    break;
-                case "FredIntro":
-                    Progress.setInt("FredF", 1);
-                    break;
-            }
-        }
 
 
     }

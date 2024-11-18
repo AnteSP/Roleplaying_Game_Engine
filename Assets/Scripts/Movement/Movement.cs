@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     [SerializeField] float Speed = 0.25f;
     [SerializeField] float SlowDownCoefficent = 10;
     [SerializeField] float AnimSpeed = 4;
+    [SerializeField] GameObject FObj;
+    bool fObjActivated = false;
     //[SerializeField] Vector2 CameraBoundsPos, CameraBoundsNeg;
     float RSpeed;
 
@@ -27,14 +29,17 @@ public class Movement : MonoBehaviour
 
     Vector3 LastPos;
     float timer = 0;
+    SpriteRenderer spr;
 
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
         An = GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
         Crb = Camera.main.GetComponent<Rigidbody2D>();
         StartPos = transform.position;
         FocusPoint = transform.position;
+        if (FObj == null) fObjActivated = true;
     }
 
     // Start is called before the first frame update
@@ -91,6 +96,21 @@ public class Movement : MonoBehaviour
             }
                 
         }
+
+        if (!fObjActivated && Input.GetKey(KeyCode.F))
+        {
+            fObjActivated = true;
+            spr.enabled = false;
+            FObj.SetActive(true);
+            StartCoroutine(disableObjIn(0.8f));
+        }
+    }
+
+    IEnumerator disableObjIn(float s)
+    {
+        yield return new WaitForSeconds(s);
+        FObj.SetActive(false);
+        spr.enabled = true;
     }
 
     bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
