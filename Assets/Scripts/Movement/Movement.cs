@@ -31,6 +31,10 @@ public class Movement : MonoBehaviour
     float timer = 0;
     SpriteRenderer spr;
 
+    int turningFreq = 0;
+    int spinObjTriggers = 0;
+    [SerializeField] GameObject SpinObj;
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,6 +58,57 @@ public class Movement : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        if (turningFreq > 0) turningFreq -= 1;
+        if (turningFreq > 800)
+        {
+            if(SpinObj != null)
+            {
+                SpinObj.SetActive(true);
+                StartCoroutine(disableObjIn(2, SpinObj));
+                turningFreq = 0;
+                spinObjTriggers++;
+
+                if(spinObjTriggers == 3)
+                {
+                    Stats.DisplayMessage("Ok dude we fucking get it, haha funi explosion, chill");
+                }else if(spinObjTriggers == 4)
+                {
+                    Stats.DisplayMessage("Bro istfg if you keep doing that something's gonna break");
+                }
+                else if (spinObjTriggers == 5)
+                {
+                    SpinObj.GetComponent<SpriteRenderer>().color = Color.blue;
+                }
+                else if (spinObjTriggers == 6)
+                {
+                    SpinObj.GetComponent<SpriteRenderer>().color = Color.white;
+                    Stats.DisplayMessage("The explosions blue now. ITS FUCKING BLUE. Do you even know how bad that is!??!?!?");
+                }
+                else if (spinObjTriggers == 7)
+                {
+                    rb.gravityScale = 30;
+                    Stats.DisplayMessage("Fuck you, gravity");
+                }
+                else if (spinObjTriggers == 8)
+                {
+                    rb.gravityScale = -30;
+                    spr.flipY = true;
+                    Stats.DisplayMessage("Isn't your hand getting tired?");
+                }
+                else if (spinObjTriggers == 9)
+                {
+                    rb.gravityScale =0;
+                    spr.flipY = false;
+                    Stats.DisplayMessage("If you do this one more time, shit is really going to get weird. I'm warning you (Like, game breakingly bad. Save first before going any farther)");
+                }
+                else if (spinObjTriggers >= 10)
+                {
+                    GameObject.Instantiate(gameObject);
+                    GameObject.Instantiate(gameObject);
+                    GameObject.Instantiate(gameObject);
+                }
+            }
+        }
         //movement stuff
         int Hor = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         int Ver = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
@@ -102,14 +157,14 @@ public class Movement : MonoBehaviour
             fObjActivated = true;
             spr.enabled = false;
             FObj.SetActive(true);
-            StartCoroutine(disableObjIn(0.8f));
+            StartCoroutine(disableObjIn(0.8f,FObj));
         }
     }
 
-    IEnumerator disableObjIn(float s)
+    IEnumerator disableObjIn(float s,GameObject g)
     {
         yield return new WaitForSeconds(s);
-        FObj.SetActive(false);
+        g.SetActive(false);
         spr.enabled = true;
     }
 
@@ -141,8 +196,10 @@ public class Movement : MonoBehaviour
         transform.position = StartPos;
     }
 
+    string lastAnim = "";
     public void Face(Vector2 a)
     {
+        string comp = "";
         a = a - rb.position;
 
         An.SetInteger("Horizontal", 0);
@@ -152,15 +209,20 @@ public class Movement : MonoBehaviour
 
         if (Mathf.Abs(a.x) > Mathf.Abs(a.y))
         {
+            comp = (a.x < 0) ? "Idle_Walk_Left" : "Idle_Walk_Right";
             An.Play((a.x < 0) ? "Idle_Walk_Left" : "Idle_Walk_Right");
             An.Play((a.x < 0) ? "Idle left" : "Idle right");
         }
         else
         {
+            comp = (a.x < 0) ? "Idle_Walk_Down" : "Idle_Walk_Up";
             An.Play((a.y < 0) ? (An.GetBool("Drunk") ? "Idle Drunk Down" : "Idle down") : "Idle up");
             An.Play((a.y < 0) ? "Idle_Walk_Down" : "Idle_Walk_Up");
         }
-            
+
+        if (comp != lastAnim) turningFreq += 10;
+        lastAnim = comp;
+
     }
 
 }
