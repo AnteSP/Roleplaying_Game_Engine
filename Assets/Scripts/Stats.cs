@@ -333,7 +333,7 @@ public class Stats : MonoBehaviour
     /// <param name="source">Set this if you only want time to start again if it gets started again by your source string</param>
     public static void StartStopTime(bool start,string source="")
     {
-        print("START " + start + " source: " + source);
+        //print("START " + start + " source: " + source);
         int comp = 0;
         if(source != "")
         {
@@ -498,7 +498,7 @@ public class Stats : MonoBehaviour
     public static void releaseLockedInObject(bool removeFromNearby = true)
     {
         if (current.lockedInConvoWith == null) return;
-        print("Released locked in");
+        //print("Released locked in");
         GameObject lockedInObjectPointer = current.lockedInConvoWith.gameObject;
         current.lockedInConvoWith = null;
         if(removeFromNearby)
@@ -508,7 +508,7 @@ public class Stats : MonoBehaviour
 
     public static void setLockedInObject(Resource r)
     {
-        print("Locked in " + r.gameObject.name);
+        //print("Locked in " + r.gameObject.name);
         current.lockedInConvoWith = r;
     }
     /*
@@ -810,7 +810,7 @@ public class Stats : MonoBehaviour
             else return;
         }
 
-        print("M-START " + start + " SOURCE " + source);
+        //print("M-START " + start + " SOURCE " + source);
         int comp = 0;
         if(source != "")
         {

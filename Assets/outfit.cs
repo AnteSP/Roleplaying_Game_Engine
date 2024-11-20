@@ -20,6 +20,8 @@ public class outfit : MonoBehaviour
 
     public List<RuntimeAnimatorController> playerOutfitAnims;
 
+    public List<Animator> animsToAlsoChange = new List<Animator>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +95,15 @@ public class outfit : MonoBehaviour
             //print("X IN Y " + Items.IndexOfXinY(itemInd, outfitItemIDs));
             anim.runtimeAnimatorController = playerOutfitAnims[ Items.IndexOfXinY(itemInd, outfitItemIDs) ];
         }
-        
+
+        foreach (Animator a in animsToAlsoChange)
+        {
+            //a.gameObject.SetActive(true);
+            a.runtimeAnimatorController = playerOutfitAnims[Items.IndexOfXinY(itemInd, outfitItemIDs)];
+            a.SetInteger("Vertical", 1);
+            //a.gameObject.SetActive(false);
+        }
+
+
     }
 }

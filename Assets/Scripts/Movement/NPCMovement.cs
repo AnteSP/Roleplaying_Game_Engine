@@ -38,6 +38,7 @@ public class NPCMovement : MonoBehaviour
 
             OscilatingSound.volume = 0;
         }
+        ResetAn();
     }
 
     public void HandleAnimVals()
