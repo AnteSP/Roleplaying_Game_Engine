@@ -39,6 +39,10 @@ public class CutSceneTalker : MonoBehaviour
 
     public bool Ending = false;
     public bool skipPacking = false;
+    /// <summary>
+    /// Set this cutscene as Stats.currentcs then this cutscenetalker gets disabled until it is triggered by Stats or %S
+    /// </summary>
+    public bool setAsCurrent = false;
     public bool EndingChapter = false;
     public bool stopMusicOnStart = false;
 
@@ -141,6 +145,13 @@ public class CutSceneTalker : MonoBehaviour
         {
             Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
             Stats.current.Player = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (setAsCurrent)
+        {
+            Stats.current.CurrentCS = this;
+            setAsCurrent = false;
+            this.enabled = false;
+            return;
         }
         if(!skipPacking)PackUp(false);
         /*

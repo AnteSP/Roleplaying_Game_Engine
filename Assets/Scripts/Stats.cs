@@ -308,6 +308,8 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public uint getTime() => this.Time;
+
     public void SetupShop()
     {
         if (ChangeMoney(-SellSpot.current.CostToPrep))

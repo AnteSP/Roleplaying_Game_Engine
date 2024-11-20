@@ -26766,7 +26766,7 @@ GameObject:
   - component: {fileID: 1322229501}
   - component: {fileID: 1322229500}
   m_Layer: 0
-  m_Name: Fred
+  m_Name: Fred NPC 1
   m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28932,6 +28932,7 @@ MonoBehaviour:
   destroyAfter: []
   Ending: 0
   skipPacking: 0
+  setAsCurrent: 0
   EndingChapter: 0
   stopMusicOnStart: 0
   switchWhenDone: 
@@ -31628,7 +31629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597082572}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed007c1d9782244418b0175cb26bd511, type: 3}
   m_Name: 
@@ -31744,9 +31745,10 @@ MonoBehaviour:
   destroyAfter: []
   Ending: 0
   skipPacking: 0
+  setAsCurrent: 1
   EndingChapter: 0
   stopMusicOnStart: 0
-  switchWhenDone: 
+  switchWhenDone: Ch2FredCS1
 --- !u!114 &1597082575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33472,6 +33474,7 @@ GameObject:
   - component: {fileID: 1700876591}
   - component: {fileID: 1700876592}
   - component: {fileID: 1700876594}
+  - component: {fileID: 1700876595}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -33499,7 +33502,7 @@ MonoBehaviour:
   DEADLINE: {fileID: 522835495}
   LOADING: {fileID: 947760197}
   CurrentCS: {fileID: 0}
-  DefaultCS: {fileID: 1597082574}
+  DefaultCS: {fileID: 0}
   MESSAGE: {fileID: 1497209454}
   GOMESSAGE: {fileID: 198416665}
   ThereGoesMyHero: {fileID: 443387382}
@@ -33703,6 +33706,24 @@ MonoBehaviour:
   PlayerActor: {fileID: 0}
   TurnTimeOff: 0
   BeerSprite: {fileID: 0}
+--- !u!114 &1700876595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7595011c99eeb4fb39264b39da06f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: Ch2FredCS1
+  on: 0
+  enable: []
+  disable:
+  - {fileID: 1597082572}
+  - {fileID: 1322229497}
 --- !u!1 &1702333195
 GameObject:
   m_ObjectHideFlags: 0
@@ -34522,10 +34543,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

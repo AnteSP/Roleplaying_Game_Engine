@@ -220,7 +220,11 @@ public class Progress : MonoBehaviour
 
     public static void saveData()
     {
-        if(Stats.current != null) setInt("MONEY", Stats.current.Money);
+        if (Stats.current != null)
+        {
+            setInt("MONEY", Stats.current.Money);
+            setInt("TIME", (int)Stats.current.getTime());
+        }
 
         if(progressComps != null)
         foreach (Progress p in progressComps)
@@ -294,9 +298,16 @@ public class Progress : MonoBehaviour
         readData();
 
         if(Stats.current != null)
-        if(data.ContainsKey("MONEY"))
-            Stats.ChangeMoney(data["MONEY"].Value<int>() - Stats.current.Money);
-        else data.Add("MONEY", Stats.current.Money);
+        {
+            if (data.ContainsKey("MONEY"))
+                Stats.ChangeMoney(data["MONEY"].Value<int>() - Stats.current.Money);
+            else data.Add("MONEY", Stats.current.Money);
+
+            if(data.ContainsKey("TIME"))
+                Stats.ChangeTime(data["TIME"].Value<uint>() - Stats.current.getTime());
+            else data.Add("TIME", (int)Stats.current.getTime());
+        }
+
 
         if (progressComps == null) progressComps = GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
 

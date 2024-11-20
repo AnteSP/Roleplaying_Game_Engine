@@ -175,6 +175,7 @@ public class Dialogue : MonoBehaviour
                 case 'S'://Start cutscene
                     CutSceneTalker cst = talker.GetComponent<CutSceneTalker>();
                     if (cst != null) Stats.current.CurrentCS = cst;
+                    CS = Stats.current.CurrentCS;
                     Stats.current.AllowSelecting = false;
                     talker.gameObject.tag = "Untagged";
                     talker = null;

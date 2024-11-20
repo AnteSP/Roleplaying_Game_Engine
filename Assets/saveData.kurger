@@ -26,12 +26,12 @@
   "MRespect": -1,
   "Ch2TutorialDone": true,
   "Ch2OpeningDone": true,
-  "Deadlines": {
-    "A-Ch2": true
-  },
+  "Deadlines": {},
   "Volume": 1.0,
-  "FredIntro": 1,
-  "FredF": 0,
+  "FredIntro": 2,
+  "FredF": 2,
   "Ch2Newspaper1": true,
-  "Chapter": 1
+  "Chapter": 1,
+  "TIME": 485,
+  "Ch2FredCS1": false
 }
