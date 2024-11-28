@@ -15,6 +15,8 @@ public class Ch2Events : MonoBehaviour
     [SerializeField] NPCMovement PlayerActor;
     public bool TurnTimeOff = false;
     [SerializeField] Sprite BeerSprite;
+    [SerializeField] Transform playerTPSpot;
+    [SerializeField] GameObject playerSleeping;
 
     // Start is called before the first frame update
     void Start()
@@ -71,5 +73,21 @@ public class Ch2Events : MonoBehaviour
         Items.ShiftAnim(BeerSprite, "BEER!", "Finally no more withdrawal symptoms");
         //Items.Add(25, 1);
         PlayerActor.Face("down");
+    }
+
+    public void takePlayerToTPSpot()
+    {
+        Stats.current.Player.GetComponent<SpriteRenderer>().enabled = false;
+        
+        Stats.current.Player.transform.position = playerTPSpot.transform.position;
+        Stats.current.Player.GetComponent<Movement>().handleCameraStuff(0, 0, playerTPSpot.transform.position, true);
+        Stats.StartStopPlayerMovement(false,"Ch2Wake");
+    }
+
+    public void bringBackPlayerAfterWaking()
+    {
+        Stats.current.Player.GetComponent<SpriteRenderer>().enabled = true;
+        Stats.StartStopPlayerMovement(true, "Ch2Wake");
+        playerSleeping.SetActive(false);
     }
 }

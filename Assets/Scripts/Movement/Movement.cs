@@ -54,6 +54,37 @@ public class Movement : MonoBehaviour
 
     }
 
+    public void handleCameraStuff(int Hor, int Ver, Vector2 nextPos,bool noMouseForce = false)
+    {
+        //print("GONE THRU " + noMouseForce);
+        bool rememberMouse = UseMouse;
+        if (noMouseForce) UseMouse = false;
+        Vector2 temp = Offset();
+        Vector2 mOffset = temp * temp * temp * 40;
+        //FocusPoint = (Vector2)transform.position + (UseMouse? mOffset : Vector2.zero);
+        FocusPoint = nextPos + (UseMouse ? mOffset : Vector2.zero);
+
+        if ((Hor == 0 && Ver == 0) && Input.mousePosition != LastPos)
+        {
+            Face((Vector2)transform.position + mOffset);
+        }
+        LastPos = Input.mousePosition;
+
+        if (IsMouseOverGameWindow || noMouseForce)
+        {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                CamZoom.setFocusPoint(nextPos);
+            }
+            else
+            {
+                CamZoom.setFocusPoint(FocusPoint);
+            }
+
+        }
+        if (noMouseForce) UseMouse = rememberMouse;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -61,53 +92,7 @@ public class Movement : MonoBehaviour
         if (turningFreq > 0) turningFreq -= 1;
         if (turningFreq > 800)
         {
-            if(SpinObj != null)
-            {
-                SpinObj.SetActive(true);
-                StartCoroutine(disableObjIn(2, SpinObj));
-                turningFreq = 0;
-                spinObjTriggers++;
-
-                if(spinObjTriggers == 3)
-                {
-                    Stats.DisplayMessage("Ok dude we fucking get it, haha funi explosion, chill");
-                }else if(spinObjTriggers == 4)
-                {
-                    Stats.DisplayMessage("Bro istfg if you keep doing that something's gonna break");
-                }
-                else if (spinObjTriggers == 5)
-                {
-                    SpinObj.GetComponent<SpriteRenderer>().color = Color.blue;
-                }
-                else if (spinObjTriggers == 6)
-                {
-                    SpinObj.GetComponent<SpriteRenderer>().color = Color.white;
-                    Stats.DisplayMessage("The explosions blue now. ITS FUCKING BLUE. Do you even know how bad that is!??!?!?");
-                }
-                else if (spinObjTriggers == 7)
-                {
-                    rb.gravityScale = 30;
-                    Stats.DisplayMessage("Fuck you, gravity");
-                }
-                else if (spinObjTriggers == 8)
-                {
-                    rb.gravityScale = -30;
-                    spr.flipY = true;
-                    Stats.DisplayMessage("Isn't your hand getting tired?");
-                }
-                else if (spinObjTriggers == 9)
-                {
-                    rb.gravityScale =0;
-                    spr.flipY = false;
-                    Stats.DisplayMessage("If you do this one more time, shit is really going to get weird. I'm warning you (Like, game breakingly bad. Save first before going any farther)");
-                }
-                else if (spinObjTriggers >= 10)
-                {
-                    GameObject.Instantiate(gameObject);
-                    GameObject.Instantiate(gameObject);
-                    GameObject.Instantiate(gameObject);
-                }
-            }
+            if(SpinObj != null) handleSpinEvents();
         }
         //movement stuff
         int Hor = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
@@ -128,29 +113,8 @@ public class Movement : MonoBehaviour
 
         An.SetFloat("Speed", RSpeed*AnimSpeed);
 
-        Vector2 temp = Offset();
-        Vector2 mOffset = temp * temp * temp * 40;
-        //FocusPoint = (Vector2)transform.position + (UseMouse? mOffset : Vector2.zero);
-        FocusPoint = nextPos + (UseMouse ? mOffset : Vector2.zero);
+        handleCameraStuff(Hor,Ver,nextPos);
 
-        if ((Hor==0 && Ver == 0) && Input.mousePosition != LastPos)
-        {
-            Face((Vector2)transform.position + mOffset);
-        }
-        LastPos = Input.mousePosition;
-
-        if (IsMouseOverGameWindow)
-        {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                CamZoom.setFocusPoint(nextPos);
-            }
-            else
-            {
-                CamZoom.setFocusPoint(FocusPoint);
-            }
-                
-        }
 
         if (!fObjActivated && Input.GetKey(KeyCode.F))
         {
@@ -158,6 +122,55 @@ public class Movement : MonoBehaviour
             spr.enabled = false;
             FObj.SetActive(true);
             StartCoroutine(disableObjIn(0.8f,FObj));
+        }
+    }
+
+    void handleSpinEvents()
+    {
+        SpinObj.SetActive(true);
+        StartCoroutine(disableObjIn(2, SpinObj));
+        turningFreq = 0;
+        spinObjTriggers++;
+
+        if (spinObjTriggers == 3)
+        {
+            Stats.DisplayMessage("Ok dude we fucking get it, haha funi explosion, chill");
+        }
+        else if (spinObjTriggers == 4)
+        {
+            Stats.DisplayMessage("Bro istfg if you keep doing that something's gonna break");
+        }
+        else if (spinObjTriggers == 5)
+        {
+            SpinObj.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else if (spinObjTriggers == 6)
+        {
+            SpinObj.GetComponent<SpriteRenderer>().color = Color.white;
+            Stats.DisplayMessage("The explosions blue now. ITS FUCKING BLUE. Do you even know how bad that is!??!?!?");
+        }
+        else if (spinObjTriggers == 7)
+        {
+            rb.gravityScale = 30;
+            Stats.DisplayMessage("Fuck you, gravity");
+        }
+        else if (spinObjTriggers == 8)
+        {
+            rb.gravityScale = -30;
+            spr.flipY = true;
+            Stats.DisplayMessage("Isn't your hand getting tired?");
+        }
+        else if (spinObjTriggers == 9)
+        {
+            rb.gravityScale = 0;
+            spr.flipY = false;
+            Stats.DisplayMessage("If you do this one more time, shit is really going to get weird. I'm warning you (Like, game breakingly bad. Save first before going any farther)");
+        }
+        else if (spinObjTriggers >= 10)
+        {
+            GameObject.Instantiate(gameObject);
+            GameObject.Instantiate(gameObject);
+            GameObject.Instantiate(gameObject);
         }
     }
 
