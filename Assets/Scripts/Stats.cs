@@ -306,6 +306,8 @@ public class Stats : MonoBehaviour
         {
             CloseMessage();
         }
+
+        Debug("TIME: " + Time);
     }
 
     public uint getTime() => this.Time;
@@ -707,6 +709,7 @@ public class Stats : MonoBehaviour
 
     public static void ChangeTime(uint Amount)
     {
+        //print("Changed " + Amount);
         allTimeInGame += (int)Amount;
         current.Day = (uint)allTimeInGame/(24*60) + 1;
 
@@ -738,6 +741,17 @@ public class Stats : MonoBehaviour
             }
 
         }
+    }
+
+    public static void SkipToNextTime(uint hour,uint min)
+    {
+        uint rawTime = Stats.current.Time % (24 * 60);
+
+        uint targTime = ((hour * 60) + min) - 120; //120 offset is needed for some reason? (it works tho. Not sure why. But it works)
+
+        //print("RAW " + rawTime + " TARG " + targTime);
+
+        ChangeTime((targTime - rawTime) + (uint)(targTime < rawTime ? (24 * 60) : 0));
     }
     /*
     public static void CreateAction(string Title,string Description,int Changemoney,float ChangeEnergy,uint ChangeTime)

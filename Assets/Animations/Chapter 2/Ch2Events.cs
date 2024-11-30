@@ -82,6 +82,7 @@ public class Ch2Events : MonoBehaviour
         Stats.current.Player.transform.position = playerTPSpot.transform.position;
         Stats.current.Player.GetComponent<Movement>().handleCameraStuff(0, 0, playerTPSpot.transform.position, true);
         Stats.StartStopPlayerMovement(false,"Ch2Wake");
+        Stats.SkipToNextTime(9,0);
     }
 
     public void bringBackPlayerAfterWaking()
