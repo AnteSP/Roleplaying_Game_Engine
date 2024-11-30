@@ -18364,6 +18364,7 @@ MonoBehaviour:
   - {fileID: 2059182269}
   Ending: 0
   skipPacking: 0
+  setAsCurrent: 0
   EndingChapter: 0
   stopMusicOnStart: 0
   switchWhenDone: 
@@ -19657,9 +19658,11 @@ MonoBehaviour:
   Speed: 0.15
   SlowDownCoefficent: 10
   AnimSpeed: 1.4
+  FObj: {fileID: 0}
   SlowDown: 1
   FocusPoint: {x: 0, y: 0}
   UseMouse: 1
+  SpinObj: {fileID: 0}
 --- !u!212 &680135427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19910,6 +19913,8 @@ MonoBehaviour:
   PlayerActor: {fileID: 0}
   TurnTimeOff: 1
   BeerSprite: {fileID: 0}
+  playerTPSpot: {fileID: 0}
+  playerSleeping: {fileID: 0}
 --- !u!95 &686907890
 Animator:
   serializedVersion: 4
@@ -48372,6 +48377,7 @@ GameObject:
   - component: {fileID: 1700876595}
   - component: {fileID: 1700876597}
   - component: {fileID: 1700876596}
+  - component: {fileID: 1700876598}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -48428,6 +48434,7 @@ MonoBehaviour:
   TeleportPointsParent: {fileID: 1681766221}
   stickyNotes: []
   DeadlineNotification: {fileID: 446982909}
+  SocialNotification: {fileID: 0}
 --- !u!4 &1700876590
 Transform:
   m_ObjectHideFlags: 0
@@ -48753,6 +48760,28 @@ MonoBehaviour:
   enable: []
   disable:
   - {fileID: 2059182269}
+--- !u!114 &1700876598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed85c29afafc03499627cde49c97d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 66
+  Description: 21:00 Daily Mafia check-in
+  requirements: 
+  hour: 21
+  day: 2
+  FailCutScene: {fileID: 0}
+  SuccessCutScene: {fileID: 1883371926}
+  TriggerAtMinute: 0
+  MinutesLeft: 0
+  stickyNote: 0
 --- !u!1 &1701395931
 GameObject:
   m_ObjectHideFlags: 0
@@ -53530,6 +53559,7 @@ MonoBehaviour:
   destroyAfter: []
   Ending: 0
   skipPacking: 0
+  setAsCurrent: 0
   EndingChapter: 0
   stopMusicOnStart: 0
   switchWhenDone: 
@@ -58129,6 +58159,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: ff054f0c69a15164590fc2801de67ba2, type: 2}
   - {fileID: 9100000, guid: 8c93053d03ce2a2419054d930ad0d0b3, type: 2}
   - {fileID: 9100000, guid: fea47e5d271cbc64cb6cbb6ad5aa4d22, type: 2}
+  animsToAlsoChange: []
 --- !u!1 &2062431873
 GameObject:
   m_ObjectHideFlags: 0

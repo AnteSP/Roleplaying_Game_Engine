@@ -83,6 +83,15 @@ class Deadline : MonoBehaviour
         {
             print("THROWING AWAY DEADLINE " + MinutesLeft + " / " + TriggerAtMinute);
 
+            if (SuccessCutScene == null && FailCutScene == null)
+            {
+                Stats.current.stickyNotes[stickyNote].gameObject.SetActive(false);
+                activeDeadlineData[stickyNote] = null;
+                enabled = false;
+                print("ERROR WITH DEADLINE. NO CS");
+                return;
+            }
+
             Stats.current.CurrentCS = fulfillRequirement() ? SuccessCutScene : FailCutScene;
             Stats.current.CurrentCS.enabled = true;
             Stats.Transition(0);
@@ -91,6 +100,8 @@ class Deadline : MonoBehaviour
             activeDeadlineData[stickyNote] = null;
             enabled = false;
             Stats.ChangeTime((uint) (Stats.allTimeInGame - TriggerAtMinute) );
+
+            
         }
     }
 

@@ -24,12 +24,14 @@
   "MRespect": -1,
   "Ch2TutorialDone": true,
   "Ch2OpeningDone": true,
-  "Deadlines": {},
+  "Deadlines": {
+    "B-Ch2-HQ": true
+  },
   "Volume": 1.0,
   "FredIntro": 2,
   "FredF": 2,
   "Ch2Newspaper1": true,
   "Chapter": 1,
-  "TIME": 485,
+  "TIME": 420,
   "Ch2FredCS1": true
 }

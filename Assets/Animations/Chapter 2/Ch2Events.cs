@@ -90,5 +90,12 @@ public class Ch2Events : MonoBehaviour
         Stats.current.Player.GetComponent<SpriteRenderer>().enabled = true;
         Stats.StartStopPlayerMovement(true, "Ch2Wake");
         playerSleeping.SetActive(false);
+        switch (Stats.getCurrentDay())
+        {
+            case 2:
+                Stats.StartDeadline('B');
+                break;
+                
+        }
     }
 }

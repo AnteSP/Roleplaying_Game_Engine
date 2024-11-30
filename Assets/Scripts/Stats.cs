@@ -753,6 +753,7 @@ public class Stats : MonoBehaviour
 
         ChangeTime((targTime - rawTime) + (uint)(targTime < rawTime ? (24 * 60) : 0));
     }
+    public static uint getCurrentDay() => current.Day;
     /*
     public static void CreateAction(string Title,string Description,int Changemoney,float ChangeEnergy,uint ChangeTime)
     {
