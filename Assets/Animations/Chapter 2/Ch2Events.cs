@@ -81,14 +81,14 @@ public class Ch2Events : MonoBehaviour
         
         Stats.current.Player.transform.position = playerTPSpot.transform.position;
         Stats.current.Player.GetComponent<Movement>().handleCameraStuff(0, 0, playerTPSpot.transform.position, true);
-        Stats.StartStopPlayerMovement(false,"Ch2Wake");
+        Stats.StartStopPlayerMovement(false,"Ch2WakeUp");
         Stats.SkipToNextTime(9,0);
     }
 
     public void bringBackPlayerAfterWaking()
     {
         Stats.current.Player.GetComponent<SpriteRenderer>().enabled = true;
-        Stats.StartStopPlayerMovement(true, "Ch2Wake");
+        Stats.StartStopPlayerMovement(true, "Ch2WakeUp");
         playerSleeping.SetActive(false);
         switch (Stats.getCurrentDay())
         {
@@ -97,5 +97,6 @@ public class Ch2Events : MonoBehaviour
                 break;
                 
         }
+        Progress.switchInPlay("Ch2WakeUp", false);
     }
 }

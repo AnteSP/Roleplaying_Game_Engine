@@ -26820,7 +26820,8 @@ MonoBehaviour:
   sentences:
   - ...
   - '%#C...!'
-  - Oh you're that odd bloke who's been wanderin' the streets. Ow's it goin on
+  - '%[Ch2WakeUp]Oh you''re that odd bloke who''s been wanderin'' the streets. Ow''s
+    it goin on'
   - '%S'
   TypeNoise: {fileID: 1570525495}
   talkOnAwake: 0
@@ -28935,7 +28936,7 @@ MonoBehaviour:
   setAsCurrent: 0
   EndingChapter: 0
   stopMusicOnStart: 0
-  switchWhenDone: 
+  switchWhenDone: Ch2FredCS1
 --- !u!1 &1458313669
 GameObject:
   m_ObjectHideFlags: 0
@@ -33706,6 +33707,8 @@ MonoBehaviour:
   PlayerActor: {fileID: 0}
   TurnTimeOff: 0
   BeerSprite: {fileID: 0}
+  playerTPSpot: {fileID: 0}
+  playerSleeping: {fileID: 0}
 --- !u!114 &1700876595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34543,10 +34546,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

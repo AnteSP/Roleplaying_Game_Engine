@@ -110,7 +110,7 @@ public class card : MonoBehaviour
 
     public void launch()
     {
-        print("launched");
+        //print("launched");
         if(rb == null)
         {
             rb = GetComponent<Rigidbody2D>();

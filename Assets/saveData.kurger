@@ -20,18 +20,21 @@
     "1": 5,
     "3": 15
   },
-  "Recipes": {},
+  "Recipes": {
+    "Sparkling Water": true
+  },
   "MRespect": -1,
   "Ch2TutorialDone": true,
   "Ch2OpeningDone": true,
-  "Deadlines": {
-    "B-Ch2-HQ": true
-  },
   "Volume": 1.0,
-  "FredIntro": 2,
-  "FredF": 2,
+  "FredIntro": 1,
+  "FredF": 4,
   "Ch2Newspaper1": true,
   "Chapter": 1,
-  "TIME": 420,
+  "TIME": 1986,
+  "Deadlines": {
+    "B-Ch2": true
+  },
+  "Ch2WakeUp": false,
   "Ch2FredCS1": true
 }

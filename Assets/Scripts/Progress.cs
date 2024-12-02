@@ -18,18 +18,6 @@ public class Progress : MonoBehaviour
     static bool loadedItems = false;
     static bool loadedDeadlines = false;
 
-    class Node
-    {
-        public Node(string id,bool on)
-        {
-            this.Id = id;
-            this.On = on;
-        }
-
-        public string Id;
-        public bool On = false;
-    }
-
     static Progress[] progressComps = null;
     static JObject data = null;
     static string SName = "U";
@@ -43,7 +31,12 @@ public class Progress : MonoBehaviour
         //readData();
     }
 
-    public static void markDataAsUnloaded() { loaded = false; progressComps = null; loadedItems = false;loadedDeadlines = false; }
+    public static void DEBUG_printData()
+    {
+        print("UPDATE TEST:\n"+data);
+    }
+
+    public static void markDataAsUnloaded() { loaded = false; progressComps = null; print("progressComps set to null"); loadedItems = false;loadedDeadlines = false; }
 
     public static bool wasDataLoaded() => loaded;
 
@@ -109,7 +102,8 @@ public class Progress : MonoBehaviour
 
     public static void checkProgress()
     {
-        foreach(Progress p in progressComps)
+        ensureProgressCompsGood();
+        foreach (Progress p in progressComps)
         {
             foreach(GameObject g in p.enable) g.SetActive(p.on);
             foreach (GameObject g in p.disable) g.SetActive(!p.on);
@@ -174,10 +168,20 @@ public class Progress : MonoBehaviour
         }
     }
 
+    static void ensureProgressCompsGood()
+    {
+        if (progressComps == null)
+        {
+            progressComps = GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
+            print("RESET progressComps " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
+    }
+
     static public void switchInPlay(string switchID,bool on)
     {
         try
         {
+            ensureProgressCompsGood();
             if (data.ContainsKey(switchID))
             {
                 foreach (Progress p in progressComps.Where(a => a.Id == switchID))
@@ -200,9 +204,9 @@ public class Progress : MonoBehaviour
                 }
             }
         }
-        catch
+        catch(System.Exception e)
         {
-            print("ERROR: Switch [" + switchID + "] IDK WHAT HAPPENED. Adding Now");
+            print("ERROR: Switch [" + switchID + "] IDK WHAT HAPPENED (" + e+")(" + e.StackTrace +"). Adding Now");
             data.Add(switchID, on);
         }
     }
@@ -262,11 +266,13 @@ public class Progress : MonoBehaviour
             ((JObject)data["Upgrades"]).Add(u.Name, true);
         }
 
+        string chapterString = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Split('-')[0];
+
         if (!data.ContainsKey("Deadlines")) data.Add("Deadlines", new JObject());
         data["Deadlines"] = new JObject();
         foreach (Deadline d in Stats.current.GetComponents<Deadline>().Where(a => a.enabled))
         {
-            ((JObject)data["Deadlines"]).Add(d.ID + "-" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, true);
+            ((JObject)data["Deadlines"]).Add(d.ID + "-" + chapterString, true);
         }
 
         File.WriteAllText(SName,data.ToString());
@@ -308,17 +314,17 @@ public class Progress : MonoBehaviour
             else data.Add("TIME", (int)Stats.current.getTime());
         }
 
-
-        if (progressComps == null) progressComps = GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
+        ensureProgressCompsGood();
 
         foreach (Progress p in progressComps)
         {
-            //print("P = " + p.Id);
+            print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());
             if (data.ContainsKey(p.Id))
                 p.on = data[p.Id].Value<bool>();
             else print("ERROR: Missing field [" + p.Id + "] in save data");
         }
-   
+
+        //print("LOADING DEDS");
         if (!loadedDeadlines && data["Deadlines"] != null)
         {
             List<char> deadlines = new List<char>();
@@ -328,7 +334,7 @@ public class Progress : MonoBehaviour
                 // 'child' is of type JProperty, which represents a key-value pair
                 string key = ((JProperty)child).Name;
 
-                if (key.Remove(0, 2) == UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
+                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.StartsWith(key.Remove(0, 2) + "-"))
                 {
                     Stats.current.GetComponents<Deadline>()
                         .Where(a => a.ID == key.ToCharArray()[0]).First().enabled = true;
@@ -336,6 +342,7 @@ public class Progress : MonoBehaviour
             }
             loadedDeadlines = true;
         }
+        //print("DONE LOADING DEDS");
 
         if (!excludeItems)
         {

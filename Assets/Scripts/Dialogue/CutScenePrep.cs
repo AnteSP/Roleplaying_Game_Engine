@@ -36,9 +36,10 @@ public class CutScenePrep : StateMachineBehaviour
             if (cs.GoToNextScene())
             {
                 MonoBehaviour.print("Switching to scene ");
-                System.Console.WriteLine("CS");
-                Stats.current.AllowSelecting = false;
-                Stats.current.FilterColor(new Color(0, 0, 0, 1));
+
+                return;
+                //Stats.current.AllowSelecting = false;
+                //Stats.current.FilterColor(new Color(0, 0, 0, 1));
             }
             else
             {
@@ -72,6 +73,7 @@ public class CutScenePrep : StateMachineBehaviour
         if(Ending) Stats.current.CurrentCS = null;
 
         Dialogue.d.forceStopSounds();
+        //Progress.DEBUG_printData();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

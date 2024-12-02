@@ -17,7 +17,7 @@ public class Stats : MonoBehaviour
     public int Money;
     //public uint TimeFromMidNight = 0;
     
-    uint Time = 480;
+    uint Time = 480;//avoid using
     uint Day = 1;
 
     int Digits;
@@ -190,6 +190,19 @@ public class Stats : MonoBehaviour
             Transform invO = GameObject.FindGameObjectWithTag("Inventory").transform;
             invO.position = new Vector3(invO.position.x - (250 * invO.lossyScale.x), invO.position.y, invO.position.z);
         }
+
+        if (streetLightsParent != null)
+        {
+            streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
+
+            float dayperc = ((float)allTimeInGame % (24f * 60f)) / (24f * 60f);
+            dayperc = (Mathf.Cos(dayperc * current.suncoefficient - 0.5f) / 2) + 0.5f;
+
+            isday = dayperc < 0.6f;
+
+            foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
+        }
+
         //print("load please");
         if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
         //print("did it tho?");
@@ -215,18 +228,6 @@ public class Stats : MonoBehaviour
 
         OGTimeTextScale = current.TIMETEXT.transform.localScale;
         TargTimeTextScale = OGTimeTextScale * 1.4f;
-
-        if (streetLightsParent != null)
-        {
-            streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
-
-            float dayperc = ((float)allTimeInGame % (24f * 60f)) / (24f * 60f);
-            dayperc = (Mathf.Cos(dayperc * current.suncoefficient - 0.5f) / 2) + 0.5f;
-
-            isday = dayperc < 0.6f;
-
-            foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
-        }
 
         //ChangeTime(TimeFromMidNight);
 
@@ -307,10 +308,10 @@ public class Stats : MonoBehaviour
             CloseMessage();
         }
 
-        Debug("TIME: " + Time);
+        Debug("TIME: " + allTimeInGame);
     }
 
-    public uint getTime() => this.Time;
+    public uint getTime() => (uint)allTimeInGame;
 
     public void SetupShop()
     {
@@ -745,9 +746,9 @@ public class Stats : MonoBehaviour
 
     public static void SkipToNextTime(uint hour,uint min)
     {
-        uint rawTime = Stats.current.Time % (24 * 60);
+        uint rawTime = (uint)(allTimeInGame % (24 * 60));
 
-        uint targTime = ((hour * 60) + min) - 120; //120 offset is needed for some reason? (it works tho. Not sure why. But it works)
+        uint targTime = ((hour * 60) + min);
 
         //print("RAW " + rawTime + " TARG " + targTime);
 
@@ -951,7 +952,8 @@ public class Stats : MonoBehaviour
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
-        
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(r);
+
         Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
 
         print("UNLOADING DATA");
@@ -1001,7 +1003,7 @@ public class Stats : MonoBehaviour
     //SocialNotification
     public static void changeFriendship(string Id,int amount)
     {
-        print("GOT HERE BLEGH");
+        //print("GOT HERE BLEGH");
         current.SocialNotification.transform.parent.gameObject.SetActive(true);//The parent should be the social menu handle
         current.SocialNotification.gameObject.SetActive(false);
 

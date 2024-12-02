@@ -120,6 +120,8 @@ public class CutSceneTalker : MonoBehaviour
 
         if (Dialogue.d != null) Dialogue.d.showDisplay(true);
 
+        
+
         if (b)//if exiting
         {
             this.tag = "Untagged";
@@ -136,6 +138,8 @@ public class CutSceneTalker : MonoBehaviour
             }
 
         }
+
+        
         
     }
 
@@ -216,6 +220,11 @@ public class CutSceneTalker : MonoBehaviour
         print("CHECKING SCENE" + lastSent);
         if (lastSent.StartsWith("%S"))
         {
+            if(switchWhenDone != "")
+            {
+                Progress.switchInPlay(switchWhenDone, true);
+            }
+
             if(lastSent.StartsWith("%S>")) 
                 Stats.current.SceneChange(Sentences.Last().Substring(3));
             else
