@@ -1,6 +1,6 @@
 {
   "FUN": 46,
-  "MONEY": 660640,
+  "MONEY": 659440,
   "Upgrades": {},
   "PickUps": {
     "*Ch2/Record": "",
@@ -28,13 +28,13 @@
   "Ch2OpeningDone": true,
   "Volume": 1.0,
   "FredIntro": 1,
-  "FredF": 4,
+  "FredF": 7,
   "Ch2Newspaper1": true,
   "Chapter": 1,
-  "TIME": 1986,
-  "Deadlines": {
-    "B-Ch2": true
-  },
-  "Ch2WakeUp": false,
-  "Ch2FredCS1": true
+  "TIME": 2739,
+  "Deadlines": {},
+  "Ch2WakeUp": true,
+  "Ch2FredCS1": true,
+  "FredConvoDecision1": 2,
+  "Ch2FredCS2": true
 }

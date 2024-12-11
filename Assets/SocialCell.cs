@@ -30,6 +30,7 @@ public class SocialCell : MonoBehaviour
 
     public static void refreshSocial()
     {
+        if(par != null)
         foreach(SocialCell cell in par.GetComponentsInChildren<SocialCell>())
         {
             cell.refresh();

@@ -308,7 +308,7 @@ public class Stats : MonoBehaviour
             CloseMessage();
         }
 
-        Debug("TIME: " + allTimeInGame);
+        //Debug("TIME: " + allTimeInGame);
     }
 
     public uint getTime() => (uint)allTimeInGame;

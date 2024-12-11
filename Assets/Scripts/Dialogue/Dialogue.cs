@@ -529,6 +529,47 @@ public class Dialogue : MonoBehaviour
                     DialogueChoiceNotif.SetTrigger("GoDec");
 
                     break;
+                case '{'://format: {4,2}{70,1} [INSERT MESSAGE HERE]    for giving player two item 4s and one item 70
+
+                    bool missingItems = false;
+
+                    List<int> amounts = new List<int>();
+                    List<int> items = new List<int>();
+
+                    while (c == '{')
+                    {
+                        print(Current.Substring(0, Current.IndexOf(',')));
+                        int item = int.Parse(Current.Substring(0, Current.IndexOf(',')));
+                        print(Current.Substring(Current.IndexOf(',') + 1, Current.IndexOf('}') - Current.IndexOf(',') - 1));
+                        int amount = int.Parse(Current.Substring(Current.IndexOf(',') + 1, Current.IndexOf('}') - Current.IndexOf(',') - 1));
+                        amounts.Add(amount);
+                        items.Add(item);
+                        if (!Items.Contains(item, amount))
+                        {
+                            print("NOT FOUND " + item + " x" + amount);
+                            missingItems = true;
+                        }
+
+
+                        c = Current[Current.IndexOf('}') + 1];
+                        Current = Current.Remove(0, Current.IndexOf('}') + 2);
+                    }
+
+                    if (!missingItems)
+                    {
+                        Current = " * You have the required items to continue!";
+
+                        for (int i = 0; i < amounts.Count; i++)
+                            Items.Add(items[i], -amounts[i]);
+                    }
+                    else
+                    {
+                        print("ERROR FROM LACK OF ITEM");
+                        Stats.DisplayMessage(Current, true);
+                        throw new System.Exception();
+                    }
+
+                    break;
             }
 
         }
@@ -548,4 +589,99 @@ public class Dialogue : MonoBehaviour
         //print("SET");
         Dialogue.d.CS.goodtoGo = val;
     }
+
+    static public void fuckfuckshitshit()
+    {
+        int pleaseFuckingWorkOhMyGod = 2;
+
+        if(pleaseFuckingWorkOhMyGod < Random.Range(1, 2))
+        {
+            print("What the fuck is happening");
+        }
+        else
+        {
+            print("I hate my fucking life");
+        }
+
+        bool ObamaFuckedMyWife = false;
+
+        fuckfuckshitshit();
+
+        while (ObamaFuckedMyWife)
+        {
+            print("Please God why is this happening to me");
+
+            float myPenisIsGone = 4f;
+
+            if (myPenisIsGone < 5f)
+            {
+                ObamaFuckedMyWife = true;
+            }
+
+
+        }
+
+        int pleaseFuckingWorkOhMyGod2 = 2;
+
+        if (pleaseFuckingWorkOhMyGod < Random.Range(1, 2))
+        {
+            print("What the fuck is happening");
+        }
+        else
+        {
+            print("I hate my fucking life");
+        }
+
+        bool ObamaFuckedMyWife3 = false;
+
+        fuckfuckshitshit();
+
+        while (ObamaFuckedMyWife)
+        {
+            print("Please God why is this happening to me");
+
+            float myPenisIsGone = 4f;
+
+            if (myPenisIsGone < 5f)
+            {
+                ObamaFuckedMyWife = true;
+            }
+
+
+        }
+
+        int pleaseFuckingWorkOhMyGod4 = 2;
+
+        if (pleaseFuckingWorkOhMyGod < Random.Range(1, 2))
+        {
+            print("What the fuck is happening");
+        }
+        else
+        {
+            print("I hate my fucking life");
+        }
+
+        bool ObamaFuckedMyWife5 = false;
+
+        fuckfuckshitshit();
+
+        while (ObamaFuckedMyWife)
+        {
+            print("Please God why is this happening to me");
+
+            float myPenisIsGone = 4f;
+
+            if (myPenisIsGone < 5f)
+            {
+                ObamaFuckedMyWife = true;
+            }
+
+
+        }
+
+
+
+    }
 }
+
+

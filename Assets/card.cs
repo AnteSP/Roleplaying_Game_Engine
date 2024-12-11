@@ -47,7 +47,7 @@ public class card : MonoBehaviour
             t += Time.deltaTime;
             if(t > 0.5f)
             {
-                if(gameObject.name == "1")
+                if(gameObject.name.StartsWith("1"))
                 {
                     Stats.current.CurrentCS.enabled = false;
                     Stats.current.CurrentCS = Stats.current.CurrentCS.alt;
@@ -86,6 +86,12 @@ public class card : MonoBehaviour
                     Stats.changeFriendship("FredF", 1);
                 else
                     Stats.changeFriendship("FredF", 0);
+                break;
+            case "FredConvoDecision1":
+                if (positive)
+                    Stats.changeFriendship("FredF", 1);
+                else
+                    Stats.changeFriendship("FredF", 1);
                 break;
 
         }

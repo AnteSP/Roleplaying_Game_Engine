@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-
+//using System;
 
 public class Progress : MonoBehaviour
 {
@@ -179,14 +179,15 @@ public class Progress : MonoBehaviour
 
     static public void switchInPlay(string switchID,bool on)
     {
+        print("Setting int " + switchID + " to " + on + " contains: " + data);
         try
         {
             ensureProgressCompsGood();
             if (data.ContainsKey(switchID))
             {
+                data[switchID] = on;
                 foreach (Progress p in progressComps.Where(a => a.Id == switchID))
                 {
-                    data[p.Id] = on;
                     p.on = on;
                     foreach (GameObject g in p.enable) g.SetActive(p.on);
                     foreach (GameObject g in p.disable) g.SetActive(!p.on);
@@ -318,7 +319,7 @@ public class Progress : MonoBehaviour
 
         foreach (Progress p in progressComps)
         {
-            print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());
+            //print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());
             if (data.ContainsKey(p.Id))
                 p.on = data[p.Id].Value<bool>();
             else print("ERROR: Missing field [" + p.Id + "] in save data");
@@ -333,8 +334,9 @@ public class Progress : MonoBehaviour
             {
                 // 'child' is of type JProperty, which represents a key-value pair
                 string key = ((JProperty)child).Name;
+                string sceneStr = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
-                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.StartsWith(key.Remove(0, 2) + "-"))
+                if (sceneStr.StartsWith(key.Remove(0, 2) + "-") || sceneStr == key.Remove(0, 2))
                 {
                     Stats.current.GetComponents<Deadline>()
                         .Where(a => a.ID == key.ToCharArray()[0]).First().enabled = true;
@@ -375,4 +377,17 @@ public class Progress : MonoBehaviour
         }
         return data["FUN"].Value<int>() <= max && data["FUN"].Value<int>() >= min;
     } 
+
+    public static string getRandomUpgrade()
+    {
+        if (data["Upgrades"].Count() <= 0) return null;
+        System.Random random = new System.Random();
+        int randomIndex = random.Next(0, data["Upgrades"].Count() ); // Generate random index
+
+        // Get the key-value pair at the random index
+        JProperty randomElement = (JProperty)data["Upgrades"].ElementAt(randomIndex);
+        //JToken value = randomElement.Value<string>();
+
+        return randomElement.Name;
+    }
 }
