@@ -86,6 +86,7 @@ public class SellUpgrade : MonoBehaviour
     /// <returns>Null if fully upgraded. Otherwise, returns highest upgrade in upgrade chain</returns>
     static public SellUpgrade getHighestUpgradeInChain(int itemID)
     {
+        if (allInstances.Count() <= 0) return null;
         SellUpgrade upg = allInstances.Where(a => a.ItemID == itemID).First();
 
         if (upg.replacedBy == null) return (upg.gameObject.activeSelf ? null : upg);

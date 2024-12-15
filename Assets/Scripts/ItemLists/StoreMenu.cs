@@ -32,6 +32,9 @@ public class StoreMenu : Resource
     public List<ItemForSale> ItemsForSale = new List<ItemForSale>();
     static StoreMenu current;
 
+    public bool CloseOnPurchase = false;
+    public string SwitchOnPurchase = "";
+
     public void setItem(GameObject temp, int DisplayItemID, int recipeNum, StoreItem.ItemType type, Transform obj = null, StoreItem SMen = null)
     {
         if(obj == null)obj = temp.transform.GetChild(0);

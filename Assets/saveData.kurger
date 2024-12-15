@@ -1,6 +1,6 @@
 {
   "FUN": 46,
-  "MONEY": 659440,
+  "MONEY": 659437,
   "Upgrades": {},
   "PickUps": {
     "*Ch2/Record": "",
@@ -18,7 +18,8 @@
     "27": 1,
     "26": 1,
     "1": 5,
-    "3": 15
+    "3": 15,
+    "5": 1
   },
   "Recipes": {
     "Sparkling Water": true
@@ -31,10 +32,11 @@
   "FredF": 7,
   "Ch2Newspaper1": true,
   "Chapter": 1,
-  "TIME": 2739,
+  "TIME": 3420,
   "Deadlines": {},
-  "Ch2WakeUp": true,
+  "Ch2WakeUp": false,
   "Ch2FredCS1": true,
   "FredConvoDecision1": 2,
-  "Ch2FredCS2": true
+  "Ch2FredCS2": true,
+  "Ch2GotDannyBoxItem": true
 }

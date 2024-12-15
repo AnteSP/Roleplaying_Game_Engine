@@ -32,21 +32,21 @@ public class StoreItem : MonoBehaviour
         if (Stats.ChangeMoney(Cost))
         {
             Stats.current.KACHING.Play();
-            if(Type == ItemType.Disposable)
+            if (Type == ItemType.Disposable)
             {
                 Items.Add(ItemID, 1);
 
-            } else if(Type == ItemType.Recipe)
+            } else if (Type == ItemType.Recipe)
             {
                 SodaMachine.CreateRecipe(SodaMachine.Recipes[RecipeNum]);
                 Menu.RemoveItem(ItemID);
-            }else if(Type == ItemType.Clothing)
+            } else if (Type == ItemType.Clothing)
             {
                 Items.Add(ItemID, 1);
                 Menu.RemoveItem(ItemID);
 
                 outfit.checkOutfits();
-                if(outfit.getOutfitsOwned().Count == 2)
+                if (outfit.getOutfitsOwned().Count == 2)
                 {
                     Stats.DisplayMessage("Check your inventory to put on the new clothes you just bought!");
                 }
@@ -58,6 +58,9 @@ public class StoreItem : MonoBehaviour
                 Items.ShiftAnim(ChooseSellSoda.example.Upgrade, "<u>UPGRADE!</u>: " + su.Name, su.Description);
                 Menu.UpdateShop();
             }
+
+            if (Menu.CloseOnPurchase) Menu.Use(0);
+            if (Menu.SwitchOnPurchase != "") Progress.switchInPlay(Menu.SwitchOnPurchase,true);
         }
         else
         {

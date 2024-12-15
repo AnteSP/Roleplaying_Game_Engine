@@ -17,6 +17,7 @@ public class Ch2Events : MonoBehaviour
     [SerializeField] Sprite BeerSprite;
     [SerializeField] Transform playerTPSpot;
     [SerializeField] GameObject playerSleeping;
+    [SerializeField] StoreMenu openOnStart;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,16 @@ public class Ch2Events : MonoBehaviour
             Stats.StartStopTime(false, "Ch2 Opening");
         }
         an = GetComponent<Animation>();
+        
+    }
+
+    private void OnEnable()
+    {
+        if (openOnStart != null)
+        {
+            openOnStart.Use(0);
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
