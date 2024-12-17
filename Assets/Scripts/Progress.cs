@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using System.Text.RegularExpressions;
 //using System;
 
 public class Progress : MonoBehaviour
@@ -22,6 +23,9 @@ public class Progress : MonoBehaviour
     static JObject data = null;
     static string SName = "U";
     static bool loaded = false;
+
+    static string chPattern = @"^Ch\d+[a-zA-Z]+";
+    static string chPatternShort = @"^Ch\d+";
 
     // Start is called before the first frame update
     void Start()
@@ -157,13 +161,30 @@ public class Progress : MonoBehaviour
         }
     }
 
-    static public bool getBool(string Id)
+    static public bool getBool(string switchID)
     {
-        if (data.ContainsKey(Id))
-            return (data[Id].Value<bool>());
+        if (Regex.IsMatch(switchID, chPattern))
+        {
+            Match match = Regex.Match(switchID, chPatternShort);
+            string subName = switchID.Substring(match.Length);
+            string chString = switchID.Substring(0, match.Length);
+
+            if (!data.ContainsKey(chString)) data[chString] = new JObject();
+
+            if ( ((JObject)data[chString]).ContainsKey(subName) )
+                return (data[chString][subName].Value<bool>());
+            else
+            {
+                print("ERROR: While getting Bool. Missing field [" + switchID + "] in save data");
+                return false;
+            }
+        }
+
+        if (data.ContainsKey(switchID))
+            return (data[switchID].Value<bool>());
         else
         {
-            print("ERROR: While getting Bool. Missing field [" + Id + "] in save data");
+            print("ERROR: While getting Bool. Missing field [" + switchID + "] in save data");
             return false;
         }
     }
@@ -183,43 +204,49 @@ public class Progress : MonoBehaviour
         try
         {
             ensureProgressCompsGood();
-            if (data.ContainsKey(switchID))
+            switchInData(switchID, on);
+
+            foreach (Progress p in progressComps.Where(a => a.Id == switchID))
             {
-                data[switchID] = on;
-                foreach (Progress p in progressComps.Where(a => a.Id == switchID))
-                {
-                    p.on = on;
-                    foreach (GameObject g in p.enable) g.SetActive(p.on);
-                    foreach (GameObject g in p.disable) g.SetActive(!p.on);
-                }
-            }
-            else
-            {
-                print("ERROR: Switch [" + switchID + "] does not exist. Adding Now");
-                data.Add(switchID, on);
-                foreach (Progress p in progressComps.Where(a => a.Id == switchID))
-                {
-                    p.on = on;
-                    foreach (GameObject g in p.enable) g.SetActive(p.on);
-                    foreach (GameObject g in p.disable) g.SetActive(!p.on);
-                }
+                p.on = on;
+                foreach (GameObject g in p.enable) g.SetActive(p.on);
+                foreach (GameObject g in p.disable) g.SetActive(!p.on);
             }
         }
         catch(System.Exception e)
         {
-            print("ERROR: Switch [" + switchID + "] IDK WHAT HAPPENED (" + e+")(" + e.StackTrace +"). Adding Now");
-            data.Add(switchID, on);
+            print("ERROR: Switch [" + switchID + "] IDK WHAT HAPPENED (" + e+")(" + e.StackTrace +")");
+            //data.Add(switchID, on);
         }
     }
 
     static void switchInData(string switchID,bool on)
     {
-        if (data.ContainsKey(switchID))
-            data[switchID] = on;
+        if (Regex.IsMatch(switchID, chPattern))
+        {
+            Match match = Regex.Match(switchID, chPatternShort);
+            string subName = switchID.Substring(match.Length);
+            string chString = switchID.Substring(0, match.Length);
+
+            if (!data.ContainsKey(chString)) data[chString] = new JObject();
+
+            if ( ( (JObject)data[chString] ).ContainsKey(subName) )
+                data[chString][subName] = on;
+            else
+            {
+                print("ERROR: While flipping switch. Missing field [" + switchID + "] in save data. The field will be created");
+                ((JObject)data[chString]).Add(subName, on);
+            }
+        }
         else
         {
-            print("ERROR: While flipping switch. Missing field [" + switchID + "] in save data. The field will be created");
-            data.Add(switchID, on);
+            if (data.ContainsKey(switchID))
+                data[switchID] = on;
+            else
+            {
+                print("ERROR: While flipping switch. Missing field [" + switchID + "] in save data. The field will be created");
+                data.Add(switchID, on);
+            }
         }
     }
 
@@ -320,9 +347,10 @@ public class Progress : MonoBehaviour
         foreach (Progress p in progressComps)
         {
             //print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());
-            if (data.ContainsKey(p.Id))
-                p.on = data[p.Id].Value<bool>();
-            else print("ERROR: Missing field [" + p.Id + "] in save data");
+            p.on = getBool(p.Id);
+            //if (data.ContainsKey(p.Id))
+            //    p.on = data[p.Id].Value<bool>();
+            //else print("ERROR: Missing field [" + p.Id + "] in save data");
         }
 
         //print("LOADING DEDS");

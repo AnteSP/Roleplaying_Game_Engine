@@ -81,13 +81,13 @@ public class card : MonoBehaviour
                 else
                     Stats.changeFriendship("MRespect", -2);
                 break;
-            case "FredIntro":
+            case "Ch2FredIntro":
                 if (positive)
                     Stats.changeFriendship("FredF", 1);
                 else
                     Stats.changeFriendship("FredF", 0);
                 break;
-            case "FredConvoDecision1":
+            case "Ch2FredConvoDecision1":
                 if (positive)
                     Stats.changeFriendship("FredF", 1);
                 else

@@ -25,21 +25,18 @@
     "Sparkling Water": true
   },
   "MRespect": -1,
-  "Ch2": {
-    "TutorialDone": true,
-    "OpeningDone": true,
-    "FredIntro": 1,
-    "Newspaper1": true,
-    "WakeUp": false,
-    "FredCS1": true,
-    "FredConvoDecision1": 2,
-    "FredCS2": true,
-    "GotDannyBoxItem": true
-  },
+  "Ch2TutorialDone": true,
+  "Ch2OpeningDone": true,
   "Volume": 1.0,
-  "FredF": 2,
+  "FredIntro": 1,
+  "FredF": 7,
+  "Ch2Newspaper1": true,
   "Chapter": 1,
   "TIME": 3420,
   "Deadlines": {},
-  "Ch2FredConvoDecision1": 2
+  "Ch2WakeUp": false,
+  "Ch2FredCS1": true,
+  "FredConvoDecision1": 2,
+  "Ch2FredCS2": true,
+  "Ch2GotDannyBoxItem": true
 }
