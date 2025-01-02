@@ -104,7 +104,7 @@ public class Automation_anim : EditorWindow
     public Texture2D spriteSheet; // Input sprite sheet
     public int columns = 5; // Number of columns in the sprite sheet
     public int rows = 4; // Number of rows in the sprite sheet
-    public float frameRate = 60f; // Frame rate for the animations
+    public float frameRate = 12f; // Frame rate for the animations
     public string outputFolder = "Assets/Animations"; // Folder to store the generated assets
     Sprite[] sprites = new Sprite[0];
 
@@ -123,9 +123,9 @@ public class Automation_anim : EditorWindow
         AnimatorController animatorController = AnimatorController.CreateAnimatorControllerAtPath($"{outputFolder}/{char_name}_Walking.controller");
 
         AnimationClip walkDownClip = CreateAnimationClip(sprites, rows, columns, 0, "Walk_Down");
-        AnimationClip walkLeftClip = CreateAnimationClip(sprites, rows, columns, 1, "Walk_Left");
-        AnimationClip walkRightClip = CreateAnimationClip(sprites, rows, columns, 2, "Walk_Right");
-        AnimationClip walkUpClip = CreateAnimationClip(sprites, rows, columns, 3, "Walk_Up");
+        AnimationClip walkLeftClip = CreateAnimationClip(sprites, rows, columns, 2, "Walk_Left");//The index numbers here (0,2,3,1) dont make sense but they work. Idfk man
+        AnimationClip walkRightClip = CreateAnimationClip(sprites, rows, columns, 3, "Walk_Right");
+        AnimationClip walkUpClip = CreateAnimationClip(sprites, rows, columns, 1, "Walk_Up");
 
         animatorController.AddParameter("Horizontal", AnimatorControllerParameterType.Int);
         animatorController.AddParameter("Vertical", AnimatorControllerParameterType.Int);
@@ -133,9 +133,9 @@ public class Automation_anim : EditorWindow
 
         // Add states and transitions
         AddStateWithTransitions(animatorController, walkDownClip, 0, "Walk_Down", "Vertical", -1, "Speed");
-        AddStateWithTransitions(animatorController, walkUpClip,3, "Walk_Up", "Vertical", 1, "Speed");
-        AddStateWithTransitions(animatorController, walkLeftClip,1, "Walk_Left", "Horizontal", -1, "Speed");
-        AddStateWithTransitions(animatorController, walkRightClip,2, "Walk_Right", "Horizontal", 1, "Speed");
+        AddStateWithTransitions(animatorController, walkLeftClip,2, "Walk_Left", "Horizontal", -1, "Speed");
+        AddStateWithTransitions(animatorController, walkRightClip,3, "Walk_Right", "Horizontal", 1, "Speed");
+        AddStateWithTransitions(animatorController, walkUpClip, 1, "Walk_Up", "Vertical", 1, "Speed");
 
         Debug.Log("Animator generated successfully.");
     }
@@ -180,6 +180,7 @@ public class Automation_anim : EditorWindow
         var idleState = rootStateMachine.AddState("Idle_" + stateName);
         //gets every 5th element from sprites (including first)
         var idleClip = CreateAnimationClip(sprites.Where((element, index) => index % 5 == 0).ToArray(), rows, 1, i, "Idle_" + stateName);
+        //idleClip.frameRate
         idleState.motion = idleClip;
 
 

@@ -98,9 +98,20 @@ public class outfit : MonoBehaviour
 
         foreach (Animator a in animsToAlsoChange)
         {
+            if (a.gameObject.activeSelf)
+            {
+                a.runtimeAnimatorController = playerOutfitAnims[Items.IndexOfXinY(itemInd, outfitItemIDs)];
+                a.SetInteger("Vertical", 1);
+            }
+            else
+            {
+                a.gameObject.SetActive(true);
+                a.runtimeAnimatorController = playerOutfitAnims[Items.IndexOfXinY(itemInd, outfitItemIDs)];
+                a.SetInteger("Vertical", 1);
+                a.gameObject.SetActive(false);
+            }
             //a.gameObject.SetActive(true);
-            a.runtimeAnimatorController = playerOutfitAnims[Items.IndexOfXinY(itemInd, outfitItemIDs)];
-            a.SetInteger("Vertical", 1);
+
             //a.gameObject.SetActive(false);
         }
 

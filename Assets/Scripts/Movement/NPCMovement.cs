@@ -105,7 +105,11 @@ public class NPCMovement : MonoBehaviour
     public void Face(string leftrightdownup)
     {
         print("FACE S");
-        if (Facing) An.Play("Idle " + leftrightdownup);
+        if (Facing)
+        {
+            An.Play("Idle " + leftrightdownup);
+            An.Play("Idle_Walk_" + leftrightdownup);
+        }
     }
 
     public void ResetAn()

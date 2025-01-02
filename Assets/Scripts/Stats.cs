@@ -1000,7 +1000,7 @@ public class Stats : MonoBehaviour
         CurrentCS.setGoodToGoOnly(b);
     }
 
-    //SocialNotification
+    //SocialNotification 
     public static void changeFriendship(string Id,int amount)
     {
         //print("GOT HERE BLEGH");
@@ -1017,6 +1017,17 @@ public class Stats : MonoBehaviour
         }
 
         current.SocialNotification.gameObject.SetActive(true);
+        TextMeshProUGUI notif = current.SocialNotification.GetComponent<TextMeshProUGUI>();
+        if (amount < 0)
+        {
+            notif.color = Color.red;
+            print("COLOR RED");
+        }
+        else
+        {
+            notif.color = new Color(0, 0.73f, 1);
+            print("COLOR B");
+        }
         current.SocialNotification.GetComponent<TextMeshProUGUI>().text = "Friendship " + (amount < 0 ? "" : "+") + amount;
 
         
