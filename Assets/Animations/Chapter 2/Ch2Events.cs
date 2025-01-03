@@ -106,7 +106,13 @@ public class Ch2Events : MonoBehaviour
             case 2:
                 Stats.StartDeadline('B');
                 break;
-                
+            case 3:
+                Stats.StartDeadline('C');
+                break;
+            case 4:
+                Stats.StartDeadline('D');
+                break;
+
         }
         Progress.switchInPlay("Ch2WakeUp", false);
     }

@@ -38,7 +38,7 @@ public class outfit : MonoBehaviour
     public static int getActiveOutfit()
     {
         print("Giving " + outfitInd);
-        return outfitItemIDs[outfitInd];
+        return outfitsOwned[outfitInd];
     }
 
     static void resetOutfitsOwned()
@@ -88,6 +88,7 @@ public class outfit : MonoBehaviour
         title.text = selectedOutfit.Name;
         desc.tooltip = selectedOutfit.description;
         NameIndic.Indicate("");
+        print("ID = " + outfitInd + " AND " + itemInd);
 
         if(Stats.current.Player != null)
         {

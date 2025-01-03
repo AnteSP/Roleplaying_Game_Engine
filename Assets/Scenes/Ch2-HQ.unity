@@ -41321,6 +41321,8 @@ GameObject:
   - component: {fileID: 1700876600}
   - component: {fileID: 1700876596}
   - component: {fileID: 1700876597}
+  - component: {fileID: 1700876602}
+  - component: {fileID: 1700876603}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -41716,6 +41718,50 @@ MonoBehaviour:
   - {fileID: 1463361409}
   - {fileID: 311476988}
   disable: []
+--- !u!114 &1700876602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed85c29afafc03499627cde49c97d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 67
+  Description: 21:00 Daily Mafia check-in
+  requirements: 
+  hour: 21
+  day: 3
+  FailCutScene: {fileID: 0}
+  SuccessCutScene: {fileID: 0}
+  TriggerAtMinute: 0
+  MinutesLeft: 0
+  stickyNote: 0
+--- !u!114 &1700876603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed85c29afafc03499627cde49c97d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 68
+  Description: 21:00 Daily Mafia check-in
+  requirements: 
+  hour: 21
+  day: 4
+  FailCutScene: {fileID: 0}
+  SuccessCutScene: {fileID: 0}
+  TriggerAtMinute: 0
+  MinutesLeft: 0
+  stickyNote: 0
 --- !u!1 &1705963232
 GameObject:
   m_ObjectHideFlags: 0

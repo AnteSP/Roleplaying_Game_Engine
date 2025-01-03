@@ -89,8 +89,20 @@ public class CutSceneVarDia : MonoBehaviour
                     }
                     
                     break;
+                case "OutfitComment1":
+                    if (atStart) continue;
+                    int outfitID = outfit.getActiveOutfit();
 
+                    switch (outfitID)
+                    {
+                        case 26: replaceWith = "I see you're starting to fit in with a shirt like that"; break; //wife beater
+                        case 27: replaceWith = "I like your new shirt"; break;//Polo Shirt
+                        case 28: replaceWith = "I like your new outfit. I appreciate a man who puts effort into his appearence"; break;//Polo shirt + tie
+                        case 29: replaceWith = "You got that dress shirt for yourself? I'm impressed. You look proper"; break;//Dress shirt
+                        case 30: replaceWith = "You smell, you really need a change of clothes"; break;//Dirty
+                    }
 
+                    break;
 
             }
 
