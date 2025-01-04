@@ -17,6 +17,19 @@ public class Talker : Resource
     [SerializeField] bool talkOnAwake = false;
     public GameObject specialObj = null;
 
+    public void changeSentence(int ind,string changeTo)
+    {
+        if(ind < 0)//prepend sentences
+        {
+            string[] updatedSentences = new string[sentences.Length + 1];
+            updatedSentences[0] = changeTo;
+            sentences.CopyTo(updatedSentences, 1);
+            sentences = updatedSentences;
+        }
+        else
+            sentences[ind] = changeTo;
+    }
+
     public void overWriteSentences(string[] inp)
     {
         sentences = inp;

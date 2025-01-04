@@ -18,6 +18,7 @@ public class Ch2Events : MonoBehaviour
     [SerializeField] Transform playerTPSpot;
     [SerializeField] GameObject playerSleeping;
     [SerializeField] StoreMenu openOnStart;
+    [SerializeField] List<Talker> prependToSent;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,17 @@ public class Ch2Events : MonoBehaviour
             Stats.StartStopTime(false, "Ch2 Opening");
         }
         an = GetComponent<Animation>();
+
+        if (prependToSent.Count > 0 && Items.Contains(31))
+        {
+            foreach(Talker t in prependToSent)
+            {
+                t.changeSentence(-1, "%{31,1}  ");
+                t.changeSentence(-1, "%#CHey... Soda Lad... Wait, you 'ave that record my nan wanted? Ah thanks mate, appreciate that");
+                t.changeSentence(2, "%[FredF]Anyway...");
+            }
+            
+        }
         
     }
 

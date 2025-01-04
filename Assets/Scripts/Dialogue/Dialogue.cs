@@ -190,8 +190,17 @@ public class Dialogue : MonoBehaviour
                     Progress.loadData();
                     break;
                 case '['://expected format     %[switchId]
-                    Progress.switchInPlay( Current.Substring(0,Current.IndexOf(']')) , true);
-                    Current = Current.Substring(Current.IndexOf(']')+1);
+                    string varName = Current.Substring(0, Current.IndexOf(']'));
+                    if (Progress.isFieldNumber(varName))
+                    {
+                        Stats.changeFriendship(varName, 1);
+                    }
+                    else
+                    {
+                        Progress.switchInPlay(varName, true);
+                    }
+                    Current = Current.Substring(Current.IndexOf(']') + 1);
+
                     break;
                 case '-'://expected format     %-[switchId]
                     Progress.switchInPlay(Current.Substring(1, Current.IndexOf(']')), false);
@@ -263,7 +272,14 @@ public class Dialogue : MonoBehaviour
 
                     if (!missingItems)
                     {
-                        Current = " * You have the required items to continue!";
+                        if(Current == " ")
+                        {
+                            Current = "...";
+                        }
+                        else
+                        {
+                            Current = " * You have the required items to continue!";
+                        }
 
                         for(int i = 0; i < amounts.Count; i++)
                             Items.Add(items[i], -amounts[i]);

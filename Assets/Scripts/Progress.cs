@@ -139,6 +139,8 @@ public class Progress : MonoBehaviour
 
     static public bool doesFieldExist(string Id) => data.ContainsKey(Id);
 
+    static public bool isFieldNumber(string Id) => data.ContainsKey(Id) && data[Id].Type != JTokenType.Boolean;
+
     static public int getInt(string Id)
     {
         if (data.ContainsKey(Id))
@@ -363,11 +365,11 @@ public class Progress : MonoBehaviour
                 // 'child' is of type JProperty, which represents a key-value pair
                 string key = ((JProperty)child).Name;
                 string sceneStr = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                Deadline[] scenesDeds = Stats.current.GetComponents<Deadline>();
 
-                if (sceneStr.StartsWith(key.Remove(0, 2) + "-") || sceneStr == key.Remove(0, 2))
+                if ( scenesDeds.Length > 0 && (sceneStr.StartsWith(key.Remove(0, 2) + "-") || sceneStr == key.Remove(0, 2)) )
                 {
-                    Stats.current.GetComponents<Deadline>()
-                        .Where(a => a.ID == key.ToCharArray()[0]).First().enabled = true;
+                    scenesDeds.Where(a => a.ID == key.ToCharArray()[0]).First().enabled = true;
                 }
             }
             loadedDeadlines = true;
