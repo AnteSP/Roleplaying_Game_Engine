@@ -45,6 +45,8 @@ public class CutSceneVarDia : MonoBehaviour
 
         if (boolVarIds != "") return Progress.getBool(boolVarIds) == expectedTrue;
 
+        if (intVarIds != "") return Progress.getInt(intVarIds) > minIntVals[0] && Progress.getInt(intVarIds) < maxIntVals[0];
+
         return true;
     }
 
@@ -83,8 +85,8 @@ public class CutSceneVarDia : MonoBehaviour
                         case 2: replaceWith = "5'000p"; break;//max day 2    dec1 + dec2
                         case 3: replaceWith = "2'000p"; break;
                         case 4: replaceWith = "1'000p"; break;//max day 3    dec1 + dec2 + task + dec3
-                        case 5: replaceWith = "500p"; break;
-                        case 6: replaceWith = "Free!"; break;//max day 4     dec1 + dec2 + task + dec3 + task + dec4
+                        case 5: replaceWith = "500p"; break;//max day 4    dec1 + dec2 + task + dec3 + dec4
+                        case 6: replaceWith = "Free!"; break;
                         default: replaceWith = "Free!"; break;
                     }
                     

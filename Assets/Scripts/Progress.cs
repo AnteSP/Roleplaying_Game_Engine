@@ -109,7 +109,7 @@ public class Progress : MonoBehaviour
     {
         gameObjsToSet.Clear();
         ensureProgressCompsGood();
-        foreach (Progress p in progressComps)
+        foreach (Progress p in progressComps.Where(a=> a.on))
         {
             foreach(GameObject g in p.enable) gameObjsToSet[g] = true;
             foreach (GameObject g in p.disable) gameObjsToSet[g] = false;

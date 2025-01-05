@@ -95,7 +95,13 @@ public class card : MonoBehaviour
                 break;
             case "Ch2FredConvoDecision2":
                 if (positive)
-                    Stats.changeFriendship("FredF", -1);
+                    Stats.changeFriendship("FredF", 0);
+                else
+                    Stats.changeFriendship("FredF", 1);//will be punished later
+                break;
+            case "Ch2FredConvoDecision3":
+                if (positive)
+                    Stats.changeFriendship("FredF", 1);
                 else
                     Stats.changeFriendship("FredF", 0);
                 break;

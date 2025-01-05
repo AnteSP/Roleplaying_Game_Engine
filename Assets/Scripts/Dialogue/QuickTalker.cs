@@ -5,7 +5,7 @@ using UnityEngine;
 public class QuickTalker : Resource
 {
     [SerializeField] Dialogue D;
-    [SerializeField] string sentence;
+    public string sentence;
 
     NPCMovement N;
     bool NE = false;
@@ -14,6 +14,7 @@ public class QuickTalker : Resource
     Collider2D col;
     public int messageTime = 5;
     [SerializeField] bool stopPlayer = false;
+    [SerializeField] bool justDisableComponent = false;
     [SerializeField] int stopPlayerTime = 0;
 
     static public bool ONLYACTIVETALKER = false;
@@ -94,8 +95,11 @@ public class QuickTalker : Resource
         if(ONLYACTIVETALKER) D.EndConvo();
         currentlyWaiting = null;
 
-        Destroy(gameObject);
-        
+        if (justDisableComponent) this.enabled = false;
+        else Destroy(gameObject);
+
+
+
     }
 
     IEnumerator PlayerMovementCoroutine()

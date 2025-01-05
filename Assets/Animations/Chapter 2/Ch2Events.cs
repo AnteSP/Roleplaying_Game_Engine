@@ -19,6 +19,7 @@ public class Ch2Events : MonoBehaviour
     [SerializeField] GameObject playerSleeping;
     [SerializeField] StoreMenu openOnStart;
     [SerializeField] List<Talker> prependToSent;
+    [SerializeField] QuickTalker FredSecret;
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +43,33 @@ public class Ch2Events : MonoBehaviour
         
     }
 
+    public int calcFredCost()
+    {
+        switch (Progress.getInt("FredF"))
+        {
+            case 0: return 20000;
+            case 1: return 10000;//max day 1   dec1
+            case 2: return 5000;//max day 2    dec1 + dec2
+            case 3: return 2000;
+            case 4: return 1000;//max day 3    dec1 + dec2 + task + dec3
+            case 5: return 500;//max day 4    dec1 + dec2 + task + dec3 + dec4
+            case 6: return 0;
+            default: return 0;
+        }
+    }
+
     private void OnEnable()
     {
         if (openOnStart != null)
         {
             openOnStart.Use(0);
             gameObject.SetActive(false);
+        }
+
+        if (FredSecret != null)
+        {
+            if (calcFredCost() > Stats.current.Money) FredSecret.sentence = "Fred (disguised): I'm sorry lad, you don't have enough quid. Not worth the risk";
+            else FredSecret.sentence = "Fred (disguised): Oi! Sh! Don't look, it's me. I see you got the money... Restroom door... Climb out the window... Boot o' my car";
         }
     }
 
