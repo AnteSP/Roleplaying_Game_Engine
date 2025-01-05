@@ -104,14 +104,18 @@ public class Progress : MonoBehaviour
 
     static Progress[] getProgress() => GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
 
+    static Dictionary<GameObject, bool> gameObjsToSet = new Dictionary<GameObject, bool>();
     public static void checkProgress()
     {
+        gameObjsToSet.Clear();
         ensureProgressCompsGood();
         foreach (Progress p in progressComps)
         {
-            foreach(GameObject g in p.enable) g.SetActive(p.on);
-            foreach (GameObject g in p.disable) g.SetActive(!p.on);
+            foreach(GameObject g in p.enable) gameObjsToSet[g] = true;
+            foreach (GameObject g in p.disable) gameObjsToSet[g] = false;
         }
+
+        foreach (KeyValuePair<GameObject,bool> kvp in gameObjsToSet) kvp.Key.SetActive(kvp.Value);
     }
 
     static public void setFloat(string Id,float num)

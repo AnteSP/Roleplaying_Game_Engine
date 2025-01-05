@@ -203,6 +203,18 @@ public class Stats : MonoBehaviour
             foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
         }
 
+        //TIME SHIT
+        OGTimeTextScale = current.TIMETEXT.transform.localScale;
+        TargTimeTextScale = OGTimeTextScale * 1.4f;
+        //ChangeTime(TimeFromMidNight);
+        MoneyAdd = MONEYTEXT.GetComponentInChildren<TextMeshProUGUI>();
+        TimeAdd = TIMETEXT.GetComponentInChildren<TextMeshProUGUI>();
+        MoneyAdd.gameObject.SetActive(false);
+        TimeAdd.gameObject.SetActive(false);
+        ChangeTime(0);
+        ChangeMoney(0);
+        if (!current.PassTime) StartStopTime(false, "Scene itself");
+
         //print("load please");
         if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
         //print("did it tho?");
@@ -225,21 +237,6 @@ public class Stats : MonoBehaviour
         }
 
         SetVolume(Progress.getFloat("Volume"),false);
-
-        OGTimeTextScale = current.TIMETEXT.transform.localScale;
-        TargTimeTextScale = OGTimeTextScale * 1.4f;
-
-        //ChangeTime(TimeFromMidNight);
-
-        MoneyAdd = MONEYTEXT.GetComponentInChildren<TextMeshProUGUI>();
-        TimeAdd = TIMETEXT.GetComponentInChildren<TextMeshProUGUI>();
-        MoneyAdd.gameObject.SetActive(false);
-        TimeAdd.gameObject.SetActive(false);
-
-        ChangeTime(0);
-        ChangeMoney(0);
-
-        if (!current.PassTime) StartStopTime(false, "Scene itself");
 
         foreach (Deadline.DeadlineData dd in Deadline.activeDeadlineData.Where(a=> a != null))
         {

@@ -43,12 +43,14 @@ public class CutSceneTalker : MonoBehaviour
     /// Set this cutscene as Stats.currentcs then this cutscenetalker gets disabled until it is triggered by Stats or %S
     /// </summary>
     public bool setAsCurrent = false;
+    public bool setAsCurrent_InstaPlay = false;
     public bool EndingChapter = false;
     public bool stopMusicOnStart = false;
 
     PlayableDirector pd;
 
     public string switchWhenDone = "";
+    public int itemRequiredToStart = -1;
 
     /// <summary>
     /// 
@@ -56,6 +58,23 @@ public class CutSceneTalker : MonoBehaviour
     /// <param name="b">Is a cutscene ending? False if entering. True if leaving</param>
     public void PackUp(bool b)
     {
+        if (!b && itemRequiredToStart != -1)
+        {
+            if (Items.ITEMS_DB.Length == 1)
+            {//force Items to start
+                Stats.current.GetComponent<Items>().enabled = false;
+                Stats.current.GetComponent<Items>().enabled = true;
+            }
+
+            if (Items.Contains(itemRequiredToStart))
+                Items.AddNoAnim(31, -1);
+            else
+            {
+                this.enabled = false;
+                return;
+            }
+        }
+
         Crb = Camera.main.GetComponent<Rigidbody2D>();
         Anim = D.GetComponent<Animator>();
 
@@ -138,6 +157,10 @@ public class CutSceneTalker : MonoBehaviour
             }
 
         }
+        else if(setAsCurrent_InstaPlay)//if entering && instaplaying
+        {
+            D.noInnactiveOnStart = true;
+        }
 
         
         
@@ -154,8 +177,12 @@ public class CutSceneTalker : MonoBehaviour
         {
             Stats.current.CurrentCS = this;
             setAsCurrent = false;
-            this.enabled = false;
-            return;
+            if (!setAsCurrent_InstaPlay)
+            {
+                this.enabled = false;
+                return;
+            }
+
         }
         if(!skipPacking)PackUp(false);
         /*

@@ -12,7 +12,7 @@ public class robber : MonoBehaviour
     SpriteRenderer spr;
     int lives = 3;
     readonly int iFrames = 60;
-    int iFramesSpent = 60;
+    int iFramesSpent = 0;
 
     void Start()
     {
@@ -57,7 +57,10 @@ public class robber : MonoBehaviour
                 auds[1].Play();
                 GetComponent<Collider2D>().enabled = false;
                 Items.Add(31, 1);
-                speed = 100;
+                speed = 50;
+                rb.freezeRotation = false;
+                rb.angularVelocity = 4;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
         // Get the collision normal

@@ -15,6 +15,7 @@ public class Dialogue : MonoBehaviour
     public NPCMovement NPC = null;
     public Talker talker = null; 
     public CutSceneTalker CS = null;
+    public bool noInnactiveOnStart = false;
     Image im = null;
 
     public string Current = "";
@@ -48,7 +49,7 @@ public class Dialogue : MonoBehaviour
     {
         d = this;
         im = GetComponent<Image>();
-        gameObject.SetActive(false);
+        if(!noInnactiveOnStart)gameObject.SetActive(false);
     }
 
     public void SetTypeNoise(AudioSource ntn)
@@ -113,7 +114,8 @@ public class Dialogue : MonoBehaviour
         } catch(System.Exception e){ }
         forceStopSounds();
         
-        Stats.releaseLockedInObject(talker.unfocusAfterUse);
+        if(talker != null)
+            Stats.releaseLockedInObject(talker.unfocusAfterUse);
     }
 
     public void EndCutScene(CutSceneTalker cs,bool nextDay=false)

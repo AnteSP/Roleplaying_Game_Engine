@@ -212,11 +212,9 @@ public class Items : MonoBehaviour
         for (int i = 0; i < ITEMS.Length; i++)
         {
             //print("is this out of bounds? " + ITEMS[i] + " at i " + i);
-            Pictures[i].sprite = ITEMS_DB[ITEMS[i]].icon;
-            
-
             bool temp = ITEMQUANTITY[i] == 0 || ITEMS[i] == 0;
 
+            Pictures[i].sprite = temp ? ITEMS_DB[0].icon : ITEMS_DB[ITEMS[i]].icon;
             Quantities[i].text = temp ? "" : ITEMQUANTITY[i] + "";
             TxtBack[i].color = temp ? Color.clear : TxtBackBase;
             //print(i + " - " + temp + ITEMQUANTITY[i] + " " + ITEMS[i]);

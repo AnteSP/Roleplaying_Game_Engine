@@ -19,8 +19,8 @@
     "26": 1,
     "1": 5,
     "3": 15,
-    "31": 1,
-    "5": 1
+    "5": 1,
+    "31": 1
   },
   "Recipes": {
     "Sparkling Water": true
@@ -36,12 +36,13 @@
     "FredConvoDecision1": 2,
     "FredCS2": true,
     "GotDannyBoxItem": true,
-    "FredCS3": true
+    "FredCS3": true,
+    "StealerCSDone": true
   },
   "Volume": 1.0,
   "FredF": 2,
   "Chapter": 1,
-  "TIME": 5433,
+  "TIME": 5446,
   "Deadlines": {
     "D-Ch2": true
   },
