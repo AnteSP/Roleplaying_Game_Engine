@@ -36,7 +36,6 @@ public class CutScenePrep : StateMachineBehaviour
             if (cs.GoToNextScene())
             {
                 MonoBehaviour.print("Switching to scene ");
-
                 return;
                 //Stats.current.AllowSelecting = false;
                 //Stats.current.FilterColor(new Color(0, 0, 0, 1));
@@ -44,8 +43,27 @@ public class CutScenePrep : StateMachineBehaviour
             else
             {
                 MonoBehaviour.print("No scene switching");
-                Stats.doSelecting(true);
+
+                if (!cs.isDone())
+                {
+                    cs.NextCamPos(0);
+                    cs.NextMusicInQueue();
+                    cs.setGoodToGoOnly(true);
+                    Dialogue.d.showDisplay(true);
+                    if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Ch2")
+                    {
+                        Stats.current.fadeFilterColor(new Color(0, 0, 0), new Color(1, 1, 1), 2f);
+                        Camera.main.GetComponent<UnityEngine.Rendering.Volume>().weight = 0.25f;
+                        CameraSway Csw = Camera.main.GetComponent<CameraSway>();
+                        Csw.enabled = !Csw.enabled;
+                        Camera.main.backgroundColor = Color.black;
+                        cs.EndingChapter = true;
+                    }
+
+                    return;
+                }
             }
+            Stats.doSelecting(true);
             cs.PackUp(true);
             Stats.StartStopTime(true, "Cutscene");
             //Stats.current.PassTime = true;

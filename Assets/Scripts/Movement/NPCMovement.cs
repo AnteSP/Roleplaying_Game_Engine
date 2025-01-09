@@ -107,6 +107,7 @@ public class NPCMovement : MonoBehaviour
         print("FACE S");
         if (Facing)
         {
+            if(!An.enabled)An.enabled = true;
             An.Play("Idle " + leftrightdownup);
             An.Play("Idle_Walk_" + leftrightdownup);
         }

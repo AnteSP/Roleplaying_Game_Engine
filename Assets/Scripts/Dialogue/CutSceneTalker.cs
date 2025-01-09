@@ -283,6 +283,11 @@ public class CutSceneTalker : MonoBehaviour
         
     }
 
+    public bool isDone()
+    {
+        return Index == Sentences.Length - 1 || Index == Sentences.Length;
+    }
+
     public void NextCamPos(int time = 200)
     {
         CamFocus = CamPos[++cpI].position;
@@ -295,6 +300,14 @@ public class CutSceneTalker : MonoBehaviour
             CamZoom.setFocusPoint(CamFocus, time, true);
         }
         
+    }
+
+    public void NextMusicInQueue()
+    {
+        if (musicsQueue.Count == 0) return;
+        AudioSource a = musicsQueue[0];
+        musicsQueue.RemoveAt(0);
+        Stats.changeBackgroundMusic(a.clip);
     }
 
     public void NextNPCMove(bool n)

@@ -441,9 +441,7 @@ public class Dialogue : MonoBehaviour
                     Camera.main.GetComponent<CameraShake>().enabled = true;
                     break;
                 case 'm':
-                    AudioSource a = CS.musicsQueue[0];
-                    CS.musicsQueue.RemoveAt(0);
-                    Stats.changeBackgroundMusic(a.clip);
+                    CS.NextMusicInQueue();
                     break;
                 case 'i'://card intro seq. Do once to trigger. Once to end
 

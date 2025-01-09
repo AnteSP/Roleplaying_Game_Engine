@@ -23,16 +23,14 @@ public class EndScreen : MonoBehaviour
     private void OnEnable()
     {
         //Progress.readData();
-        
-        if(Progress.getInt("Chapter") < 1)
+        int chNum = int.Parse(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name.Substring(2));
+
+        if(Progress.getInt("Chapter") < chNum)//
         {
-            Progress.setInt("Chapter", 1);
+            Progress.setInt("Chapter", chNum);
             firstFinish = true;
-        }
-        else
-        {
-            firstFinish = false;
-        }
+        }else firstFinish = false;
+
         Progress.saveData();
         StartCoroutine(EndChapter());
     }

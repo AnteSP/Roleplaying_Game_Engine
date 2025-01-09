@@ -37,12 +37,13 @@
     "GotDannyBoxItem": true,
     "FredCS3": true,
     "StealerCSDone": true,
-    "FredCS4": true
+    "FredCS4": true,
+    "Final": true
   },
   "Volume": 1.0,
   "FredF": 4,
-  "Chapter": 1,
-  "TIME": 5446,
+  "Chapter": 2,
+  "TIME": 5646,
   "Deadlines": {},
   "Ch2FredConvoDecision1": 2,
   "Ch2FredConvoDecision2": 1,
