@@ -586,6 +586,19 @@ public class Dialogue : MonoBehaviour
                     }
 
                     break;
+                case 'f'://format: %f+1[FredF] means +1 friendship for var FredF. f-2[MRespect] means -2 friendship for var MRespect
+                    closingBracketIndex = Current.IndexOf(']');
+
+                    insideBrackets = Current.Substring(3, closingBracketIndex - 3);
+                    print("Int: " + Current.Substring(0, 2));
+                    int amount2 = int.Parse( Current.Substring(0, 2) );
+                    Current = Current.Substring(closingBracketIndex + 1);
+
+                    print("insideBrackets: " + insideBrackets + "    amount: " + amount2 + "    Current: " + Current);
+
+                    Stats.changeFriendship(insideBrackets, amount2);
+
+                    break;
             }
 
         }

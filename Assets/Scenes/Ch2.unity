@@ -1530,6 +1530,7 @@ GameObject:
   - component: {fileID: 41891089}
   - component: {fileID: 41891090}
   - component: {fileID: 41891091}
+  - component: {fileID: 41891092}
   m_Layer: 0
   m_Name: End Chapter CS
   m_TagString: Untagged
@@ -1698,7 +1699,7 @@ MonoBehaviour:
   - {fileID: 495647583}
   - {fileID: 2109651472}
   - {fileID: 1053999995}
-  - {fileID: 2100992585}
+  - {fileID: 1508137446}
   Enable:
   - {fileID: 170053105}
   - {fileID: 1613725959}
@@ -1873,6 +1874,36 @@ MonoBehaviour:
   - {fileID: 1652057593}
   Actors:
   - {fileID: 1089127659}
+--- !u!114 &41891092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41891081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465876450696b0546a2c086383aae2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 65
+  Line: 'Fred: By the way... I know you lied about it being safe for me back there...
+    I know you were in a tough spot. But I don''t know how well I can trust ya now'
+  LineIfFalseAndFirstListed: 'Fred: By the way... I just wanted to say that I really
+    appreciated you tellin'' me the truth about the danger I was in the other day'
+  FUNMin: 0
+  FUNMax: 100
+  boolVarIds: 
+  expectedTrue: 1
+  floatVarIds: 
+  intVarIds: Ch2FredConvoDecision2
+  switchVarIds: 
+  itemsNeeded: 
+  upgradesNeeded: 
+  minFloatVals: []
+  maxFloatVals: []
+  minIntVals: 00000000
+  maxIntVals: 01000000
 --- !u!1 &46589437
 GameObject:
   m_ObjectHideFlags: 0
@@ -36400,6 +36431,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8304182047419352757, guid: 6061eb302253efa45a3da3c4d238d0a0,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304182047419352757, guid: 6061eb302253efa45a3da3c4d238d0a0,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.92
+      objectReference: {fileID: 0}
     - target: {fileID: 8304182047419352760, guid: 6061eb302253efa45a3da3c4d238d0a0,
         type: 3}
       propertyPath: m_Sprite
@@ -48470,10 +48511,10 @@ RectTransform:
   m_Father: {fileID: 925263705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -150}
-  m_SizeDelta: {x: 350, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495489054
 MonoBehaviour:
@@ -49015,7 +49056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1508137447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54456,10 +54497,10 @@ RectTransform:
   m_Father: {fileID: 925263705}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -251}
-  m_SizeDelta: {x: 350, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665872597
 MonoBehaviour:
@@ -56056,7 +56097,7 @@ MonoBehaviour:
   TeleportPointsParent: {fileID: 1681766221}
   stickyNotes: []
   DeadlineNotification: {fileID: 446982909}
-  SocialNotification: {fileID: 0}
+  SocialNotification: {fileID: 1091493819}
 --- !u!4 &1700876590
 Transform:
   m_ObjectHideFlags: 0
@@ -56419,7 +56460,7 @@ MonoBehaviour:
   Id: Ch2FredCS1
   on: 0
   enable:
-  - {fileID: 2100992585}
+  - {fileID: 1508137446}
   disable: []
 --- !u!114 &1700876600
 MonoBehaviour:
@@ -56517,7 +56558,7 @@ MonoBehaviour:
   - {fileID: 41891081}
   disable:
   - {fileID: 651135144}
-  - {fileID: 2100992585}
+  - {fileID: 1508137446}
 --- !u!1 &1701395931
 GameObject:
   m_ObjectHideFlags: 0
@@ -69824,7 +69865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2100992586
 RectTransform:
   m_ObjectHideFlags: 0
