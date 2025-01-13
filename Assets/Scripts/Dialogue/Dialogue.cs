@@ -590,11 +590,11 @@ public class Dialogue : MonoBehaviour
                     closingBracketIndex = Current.IndexOf(']');
 
                     insideBrackets = Current.Substring(3, closingBracketIndex - 3);
-                    print("Int: " + Current.Substring(0, 2));
+                    //print("Int: " + Current.Substring(0, 2));
                     int amount2 = int.Parse( Current.Substring(0, 2) );
                     Current = Current.Substring(closingBracketIndex + 1);
 
-                    print("insideBrackets: " + insideBrackets + "    amount: " + amount2 + "    Current: " + Current);
+                    //print("insideBrackets: " + insideBrackets + "    amount: " + amount2 + "    Current: " + Current);
 
                     Stats.changeFriendship(insideBrackets, amount2);
 

@@ -1,0 +1,51 @@
+{
+  "FUN": 46,
+  "MONEY": 659437,
+  "Upgrades": {},
+  "PickUps": {
+    "*Ch2/Record": "",
+    "*Ch2/Apple sac (2)": ""
+  },
+  "Items": {
+    "17": 3,
+    "25": 2,
+    "20": 1,
+    "4": 9,
+    "2": 45,
+    "16": 1,
+    "29": 1,
+    "28": 1,
+    "27": 1,
+    "26": 1,
+    "1": 5,
+    "3": 15,
+    "5": 1
+  },
+  "Recipes": {
+    "Sparkling Water": true
+  },
+  "MRespect": -1,
+  "Ch2": {
+    "TutorialDone": true,
+    "OpeningDone": true,
+    "FredIntro": 1,
+    "Newspaper1": true,
+    "WakeUp": true,
+    "FredCS1": true,
+    "FredConvoDecision1": 2,
+    "FredCS2": true,
+    "GotDannyBoxItem": true,
+    "FredCS3": true,
+    "StealerCSDone": true,
+    "FredCS4": true,
+    "Final": true
+  },
+  "Volume": 1.0,
+  "FredF": 4,
+  "Chapter": 2,
+  "TIME": 5646,
+  "Deadlines": {},
+  "Ch2FredConvoDecision1": 2,
+  "Ch2FredConvoDecision2": 1,
+  "Ch2FredConvoDecision3": 2
+}
