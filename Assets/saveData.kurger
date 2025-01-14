@@ -1,11 +1,10 @@
 {
   "FUN": 46,
-  "MONEY": 659437,
+  "MONEY": 659530,
   "Upgrades": {},
-  "PickUps": {
-  },
+  "PickUps": {},
   "Items": {
-    "17": 3,
+    "17": 4,
     "25": 2,
     "20": 1,
     "4": 9,
@@ -16,7 +15,7 @@
     "27": 1,
     "26": 1,
     "1": 5,
-    "3": 15,
+    "3": 5,
     "5": 1
   },
   "Recipes": {
@@ -24,9 +23,24 @@
   },
   "MRespect": -1,
   "Ch2": {
+    "TutorialDone": true,
+    "FredCS1": true,
+    "GotDannyBoxItem": true,
+    "StealerCSDone": true,
+    "Final": true,
+    "WakeUp": false,
+    "FredCS2": true,
+    "OpeningDone": true,
+    "FredCS3": true,
+    "FredCS4": true
   },
   "Volume": 1.0,
-  "FredF": 0,
-  "Chapter": 1,
-  "Deadlines": {}
+  "FredF": 5,
+  "Chapter": 2,
+  "Deadlines": {},
+  "TIME": 7020,
+  "Ch2FredIntro": 2,
+  "Ch2FredConvoDecision1": 2,
+  "Ch2FredConvoDecision2": 1,
+  "Ch2FredConvoDecision3": 2
 }

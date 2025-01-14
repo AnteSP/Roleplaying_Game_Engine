@@ -24,14 +24,14 @@ public class CutScenePrep : StateMachineBehaviour
         CutSceneTalker cs = Stats.current.CurrentCS;
         if (cs.EndingChapter)
         {
-            Stats.Debug("OPT 1");
+            //Stats.Debug("OPT 1");
             Ending = true;
             cs.enabled = false;
             animator.transform.parent.Find("End screen").gameObject.SetActive(true);
         }
         else if (cs.Ending)
         {
-            Stats.Debug("OPT 4");
+            //Stats.Debug("OPT 4");
             Ending = true;
             if (cs.GoToNextScene())
             {

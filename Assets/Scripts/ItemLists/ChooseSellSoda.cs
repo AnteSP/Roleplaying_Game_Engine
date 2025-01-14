@@ -38,6 +38,7 @@ public class ChooseSellSoda : Resource
 
     List<SellSodas> BeingSold = new List<SellSodas>();
     public static ChooseSellSoda example = null;
+    static ChooseSellSoda activeSellSpot = null;
 
     public Sprite Upgrade, Midgrade, Downgrade;
 
@@ -209,6 +210,11 @@ public class ChooseSellSoda : Resource
         ToggleMenu();
     }
 
+    public static void ForceClosed()
+    {
+        if (activeSellSpot != null) activeSellSpot.ToggleMenu();
+    }
+
     public void ToggleMenu()
     {
         bool On = (Menu.transform.localPosition.y > -100);
@@ -220,7 +226,8 @@ public class ChooseSellSoda : Resource
             //Stats.StopStartTime(true);
             SellSodas.SLevel = float.NaN;
             Stats.StartStopTime(true, "ChooseSellSoda");
-            
+            print("active sell spot OFF");
+            activeSellSpot = null;
         }
         else
         {
@@ -228,6 +235,8 @@ public class ChooseSellSoda : Resource
             //Stats.StopStartTime(false);
             loadStats();
             Stats.StartStopTime(false, "ChooseSellSoda");
+            print("active sell spot ON");
+            activeSellSpot = this;
         }
         
     }

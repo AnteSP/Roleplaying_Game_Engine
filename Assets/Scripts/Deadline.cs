@@ -82,6 +82,8 @@ class Deadline : MonoBehaviour
         if(MinutesLeft <= 0)
         {
             print("THROWING AWAY DEADLINE " + MinutesLeft + " / " + TriggerAtMinute);
+            Slider.ForceBack();
+            Stats.ForceMenusClosed();
 
             if (SuccessCutScene == null && FailCutScene == null)
             {

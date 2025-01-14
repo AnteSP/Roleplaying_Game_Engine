@@ -116,6 +116,9 @@ public class StoreMenu : Resource
         if (!Menu.activeSelf) current = null;
     }
 
+    /// <summary>
+    /// Also works as a way to force the shop closed since this can only possibly be used on an open shop
+    /// </summary>
     public static void Use_Current()
     {
         if (current != null) current.Use(0);

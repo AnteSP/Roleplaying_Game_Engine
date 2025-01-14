@@ -67,10 +67,13 @@ public class CutSceneTalker : MonoBehaviour
             }
 
             if (Items.Contains(itemRequiredToStart))
+            {
                 Items.AddNoAnim(31, -1);
+            }
             else
             {
                 this.enabled = false;
+                print("Did not have item to start. Stopiing cs " + gameObject.name);
                 return;
             }
         }
@@ -92,7 +95,9 @@ public class CutSceneTalker : MonoBehaviour
 
         foreach(GameObject i in Disable)
         {
+            //print("1for obj " + i.name + " and " + i.activeSelf);
             i.SetActive(b);
+            //print("2for obj " + i.name + " and " + i.activeSelf);
         }
         foreach (GameObject i in Enable)
         {
@@ -137,9 +142,11 @@ public class CutSceneTalker : MonoBehaviour
         Stats.releaseLockedInObject();
         ObjectDepth.yeetSpaceBar();
 
-        if (Dialogue.d != null) Dialogue.d.showDisplay(true);
-
-        
+        if (Dialogue.d != null)
+        {
+            Dialogue.d.showDisplay(true);
+            if (!b) Dialogue.d.ForceToDefaultText();
+        }
 
         if (b)//if exiting
         {
@@ -202,6 +209,8 @@ public class CutSceneTalker : MonoBehaviour
         */
     }
 
+    bool skipping = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -214,7 +223,7 @@ public class CutSceneTalker : MonoBehaviour
         {
             if (Sentences.Last().StartsWith("%#")) EndingChapter = true;
             Ending = true;
-            print("GOT HERE 1");
+            skipping = true;
             D.EndCutScene(this);
             goodtoGo = false;
         }
@@ -285,7 +294,7 @@ public class CutSceneTalker : MonoBehaviour
 
     public bool isDone()
     {
-        return Index == Sentences.Length - 1 || Index == Sentences.Length;
+        return Index == Sentences.Length - 1 || Index == Sentences.Length || skipping;
     }
 
     public void NextCamPos(int time = 200)

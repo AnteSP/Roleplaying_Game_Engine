@@ -2842,7 +2842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &106639349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2963,8 +2963,8 @@ MonoBehaviour:
   - 'Fred: Me nan''s been complainin that one of her favourite records broke recently.
     I can''t figure out what song it was though'
   - 'Fred: It''s something about livin'' on the same street as your missus or something'
-  - 'You: Hm... An old record about living on your girlfriend''s street... Okay,
-    I''ll keep an eye out for it tomorrow'
+  - 'You: Hm... An old record about living on your wife''s street... Or at least
+    something like that. Okay, I''ll keep an eye out for it tomorrow'
   - 'Fred: Thanks mate, I''ll see you tomorrow night then, yeah?'
   - '%C(You both talk into the night) '
   - '%V[B]'
@@ -2978,9 +2978,9 @@ MonoBehaviour:
   - {fileID: 1570525495}
   - {fileID: 1570525495}
   - {fileID: 662037077}
+  - {fileID: 1570525495}
+  - {fileID: 1570525495}
   - {fileID: 662037077}
-  - {fileID: 1570525495}
-  - {fileID: 1570525495}
   - {fileID: 1570525495}
   - {fileID: 1570525495}
   - {fileID: 1570525495}
@@ -3213,7 +3213,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOADING...
+  m_text: 'LOADING...
+
+    (And Saving)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14829,7 +14831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &607684003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14901,7 +14903,7 @@ MonoBehaviour:
   Sentences:
   - 'Fred: I''m feelin'' watched back here with those mafia blokes lookin'' around'
   - 'You: Hey, listen. I- I know it''s scary but I promise, nothing bad''s gonna
-    happen to you. Nobody will suspect a things'
+    happen to you. Nobody will suspect a thing'
   - 'Fred: They''ve definitely seen me with ya though, and I''ve heard of the...
     Terrible things they do to people...'
   - '%AYou: Hey, don''t... Worry...'
@@ -31331,7 +31333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1322229498
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37173,7 +37175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1613273003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39116,6 +39118,8 @@ MonoBehaviour:
   enable:
   - {fileID: 1169519074}
   - {fileID: 1680971986}
+  - {fileID: 106639348}
+  - {fileID: 622205860}
   disable:
   - {fileID: 1597082572}
   - {fileID: 1322229497}
@@ -39138,6 +39142,8 @@ MonoBehaviour:
   enable:
   - {fileID: 1073705102}
   - {fileID: 1189356404}
+  - {fileID: 607684002}
+  - {fileID: 2139431061}
   disable:
   - {fileID: 106639348}
   - {fileID: 622205860}
@@ -39160,6 +39166,8 @@ MonoBehaviour:
   enable:
   - {fileID: 1251021644}
   - {fileID: 1894442885}
+  - {fileID: 2074359874}
+  - {fileID: 1370280961}
   disable:
   - {fileID: 607684002}
   - {fileID: 2139431061}
@@ -45214,7 +45222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2074359875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45295,9 +45303,9 @@ MonoBehaviour:
     Both me and my brother never wanted to get involved'
   - 'Fred: It''s quite ludicrous that your brother''s the damned CEO of Conker Koola.
     Why won''t he help you?'
-  - 'You: Haha... Help? No, that''s sissy shit. A real man is able to stand on his
+  - 'You: Haha... Help? No, that''s for sissies. A real man is able to stand on his
     own. And godamnit I''m gonna prove that I can too'
-  - 'Fred: Well fucking great! Since you''re a real man, I s''pose you don''t need
+  - 'Fred: Well heckin'' great! Since you''re a real man, I s''pose you don''t need
     my help then eh?'
   - 'You: N,no! No, not uh... Not like that. I''m going to pay you to get me out,
     with money I made myself'

@@ -58,6 +58,11 @@ public class Dialogue : MonoBehaviour
         TypeNoise = ntn;
     }
 
+    public void ForceToDefaultText()
+    {
+        textDisplay.text = "Press Space";
+    }
+
     IEnumerator Type()
     {
         bool TN = TypeNoise != null;

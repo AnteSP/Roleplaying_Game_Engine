@@ -65,7 +65,7 @@ public class CutSceneVarDia : MonoBehaviour
         foreach (Match match in matches)//loop thru each variable
         {
             string wordInBrackets = match.Groups[1].Value;
-            string replaceWith = "";
+            string replaceWith = "[" + wordInBrackets + "]";
             print($"Found: {wordInBrackets}");
 
             switch (wordInBrackets)

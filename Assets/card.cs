@@ -65,6 +65,7 @@ public class card : MonoBehaviour
                 }
                 transform.parent.gameObject.SetActive(false);
                 Dialogue.forceGoodToGo(true);
+                
                 //CamZoom.cz.TempSetSize(-1);
                 //Stats.current.CurrentCS You're in danger
             }
@@ -129,7 +130,8 @@ public class card : MonoBehaviour
     public void launch()
     {
         //print("launched");
-        if(rb == null)
+        allowClick = true;
+        if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<Collider2D>();

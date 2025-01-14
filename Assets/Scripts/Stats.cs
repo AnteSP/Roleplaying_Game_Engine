@@ -881,6 +881,12 @@ public class Stats : MonoBehaviour
         current.MESSAGE.SetActive(false);
     }
 
+    static public void ForceMenusClosed()
+    {
+        StoreMenu.Use_Current();
+        ChooseSellSoda.ForceClosed();
+    }
+
     static public void PendMessage(string text)
     {
         ForceHandlesBack.PendingMessage = text;

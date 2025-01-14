@@ -115,7 +115,11 @@ public class Progress : MonoBehaviour
             foreach (GameObject g in p.disable) gameObjsToSet[g] = false;
         }
 
-        foreach (KeyValuePair<GameObject,bool> kvp in gameObjsToSet) kvp.Key.SetActive(kvp.Value);
+        foreach (KeyValuePair<GameObject, bool> kvp in gameObjsToSet)
+        {
+            //print("DOING " + kvp.Key.name);
+            kvp.Key.SetActive(kvp.Value);
+        }
     }
 
     static public void setFloat(string Id,float num)

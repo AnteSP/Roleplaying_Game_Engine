@@ -83,7 +83,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 2.3
-        value: {x: 83.08, y: -7.03, z: -10.1}
+        value: {x: 83.08, y: -7.68, z: -10.1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -92,7 +92,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 4.0333333
-        value: {x: 83.08, y: -7.03, z: -4.14}
+        value: {x: 83.08, y: -7.68, z: -4.14}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -760,14 +760,11 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 8390787399254224635, guid: 7b6d57212c41a4c4481542e9982134d1,
-        type: 3}
+      value: {fileID: 2085736760, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
     - time: 2.3833334
-      value: {fileID: 4497284914456310101, guid: 7b6d57212c41a4c4481542e9982134d1,
-        type: 3}
+      value: {fileID: -759100027, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
     - time: 3.35
-      value: {fileID: 6227020596570923116, guid: 7b6d57212c41a4c4481542e9982134d1,
-        type: 3}
+      value: {fileID: 660923503, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
     - time: 4.6833334
       value: {fileID: 8390787399254224635, guid: 844453dfd03f5f84bbcfae2aec478684,
         type: 3}
@@ -947,9 +944,9 @@ AnimationClip:
     - {fileID: 1583071440, guid: dcfabdde3f064734b9904394ed0444d8, type: 3}
     - {fileID: -1216329067, guid: dcfabdde3f064734b9904394ed0444d8, type: 3}
     - {fileID: -683520389, guid: dcfabdde3f064734b9904394ed0444d8, type: 3}
-    - {fileID: 8390787399254224635, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
-    - {fileID: 4497284914456310101, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
-    - {fileID: 6227020596570923116, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
+    - {fileID: 2085736760, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
+    - {fileID: -759100027, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
+    - {fileID: 660923503, guid: 7b6d57212c41a4c4481542e9982134d1, type: 3}
     - {fileID: 8390787399254224635, guid: 844453dfd03f5f84bbcfae2aec478684, type: 3}
     - {fileID: 8390787399254224635, guid: 844453dfd03f5f84bbcfae2aec478684, type: 3}
     - {fileID: 1636916259, guid: 3256c206f264cab459ee08e6d9fc4866, type: 3}
@@ -1320,7 +1317,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.3
-        value: -7.03
+        value: -7.68
         inSlope: 0
         outSlope: 0
         tangentMode: 136
