@@ -157,7 +157,7 @@ public class CutSceneTalker : MonoBehaviour
                 Progress.switchInPlay(switchWhenDone, true);
             }
 
-            if(Index < As.Length)
+            if(Index < As.Length && As[Index] != null)
             {
                 print("AUDIO STOPPING " + As[Index].name);
                 As[Index].Stop();

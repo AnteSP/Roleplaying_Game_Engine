@@ -10430,7 +10430,7 @@ Animator:
   m_GameObject: {fileID: 408353720}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fea47e5d271cbc64cb6cbb6ad5aa4d22, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -22317,10 +22317,9 @@ GameObject:
   - component: {fileID: 925742663}
   - component: {fileID: 925742662}
   - component: {fileID: 925742661}
-  - component: {fileID: 925742660}
   m_Layer: 0
   m_Name: Disguised Fred
-  m_TagString: Machine
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22348,33 +22347,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.82, y: -0.89}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &925742660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925742658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 795a056651faccc4bbd6067a5975d493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Max: 0
-  Current: 0
-  ItemID: 0
-  Quantity: 0
-  CollectTime: 0
-  FUNMin: 1
-  FUNMax: 100
-  unfocusAfterUse: 1
-  D: {fileID: 119110231}
-  sentences:
-  - ...
-  - '%%'
-  TypeNoise: {fileID: 1570525495}
-  talkOnAwake: 0
-  specialObj: {fileID: 0}
 --- !u!61 &925742661
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29023,7 +28995,9 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - '%:Ch2'
+  - 'You: I... I couldn''t get the money for Fred... There''s nothing I can do anymore...'
+  - 'You: I guess I''m seeing Uncle Tony soon...'
+  - '%:Ch2-HQ'
   TypeNoise: {fileID: 0}
   talkOnAwake: 0
   specialObj: {fileID: 0}
@@ -38863,6 +38837,7 @@ GameObject:
   - component: {fileID: 1700876597}
   - component: {fileID: 1700876598}
   - component: {fileID: 1700876599}
+  - component: {fileID: 1700876600}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -39212,6 +39187,23 @@ MonoBehaviour:
   - {fileID: 1608248706}
   disable:
   - {fileID: 1178794083}
+--- !u!114 &1700876600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7595011c99eeb4fb39264b39da06f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: GameOver
+  on: 0
+  enable:
+  - {fileID: 1223998363}
+  disable: []
 --- !u!1 &1702333195
 GameObject:
   m_ObjectHideFlags: 0
@@ -40031,10 +40023,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

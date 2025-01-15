@@ -123,14 +123,14 @@ public class Dialogue : MonoBehaviour
             Stats.releaseLockedInObject(talker.unfocusAfterUse);
     }
 
-    public void EndCutScene(CutSceneTalker cs,bool nextDay=false)
+    public void EndCutScene(CutSceneTalker cs,int transition=1)
     {
         cs.Ending = true;
         CS = cs;
         cs.goodtoGo = false;
         textDisplay.text = "";
         
-        Stats.Transition( nextDay ? 3 : 1);
+        Stats.Transition(transition);
         gameObject.SetActive(false);
         forceStopSounds();
 
@@ -394,6 +394,11 @@ public class Dialogue : MonoBehaviour
                     Current = Current.Remove(0, 1);
 
                     break;
+                case 'G':
+                    Stats.GameOver();
+                    Dialogue.d.showDisplay(false);
+                    Stats.doSelecting(false);
+                    break;
             }
 
         }
@@ -429,8 +434,12 @@ public class Dialogue : MonoBehaviour
                     CS.NextNPCMove(true);
                     break;
                 case '%':
-                    EndCutScene(CS);
+                    if (string.IsNullOrWhiteSpace(Current))
+                        EndCutScene(CS);
+                    else
+                        EndCutScene(CS,4);
                     EndConvo();
+
                     break;
                 case 'F':
                     Stats.current.Filter.GetComponent<Animator>().Play("Fade");
@@ -509,7 +518,7 @@ public class Dialogue : MonoBehaviour
                     if (Current[0] == '>') //Indicates next day
                     {
                         Current = Current.Remove(0, 1);
-                        EndCutScene(CS,true);
+                        EndCutScene(CS,transition:3);
                     }
                     else
                         EndCutScene(CS);
@@ -618,104 +627,19 @@ public class Dialogue : MonoBehaviour
         Stats.current.AllowSelecting = true;
     }
 
+    IEnumerator gameoeverAnim(float secs)
+    {
+        Current = "";
+        yield return new WaitForSeconds(secs);
+        Stats.GameOver();
+    }
+
     static public void forceGoodToGo(bool val)
     {
         //print("SET");
         Dialogue.d.CS.goodtoGo = val;
     }
 
-    static public void fuckfuckshitshit()
-    {
-        int pleaseFuckingWorkOhMyGod = 2;
-
-        if(pleaseFuckingWorkOhMyGod < Random.Range(1, 2))
-        {
-            print("What the fuck is happening");
-        }
-        else
-        {
-            print("I hate my fucking life");
-        }
-
-        bool ObamaFuckedMyWife = false;
-
-        fuckfuckshitshit();
-
-        while (ObamaFuckedMyWife)
-        {
-            print("Please God why is this happening to me");
-
-            float myPenisIsGone = 4f;
-
-            if (myPenisIsGone < 5f)
-            {
-                ObamaFuckedMyWife = true;
-            }
-
-
-        }
-
-        int pleaseFuckingWorkOhMyGod2 = 2;
-
-        if (pleaseFuckingWorkOhMyGod < Random.Range(1, 2))
-        {
-            print("What the fuck is happening");
-        }
-        else
-        {
-            print("I hate my fucking life");
-        }
-
-        bool ObamaFuckedMyWife3 = false;
-
-        fuckfuckshitshit();
-
-        while (ObamaFuckedMyWife)
-        {
-            print("Please God why is this happening to me");
-
-            float myPenisIsGone = 4f;
-
-            if (myPenisIsGone < 5f)
-            {
-                ObamaFuckedMyWife = true;
-            }
-
-
-        }
-
-        int pleaseFuckingWorkOhMyGod4 = 2;
-
-        if (pleaseFuckingWorkOhMyGod < Random.Range(1, 2))
-        {
-            print("What the fuck is happening");
-        }
-        else
-        {
-            print("I hate my fucking life");
-        }
-
-        bool ObamaFuckedMyWife5 = false;
-
-        fuckfuckshitshit();
-
-        while (ObamaFuckedMyWife)
-        {
-            print("Please God why is this happening to me");
-
-            float myPenisIsGone = 4f;
-
-            if (myPenisIsGone < 5f)
-            {
-                ObamaFuckedMyWife = true;
-            }
-
-
-        }
-
-
-
-    }
 }
 
 

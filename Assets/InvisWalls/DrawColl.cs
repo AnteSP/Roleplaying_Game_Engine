@@ -9,6 +9,7 @@ public class DrawColl : MonoBehaviour
     LineRenderer lineRenderer;
     PolygonCollider2D polygonCollider2D;
     float time = 1f;
+    public Color displayColor = Color.black;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class DrawColl : MonoBehaviour
         {
             time -= Time.deltaTime;
 
-            lineRenderer.material.color = new Color(1, 1, 1, time);
+            lineRenderer.material.color = new Color(displayColor.r, displayColor.g, displayColor.b, time);
         }
         else
         {

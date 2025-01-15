@@ -163,6 +163,7 @@ public class Stats : MonoBehaviour
         current = this;
         Player = GameObject.FindGameObjectWithTag("Player");
         if (Player != null) playerMovement = Player.GetComponent<Movement>();
+
         if( teleportPoint != "" && TeleportPointsParent != null)
         {
             Vector2 targ = TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint).First().position;
@@ -217,6 +218,7 @@ public class Stats : MonoBehaviour
 
         //print("load please");
         if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
+        if (!Player.activeSelf) AllowSelecting = false;
         //print("did it tho?");
 
         AudioSource aS = Stats.current.GetComponent<AudioSource>();
@@ -441,6 +443,9 @@ public class Stats : MonoBehaviour
                 text = nextDayCSTips[UnityEngine.Random.Range(0, nextDayCSTips.Length)];
                 break;
             case 4:
+                text = "Several months later...";
+                break;
+            case 5:
                 text = "";
                 break;
         }
@@ -804,9 +809,9 @@ public class Stats : MonoBehaviour
 
         print("GAME OVER");
         current.GOMESSAGE.SetActive(true);
-        current.GOMESSAGE.transform.Find("Text").GetComponent<Text>().text = "YOU FUCKING DIED\n\nconsider this a gameover... But feel free to still explore around";
+        //current.GOMESSAGE.transform.Find("Text").GetComponent<Text>().text = "YOU FUCKING DIED\n\nconsider this a gameover... But feel free to still explore around";
         StartStopPlayerMovement(false);
-        current.ThereGoesMyHero.Play();
+        //current.ThereGoesMyHero.Play();
 
     }
 

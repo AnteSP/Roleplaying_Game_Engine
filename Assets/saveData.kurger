@@ -1,6 +1,6 @@
 {
   "FUN": 46,
-  "MONEY": 659530,
+  "MONEY": 400,
   "Upgrades": {},
   "PickUps": {},
   "Items": {
@@ -27,7 +27,7 @@
     "FredCS1": true,
     "GotDannyBoxItem": true,
     "StealerCSDone": true,
-    "Final": true,
+    "Final": false,
     "WakeUp": false,
     "FredCS2": true,
     "OpeningDone": true,
@@ -42,5 +42,6 @@
   "Ch2FredIntro": 2,
   "Ch2FredConvoDecision1": 2,
   "Ch2FredConvoDecision2": 1,
-  "Ch2FredConvoDecision3": 2
+  "Ch2FredConvoDecision3": 2,
+  "GameOver": true
 }
