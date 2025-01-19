@@ -1,47 +1,50 @@
 {
   "FUN": 46,
-  "MONEY": 400,
+  "MONEY": 1100002,
   "Upgrades": {},
-  "PickUps": {},
+  "PickUps": {
+    "*Ch2/Apple sac (2)": ""
+  },
   "Items": {
-    "17": 4,
+    "17": 5,
     "25": 2,
     "20": 1,
-    "4": 9,
-    "2": 45,
-    "16": 1,
+    "4": 18,
+    "2": 47,
     "29": 1,
+    "16": 1,
     "28": 1,
     "27": 1,
     "26": 1,
-    "1": 5,
+    "1": 15,
     "3": 5,
-    "5": 1
+    "5": 1,
+    "14": 1
   },
   "Recipes": {
     "Sparkling Water": true
   },
   "MRespect": -1,
   "Ch2": {
+    "OpeningDone": true,
     "TutorialDone": true,
     "FredCS1": true,
-    "GotDannyBoxItem": true,
     "StealerCSDone": true,
-    "Final": false,
     "WakeUp": false,
     "FredCS2": true,
-    "OpeningDone": true,
+    "GotDannyBoxItem": true,
     "FredCS3": true,
-    "FredCS4": true
+    "FredCS4": true,
+    "Final": true
   },
   "Volume": 1.0,
-  "FredF": 5,
   "Chapter": 2,
   "Deadlines": {},
-  "TIME": 7020,
-  "Ch2FredIntro": 2,
+  "TIME": 7040,
+  "GameOver": false,
+  "Ch2FredIntro": 1,
+  "FredF": 3,
   "Ch2FredConvoDecision1": 2,
-  "Ch2FredConvoDecision2": 1,
-  "Ch2FredConvoDecision3": 2,
-  "GameOver": true
+  "Ch2FredConvoDecision2": 2,
+  "Ch2FredConvoDecision3": 2
 }

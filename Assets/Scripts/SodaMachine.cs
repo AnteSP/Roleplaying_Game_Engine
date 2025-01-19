@@ -47,17 +47,20 @@ public class SodaMachine : MonoBehaviour
     public void StartOverride()
     {
         if (started) return;
-        started = true;
-        SodaPrev = SodaPreview;
+        if( !(RecipePrefab != null && Menu == null && SodaPreview == null && SellButton == null))//when all this is null, the soda machine is just in the scene to load recipes and nothing else. So skip this stuff
+        {
+            started = true;
+            SodaPrev = SodaPreview;
+            SodaPr = SodaPreview.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+            A = GetComponent<Animator>();
+            SodaMenu = Menu;
+
+            SellBut = SellButton;
+        }
         GridParent = RecipePrefab.transform.parent;
         RecipePrefab.SetActive(false);
         RePrefab = RecipePrefab;
-        SodaPr = SodaPreview.transform.parent.GetChild(1).GetComponent<TextMeshProUGUI>();
-
-        A = GetComponent<Animator>();
-        SodaMenu = Menu;
-
-        SellBut = SellButton;
 
         //Create All recipes
         Recipes.Add(new Recipe(new int[] { 1, 2 }, 3));
@@ -163,14 +166,23 @@ public class SodaMachine : MonoBehaviour
     /// <param name="R"></param>
     public static bool CreateRecipe(Recipe R)
     {
+        if (RecipesU.Contains(R))
+        {
+            updateRecipeList(R);
+            return false;
+        }
+        RecipesU.Add(R);
+        updateRecipeList(R);
+        return true;
+    }
+
+    static void updateRecipeList(Recipe R)
+    {
         void SetToItem(Transform G, Sprite S, string T)
         {
             G.GetComponent<Image>().sprite = S;
             G.GetComponent<Tooltip>().tooltip = T;
         }
-
-        if (RecipesU.Contains(R)) return false;
-        RecipesU.Add(R);
 
         GameObject temp = Instantiate(RePrefab, RePrefab.transform.parent);
         temp.GetComponent<SelectRec>().RecipeIndex = Recipes.IndexOf(R);
@@ -193,7 +205,6 @@ public class SodaMachine : MonoBehaviour
             SetToItem(IngPar.GetChild(i), item.icon, item.Name);
         }
         UpdateRecipeAvailability();
-        return true;
     }
     /*
     public static void Subtract(string name)

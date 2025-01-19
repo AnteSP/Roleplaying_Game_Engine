@@ -14909,7 +14909,7 @@ MonoBehaviour:
   - '%AYou: Hey, don''t... Worry...'
   - 'G.G: Hahaha... "Don''t worry" the prick says'
   - 'G.G: When I get my hands on this mothafucka i''m snappin'' his legs like glowsticks
-    and slicin'' him up like a pizza'
+    and carvin'' him up like a jack o'' lantern'
   - 'G.G: Do not underestimate me...'
   - '%AYou: Wha-...'
   - 'Fred: Hm? You alright? You look like you''ve seen a ghost'
@@ -25463,6 +25463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 1681949540}
+  displayColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!60 &1040578224
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -40023,10 +40024,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -45269,7 +45270,7 @@ MonoBehaviour:
   minFloatVals: []
   maxFloatVals: []
   minIntVals: 64000000
-  maxIntVals: 3f420f00
+  maxIntVals: ffe0f505
 --- !u!114 &2074359877
 MonoBehaviour:
   m_ObjectHideFlags: 0

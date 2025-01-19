@@ -557,6 +557,7 @@ public class Dialogue : MonoBehaviour
 
                     if (!foundGoodLine) Current += fallback;
                     DialogueChoiceNotif.SetTrigger("GoDec");
+                    ProcessPercCS();
 
                     break;
                 case '{'://format: {4,2}{70,1} [INSERT MESSAGE HERE]    for giving player two item 4s and one item 70

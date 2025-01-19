@@ -68,7 +68,7 @@ public class Ch2Events : MonoBehaviour
 
         if (FredSecret != null)
         {
-            if (calcFredCost() > Stats.current.Money) FredSecret.sentence = "%[GameOver]Fred (disguised): I'm sorry lad, you don't have enough quid. Not worth the risk";
+            if (calcFredCost() > Stats.current.Money) FredSecret.sentence = "%[GameOver]Fred (disguised): I'm sorry lad, you don't have enough cash. Not worth the risk";
             else FredSecret.sentence = "%[Ch2Final]Fred (disguised): Oi! Sh! Don't look, it's me. I see you got the money... Restroom door... Climb out the window... Boot o' my car";
         }
     }
