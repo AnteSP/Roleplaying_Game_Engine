@@ -123,9 +123,9 @@ public class Automation_anim : EditorWindow
         AnimatorController animatorController = AnimatorController.CreateAnimatorControllerAtPath($"{outputFolder}/{char_name}_Walking.controller");
 
         AnimationClip walkDownClip = CreateAnimationClip(sprites, rows, columns, 0, "Walk_Down");
-        AnimationClip walkLeftClip = CreateAnimationClip(sprites, rows, columns, 2, "Walk_Left");//The index numbers here (0,2,3,1) dont make sense but they work. Idfk man
-        AnimationClip walkRightClip = CreateAnimationClip(sprites, rows, columns, 3, "Walk_Right");
-        AnimationClip walkUpClip = CreateAnimationClip(sprites, rows, columns, 1, "Walk_Up");
+        AnimationClip walkLeftClip = CreateAnimationClip(sprites, rows, columns, 1, "Walk_Left");//The index numbers here (0,2,3,1) dont make sense but they work. Idfk man [NOTE: SWITCHED THIS BACK TO 0,1,2,3. WHY IS THIS BROKEN!? IDK!?]
+        AnimationClip walkRightClip = CreateAnimationClip(sprites, rows, columns, 2, "Walk_Right");
+        AnimationClip walkUpClip = CreateAnimationClip(sprites, rows, columns, 3, "Walk_Up");
 
         animatorController.AddParameter("Horizontal", AnimatorControllerParameterType.Int);
         animatorController.AddParameter("Vertical", AnimatorControllerParameterType.Int);
@@ -133,9 +133,9 @@ public class Automation_anim : EditorWindow
 
         // Add states and transitions
         AddStateWithTransitions(animatorController, walkDownClip, 0, "Walk_Down", "Vertical", -1, "Speed");
-        AddStateWithTransitions(animatorController, walkLeftClip,2, "Walk_Left", "Horizontal", -1, "Speed");
-        AddStateWithTransitions(animatorController, walkRightClip,3, "Walk_Right", "Horizontal", 1, "Speed");
-        AddStateWithTransitions(animatorController, walkUpClip, 1, "Walk_Up", "Vertical", 1, "Speed");
+        AddStateWithTransitions(animatorController, walkLeftClip,1, "Walk_Left", "Horizontal", -1, "Speed");
+        AddStateWithTransitions(animatorController, walkRightClip,2, "Walk_Right", "Horizontal", 1, "Speed");
+        AddStateWithTransitions(animatorController, walkUpClip, 3, "Walk_Up", "Vertical", 1, "Speed");
 
         Debug.Log("Animator generated successfully.");
     }
