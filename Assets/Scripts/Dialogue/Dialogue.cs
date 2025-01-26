@@ -129,6 +129,7 @@ public class Dialogue : MonoBehaviour
         CS = cs;
         cs.goodtoGo = false;
         textDisplay.text = "";
+        if (cs.musicsQueue.Count > 0) cs.NextMusicInQueue();
         
         Stats.Transition(transition);
         gameObject.SetActive(false);

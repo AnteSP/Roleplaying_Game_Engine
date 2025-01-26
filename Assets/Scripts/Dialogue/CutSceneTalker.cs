@@ -311,12 +311,13 @@ public class CutSceneTalker : MonoBehaviour
         
     }
 
+    
     public void NextMusicInQueue()
     {
         if (musicsQueue.Count == 0) return;
         AudioSource a = musicsQueue[0];
+        Stats.changeBackgroundMusic(a == null? null : a.clip);
         musicsQueue.RemoveAt(0);
-        Stats.changeBackgroundMusic(a.clip);
     }
 
     public void NextNPCMove(bool n)

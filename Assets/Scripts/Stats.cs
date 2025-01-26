@@ -928,10 +928,13 @@ public class Stats : MonoBehaviour
         SetVolume(a, true);
     }
 
+    AudioClip OGAudio = null;
     public static void changeBackgroundMusic(AudioClip a)
     {
         AudioSource aS = Stats.current.GetComponent<AudioSource>();
+        if (current.OGAudio == null) current.OGAudio = aS.clip;
         aS.clip = a;
+        if (a == null) aS.clip = current.OGAudio;
         aS.mute = false;
         aS.Play();
     }
