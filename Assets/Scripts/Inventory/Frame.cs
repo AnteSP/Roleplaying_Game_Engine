@@ -113,7 +113,7 @@ public class Frame : MonoBehaviour
     {
         Items.SELECT(Items.ITEMS[ID]);
         Target = ID;
-        //print(Target + " is new Target");
+        print(Target + " is new Target");
 
         I1.color = High;
         T.color = Color.clear;

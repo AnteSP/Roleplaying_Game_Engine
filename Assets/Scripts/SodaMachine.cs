@@ -66,6 +66,7 @@ public class SodaMachine : MonoBehaviour
         Recipes.Add(new Recipe(new int[] { 1, 2 }, 3));
         Recipes.Add(new Recipe(new int[] { 4, 5, 2 }, 7));
         Recipes.Add(new Recipe(new int[] { 4, 4, 4, 4, 4, 1 }, 15));
+        Recipes.Add(new Recipe(new int[] { 1, 5, 2, 33 }, 34));
 
         CreateRecipe(Recipes[0]);
 

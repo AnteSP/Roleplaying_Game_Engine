@@ -109,6 +109,15 @@ class Deadline : MonoBehaviour
 
     public bool fulfillRequirement()
     {
+        while(requirements != "")
+        {
+            if (requirements.StartsWith("ITEM"))//Ex: "ITEM002" requires item 2
+            {
+
+            }
+            else break;
+        }
+
         if (this.requirements == "") return true;
 
         return false;

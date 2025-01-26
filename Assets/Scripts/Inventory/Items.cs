@@ -40,7 +40,7 @@ public class Items : MonoBehaviour
     static int Curser;
     static float Inity;
 
-    public static int[] Sodas = { 3 , 7,12,15};
+    public static int[] Sodas = { 3 , 7,12,15,34};
 
     [SerializeField] float[] SODAPCHANGE = new float[50];
     [SerializeField] float[] SODATCHANGE = new float[50];
@@ -117,7 +117,8 @@ public class Items : MonoBehaviour
     public static void SELECT(int ID)
     {
         SELECTED = ID;
-        TITLE.text = ITEMS_DB[ID].name;
+        //print("NAME: " + ITEMS_DB[ID].Name + " DESC: " + ITEMS_DB[ID].description + " name: " + ITEMS_DB[ID].name);
+        TITLE.text = ITEMS_DB[ID].Name;
         DESCP.text = ITEMS_DB[ID].description;
     }
     /// <summary>

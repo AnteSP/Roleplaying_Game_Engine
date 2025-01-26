@@ -301,7 +301,7 @@ public class Dialogue : MonoBehaviour
 
                     break;
                 case 'r'://give recipe. Use: %rX    X is the char in dic(below). Go to SodaMachine to find the index of recipe you want to add
-                    Dictionary<char, int> dic = new Dictionary<char, int> { { 'a', 2 }, };
+                    Dictionary<char, int> dic = new Dictionary<char, int> { { 'a', 2 }, { 'b', 3 }, };
                     int ind = dic[Current[0]];
                     Current = Current.Remove(0, 1);
                     if ( SodaMachine.CreateRecipe(SodaMachine.Recipes[ind]) ) Items.ShiftAnim(SodaMachine.Recipes[ind].Pic, "NEW RECIPE", SodaMachine.Recipes[ind].Name);
