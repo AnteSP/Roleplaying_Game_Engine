@@ -19,7 +19,8 @@
     "1": 15,
     "3": 5,
     "5": 1,
-    "14": 1
+    "14": 1,
+    "34": 1
   },
   "Recipes": {
     "Sparkling Water": true
@@ -30,7 +31,7 @@
     "TutorialDone": true,
     "FredCS1": true,
     "StealerCSDone": true,
-    "WakeUp": false,
+    "WakeUp": true,
     "FredCS2": true,
     "GotDannyBoxItem": true,
     "FredCS3": true,
@@ -40,8 +41,10 @@
   },
   "Volume": 1.0,
   "Chapter": 2,
-  "Deadlines": {},
-  "TIME": 7145,
+  "Deadlines": {
+    "F-Ch2": true
+  },
+  "TIME": 3897,
   "GameOver": false,
   "Ch2FredIntro": 1,
   "FredF": 3,

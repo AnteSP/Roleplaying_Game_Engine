@@ -109,10 +109,16 @@ class Deadline : MonoBehaviour
 
     public bool fulfillRequirement()
     {
-        while(requirements != "")
+        for(int loops = 0; requirements != "" && loops < 100; loops++)
         {
+            if (loops == 99) print("ERROR! COULDN'T PROCESS DEADLINE REQUIREMENT: [" + requirements + "]");
+
             if (requirements.StartsWith("ITEM"))//Ex: "ITEM002" requires item 2
             {
+                // Check if the extracted part is a valid 3-digit number
+                int itemID = int.Parse(requirements.Substring(4, 3));
+                requirements = requirements.Substring(7);
+                if (!Items.Contains(itemID)) return false;
 
             }
             else break;

@@ -785,6 +785,7 @@ GameObject:
   - component: {fileID: 30165788}
   - component: {fileID: 30165790}
   - component: {fileID: 30165789}
+  - component: {fileID: 30165791}
   m_Layer: 5
   m_Name: Deadline (2)
   m_TagString: Untagged
@@ -852,6 +853,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30165787}
   m_CullTransparentMesh: 1
+--- !u!114 &30165791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30165787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a752d65718d4b43906ea775520301f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: Daily 21:00 Mafia Check-in @ the local pub
 --- !u!1 &38875157
 GameObject:
   m_ObjectHideFlags: 0
@@ -14281,8 +14295,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.6, y: -11.6}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -6.8728, y: 0.69989}
+  m_SizeDelta: {x: 31.5504, y: 25.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505910729
 MonoBehaviour:
@@ -18128,6 +18142,7 @@ GameObject:
   - component: {fileID: 657733919}
   - component: {fileID: 657733921}
   - component: {fileID: 657733920}
+  - component: {fileID: 657733922}
   m_Layer: 5
   m_Name: Deadline (1)
   m_TagString: Untagged
@@ -18195,6 +18210,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657733918}
   m_CullTransparentMesh: 1
+--- !u!114 &657733922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657733918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a752d65718d4b43906ea775520301f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: Daily 21:00 Mafia Check-in @ the local pub
 --- !u!1 &662037075
 GameObject:
   m_ObjectHideFlags: 0
@@ -24682,6 +24710,7 @@ GameObject:
   - component: {fileID: 912918845}
   - component: {fileID: 912918847}
   - component: {fileID: 912918846}
+  - component: {fileID: 912918848}
   m_Layer: 5
   m_Name: Deadline (3)
   m_TagString: Untagged
@@ -24749,6 +24778,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912918844}
   m_CullTransparentMesh: 1
+--- !u!114 &912918848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912918844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a752d65718d4b43906ea775520301f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: Daily 21:00 Mafia Check-in @ the local pub
 --- !u!1 &914910198
 GameObject:
   m_ObjectHideFlags: 0
@@ -44844,6 +44886,7 @@ GameObject:
   - component: {fileID: 1700876602}
   - component: {fileID: 1700876603}
   - component: {fileID: 1700876604}
+  - component: {fileID: 1700876606}
   m_Layer: 0
   m_Name: Statics Manager
   m_TagString: STATS
@@ -45333,6 +45376,28 @@ MonoBehaviour:
   - {fileID: 133178030}
   - {fileID: 1597104839}
   - {fileID: 415392278}
+--- !u!114 &1700876606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700876588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed85c29afafc03499627cde49c97d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 70
+  Description: Make Magnet Fizz
+  requirements: ITEM034
+  hour: 17
+  day: 3
+  FailCutScene: {fileID: 0}
+  SuccessCutScene: {fileID: 0}
+  TriggerAtMinute: 0
+  MinutesLeft: 0
+  stickyNote: 0
 --- !u!1 &1705963232
 GameObject:
   m_ObjectHideFlags: 0
@@ -46956,10 +47021,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -48131,8 +48196,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.7, y: -13.9}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 13.8591, y: -0.45005}
+  m_SizeDelta: {x: 17.5779, y: 23.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807080826
 MonoBehaviour:
