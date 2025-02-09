@@ -3,7 +3,8 @@
   "MONEY": 1098774,
   "Upgrades": {},
   "PickUps": {
-    "*Ch2/Apple sac (2)": ""
+    "*Ch2/Apple sac (2)": "",
+    "*Ch2-Pub/FerroFluid": ""
   },
   "Items": {
     "17": 5,
@@ -20,10 +21,12 @@
     "3": 5,
     "5": 1,
     "14": 1,
-    "34": 1
+    "34": 1,
+    "33": 10
   },
   "Recipes": {
-    "Sparkling Water": true
+    "Sparkling Water": true,
+    "Magnet Fizz": true
   },
   "MRespect": -1,
   "Ch2": {
@@ -37,7 +40,8 @@
     "FredCS3": true,
     "FredCS4": true,
     "Final": false,
-    "Vader1": true
+    "Vader1": true,
+    "Vader2": true
   },
   "Volume": 1.0,
   "Chapter": 2,
