@@ -304,7 +304,7 @@ public class Dialogue : MonoBehaviour
                     Dictionary<char, int> dic = new Dictionary<char, int> { { 'a', 2 }, { 'b', 3 }, };
                     int ind = dic[Current[0]];
                     Current = Current.Remove(0, 1);
-                    if ( SodaMachine.CreateRecipe(SodaMachine.Recipes[ind]) ) Items.ShiftAnim(SodaMachine.Recipes[ind].Pic, "NEW RECIPE", SodaMachine.Recipes[ind].Name);
+                    if ( SodaMachine.CreateRecipe(Items.RECIPES_DB[ind]) ) Items.ShiftAnim(Items.RECIPES_DB[ind].Soda.icon, "NEW RECIPE", Items.RECIPES_DB[ind].Soda.Name);
 
                     break;
                 case 'w'://wait

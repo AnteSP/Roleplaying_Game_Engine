@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler 
 {
 
-    public int ID;
+    public int ID;//itemID
+    public RecipeAsset recipe;
     public ChooseSellSoda List;
-    public Soda SodaInfo;
     public float TimeLeft;
     bool go;
     public Text text;
@@ -38,7 +38,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         else
         {
             justGotStolenFrom = false;
-            Stats.ChangeMoney((int)SodaInfo.PriceChange);
+            Stats.ChangeMoney((int)recipe.SodaPChange);
             List.CashSound.Play();
         }
         
@@ -59,11 +59,11 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
     {
         if (!Items.Add(ID, -1))
         {
-            Stats.DisplayMessage("OWo I made a fucky wucky bwut I dont knwo what happen :(");
+            Stats.DisplayMessage("OWo Croggs made a fucky wucky bwut I dont knwo what happen :(");
         }
         else
         {
-            Stats.ChangeTimeAnim(Mathf.CeilToInt(SodaInfo.TimeChange * (1f / List.TimeMult)) );
+            Stats.ChangeTimeAnim(Mathf.CeilToInt(recipe.SodaTChange * (1f / List.TimeMult)) );
             finishSell();
             
         }
@@ -84,18 +84,18 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
 
     void updateText()
     {
-        float total = SodaInfo.TimeChange * (1f/List.TimeMult);
+        float total = recipe.SodaTChange * (1f/List.TimeMult);
         
         if(total < 5)
         {
-            List.Time.text = "Sell Time: +" + total.ToString("F1") + " mins   base(+" + SodaInfo.TimeChange + ")";
+            List.Time.text = "Sell Time: +" + total.ToString("F1") + " mins   base(+" + recipe.SodaTChange + ")";
         }
         else
         {
-            List.Time.text = "Sell Time: +" + Stats.allTimeInGameToString((int)total) + "   base(+" + Stats.allTimeInGameToString((int)SodaInfo.TimeChange) + ")";
+            List.Time.text = "Sell Time: +" + Stats.allTimeInGameToString((int)total) + "   base(+" + Stats.allTimeInGameToString((int)recipe.SodaTChange) + ")";
         }
         
 
-        List.Money.text = "Sell Price: " + SodaInfo.PriceChange ;
+        List.Money.text = "Sell Price: " + recipe.SodaPChange;
     }
 }

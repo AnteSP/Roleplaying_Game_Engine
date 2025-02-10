@@ -288,12 +288,12 @@ public class Progress : MonoBehaviour
         }
 
         if (!data.ContainsKey("Recipes")) data.Add("Recipes", new JObject());
-        data["Recipes"] = new JObject();
+        data["Recipes"] = new JArray();
 
-        foreach(Recipe r in SodaMachine.getUnlockedRecipes())
+        foreach(int i in SodaMachine.getUnlockedRecipes())
         {
             //print("GOT " + r + " AND " + r.Name);
-            ((JObject)data["Recipes"]).Add(r.Name, true);
+            ((JArray)data["Recipes"]).Add( i);
         }
 
         if (!data.ContainsKey("Upgrades")) data.Add("Upgrades", new JObject());
@@ -361,6 +361,14 @@ public class Progress : MonoBehaviour
             //if (data.ContainsKey(p.Id))
             //    p.on = data[p.Id].Value<bool>();
             //else print("ERROR: Missing field [" + p.Id + "] in save data");
+        }
+
+        if (data["Recipes"] != null)
+        {
+            foreach(int i in (JArray)data["Recipes"])
+            {
+                SodaMachine.UnlockRecipe(i);
+            }
         }
 
         //print("LOADING DEDS");

@@ -113,7 +113,7 @@ public class Stats : MonoBehaviour
     public static float allTime = 0;
     public static int allTimeInGame = 600;//Starts at 10:00am on ch2
     public static bool freePlay = false;
-    public List<SellSodas> sodasSelling = new List<SellSodas>();
+    //public List<SellSodas> sodasSelling = new List<SellSodas>();
 
     [SerializeField] GameObject[] disableOnFreePlay;
     [SerializeField] GameObject[] enableOnlyOnFreePlay;
@@ -1044,27 +1044,4 @@ public class Stats : MonoBehaviour
         
     }
 
-}
-
-public class Recipe
-{
-
-    public int[] Ingredients;
-    public string Name;
-    public int BasePrice;
-    public Sprite Pic;
-    public int ItemID;
-
-    public Recipe(int[] ingredients, int itemID)
-    {
-        Items.EnsureItemsAreInstantiated();
-        Item item = Items.ITEMS_DB[itemID];
-        ItemID = itemID;
-        Ingredients = ingredients;
-        Name = item.Name;
-        BasePrice = (int)Items.SodaInfo[Items.IndexOfXinY(ItemID, Items.Sodas)].PriceChange;
-        Pic = item.icon;
-        //MonoBehaviour.print("CREATED "  + Pic.name + " " + Name + " " + itemID);
-        //MonoBehaviour.print("CREATED " + Items.ITEMS_DB[3].icon.name + " " + Items.ITEMS_DB[3].Name + " " + 3);
-    }
 }

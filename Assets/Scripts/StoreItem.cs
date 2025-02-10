@@ -38,7 +38,7 @@ public class StoreItem : MonoBehaviour
 
             } else if (Type == ItemType.Recipe)
             {
-                SodaMachine.CreateRecipe(SodaMachine.Recipes[RecipeNum]);
+                SodaMachine.CreateRecipe(Items.RECIPES_DB[RecipeNum]);
                 Menu.RemoveItem(ItemID);
             } else if (Type == ItemType.Clothing)
             {

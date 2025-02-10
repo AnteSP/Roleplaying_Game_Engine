@@ -24,10 +24,9 @@
     "34": 1,
     "33": 10
   },
-  "Recipes": {
-    "Sparkling Water": true,
-    "Magnet Fizz": true
-  },
+  "Recipes": [
+    0,3
+  ],
   "MRespect": -1,
   "Ch2": {
     "OpeningDone": true,
@@ -48,7 +47,7 @@
   "Deadlines": {
     "F-Ch2": true
   },
-  "TIME": 3897,
+  "TIME": 3281,
   "GameOver": false,
   "Ch2FredIntro": 1,
   "FredF": 3,

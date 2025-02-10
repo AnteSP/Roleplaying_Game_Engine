@@ -40,16 +40,16 @@ public class Items : MonoBehaviour
     static int Curser;
     static float Inity;
 
-    public static int[] Sodas = { 3 , 7,12,15,34};
+    //public static int[] Sodas = { 3 , 7,12,15,34};
 
-    [SerializeField] float[] SODAPCHANGE = new float[50];
-    [SerializeField] float[] SODATCHANGE = new float[50];
+    //[SerializeField] float[] SODAPCHANGE = new float[50];
+    //[SerializeField] float[] SODATCHANGE = new float[50];
 
-    public static Soda[] SodaInfo = new Soda[50];
+    //public static Soda[] SodaInfo = new Soda[50];
 
     [SerializeField] SodaMachine SodaMach;
     public static Item[] ITEMS_DB = new Item[1];
-
+    public static RecipeAsset[] RECIPES_DB = new RecipeAsset[1];
 
     public static void EnsureItemsAreInstantiated()
     {
@@ -61,10 +61,6 @@ public class Items : MonoBehaviour
 
     void StartOverride()
     {
-        for (int i = 0; i < 50; i++)
-        {
-            SodaInfo[i] = new Soda(SODAPCHANGE[i], SODATCHANGE[i]);
-        }
         /*
                 NAMES = NAMESI;
                 DESCRIPTS = DESCRIPTSI;
@@ -86,14 +82,30 @@ public class Items : MonoBehaviour
             string path = AssetDatabase.GUIDToAssetPath(guid);
             string fName = Path.GetFileNameWithoutExtension(path);
             int index = fName.IndexOf('-');
-            //print(fName);
 
             int id = int.Parse(fName.Substring(0, index));
 
             Item item = AssetDatabase.LoadAssetAtPath<Item>(path);
+            item.ItemID = id;
 
-            //print("PROCESSING " + id + " " + item.Name + " " + item.icon.name);
             ITEMS_DB[id] = item;
+        }
+
+        guids = AssetDatabase.FindAssets("t:RecipeAsset");
+        RECIPES_DB = new RecipeAsset[guids.Length];
+
+        foreach (string guid in guids)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            string fName = Path.GetFileNameWithoutExtension(path);
+            int index = fName.IndexOf('-');
+
+            int id = int.Parse(fName.Substring(1, index-1));
+
+            RecipeAsset recipe = AssetDatabase.LoadAssetAtPath<RecipeAsset>(path);
+            recipe.RecipeID = id;
+
+            RECIPES_DB[id] = recipe;
         }
 
         SodaMach?.StartOverride();
@@ -278,28 +290,4 @@ public class Items : MonoBehaviour
             if (ITEMS[i] == Item && ITEMQUANTITY[i] >= Amount) return true;
         return false;
     }
-}
-
-public class Soda
-{
-    public float PriceChange, TimeChange;
-
-    public Soda(float PChange, float TChange)
-    {
-
-        this.PriceChange = PChange;
-        this.TimeChange = TChange;
-
-    }
-    /*
-    public float GetPrice()
-    {
-        return PriceChange;
-    }
-
-    public float GetTime()
-    {
-        return TimeChange;
-    }
-    */
 }

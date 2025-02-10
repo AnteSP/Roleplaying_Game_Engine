@@ -24,7 +24,7 @@ public class SodaMake : StateMachineBehaviour
         {
             Debug.Log("Taking Item " + SodaMachine.Ings[i] + " at " + i);
 
-            if(!Items.Add(SodaMachine.Ings[i], -1))
+            if(!Items.Add(SodaMachine.Ings[i].ItemID, -1))
             {
 
                 Stats.DisplayMessage("Inventory Error! You don't have enough stuff to do that",true);
@@ -33,7 +33,7 @@ public class SodaMake : StateMachineBehaviour
                 //return used up items to player
                 for(int j = i - 1; j != -1; j -= 1)
                 {
-                    Items.AddNoAnim(SodaMachine.Ings[j], 1);
+                    Items.AddNoAnim(SodaMachine.Ings[j].ItemID, 1);
                 }
                 SodaMachine.ChooseRecipe(-1);
                 break;
@@ -43,7 +43,7 @@ public class SodaMake : StateMachineBehaviour
         if(SodaMachine.ActiveSoda > -1)
         {
 
-            if (!Items.Add(SodaMachine.Recipes[SodaMachine.ActiveSoda].ItemID, 1))
+            if (!Items.Add(Items.RECIPES_DB[SodaMachine.ActiveSoda].Soda.ItemID, 1))
             {
 
                 Stats.DisplayMessage("Inventory Error! you don't have enough space for this!",true);
@@ -52,7 +52,7 @@ public class SodaMake : StateMachineBehaviour
                 for (int i = 0; i < SodaMachine.Ings.Length; i++)
                 {
 
-                    Items.Add(SodaMachine.Ings[i], 1);
+                    Items.Add(SodaMachine.Ings[i].ItemID, 1);
 
                 }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class SodaMachine : MonoBehaviour
 {
@@ -19,9 +20,9 @@ public class SodaMachine : MonoBehaviour
 
     [SerializeField] bool Open;
 
-    public static int[] Ings = new int[1];
-    public static List<Recipe> Recipes = new List<Recipe>();
-    static List<Recipe> RecipesU = new List<Recipe>();
+    public static Item[] Ings = new Item[0];
+    //public static List<RecipeAsset> Recipes = new List<RecipeAsset>();
+    static List<int> RecipesU = new List<int>();
 
     //static public bool DoingBottle = false;
     static public int ActiveSoda = -1;
@@ -39,7 +40,12 @@ public class SodaMachine : MonoBehaviour
         StartOverride();
     }
 
-    public static List<Recipe> getUnlockedRecipes()
+    public static void UnlockRecipe(int recipeID)
+    {
+        if (!RecipesU.Contains(recipeID)) RecipesU.Add(recipeID);
+    }
+
+    public static List<int> getUnlockedRecipes()
     {
         return RecipesU;
     }
@@ -62,18 +68,13 @@ public class SodaMachine : MonoBehaviour
         RecipePrefab.SetActive(false);
         RePrefab = RecipePrefab;
 
-        //Create All recipes
-        Recipes.Add(new Recipe(new int[] { 1, 2 }, 3));
-        Recipes.Add(new Recipe(new int[] { 4, 5, 2 }, 7));
-        Recipes.Add(new Recipe(new int[] { 4, 4, 4, 4, 4, 1 }, 15));
-        Recipes.Add(new Recipe(new int[] { 1, 5, 2, 33 }, 34));
-
-        CreateRecipe(Recipes[0]);
-
-        if (Stats.freePlay)
+        foreach(int i in RecipesU)
         {
-            CreateRecipe(Recipes[2]);
+            CreateRecipe(Items.RECIPES_DB[i]);
         }
+
+        if(!RecipesU.Contains(0)) CreateRecipe(Items.RECIPES_DB[0]);
+
         //CreateRecipe(Recipes[1]);
         //CreateRecipe(Recipes[2]);
     }
@@ -89,14 +90,14 @@ public class SodaMachine : MonoBehaviour
                 if(j == 0)
                 {
                     Transform temp = Sr.transform.GetChild(1).GetChild(j);
-                    temp.GetComponent<Image>().color = Items.Contains(Recipes[Sr.RecipeIndex].Ingredients[j]) ? Color.white : new Color(1, 1, 1, 0.3f);
+                    temp.GetComponent<Image>().color = Items.Contains(Items.RECIPES_DB[Sr.RecipeIndex].Ingredients[j].ItemID) ? Color.white : new Color(1, 1, 1, 0.3f);
                 }
                 else
                 {
-                    Q = Recipes[Sr.RecipeIndex].Ingredients[j] == Recipes[Sr.RecipeIndex].Ingredients[j - 1] ? Q + 1 : 1;
+                    Q = Items.RECIPES_DB[Sr.RecipeIndex].Ingredients[j] == Items.RECIPES_DB[Sr.RecipeIndex].Ingredients[j - 1] ? Q + 1 : 1;
                     //print("Q: " + Q + "   REC: " + Recipes[Sr.RecipeIndex].Ingredients[j] + "  RECBEF: " + Recipes[Sr.RecipeIndex].Ingredients[j - 1]);
                     Transform temp = Sr.transform.GetChild(1).GetChild(j);
-                    temp.GetComponent<Image>().color = Items.Contains(Recipes[Sr.RecipeIndex].Ingredients[j],Q) ? Color.white : new Color(1, 1, 1, 0.3f);
+                    temp.GetComponent<Image>().color = Items.Contains(Items.RECIPES_DB[Sr.RecipeIndex].Ingredients[j].ItemID,Q) ? Color.white : new Color(1, 1, 1, 0.3f);
                 }
                 
             }
@@ -143,18 +144,18 @@ public class SodaMachine : MonoBehaviour
             SodaPrev.sprite = Items.ITEMS_DB[0].icon;
             SodaPrev.GetComponent<Tooltip>().tooltip = "";
             SodaPr.text = "";
-            Ings = new int[1];
+            Ings = new Item[0];
             SellBut.GetComponent<Tooltip>().tooltip = "Select recipe first";
             SellBut.interactable = false;
         }
         else
         {
-            SodaPrev.sprite = Recipes[Ind].Pic;
-            SodaPrev.GetComponent<Tooltip>().tooltip = Recipes[Ind].Name;
-            SodaPr.text = "Base Price: " + Recipes[Ind].BasePrice;
+            SodaPrev.sprite = Items.RECIPES_DB[Ind].Soda.icon;
+            SodaPrev.GetComponent<Tooltip>().tooltip = Items.RECIPES_DB[Ind].Soda.Name;
+            SodaPr.text = "Base Price: " + Items.RECIPES_DB[Ind].SodaPChange;
             print("Tried to change prev image");
 
-            Ings = Recipes[Ind].Ingredients;
+            Ings = Items.RECIPES_DB[Ind].Ingredients;
 
             SellBut.interactable = true;
             SellBut.GetComponent<Tooltip>().tooltip = "";
@@ -165,19 +166,19 @@ public class SodaMachine : MonoBehaviour
     /// R MUST EXIST WITHIN SodaMachine.Recipes
     /// </summary>
     /// <param name="R"></param>
-    public static bool CreateRecipe(Recipe R)
+    public static bool CreateRecipe(RecipeAsset R)
     {
-        if (RecipesU.Contains(R))
+        if (RecipesU.Contains(R.RecipeID))
         {
             updateRecipeList(R);
             return false;
         }
-        RecipesU.Add(R);
+        RecipesU.Add(R.RecipeID);
         updateRecipeList(R);
         return true;
     }
 
-    static void updateRecipeList(Recipe R)
+    static void updateRecipeList(RecipeAsset R)
     {
         void SetToItem(Transform G, Sprite S, string T)
         {
@@ -186,24 +187,22 @@ public class SodaMachine : MonoBehaviour
         }
 
         GameObject temp = Instantiate(RePrefab, RePrefab.transform.parent);
-        temp.GetComponent<SelectRec>().RecipeIndex = Recipes.IndexOf(R);
+        temp.GetComponent<SelectRec>().RecipeIndex = R.RecipeID;
 
         temp.SetActive(true);
 
         Transform Prev = temp.transform.GetChild(0);
         Transform IngPar = temp.transform.GetChild(1);
 
-        SetToItem(Prev, R.Pic, R.Name + "\nSellTime: " + Items.SodaInfo[Items.IndexOfXinY(R.ItemID, Items.Sodas)].TimeChange + "s" + "\nSellPrice: " + Items.SodaInfo[Items.IndexOfXinY(R.ItemID, Items.Sodas)].PriceChange);
+        SetToItem(Prev, R.Soda.icon, R.Soda.Name + "\nSellTime: " + R.SodaTChange + "s" + "\nSellPrice: " + R.SodaPChange );
         //print(R.Pic.name + " " + R.Name);
 
-        Item item = Items.ITEMS_DB[R.Ingredients[0]];
-        SetToItem(IngPar.GetChild(0), item.icon, item.Name);
+        SetToItem(IngPar.GetChild(0), R.Ingredients[0].icon, R.Ingredients[0].Name);
 
         for (int i = 1; i < R.Ingredients.Length; i++)
         {
-            item = Items.ITEMS_DB[R.Ingredients[i]];
             Instantiate(IngPar.GetChild(0), IngPar);
-            SetToItem(IngPar.GetChild(i), item.icon, item.Name);
+            SetToItem(IngPar.GetChild(i), R.Ingredients[i].icon, R.Ingredients[i].Name);
         }
         UpdateRecipeAvailability();
     }

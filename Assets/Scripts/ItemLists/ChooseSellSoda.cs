@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class ChooseSellSoda : Resource
 {
@@ -75,10 +76,23 @@ public class ChooseSellSoda : Resource
             SellSodas S = obj.GetComponent<SellSodas>();
             S.ID = ItemID;
             S.List = this;
-            S.SodaInfo = Items.SodaInfo[Items.IndexOfXinY(ItemID, Items.Sodas)];
+            S.recipe = Items.RECIPES_DB.Where(a => a.Soda.ItemID == ItemID).First();
+            //S.SodaInfo = Items.SodaInfo[Items.IndexOfXinY(ItemID, Items.Sodas)];
             ItemsForSale.Add(ItemID);
             BeingSold.Add(S);
             S.StartOverride();
+
+            switch (ItemID)
+            {
+                case 34:
+                    if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
+                    {
+                        obj.GetComponent<Button>().interactable = false;
+                        if (Progress.getBool("Ch2VaderFail")) obj.GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
+                        else obj.GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
+                    }
+                    break;
+            }
         }
     }
 
@@ -114,9 +128,9 @@ public class ChooseSellSoda : Resource
         bool showEmptyNotif = true;
         for (int i = 0; i < NewInv.Frames; i++)
         {
-            for(int j = 0; j < Items.Sodas.Length; j++)
+            for(int j = 0; j < Items.RECIPES_DB.Length; j++)
             {
-                if (Items.ITEMS[i] == Items.Sodas[j])
+                if (Items.ITEMS[i] == Items.RECIPES_DB[j].Soda.ItemID)
                 {
                     NewCell(Items.ITEMS[i]);
                     showEmptyNotif = false;
@@ -168,9 +182,9 @@ public class ChooseSellSoda : Resource
         List<int> Temp = new List<int>();
         for (int i = 0; i < NewInv.Frames; i++)
         {
-            for (int j = 0; j < Items.Sodas.Length; j++)
+            for (int j = 0; j < Items.RECIPES_DB.Length; j++)
             {
-                if (Items.ITEMS[i] == Items.Sodas[j]) //if item is a soda
+                if (Items.ITEMS[i] == Items.RECIPES_DB[j].Soda.ItemID) //if item is a soda
                 {
                     if (!ItemsForSale.Contains(Items.ITEMS[i])) //if item is not included in the itemsforsale list
                     {
