@@ -32,6 +32,7 @@ public class SodaMachine : MonoBehaviour
 
     static Transform GridParent;
     bool started = false;
+    static bool staticStarted = false;
 
     static SodaMachine activeSM = null;
 
@@ -49,6 +50,8 @@ public class SodaMachine : MonoBehaviour
     {
         return RecipesU;
     }
+
+    public static void resetStarted() => staticStarted = false;
 
     public void StartOverride()
     {
@@ -68,12 +71,18 @@ public class SodaMachine : MonoBehaviour
         RecipePrefab.SetActive(false);
         RePrefab = RecipePrefab;
 
-        foreach(int i in RecipesU)
+        if (!staticStarted)
         {
-            CreateRecipe(Items.RECIPES_DB[i]);
+            staticStarted = true;
+            if (!RecipesU.Contains(0)) CreateRecipe(Items.RECIPES_DB[0]);
+            foreach (int i in RecipesU)
+            {
+                updateRecipeList(Items.RECIPES_DB[i]);
+            }
         }
 
-        if(!RecipesU.Contains(0)) CreateRecipe(Items.RECIPES_DB[0]);
+
+        
 
         //CreateRecipe(Recipes[1]);
         //CreateRecipe(Recipes[2]);
@@ -170,7 +179,7 @@ public class SodaMachine : MonoBehaviour
     {
         if (RecipesU.Contains(R.RecipeID))
         {
-            updateRecipeList(R);
+            //updateRecipeList(R);
             return false;
         }
         RecipesU.Add(R.RecipeID);
@@ -180,6 +189,7 @@ public class SodaMachine : MonoBehaviour
 
     static void updateRecipeList(RecipeAsset R)
     {
+        print("Recipes updated");
         void SetToItem(Transform G, Sprite S, string T)
         {
             G.GetComponent<Image>().sprite = S;

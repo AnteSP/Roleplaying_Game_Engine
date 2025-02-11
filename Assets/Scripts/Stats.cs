@@ -955,6 +955,7 @@ public class Stats : MonoBehaviour
     {
         LOADING.SetActive(true);
         Player.SetActive(false);
+        SodaMachine.resetStarted();
         timeSources.Clear();
         SellUpgrade.FlushUpgrades();
         Progress.saveData();
