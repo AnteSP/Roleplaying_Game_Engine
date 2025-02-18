@@ -16264,6 +16264,8 @@ MonoBehaviour:
   - {fileID: 8304182047924542995}
   - {fileID: 8304182047998490265}
   - {fileID: 297144618}
+  - {fileID: 714285734}
+  - {fileID: 1357206194}
   CamPos:
   - {fileID: 276641968}
   Movements:
@@ -25168,7 +25170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &714285735
 Transform:
   m_ObjectHideFlags: 0
@@ -47671,7 +47673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1357206195
 Transform:
   m_ObjectHideFlags: 0
@@ -59257,108 +59259,6 @@ MonoBehaviour:
   - {fileID: 1402309713}
   - {fileID: 280764667}
   - {fileID: 903877200}
-  SODAPCHANGE:
-  - 10
-  - 35
-  - 999999
-  - 400
-  - 50
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  SODATCHANGE:
-  - 60
-  - 35
-  - 1
-  - 150
-  - 3
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 10
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   SodaMach: {fileID: 2135738429}
 --- !u!114 &1700876592
 MonoBehaviour:
@@ -76577,7 +76477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8304182047685910123
 Transform:
   m_ObjectHideFlags: 0
@@ -76713,7 +76613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &8304182047924543003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76852,7 +76752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8304182048562710896
 Transform:
   m_ObjectHideFlags: 0
@@ -77055,7 +76955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &8304182048988680607
 SpriteRenderer:
   m_ObjectHideFlags: 0
