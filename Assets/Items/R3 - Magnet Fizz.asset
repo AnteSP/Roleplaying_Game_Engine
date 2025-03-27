@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ad5119bd9702a4b83fef4fc054d485, type: 3}
+  m_Name: R3 - Magnet Fizz
+  m_EditorClassIdentifier: 
+  Soda: {fileID: 11400000, guid: 7a2ccfa36cdee8440bf3e11fd00a7b96, type: 2}
+  Ingredients:
+  - {fileID: 11400000, guid: ba3a8d3d11d394445b4f51a4a0e1c1bd, type: 2}
+  - {fileID: 11400000, guid: ffd1bb6f0dfb0e04da5692e91b5170b2, type: 2}
+  - {fileID: 11400000, guid: d4354d5777b26ad498372c5695c1ad6d, type: 2}
+  - {fileID: 11400000, guid: 0c8410937df054542b8accdf91895ec3, type: 2}
+  SodaPChange: 50
+  SodaTChange: 3
+  RecipeID: 0

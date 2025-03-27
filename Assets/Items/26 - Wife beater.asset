@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8de521db71573c48984bf05c2eb03b1, type: 3}
+  m_Name: 26 - Wife beater
+  m_EditorClassIdentifier: 
+  Name: Wife beater
+  icon: {fileID: 21300000, guid: 7524725e4d1050546a1dc6234b0cdb07, type: 3}
+  description: No soda selling effect. But better than nothing
+  price: 100
+  MLevel: 100
+  SodaPChange: 100
+  SodaTChange: 0
