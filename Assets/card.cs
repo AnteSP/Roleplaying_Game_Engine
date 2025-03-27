@@ -106,7 +106,12 @@ public class card : MonoBehaviour
                 else
                     Stats.changeFriendship("FredF", 0);
                 break;
-
+            case "Ch2ResistedGG":
+                if (positive)
+                    Stats.changeFriendship("MRespect", 1);
+                else
+                    Stats.changeFriendship("MRespect", -1);
+                break;
         }
     }
 

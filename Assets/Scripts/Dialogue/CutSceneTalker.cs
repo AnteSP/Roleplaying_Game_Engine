@@ -51,6 +51,9 @@ public class CutSceneTalker : MonoBehaviour
 
     public string switchWhenDone = "";
     public int itemRequiredToStart = -1;
+    public int dayToStart = -1;
+    public int hourToStartA = -1, hourToStartB = -1;
+    //TriggerAtMinute = ((day - 1) * 24 * 60) + (((hour) * 60));
 
     /// <summary>
     /// 
@@ -58,23 +61,37 @@ public class CutSceneTalker : MonoBehaviour
     /// <param name="b">Is a cutscene ending? False if entering. True if leaving</param>
     public void PackUp(bool b)
     {
-        if (!b && itemRequiredToStart != -1)
+        if (!b)//if starting. Check that we can start
         {
-            if (Items.ITEMS_DB.Length == 1)
-            {//force Items to start
-                Stats.current.GetComponent<Items>().enabled = false;
-                Stats.current.GetComponent<Items>().enabled = true;
-            }
+            if(itemRequiredToStart != -1)
+            {
+                if (Items.ITEMS_DB.Length == 1)
+                {//force Items to start
+                    Stats.current.GetComponent<Items>().enabled = false;
+                    Stats.current.GetComponent<Items>().enabled = true;
+                }
 
-            if (Items.Contains(itemRequiredToStart))
-            {
-                Items.AddNoAnim(31, -1);
+                if (Items.Contains(itemRequiredToStart))
+                {
+                    Items.AddNoAnim(31, -1);
+                }
+                else
+                {
+                    this.enabled = false;
+                    print("Did not have item to start. Stopiing cs " + gameObject.name);
+                    return;
+                }
             }
-            else
+            if(dayToStart != -1)
             {
-                this.enabled = false;
-                print("Did not have item to start. Stopiing cs " + gameObject.name);
-                return;
+                int AMinute = ((dayToStart - 1) * 24 * 60) + (((hourToStartA) * 60));
+                int BMinute = ((dayToStart - 1) * 24 * 60) + (((hourToStartB) * 60));
+                if (!(Stats.allTimeInGame >= AMinute && Stats.allTimeInGame <= BMinute))
+                {
+                    this.enabled = false;
+                    print("Time is not between " + AMinute + " and " + BMinute + ". CS stopped");
+                    return;
+                }
             }
         }
 

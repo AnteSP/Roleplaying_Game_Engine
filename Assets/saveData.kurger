@@ -33,7 +33,7 @@
     "TutorialDone": true,
     "FredCS1": true,
     "StealerCSDone": true,
-    "WakeUp": true,
+    "WakeUp": false,
     "FredCS2": true,
     "GotDannyBoxItem": true,
     "FredCS3": true,
@@ -47,7 +47,7 @@
   "Deadlines": {
     "F-Ch2": true
   },
-  "TIME": 3281,
+  "TIME": 5000,
   "GameOver": false,
   "Ch2FredIntro": 1,
   "FredF": 3,
