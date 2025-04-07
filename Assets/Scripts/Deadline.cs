@@ -94,9 +94,32 @@ class Deadline : MonoBehaviour
                 return;
             }
 
-            Stats.current.CurrentCS = fulfillRequirement() ? SuccessCutScene : FailCutScene;
-            Stats.current.CurrentCS.enabled = true;
-            Stats.Transition(0);
+            if (fulfillRequirement())
+            {
+                if (SuccessCutScene == null)
+                {
+                    print("NO SUCCESS CS FOR DED " + this.Description);
+                }
+                else
+                {
+                    Stats.current.CurrentCS = SuccessCutScene;
+                    Stats.current.CurrentCS.enabled = true;
+                    Stats.Transition(0);
+                }
+            }
+            else
+            {
+                if (FailCutScene == null)
+                {
+                    print("NO FAIL CS FOR DED " + this.Description);
+                }
+                else
+                {
+                    Stats.current.CurrentCS = FailCutScene;
+                    Stats.current.CurrentCS.enabled = true;
+                    Stats.Transition(0);
+                }
+            }
 
             Stats.current.stickyNotes[stickyNote].gameObject.SetActive(false);
             activeDeadlineData[stickyNote] = null;

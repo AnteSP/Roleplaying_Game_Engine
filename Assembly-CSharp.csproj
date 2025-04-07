@@ -59,7 +59,6 @@
     <Compile Include="Assets\Scripts\MarketPlace.cs" />
     <Compile Include="Assets\outfit.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Automation.cs" />
     <Compile Include="Assets\setCSDiaGoodToGo2.cs" />
     <Compile Include="Assets\Scripts\FunChecker.cs" />
     <Compile Include="Assets\Scripts\ItemPickUp.cs" />
@@ -150,6 +149,7 @@
     <Compile Include="Assets\Scripts\Tooltip.cs" />
     <Compile Include="Assets\Scripts\Movement\Drowning.cs" />
     <Compile Include="Assets\WeekAngels.cs" />
+    <Compile Include="Assets\Automation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -45,10 +45,15 @@ public class Dialogue : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x, (Camera.main.transform.position.y > Stats.current.Player.transform.position.y) ? Mathf.Abs(transform.localPosition.y) : -Mathf.Abs(transform.localPosition.y), transform.localPosition.z);
     }
 
-    private void Start()
+    private void Awake()
     {
         d = this;
+        //print("DIA START");
         im = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
         if(!noInnactiveOnStart)gameObject.SetActive(false);
     }
 

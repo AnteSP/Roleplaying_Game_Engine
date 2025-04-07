@@ -25,9 +25,10 @@
     "33": 10
   },
   "Recipes": [
-    0,3
+    0,
+    3
   ],
-  "MRespect": -1,
+  "MRespect": -3,
   "Ch2": {
     "OpeningDone": true,
     "TutorialDone": true,
@@ -40,18 +41,18 @@
     "FredCS4": true,
     "Final": false,
     "Vader1": true,
-    "Vader2": true
+    "Vader2": true,
+    "GGEventFail": true
   },
   "Volume": 1.0,
   "Chapter": 2,
-  "Deadlines": {
-    "F-Ch2": true
-  },
-  "TIME": 5000,
+  "Deadlines": {},
+  "TIME": 5008,
   "GameOver": false,
   "Ch2FredIntro": 1,
   "FredF": 3,
   "Ch2FredConvoDecision1": 2,
   "Ch2FredConvoDecision2": 2,
-  "Ch2FredConvoDecision3": 2
+  "Ch2FredConvoDecision3": 2,
+  "Ch2ResistedGG": 1
 }

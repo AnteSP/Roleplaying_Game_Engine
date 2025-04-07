@@ -1754,6 +1754,9 @@ MonoBehaviour:
   stopMusicOnStart: 1
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!114 &41891084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9722,6 +9725,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: Ch2StealerCSDone
   itemRequiredToStart: 31
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!4 &256555880
 Transform:
   m_ObjectHideFlags: 0
@@ -11331,6 +11337,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: Ch2Vader1
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!114 &297144626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14728,6 +14737,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!114 &398230089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16293,6 +16305,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: Ch2VaderTrue
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!114 &462262530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22191,6 +22206,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!114 &665499997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26596,6 +26614,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!1 &761604240
 GameObject:
   m_ObjectHideFlags: 0
@@ -35772,6 +35793,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!1 &1037128019
 GameObject:
   m_ObjectHideFlags: 0
@@ -41914,6 +41938,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!1 &1231864762
 GameObject:
   m_ObjectHideFlags: 0
@@ -51429,6 +51456,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: Ch2VaderLie
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!114 &1507847154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59630,7 +59660,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700876588}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ed85c29afafc03499627cde49c97d30, type: 3}
   m_Name: 
@@ -61433,10 +61463,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -64471,6 +64501,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: Ch2VaderFail
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!1 &1864853614
 GameObject:
   m_ObjectHideFlags: 0
@@ -65095,6 +65128,9 @@ MonoBehaviour:
   stopMusicOnStart: 0
   switchWhenDone: 
   itemRequiredToStart: -1
+  dayToStart: -1
+  hourToStartA: -1
+  hourToStartB: -1
 --- !u!1 &1883475119
 GameObject:
   m_ObjectHideFlags: 0
