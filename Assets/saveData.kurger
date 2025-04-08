@@ -37,12 +37,11 @@
     "WakeUp": false,
     "FredCS2": true,
     "GotDannyBoxItem": true,
-    "FredCS3": true,
-    "FredCS4": true,
     "Final": false,
     "Vader1": true,
     "Vader2": true,
-    "GGEventFail": true
+    "GGEventFail": true,
+    "ResistedGG": true
   },
   "Volume": 1.0,
   "Chapter": 2,
