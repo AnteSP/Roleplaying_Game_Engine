@@ -632,6 +632,9 @@ public class Stats : MonoBehaviour
         t = t / 60;//get to the hour
         return (t < 10? "0" + t : t )  + ":" + (mins < 10 ? "0" + mins : mins);
     }
+
+    public static int dayHourToTime(int day,int hour) => ((day - 1) * 24 * 60) + (((hour) * 60));
+
     static bool timeAnimating = false;
 
     public static void ChangeTimeAnim(int Amount, int frames = 40) => current.ChangeTimeAnimLocal(Amount, frames);

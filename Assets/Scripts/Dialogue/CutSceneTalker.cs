@@ -84,8 +84,8 @@ public class CutSceneTalker : MonoBehaviour
             }
             if(dayToStart != -1)
             {
-                int AMinute = ((dayToStart - 1) * 24 * 60) + (((hourToStartA) * 60));
-                int BMinute = ((dayToStart - 1) * 24 * 60) + (((hourToStartB) * 60));
+                int AMinute = Stats.dayHourToTime(dayToStart, hourToStartA);
+                int BMinute = Stats.dayHourToTime(dayToStart, hourToStartB);
                 if (!(Stats.allTimeInGame >= AMinute && Stats.allTimeInGame <= BMinute))
                 {
                     this.enabled = false;

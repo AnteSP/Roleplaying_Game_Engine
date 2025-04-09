@@ -21,6 +21,8 @@ public class Ch2Events : MonoBehaviour
     [SerializeField] List<Talker> prependToSent;
     [SerializeField] QuickTalker FredSecret;
 
+    [SerializeField] List<GameObject> GGOptions,DannyOptions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,15 @@ public class Ch2Events : MonoBehaviour
             }
             
         }
-        
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Ch2HQ")
+        {
+            bool DannyEventPossible = Stats.allTimeInGame < Stats.dayHourToTime(5, 18) && Stats.allTimeInGame > Stats.dayHourToTime(5, 22);
+
+            foreach (GameObject g in DannyOptions) if (!DannyEventPossible) Destroy(g);
+            foreach (GameObject g in GGOptions) if (DannyEventPossible) Destroy(g);
+        }
+
     }
 
     public int calcFredCost()
