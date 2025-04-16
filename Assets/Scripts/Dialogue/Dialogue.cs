@@ -425,8 +425,16 @@ public class Dialogue : MonoBehaviour
             switch (c)
             {
                 case 'C':
-                    CS.goodtoGo = false;
-                    CS.NextCamPos();
+                    if (Current[0] == '%')
+                    {
+                        Current = Current.Remove(0, 1);
+                        CS.NextCamPos(0);
+                    }
+                    else
+                    {
+                        CS.NextCamPos();
+                        CS.goodtoGo = false;
+                    }
                     break;
                 case 'B':
                     CS.NextCamPos();

@@ -54,13 +54,13 @@ public class card : MonoBehaviour
                     Stats.current.CurrentCS.skipPacking = true;
                     Stats.current.CurrentCS.enabled = true;
                     Progress.setInt(ID, 1);
-                    print("GOT HERE 1" + ID);
+                    print("GOT CARD 1 (BAD)" + ID);
                     MakeChoiceChanges(false);
                 }
                 else
                 {
                     Progress.setInt(ID, 2);
-                    print("GOT HERE 2" + ID);
+                    print("GOT CARD 2 (GOOD)" + ID);
                     MakeChoiceChanges(true);
                 }
                 transform.parent.gameObject.SetActive(false);

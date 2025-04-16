@@ -43,12 +43,12 @@ public class Ch2Events : MonoBehaviour
             
         }
 
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Ch2HQ")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Ch2-HQ")
         {
             bool DannyEventPossible = Stats.allTimeInGame < Stats.dayHourToTime(5, 18) && Stats.allTimeInGame > Stats.dayHourToTime(5, 22);
 
-            foreach (GameObject g in DannyOptions) if (!DannyEventPossible) Destroy(g);
-            foreach (GameObject g in GGOptions) if (DannyEventPossible) Destroy(g);
+            foreach (GameObject g in DannyOptions) if (DannyEventPossible) Destroy(g);
+            foreach (GameObject g in GGOptions) if (!DannyEventPossible) Destroy(g);
         }
 
     }

@@ -55,6 +55,41 @@ public class CutSceneTalker : MonoBehaviour
     public int hourToStartA = -1, hourToStartB = -1;
     //TriggerAtMinute = ((day - 1) * 24 * 60) + (((hour) * 60));
 
+    bool WeCanStart()
+    {
+        if (itemRequiredToStart != -1)
+        {
+            if (Items.ITEMS_DB.Length == 1)
+            {//force Items to start
+                Stats.current.GetComponent<Items>().enabled = false;
+                Stats.current.GetComponent<Items>().enabled = true;
+            }
+
+            if (Items.Contains(itemRequiredToStart))
+            {
+                Items.AddNoAnim(31, -1);
+            }
+            else
+            {
+                this.enabled = false;
+                print("Did not have item to start. Stopiing cs " + gameObject.name);
+                return false;
+            }
+        }
+        if (dayToStart != -1)
+        {
+            int AMinute = Stats.dayHourToTime(dayToStart, hourToStartA);
+            int BMinute = Stats.dayHourToTime(dayToStart, hourToStartB);
+            if (!(Stats.allTimeInGame >= AMinute && Stats.allTimeInGame <= BMinute))
+            {
+                this.enabled = false;
+                print("Time is not between " + AMinute + " and " + BMinute + ". CS stopped");
+                return false;
+            }
+        }
+        return true;
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -63,36 +98,7 @@ public class CutSceneTalker : MonoBehaviour
     {
         if (!b)//if starting. Check that we can start
         {
-            if(itemRequiredToStart != -1)
-            {
-                if (Items.ITEMS_DB.Length == 1)
-                {//force Items to start
-                    Stats.current.GetComponent<Items>().enabled = false;
-                    Stats.current.GetComponent<Items>().enabled = true;
-                }
-
-                if (Items.Contains(itemRequiredToStart))
-                {
-                    Items.AddNoAnim(31, -1);
-                }
-                else
-                {
-                    this.enabled = false;
-                    print("Did not have item to start. Stopiing cs " + gameObject.name);
-                    return;
-                }
-            }
-            if(dayToStart != -1)
-            {
-                int AMinute = Stats.dayHourToTime(dayToStart, hourToStartA);
-                int BMinute = Stats.dayHourToTime(dayToStart, hourToStartB);
-                if (!(Stats.allTimeInGame >= AMinute && Stats.allTimeInGame <= BMinute))
-                {
-                    this.enabled = false;
-                    print("Time is not between " + AMinute + " and " + BMinute + ". CS stopped");
-                    return;
-                }
-            }
+            if (!WeCanStart()) return;
         }
 
         Crb = Camera.main.GetComponent<Rigidbody2D>();
@@ -197,6 +203,7 @@ public class CutSceneTalker : MonoBehaviour
             Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
             Stats.current.Player = GameObject.FindGameObjectWithTag("Player");
         }
+        if (!WeCanStart()) return;
         if (setAsCurrent)
         {
             Stats.current.CurrentCS = this;
