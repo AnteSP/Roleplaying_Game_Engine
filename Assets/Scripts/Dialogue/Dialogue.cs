@@ -130,6 +130,8 @@ public class Dialogue : MonoBehaviour
 
     public void EndCutScene(CutSceneTalker cs,int transition=1)
     {
+        //print("END CS");
+        cs.HandleExit();
         cs.Ending = true;
         CS = cs;
         cs.goodtoGo = false;

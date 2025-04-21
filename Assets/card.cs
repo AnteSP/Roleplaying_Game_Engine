@@ -49,6 +49,7 @@ public class card : MonoBehaviour
             {
                 if(gameObject.name.StartsWith("1"))//BAD
                 {
+                    Stats.current.CurrentCS.HandleExit();
                     Stats.current.CurrentCS.enabled = false;
                     Stats.current.CurrentCS = Stats.current.CurrentCS.alt;
                     Stats.current.CurrentCS.skipPacking = true;

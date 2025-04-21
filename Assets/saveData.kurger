@@ -28,7 +28,7 @@
     0,
     3
   ],
-  "MRespect": -3,
+  "MRespect": -1,
   "Ch2": {
     "OpeningDone": true,
     "TutorialDone": true,
@@ -41,7 +41,8 @@
     "Vader1": true,
     "Vader2": true,
     "GGEventFail": true,
-    "ResistedGG": true
+    "ResistedGG": true,
+    "GGEvent": true
   },
   "Volume": 1.0,
   "Chapter": 2,
@@ -53,5 +54,6 @@
   "Ch2FredConvoDecision1": 2,
   "Ch2FredConvoDecision2": 2,
   "Ch2FredConvoDecision3": 2,
-  "Ch2ResistedGG": 1
+  "Ch2ResistedGG": 1,
+  "Ch2HelpedDanny": 2
 }

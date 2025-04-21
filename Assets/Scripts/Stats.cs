@@ -738,7 +738,15 @@ public class Stats : MonoBehaviour
             //dayperc = dayperc % 1;
             dayperc = ( Mathf.Cos(dayperc * current.suncoefficient - 0.5f) /2) + 0.5f;
             
-            current.camVol.weight = Mathf.Lerp(noon, midnight, dayperc);
+            //current.camVol.weight = Mathf.Lerp(noon, midnight, dayperc);
+            if(current.camVol.profile.TryGet<UnityEngine.Rendering.Universal.ColorAdjustments>(out UnityEngine.Rendering.Universal.ColorAdjustments ca))
+            {
+                //ca.saturation = Mathf.Lerp(noon, midnight, dayperc);
+                //ca.saturation = new UnityEngine.Rendering.ClampedFloatParameter( Mathf.Lerp(100f, -100f, dayperc) ,-100,100,true);
+                ca.Override(ca, Mathf.Lerp(100f, -100f, dayperc));
+                //ca.active = true;
+                
+            }
 
             if ((dayperc < 0.6f) != (current.isday))//if isday does not match whether it's actually day or not
             {

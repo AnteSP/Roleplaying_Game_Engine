@@ -294,6 +294,19 @@ public class CutSceneTalker : MonoBehaviour
         return false;
     }
 
+    public void HandleExit()
+    {
+        if (dayToStart == -1) return;
+        uint endTime = (uint)Stats.dayHourToTime(dayToStart, hourToStartB);
+        //print("END TIME: " + endTime + "      ALLTIME: " + (uint)Stats.allTimeInGame);
+        if (endTime >= (uint)Stats.allTimeInGame)
+        {
+           
+            Stats.ChangeTime( (uint)(endTime - Stats.allTimeInGame) + 1);
+            //print("Changing time: " + Stats.allTimeInGame);
+        }
+    }
+
     public void Next()
     {
         D.gameObject.SetActive(true);
