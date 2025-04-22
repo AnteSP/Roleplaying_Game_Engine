@@ -17,6 +17,9 @@ public class Stats : MonoBehaviour
     public int Money;
     //public uint TimeFromMidNight = 0;
     
+    /// <summary>
+    /// deprecated
+    /// </summary>
     uint Time = 480;//avoid using
     uint Day = 1;
 
@@ -118,14 +121,7 @@ public class Stats : MonoBehaviour
     [SerializeField] GameObject[] disableOnFreePlay;
     [SerializeField] GameObject[] enableOnlyOnFreePlay;
 
-    public bool doDayLight = false;
-    static readonly float noon = 0, midnight = 0.17f;
-    UnityEngine.Rendering.Universal.Light2D[] streetLights;
-    [SerializeField] GameObject streetLightsParent;
-    bool isday = true;
-
-    UnityEngine.Rendering.Volume camVol;
-    float suncoefficient = 0;
+    [SerializeField] DayLightCycle dayLightCycle = null;
 
     [SerializeField] AudioSource timeSkipSound;
     Vector3 OGTimeTextScale;
@@ -138,19 +134,14 @@ public class Stats : MonoBehaviour
     List<Deadline> Deds = new List<Deadline>();
     [SerializeField] GameObject DeadlineNotification;
     [SerializeField] GameObject SocialNotification;
-
     private void OnEnable()
     {
-        suncoefficient = Mathf.Asin(1) * 4;
-        camVol = Camera.main.GetComponent<UnityEngine.Rendering.Volume>();
         if (freePlay)
         {
             foreach (GameObject g in disableOnFreePlay)
             {
                 g.SetActive(false);
             }
-
-            camVol.weight = 0;
 
             GameObject.FindGameObjectWithTag("SPECIAL").GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0.3f;
         }
@@ -192,17 +183,6 @@ public class Stats : MonoBehaviour
             invO.position = new Vector3(invO.position.x - (250 * invO.lossyScale.x), invO.position.y, invO.position.z);
         }
 
-        if (streetLightsParent != null)
-        {
-            streetLights = streetLightsParent.GetComponentsInChildren<UnityEngine.Rendering.Universal.Light2D>();
-
-            float dayperc = ((float)allTimeInGame % (24f * 60f)) / (24f * 60f);
-            dayperc = (Mathf.Cos(dayperc * current.suncoefficient - 0.5f) / 2) + 0.5f;
-
-            isday = dayperc < 0.6f;
-
-            foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
-        }
 
         //TIME SHIT
         OGTimeTextScale = current.TIMETEXT.transform.localScale;
@@ -607,23 +587,6 @@ public class Stats : MonoBehaviour
 
         return (!temp);
     }
-    /*
-    public static bool ChangeEnergy(float Amount)
-    {
-
-        bool temp = Energy + Amount < 0;
-
-        Energy = temp ? 0 : Energy + Amount;
-
-        Energy = Energy + Amount > EnergyLimit ? EnergyLimit : Energy;
-    
-        ProgressBar.DoLine(ENERGYBAR.rectTransform, Initial, 142, Energy / EnergyLimit, true);
-
-        ENERGYBAR.transform.parent.Find("Text").GetComponent<Text>().text = Energy + "/" + EnergyLimit;
-        
-        return (!temp);
-    }
-    */
 
     public static string allTimeInGameToString(int t)
     {
@@ -713,6 +676,8 @@ public class Stats : MonoBehaviour
         UpdateTimeColor();
     }
 
+    float lastDayPerc = 0;
+    int lastProfileInd = 0;
     public static void ChangeTime(uint Amount)
     {
         //print("Changed " + Amount);
@@ -730,31 +695,7 @@ public class Stats : MonoBehaviour
 
         CheckDeadlines();
 
-        if (current.doDayLight)
-        {
-            float dayperc = ((float)allTimeInGame % (24f * 60f)) / (24f * 60f);
-            //Debug(dayperc + " ");
-            //dayperc += dayperc + 0.5f;
-            //dayperc = dayperc % 1;
-            dayperc = ( Mathf.Cos(dayperc * current.suncoefficient - 0.5f) /2) + 0.5f;
-            
-            //current.camVol.weight = Mathf.Lerp(noon, midnight, dayperc);
-            if(current.camVol.profile.TryGet<UnityEngine.Rendering.Universal.ColorAdjustments>(out UnityEngine.Rendering.Universal.ColorAdjustments ca))
-            {
-                //ca.saturation = Mathf.Lerp(noon, midnight, dayperc);
-                //ca.saturation = new UnityEngine.Rendering.ClampedFloatParameter( Mathf.Lerp(100f, -100f, dayperc) ,-100,100,true);
-                ca.Override(ca, Mathf.Lerp(100f, -100f, dayperc));
-                //ca.active = true;
-                
-            }
-
-            if ((dayperc < 0.6f) != (current.isday))//if isday does not match whether it's actually day or not
-            {
-                current.isday = !current.isday;
-                foreach (UnityEngine.Rendering.Universal.Light2D l in current.streetLights) l.enabled = !current.isday;
-            }
-
-        }
+        current.dayLightCycle?.setDaylightForMinute(allTimeInGame%(60*24));
     }
 
     public static void SkipToNextTime(uint hour,uint min)
@@ -979,7 +920,6 @@ public class Stats : MonoBehaviour
 
         Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
 
-        print("UNLOADING DATA");
         Progress.markDataAsUnloaded();
     }
 
