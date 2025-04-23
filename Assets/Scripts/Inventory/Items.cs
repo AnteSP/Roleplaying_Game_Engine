@@ -109,7 +109,8 @@ public class Items : MonoBehaviour
         }
 
         SodaMach?.StartOverride();
-        Progress.loadData();
+        
+        if(!Progress.wasItemDataLoaded())Progress.loadData();
         UpdatePics();
     }
 

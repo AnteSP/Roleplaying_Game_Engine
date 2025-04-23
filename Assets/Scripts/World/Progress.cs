@@ -19,7 +19,7 @@ public class Progress : MonoBehaviour
     static bool loadedItems = false;
     static bool loadedDeadlines = false;
 
-    static Progress[] progressComps = null;
+    static List<Progress> progressComps = new List<Progress>();
     static JObject data = null;
     static string SName = "U";
     static bool loaded = false;
@@ -27,12 +27,10 @@ public class Progress : MonoBehaviour
     static string chPattern = @"^Ch\d+[a-zA-Z]+";
     static string chPatternShort = @"^Ch\d+";
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         SName = Application.dataPath + "/saveData.kurger";
-        progressComps = GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
-        //readData();
+        progressComps.Add(this);
     }
 
     public static void DEBUG_printData()
@@ -43,6 +41,7 @@ public class Progress : MonoBehaviour
     public static void markDataAsUnloaded() { loaded = false; progressComps = null; print("progressComps set to null"); loadedItems = false;loadedDeadlines = false; }
 
     public static bool wasDataLoaded() => loaded;
+    public static bool wasItemDataLoaded() => loadedItems;
 
     public static void deleteData()
     {
@@ -102,13 +101,13 @@ public class Progress : MonoBehaviour
         return true;
     }
 
-    static Progress[] getProgress() => GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
+    //static Progress[] getProgress() => GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
 
     static Dictionary<GameObject, bool> gameObjsToSet = new Dictionary<GameObject, bool>();
     public static void checkProgress()
     {
         gameObjsToSet.Clear();
-        ensureProgressCompsGood();
+        //ensureProgressCompsGood();
         foreach (Progress p in progressComps.Where(a=> a.on))
         {
             foreach(GameObject g in p.enable) gameObjsToSet[g] = true;
@@ -199,11 +198,11 @@ public class Progress : MonoBehaviour
         }
     }
 
-    static void ensureProgressCompsGood()
+    static void ensureProgressCompsGood()//SHOULDNT NEED THIS
     {
         if (progressComps == null)
         {
-            progressComps = GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
+            //progressComps = GameObject.FindGameObjectWithTag("STATS").GetComponents<Progress>();
             print("RESET progressComps " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
     }
@@ -213,7 +212,7 @@ public class Progress : MonoBehaviour
         print("Setting int " + switchID + " to " + on + " contains: " + data);
         try
         {
-            ensureProgressCompsGood();
+           // ensureProgressCompsGood();
             switchInData(switchID, on);
 
             foreach (Progress p in progressComps.Where(a => a.Id == switchID))
@@ -337,7 +336,7 @@ public class Progress : MonoBehaviour
 
     public static void loadData(bool excludeItems = false)
     {
-        //print("LOADING DATA");
+        print(excludeItems ? "LOADING JUST DATA" : "LOADING ITEMS + DATA");
         loaded = true;
         readData();
 
@@ -352,8 +351,9 @@ public class Progress : MonoBehaviour
             else data.Add("TIME", (int)Stats.current.getTime());
         }
 
-        ensureProgressCompsGood();
+        //ensureProgressCompsGood();
 
+        print("PROGRESSCOMPS.Count = " + progressComps.Count);
         foreach (Progress p in progressComps)
         {
             //print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());

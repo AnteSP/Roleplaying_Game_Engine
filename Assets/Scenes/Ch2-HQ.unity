@@ -3839,7 +3839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &124292547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12389,7 +12389,7 @@ MonoBehaviour:
   setAsCurrent_InstaPlay: 1
   EndingChapter: 0
   stopMusicOnStart: 0
-  switchWhenDone: Ch2GGEvent
+  switchWhenDone: Ch2DannyEvent
   itemRequiredToStart: -1
   dayToStart: 5
   hourToStartA: 19
@@ -32885,7 +32885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1017571914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54705,8 +54705,7 @@ MonoBehaviour:
   - {fileID: 466911630}
   - {fileID: 545622677}
   - {fileID: 2022594562}
-  doDayLight: 0
-  streetLightsParent: {fileID: 0}
+  dayLightCycle: {fileID: 0}
   timeSkipSound: {fileID: 0}
   TeleportPointsParent: {fileID: 0}
   stickyNotes: []
@@ -54761,7 +54760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8f5a9086578cc46b882fbb5fec7013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  R: {fileID: 0}
 --- !u!114 &1700876593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57292,7 +57290,7 @@ MonoBehaviour:
   setAsCurrent_InstaPlay: 0
   EndingChapter: 0
   stopMusicOnStart: 0
-  switchWhenDone: Ch2GGEventFail
+  switchWhenDone: Ch2DannyEventFail
   itemRequiredToStart: -1
   dayToStart: -1
   hourToStartA: -1
@@ -66699,7 +66697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2115953604
 RectTransform:
   m_ObjectHideFlags: 0
