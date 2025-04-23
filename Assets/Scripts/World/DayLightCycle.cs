@@ -18,7 +18,8 @@ public class DayLightCycle : MonoBehaviour
     [SerializeField] VolumeProfile nightProfile,dayProfile,sunriseProfile;
 
     private ColorAdjustments fromColorAdjustments, toColorAdjustments, currentColorAdjustments;
-    private float transitionProgress;
+    private float transitionProgress,lightIntensity;
+    [SerializeField] float maxLightIntensity = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class DayLightCycle : MonoBehaviour
         if (streetLightsParent != null)
         {
             streetLights = streetLightsParent.GetComponentsInChildren<Light2D>();
-            updateStreetLights(!isday);
+            updateStreetLights(!isday, maxLightIntensity);
         }
         camVol.profile.TryGet(out currentColorAdjustments);
         sunriseProfile.TryGet(out fromColorAdjustments);
@@ -72,6 +73,7 @@ public class DayLightCycle : MonoBehaviour
             sunriseProfile.TryGet(out fromColorAdjustments);
             nightProfile.TryGet(out toColorAdjustments);
             transitionProgress = 1;
+            lightIntensity = maxLightIntensity;
             holdingDay = false;
             holdingNight = true;
         }
@@ -79,6 +81,8 @@ public class DayLightCycle : MonoBehaviour
         {
             transitionProgress = (float)(m - nightEndM) / (float)(middayStartM- nightEndM);
             isday = (transitionProgress > 0.2f);
+            lightIntensity = (maxLightIntensity / 10f) + ((maxLightIntensity / 10f) * 9 * (1-(transitionProgress*4)));
+
             transitionSetup(nightProfile, dayProfile);
             
             holdingDay = false;
@@ -89,6 +93,7 @@ public class DayLightCycle : MonoBehaviour
             if (holdingDay) return;
             sunriseProfile.TryGet(out fromColorAdjustments);
             dayProfile.TryGet(out toColorAdjustments);
+            lightIntensity = maxLightIntensity / 10f;
             transitionProgress = 1;
             holdingDay = true;
             holdingNight = false;
@@ -97,6 +102,8 @@ public class DayLightCycle : MonoBehaviour
         {
             transitionProgress = (float)(m - middayEndM) / (float)(nightStartM - middayEndM);
             isday = (transitionProgress < 0.8f);
+            lightIntensity = (-15*maxLightIntensity / 10f) + (maxLightIntensity / 10f) * 25* transitionProgress;
+
             transitionSetup(dayProfile , nightProfile);
             
             holdingNight = false;
@@ -104,14 +111,18 @@ public class DayLightCycle : MonoBehaviour
         }
 
         Stats.Debug(m + "  " + transitionProgress);
-        updateStreetLights(!isday);
+        updateStreetLights(!isday, lightIntensity);
         updateDayLight(transitionProgress);
     }
 
-    void updateStreetLights(bool on)
+    void updateStreetLights(bool on,float light)
     {
         if (streetLights == null) return;
-        foreach (Light2D l in streetLights) l.enabled = on;
+        foreach (Light2D l in streetLights)
+        {
+            l.enabled = on;
+            l.intensity = light;
+        }
     }
 
     /// <summary>
