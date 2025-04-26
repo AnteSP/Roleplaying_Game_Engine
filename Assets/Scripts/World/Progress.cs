@@ -38,7 +38,7 @@ public class Progress : MonoBehaviour
         print("UPDATE TEST:\n"+data);
     }
 
-    public static void markDataAsUnloaded() { loaded = false; progressComps = null; print("progressComps set to null"); loadedItems = false;loadedDeadlines = false; }
+    public static void markDataAsUnloaded() { loaded = false; progressComps = new List<Progress>(); print("progressComps set to null"); loadedItems = false;loadedDeadlines = false; }
 
     public static bool wasDataLoaded() => loaded;
     public static bool wasItemDataLoaded() => loadedItems;
@@ -315,6 +315,21 @@ public class Progress : MonoBehaviour
         File.WriteAllText(SName,data.ToString());
     }
 
+    public static void saveOnlyThis(int ia,int ib,string s,int type)
+    {
+        readData();
+
+        if(type == 0)
+        {
+            ((JObject)data["Items"]).Add(Items.ITEMS_DB[ia].ItemID + "", ib);
+            switchInData(s, true);
+            print(data);
+        }
+
+
+        File.WriteAllText(SName, data.ToString());
+    }
+
     public static bool isUpgradeOn(string s)
     {
         if (!data.ContainsKey("Upgrades")) data.Add("Upgrades", new JObject());
@@ -353,7 +368,7 @@ public class Progress : MonoBehaviour
 
         //ensureProgressCompsGood();
 
-        print("PROGRESSCOMPS.Count = " + progressComps.Count);
+       // print("PROGRESSCOMPS.Count = " + progressComps.Count);
         foreach (Progress p in progressComps)
         {
             //print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());

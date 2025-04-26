@@ -131,6 +131,7 @@
     <Compile Include="Assets\Scripts\TESTING.cs" />
     <Compile Include="Assets\InvisWalls\DrawColl.cs" />
     <Compile Include="Assets\Scripts\Anim triggers\SodaOpen.cs" />
+    <Compile Include="Assets\Scripts\simple shit\ProxSprSwap.cs" />
     <Compile Include="Assets\Scripts\ItemLists\SodaSellDisplayList.cs" />
     <Compile Include="Assets\Scripts\Resource Variants\PayToSpawn.cs" />
     <Compile Include="Assets\Scripts\Inventory\Selecter.cs" />

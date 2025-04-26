@@ -20,10 +20,13 @@ public class DayLightCycle : MonoBehaviour
     private ColorAdjustments fromColorAdjustments, toColorAdjustments, currentColorAdjustments;
     private float transitionProgress,lightIntensity;
     [SerializeField] float maxLightIntensity = 2;
+    bool started = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (started) return;
+        started = true;
         if (streetLightsParent != null)
         {
             streetLights = streetLightsParent.GetComponentsInChildren<Light2D>();
@@ -32,6 +35,11 @@ public class DayLightCycle : MonoBehaviour
         camVol.profile.TryGet(out currentColorAdjustments);
         sunriseProfile.TryGet(out fromColorAdjustments);
         dayProfile.TryGet(out toColorAdjustments);
+    }
+
+    public void StartOverride()
+    {
+        Start();
     }
 
     bool holdingDay = false, holdingNight = false;
@@ -60,19 +68,19 @@ public class DayLightCycle : MonoBehaviour
     //1440 minutes in a day
     public void setDaylightForMinute(int m)
     {
-        if(m < 0 || m > 1440)
+        if (m < 0 || m > 1440)
         {
             print("ERROR: minutes > 1440 or < 0 (" + m + ")");
             return;
         }
-        
 
-        if(m < nightEndM || m > nightStartM)//hold nighttime
+        if (m < nightEndM || m > nightStartM)//hold nighttime
         {
             if (holdingNight) return;
             sunriseProfile.TryGet(out fromColorAdjustments);
             nightProfile.TryGet(out toColorAdjustments);
             transitionProgress = 1;
+            isday = false;
             lightIntensity = maxLightIntensity;
             holdingDay = false;
             holdingNight = true;
@@ -94,6 +102,7 @@ public class DayLightCycle : MonoBehaviour
             sunriseProfile.TryGet(out fromColorAdjustments);
             dayProfile.TryGet(out toColorAdjustments);
             lightIntensity = maxLightIntensity / 10f;
+            isday = true;
             transitionProgress = 1;
             holdingDay = true;
             holdingNight = false;
@@ -109,7 +118,6 @@ public class DayLightCycle : MonoBehaviour
             holdingNight = false;
             holdingDay = false;
         }
-
         Stats.Debug(m + "  " + transitionProgress);
         updateStreetLights(!isday, lightIntensity);
         updateDayLight(transitionProgress);

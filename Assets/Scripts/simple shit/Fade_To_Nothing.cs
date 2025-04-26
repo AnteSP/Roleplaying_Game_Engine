@@ -21,9 +21,11 @@ public class Fade_To_Nothing : MonoBehaviour
 
     [SerializeField] int repetitions = 1;
 
+    [SerializeField] List<Sprite> replacementImages = new List<Sprite>();
+
     private void OnEnable()
     {
-        au.Play();
+        if(au != null)au.Play();
         // Get the current time
         startTime = Time.time;
 
@@ -38,6 +40,12 @@ public class Fade_To_Nothing : MonoBehaviour
 
         // Set the initial alpha value
         SetAlpha(initialAlpha);
+
+        if (replacementImages.Count != 0)
+        {
+            objectRenderer.sprite = replacementImages[0];
+            replacementImages.RemoveAt(0);
+        }
     }
 
     private void Update()
@@ -58,12 +66,15 @@ public class Fade_To_Nothing : MonoBehaviour
 
             if(repetitions <= 0)
             {
+                //enabled = false;
                 gameObject.SetActive(false);
             }
             else
             {
-                au.Play();
+                if(au != null)au.Play();
                 startTime = Time.time;
+
+                
             }
             // Disable the GameObject
             //gameObject.SetActive(false);

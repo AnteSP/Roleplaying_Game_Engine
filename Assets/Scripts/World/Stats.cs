@@ -192,6 +192,7 @@ public class Stats : MonoBehaviour
         TimeAdd = TIMETEXT.GetComponentInChildren<TextMeshProUGUI>();
         MoneyAdd.gameObject.SetActive(false);
         TimeAdd.gameObject.SetActive(false);
+        dayLightCycle.StartOverride();
         ChangeTime(0);
         ChangeMoney(0);
         if (!current.PassTime) StartStopTime(false, "Scene itself");
@@ -881,14 +882,20 @@ public class Stats : MonoBehaviour
     }
 
     AudioClip OGAudio = null;
-    public static void changeBackgroundMusic(AudioClip a)
+    public static void changeBackgroundMusic(AudioClip a,bool justStopIt = false)
     {
         AudioSource aS = Stats.current.GetComponent<AudioSource>();
+
         if (current.OGAudio == null) current.OGAudio = aS.clip;
         aS.clip = a;
         if (a == null) aS.clip = current.OGAudio;
         aS.mute = false;
         aS.Play();
+        if (justStopIt)
+        {
+            aS.mute = true;
+            aS.Stop();
+        }
     }
 
     IEnumerator StartSong(AudioSource a,float time,float toVol)

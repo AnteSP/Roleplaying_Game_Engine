@@ -22,7 +22,7 @@ public class StoreItem : MonoBehaviour
 
     public enum ItemType
     {
-        Disposable,Recipe,Upgrade,Clothing
+        Disposable,Recipe,Upgrade,Clothing,Event
     }
 
     public ItemType Type;
@@ -57,9 +57,38 @@ public class StoreItem : MonoBehaviour
 
                 Items.ShiftAnim(ChooseSellSoda.example.Upgrade, "<u>UPGRADE!</u>: " + su.Name, su.Description);
                 Menu.UpdateShop();
+            }else if (Type == ItemType.Event)
+            {
+                switch (ItemID)
+                {
+                    case 35:
+                        Ch2Events.current.startDrug1();
+                        break;
+                    case 36:
+                        Ch2Events.current.startDrug2();
+                        break;
+                    case 37:
+                        if (Progress.doesFieldExist("ch2HatmanVisited"))
+                        {
+                            Stats.DisplayMessage("You feel like you've already experienced that in another life... No need to do that again. You're refunded your money");
+                            Stats.ChangeMoney(-Cost);
+                            return;
+                        }
+                        else
+                            Ch2Events.current.startDrug3();
+                        break;
+                }
             }
 
-            if (Menu.CloseOnPurchase) Menu.Use(0);
+            if (Menu.CloseOnPurchase)
+            {
+                Menu.Use(0);
+                if(Menu.SwitchOnPurchase != null)
+                {
+                    Menu.swapWithThisOnPurchase.SetActive(true);
+                    Menu.gameObject.SetActive(false);
+                }
+            }
             if (Menu.SwitchOnPurchase != "") Progress.switchInPlay(Menu.SwitchOnPurchase,true);
         }
         else

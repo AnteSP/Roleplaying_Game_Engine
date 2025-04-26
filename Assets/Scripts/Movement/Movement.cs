@@ -238,4 +238,15 @@ public class Movement : MonoBehaviour
 
     }
 
+    public void changeSpeed(float to)
+    {
+        Speed = to;
+    }
+
+    public void teleportTo(Transform to)
+    {
+        transform.position = to.position;
+        CamZoom.setFocusPoint(to.position, ignorePhysics: true);
+    }
+
 }

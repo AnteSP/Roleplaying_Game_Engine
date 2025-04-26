@@ -55,7 +55,11 @@ public class Talker : Resource
 
     public override void Use(float Amount)
     {
-        if (Index == 0) Stats.setLockedInObject(this);
+        if (Index == 0)
+        {
+            Stats.setLockedInObject(this);
+            Stats.StartStopTime(false, "Talker");
+        }
         GameObject P = Stats.current.Player;
         Stats.StartStopPlayerMovement(false,"Talker");
         Camera.main.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

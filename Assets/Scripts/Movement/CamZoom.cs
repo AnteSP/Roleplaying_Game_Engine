@@ -139,6 +139,8 @@ public class CamZoom : MonoBehaviour
         
     }
 
+    //public void setFocusPoint(Transform p) => setFocusPoint(p.position, 0, ignorePhysics: true);
+
     public static void applyOffset(Vector2 offset)
     {
         cz.AddToFocusPoint += offset;

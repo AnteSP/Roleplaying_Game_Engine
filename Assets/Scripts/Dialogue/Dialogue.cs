@@ -115,6 +115,7 @@ public class Dialogue : MonoBehaviour
         textDisplay.text = "";
         gameObject.SetActive(false);
         Stats.StartStopPlayerMovement(true, "Talker");
+        Stats.StartStopTime(true, "Talker");
 
         End = true;
         try

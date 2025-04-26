@@ -35,6 +35,8 @@ public class StoreMenu : Resource
     public bool CloseOnPurchase = false;
     public string SwitchOnPurchase = "";
 
+    public GameObject swapWithThisOnPurchase = null;
+
     public void setItem(GameObject temp, int DisplayItemID, int recipeNum, StoreItem.ItemType type, Transform obj = null, StoreItem SMen = null)
     {
         if(obj == null)obj = temp.transform.GetChild(0);
@@ -111,7 +113,14 @@ public class StoreMenu : Resource
         current = this;
         Stats.StartStopPlayerMovement(Menu.activeSelf,"StoreMenu");
 
+
         Menu.SetActive(!Menu.activeSelf);
+
+        if (Menu.activeSelf)
+        {
+            Stats.StartStopTime(false, "shop");
+        }else Stats.StartStopTime(true, "shop");
+
         UpdateShop();
         if (!Menu.activeSelf) current = null;
     }
