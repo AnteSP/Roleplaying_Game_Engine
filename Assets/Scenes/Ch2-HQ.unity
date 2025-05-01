@@ -14104,7 +14104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &415392279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20917,6 +20917,10 @@ MonoBehaviour:
   FredSecret: {fileID: 0}
   GGOptions: []
   DannyOptions: []
+  drugTakeNoise: {fileID: 0}
+  drug3: {fileID: 0}
+  EnableOnDrug3: []
+  DisableOnDrug3: []
 --- !u!1 &614832704
 GameObject:
   m_ObjectHideFlags: 0
@@ -22606,7 +22610,7 @@ Animator:
   m_GameObject: {fileID: 680135420}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 561dd228b81481042a199d09b021d8fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: fea47e5d271cbc64cb6cbb6ad5aa4d22, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -29304,7 +29308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897861013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.35, y: 3.94, z: 0}
+  m_LocalPosition: {x: 6.35, y: 4.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35965,6 +35969,7 @@ MonoBehaviour:
   au: {fileID: 367966885}
   disappearDuration: 1
   repetitions: 1
+  replacementImages: []
 --- !u!1 &1124858135
 GameObject:
   m_ObjectHideFlags: 0
@@ -39361,11 +39366,11 @@ MonoBehaviour:
   Respect: {fileID: 506514079}
   BSecret: {fileID: 596876471}
   Time: {fileID: 208342053}
-  Decisions: {fileID: 1519795215}
   impact: {fileID: 1575688479}
-  DecisionID: Are you scared of me?
-  D1: Yes
-  D2: No
+  friendshipID: 
+  decisionIDs: []
+  decisionDescs: []
+  decisions: []
 --- !u!1 &1225558866
 GameObject:
   m_ObjectHideFlags: 0
@@ -40221,6 +40226,7 @@ MonoBehaviour:
   au: {fileID: 577721047}
   disappearDuration: 0.5
   repetitions: 4
+  replacementImages: []
 --- !u!114 &1247901265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41470,6 +41476,7 @@ MonoBehaviour:
     ItemType: 0
   CloseOnPurchase: 1
   SwitchOnPurchase: Ch2GotDannyBoxItem
+  swapWithThisOnPurchase: {fileID: 0}
 --- !u!1 &1295288283
 GameObject:
   m_ObjectHideFlags: 0
@@ -42568,7 +42575,7 @@ Animator:
   m_GameObject: {fileID: 1310431870}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 561dd228b81481042a199d09b021d8fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: fea47e5d271cbc64cb6cbb6ad5aa4d22, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -42640,8 +42647,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5423851780520614466, guid: e68084341db9083479127ae0c87f04d4,
-    type: 3}
+  m_Sprite: {fileID: -191832934, guid: 3097a84a6bceb184e88cfbecee8674f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -42723,7 +42729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00000000
+  m_Text: 0
 --- !u!222 &1310518028
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -54631,7 +54637,6 @@ GameObject:
   - component: {fileID: 1700876590}
   - component: {fileID: 1700876589}
   - component: {fileID: 1700876591}
-  - component: {fileID: 1700876593}
   - component: {fileID: 1700876592}
   - component: {fileID: 1700876594}
   - component: {fileID: 1700876595}
@@ -54760,19 +54765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8f5a9086578cc46b882fbb5fec7013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1700876593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700876588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023b499e496dfb247932d9a97d949273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KidsInBasement: {fileID: 0}
 --- !u!114 &1700876594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54805,6 +54797,10 @@ MonoBehaviour:
   DannyOptions:
   - {fileID: 1057955380}
   - {fileID: 1085246496}
+  drugTakeNoise: {fileID: 0}
+  drug3: {fileID: 0}
+  EnableOnDrug3: []
+  DisableOnDrug3: []
 --- !u!114 &1700876595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54905,7 +54901,7 @@ MonoBehaviour:
   enable:
   - {fileID: 846881567}
   - {fileID: 721459056}
-  - {fileID: 1301172253}
+  - {fileID: 415392278}
   disable:
   - {fileID: 1806641816}
   - {fileID: 1554644504}
@@ -55043,7 +55039,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700876588}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ed85c29afafc03499627cde49c97d30, type: 3}
   m_Name: 

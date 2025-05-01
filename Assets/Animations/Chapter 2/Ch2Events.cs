@@ -271,7 +271,7 @@ public class Ch2Events : MonoBehaviour
         st.highlights.Override(Color.blue);
 
         UnityEngine.Rendering.Universal.LensDistortion ld = (UnityEngine.Rendering.Universal.LensDistortion)camvol.profile.Add(typeof(UnityEngine.Rendering.Universal.LensDistortion));
-        ld.intensity.Override(-0.7f);
+        ld.intensity.Override(-0.5f);
         ld.scale.Override(0.4f);
 
         GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();

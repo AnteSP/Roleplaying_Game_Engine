@@ -192,7 +192,7 @@ public class Stats : MonoBehaviour
         TimeAdd = TIMETEXT.GetComponentInChildren<TextMeshProUGUI>();
         MoneyAdd.gameObject.SetActive(false);
         TimeAdd.gameObject.SetActive(false);
-        dayLightCycle.StartOverride();
+        dayLightCycle?.StartOverride();
         ChangeTime(0);
         ChangeMoney(0);
         if (!current.PassTime) StartStopTime(false, "Scene itself");
@@ -835,6 +835,9 @@ public class Stats : MonoBehaviour
     {
         StartStopTime(true, "Message");
         StartStopPlayerMovement(true, "Message");
+        if (CurrentCS != null) CurrentCS.setGoodToGoOnly(true);
+
+
         NameIndic.Indicate("");
         current.MESSAGE.SetActive(false);
     }

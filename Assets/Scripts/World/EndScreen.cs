@@ -7,23 +7,25 @@ using TMPro;
 public class EndScreen : MonoBehaviour
 {
 
-    public TextMeshProUGUI Complete, Freeplay, Respect, BSecret, Time, Decisions;
+    public TextMeshProUGUI Complete, Freeplay, Respect, BSecret, Time;
     [SerializeField] AudioSource impact;
     bool firstFinish = false;
-    [SerializeField] string DecisionID;
-    [SerializeField] string D1;
-    [SerializeField] string D2;
+    [SerializeField] string friendshipID;
+
+    [SerializeField] List<string> decisionIDs,decisionDescs;
+    [SerializeField] List<TextMeshProUGUI> decisions;
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    int chNum;
 
     private void OnEnable()
     {
         //Progress.readData();
-        int chNum = int.Parse(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name.Substring(2));
+        chNum = int.Parse(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name.Substring(2));
 
         if(Progress.getInt("Chapter") < chNum)//
         {
@@ -33,12 +35,6 @@ public class EndScreen : MonoBehaviour
 
         Progress.saveData();
         StartCoroutine(EndChapter());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator EndChapter()
@@ -57,12 +53,11 @@ public class EndScreen : MonoBehaviour
             impact.Play();
         }
         yield return new WaitForSeconds(Len);
-        Respect.text = "Mafia Respect: " + Progress.getInt("MRespect");
+        Respect.text += Progress.getInt(friendshipID);
         Respect.gameObject.SetActive(true);
         impact.Play();
         yield return new WaitForSeconds(Len);
         impact.Play();
-
         Time.gameObject.SetActive(true);
         impact.loop = true;
         while (t < Len)
@@ -77,18 +72,36 @@ public class EndScreen : MonoBehaviour
         Time.text = "Time: " + ((int)(TSc / 60)).ToString("D2") + ":" + Mathf.FloorToInt(TSc % 60).ToString("D2");
         impact.loop = false;
         yield return new WaitForSeconds(Len);
-        BSecret.gameObject.SetActive(true); //NEED TO SET THIS LATER
-        if (Progress.getBool("WeekAngelAnim")) BSecret.text = "Big Secret: FOUND";
-        else if(Progress.getBool("WeekAngels")) BSecret.text = "Big Secret: WAITING...";
-        else BSecret.text = "Big Secret: NOT FOUND";
+        BSecret.gameObject.SetActive(true);
+        BSecret.text = "Big Secret: " + BigSecretText();
         impact.Play();
-        yield return new WaitForSeconds(Len);
-        Decisions.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = DecisionID + " [" + (Progress.getInt(DecisionID) == 1 ? D2 : D1) + "]";
-        Decisions.gameObject.SetActive(true);
-        impact.Play();
+        for(int i = 0; i < decisionIDs.Count; i++)
+        {
+            yield return new WaitForSeconds(Len);
+            impact.Play();
+            decisions[i].transform.parent.gameObject.SetActive(true);
+            decisions[i].transform.parent.parent.gameObject.SetActive(true);
+            decisions[i].text = decisionDescs[i] + " [" + (Progress.getInt(decisionIDs[i]) == 1 ? "no" : "yes") + "]";//2 is good, 1 is bad
+            decisions[i].gameObject.SetActive(true);
+        }
 
         yield return new WaitForSeconds(1);
     }
 
+    string BigSecretText()
+    {
+        switch (chNum)
+        {
+            case 1:
+                if (Progress.getBool("WeekAngelAnim")) return "FOUND";
+                else if (Progress.getBool("WeekAngels")) return "WAITING...";
+                else return "NOT FOUND";
+            case 2:
+                if (Progress.getBool("ch2HatmanVisited")) return "FOUND";
+                else return "NOT FOUND";
+            default:
+                return "Fuck goin on twin :(";
+        }
+    }
 
 }
