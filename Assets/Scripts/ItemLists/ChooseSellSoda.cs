@@ -53,7 +53,7 @@ public class ChooseSellSoda : Resource
     };
     */
 
-    private void Start()
+    private void Awake()
     {
         if(example == null) example = this;
     }

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SellSpot : Resource
 {
@@ -19,10 +18,23 @@ public class SellSpot : Resource
 
     public static SellSpot current = null;
 
+    public static List<string> sellSpots { get; } = new List<string>();
+    public static List<SellSpot> possibleSellSpots { get; } = new List<SellSpot>();
+
+    private void Awake()
+    {
+        possibleSellSpots.Add(this);
+    }
 
     void Start()
     {
         ogY = transform.position.y;
+    }
+
+    public static void resetSellSpotsList()
+    {
+        sellSpots.Clear();
+        possibleSellSpots.Clear();
     }
 
     private void Update()
@@ -46,15 +58,23 @@ public class SellSpot : Resource
 
     public void turnIntoMarket()
     {
+        Stats.ChangeTimeAnim(MinsToPrep);
+
+        setAsMarket();
+        if (triggerOnSetup != "") Progress.switchInPlay(triggerOnSetup, true);
+    }
+
+    public void setAsMarket()
+    {
+        sellSpots.Add(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + "/" + gameObject.name);
         GameObject s = Instantiate(ChooseSellSoda.example.gameObject, transform);
         s.transform.SetParent(transform.parent);
         s.transform.localPosition = Vector3.zero;
-        print("TURN INTO " + s.name + " " + s.transform.childCount);
-        Stats.ChangeTimeAnim(MinsToPrep);
+        //print("TURN INTO " + s.name + " " + s.transform.childCount);
 
-        for(int i = 0; i < s.transform.childCount; i++)
+        for (int i = 0; i < s.transform.childCount; i++)
         {
-            SellUpgrade.addToAllInstances( s.transform.GetChild(i).GetComponent<SellUpgrade>() );
+            SellUpgrade.addToAllInstances(s.transform.GetChild(i).GetComponent<SellUpgrade>());
         }
 
         SellUpgrade.addToAllInstances(s.GetComponentsInChildren<SellUpgrade>());
@@ -63,7 +83,6 @@ public class SellSpot : Resource
         css.MLevel = MLevel;
         css.SLevel = SLevel;
         Destroy(gameObject);
-        if (triggerOnSetup != "") Progress.switchInPlay(triggerOnSetup, true);
         if (SodaMachine != null) SodaMachine.SetActive(true);
     }
 

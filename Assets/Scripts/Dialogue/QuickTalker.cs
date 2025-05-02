@@ -40,7 +40,11 @@ public class QuickTalker : Resource
     {
         D.gameObject.SetActive(true);
 
-        if (stopPlayer) Stats.StartStopPlayerMovement(false,"QuickTalker");
+        if (stopPlayer)
+        {
+            Stats.StartStopPlayerMovement(false, "QuickTalker");
+            Stats.StartStopTime(false, "QuickTalker");
+        }
 
         if (dPosition == DialogueBoxPosition.Dynamic) D.DisplayOnTop();
         else D.DisplayOnTop(dPosition == DialogueBoxPosition.AlwaysTop);
@@ -107,6 +111,6 @@ public class QuickTalker : Resource
         yield return new WaitForSeconds(stopPlayerTime);
 
         Stats.StartStopPlayerMovement(true,"QuickTalker");
-
+        Stats.StartStopTime(true, "QuickTalker");
     }
 }

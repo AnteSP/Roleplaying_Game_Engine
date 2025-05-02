@@ -174,6 +174,8 @@ public class Stats : MonoBehaviour
         }
         Deds = GetComponents<Deadline>().ToList();
 
+        SellUpgrade.FlushUpgrades();
+
         //CreateDeadline("Pay 1000 for the soda machine", 7*24*60, -1000, EndFail,EndSucceed);
         //DEADLINE.SetActive(false);
 
@@ -922,6 +924,7 @@ public class Stats : MonoBehaviour
         SellUpgrade.FlushUpgrades();
         Progress.saveData();
         Slider.EmptyList();
+        SellSpot.resetSellSpotsList();
         Stats.current = null;
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 

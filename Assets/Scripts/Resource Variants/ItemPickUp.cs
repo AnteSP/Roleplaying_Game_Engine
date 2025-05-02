@@ -9,6 +9,7 @@ public class ItemPickUp : Resource
 
     string generatePickUpName() => "*" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + "/" + gameObject.name;
     public bool savePickUp = true;
+    public string Message = "";
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class ItemPickUp : Resource
 
             Destroy(gameObject);
             if(savePickUp)Progress.savePickUp(generatePickUpName());
+            if(Message != "") Stats.DisplayMessage(Message, true);
         }
         else
         {

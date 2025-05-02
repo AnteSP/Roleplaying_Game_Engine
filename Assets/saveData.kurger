@@ -1,10 +1,10 @@
 {
   "FUN": 84,
   "MONEY": 0,
-  "TIME": 602,
+  "TIME": 673,
   "Ch2": {
     "OpeningDone": true,
-    "TutorialDone": false,
+    "TutorialDone": true,
     "FredCS1": false,
     "StealerCSDone": false,
     "Final": false,
@@ -14,13 +14,21 @@
     "GotDannyBoxItem": false
   },
   "Upgrades": {},
-  "PickUps": {},
+  "PickUps": {
+    "*Ch2/WifeBeater": ""
+  },
   "Items": {
-    "17": 1
+    "17": 1,
+    "26": 1
   },
   "Recipes": [
     0
   ],
-  "Deadlines": {},
-  "GameOver": false
+  "Deadlines": {
+    "A-Ch2": true
+  },
+  "GameOver": false,
+  "SellSpots": {
+    "Ch2/Sell Spot Middle": true
+  }
 }

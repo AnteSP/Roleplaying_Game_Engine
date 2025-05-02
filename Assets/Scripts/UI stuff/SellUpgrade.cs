@@ -11,12 +11,17 @@ public class SellUpgrade : MonoBehaviour
 
     public static void FlushUpgrades()
     {
+        print("UPGRADES FLUSHED");
         allInstances.Clear();
         templateInstances.Clear();
     }
 
     public static SellUpgrade getUpgrade(int itemID)
     {
+        foreach(SellUpgrade upgrade in templateInstances)
+        {
+            //print("ID " + upgrade.ItemID + "   name " + upgrade.Name);
+        }
         return templateInstances.Where(a => a.ItemID == itemID).First();
     }
 
@@ -103,9 +108,15 @@ public class SellUpgrade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!allInstances.Exists(a => a.Name == this.Name))
+        //print("STARTING " + this.Name);
+        foreach (SellUpgrade upgrade in allInstances)
+        {
+            //print("ID " + upgrade.ItemID + "   name " + upgrade.Name);
+        }
+        if (!templateInstances.Exists(a => a.Name == this.Name))
         {
             templateInstances.Add(this);
+            //print("ADDED TO TEMPLATEINSTANCES");
         }
         allInstances.Add(this);
         
@@ -126,12 +137,6 @@ public class SellUpgrade : MonoBehaviour
                 return;
 
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public string Name; //must be an existing item name

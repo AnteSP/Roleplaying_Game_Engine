@@ -261,9 +261,11 @@ public class Dialogue : MonoBehaviour
                 case '4':
                     Current = "Would that be amusing for you, " + System.Environment.UserName+"?";
                     break;
-                case '{'://format: {4,2}{70,1} [INSERT MESSAGE HERE]    for requiring two item 4s and one item 70
+                case '{'://format: {4,2}{70,1} [INSERT MESSAGE HERE]    for requiring two item 4s and one item 70.
+                    //Alt format: {4,2}|{70,1}| [INSERT MESSAGE HERE]    for requiring either two item 4s or one item 70
 
                     bool missingItems = false;
+                    bool orGate = false;
 
                     List<int> amounts = new List<int>();
                     List<int> items = new List<int>();
@@ -274,19 +276,29 @@ public class Dialogue : MonoBehaviour
                         int item = int.Parse(Current.Substring(0, Current.IndexOf(',')));
                         print(Current.Substring(Current.IndexOf(',')+1, Current.IndexOf('}') - Current.IndexOf(',')-1));
                         int amount = int.Parse(Current.Substring( Current.IndexOf(',')+1 ,  Current.IndexOf('}') - Current.IndexOf(',')-1));
-                        amounts.Add(amount);
-                        items.Add(item);
+                        if(!new int[] { 26, 27, 28,29,30 }.Contains(item))//excepted items
+                        {
+                            amounts.Add(amount);
+                            items.Add(item);
+                        }
+
                         if (!Items.Contains(item, amount)) {
                             print("NOT FOUND " + item + " x" + amount);
                             missingItems = true;
                         }
-                        
 
                         c = Current[Current.IndexOf('}')+1];
                         Current = Current.Remove(0, Current.IndexOf('}')+2);
+                        if(c == '|')
+                        {
+                            c = Current[0];
+                            Current = Current.Remove(0, 1);
+                            if (Items.Contains(item, amount)) orGate = true;
+                        }
+                        print("c = " + c);
                     }
 
-                    if (!missingItems)
+                    if (!missingItems || orGate)
                     {
                         if(Current == " ")
                         {
@@ -304,12 +316,14 @@ public class Dialogue : MonoBehaviour
                     {
                         print("ERROR FROM LACK OF ITEM");
                         Stats.DisplayMessage(Current,true);
-                        throw new System.Exception();
+                        EndConvo();
+                        talker.resetIndex();
+                        //throw new System.Exception();
                     }
 
                     break;
                 case 'r'://give recipe. Use: %rX    X is the char in dic(below). Go to SodaMachine to find the index of recipe you want to add
-                    Dictionary<char, int> dic = new Dictionary<char, int> { { 'a', 2 }, { 'b', 3 }, };
+                    Dictionary<char, int> dic = new Dictionary<char, int> { { 'a', 2 }, { 'b', 3 }, { 'c', 1 } };
                     int ind = dic[Current[0]];
                     Current = Current.Remove(0, 1);
                     if ( SodaMachine.CreateRecipe(Items.RECIPES_DB[ind]) ) Items.ShiftAnim(Items.RECIPES_DB[ind].Soda.icon, "NEW RECIPE", Items.RECIPES_DB[ind].Soda.Name);

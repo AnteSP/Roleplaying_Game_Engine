@@ -18,6 +18,7 @@ public class Progress : MonoBehaviour
 
     static bool loadedItems = false;
     static bool loadedDeadlines = false;
+    static bool loadedSellSpots = false;
 
     static List<Progress> progressComps = new List<Progress>();
     static JObject data = null;
@@ -38,7 +39,7 @@ public class Progress : MonoBehaviour
         print("UPDATE TEST:\n"+data);
     }
 
-    public static void markDataAsUnloaded() { loaded = false; progressComps = new List<Progress>(); print("progressComps set to null"); loadedItems = false;loadedDeadlines = false; }
+    public static void markDataAsUnloaded() { loaded = false; progressComps = new List<Progress>(); print("progressComps set to null"); loadedItems = false;loadedDeadlines = false;loadedSellSpots = false; }
 
     public static bool wasDataLoaded() => loaded;
     public static bool wasItemDataLoaded() => loadedItems;
@@ -303,6 +304,14 @@ public class Progress : MonoBehaviour
             ((JObject)data["Upgrades"]).Add(u.Name, true);
         }
 
+        if (!data.ContainsKey("SellSpots")) data.Add("SellSpots", new JObject());
+        data["SellSpots"] = new JObject();
+
+        foreach (string s in SellSpot.sellSpots)
+        {
+            ((JObject)data["SellSpots"]).Add(s, true);
+        }
+
         string chapterString = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Split('-')[0];
 
         if (!data.ContainsKey("Deadlines")) data.Add("Deadlines", new JObject());
@@ -406,6 +415,18 @@ public class Progress : MonoBehaviour
             loadedDeadlines = true;
         }
         //print("DONE LOADING DEDS");
+
+        if (!loadedSellSpots && data["SellSpots"] != null)
+        {
+            List<SellSpot> sellSpots = SellSpot.possibleSellSpots;
+            foreach (JProperty child in data["SellSpots"].Children().Where(s => ((JProperty)s).Name.StartsWith(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name) ))
+            {
+                SellSpot curSellSpot = sellSpots.Where(s => child.Name.EndsWith(s.gameObject.name)).Last();
+
+                curSellSpot.setAsMarket();
+            }
+            loadedSellSpots = true;
+        }
 
         if (!excludeItems)
         {
