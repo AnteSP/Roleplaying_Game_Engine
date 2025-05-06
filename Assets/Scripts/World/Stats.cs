@@ -1009,4 +1009,18 @@ public class Stats : MonoBehaviour
         
     }
 
+    bool RTXOn = false;
+    public void SettingsRTXMode()
+    {
+        RTXOn = !RTXOn;
+        if (RTXOn) current.dayLightCycle.enabled = false;
+        foreach(UnityEngine.Rendering.Universal.Light2D l in GameObject.FindObjectsOfType<UnityEngine.Rendering.Universal.Light2D>())
+        {
+            l.intensity *= (RTXOn) ? 10 : 0.1f;
+        }
+        if(!RTXOn) current.dayLightCycle.enabled = true;
+
+        Application.targetFrameRate = RTXOn ? 5 : -1;
+    }
+
 }
