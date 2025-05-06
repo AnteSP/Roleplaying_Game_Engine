@@ -1,7 +1,7 @@
 {
   "FUN": 84,
-  "MONEY": 0,
-  "TIME": 673,
+  "MONEY": 155,
+  "TIME": 1260,
   "Ch2": {
     "OpeningDone": true,
     "TutorialDone": true,
@@ -11,11 +11,16 @@
     "Vader1": false,
     "FredCS2": false,
     "WakeUp": false,
-    "GotDannyBoxItem": false
+    "GotDannyBoxItem": false,
+    "FredCS3": false,
+    "FredCS4": false
   },
   "Upgrades": {},
   "PickUps": {
-    "*Ch2/WifeBeater": ""
+    "*Ch2/WifeBeater": "",
+    "*Ch2/Park Coins (High FUN)": "",
+    "*Ch2/Street Coins": "",
+    "*Ch2/Street Coins (1)": ""
   },
   "Items": {
     "17": 1,
@@ -24,9 +29,7 @@
   "Recipes": [
     0
   ],
-  "Deadlines": {
-    "A-Ch2": true
-  },
+  "Deadlines": {},
   "GameOver": false,
   "SellSpots": {
     "Ch2/Sell Spot Middle": true
