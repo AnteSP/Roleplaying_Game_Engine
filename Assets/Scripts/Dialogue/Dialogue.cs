@@ -116,6 +116,7 @@ public class Dialogue : MonoBehaviour
         gameObject.SetActive(false);
         Stats.StartStopPlayerMovement(true, "Talker");
         Stats.StartStopTime(true, "Talker");
+        
 
         End = true;
         try
@@ -126,7 +127,11 @@ public class Dialogue : MonoBehaviour
         forceStopSounds();
         
         if(talker != null)
+        {
             Stats.releaseLockedInObject(talker.unfocusAfterUse);
+            talker.resetIndex();
+        }
+            
     }
 
     public void EndCutScene(CutSceneTalker cs,int transition=1)
@@ -384,6 +389,12 @@ public class Dialogue : MonoBehaviour
                         {
                             Current = Current.Remove(0, 1);
                             talker.specialObj.SetActive(!talker.specialObj.activeSelf);
+                        }
+                        else if (mode == 'D')//alternate special object's activeness. And then end convo
+                        {
+                            Current = Current.Remove(0, 1);
+                            talker.specialObj.SetActive(!talker.specialObj.activeSelf);
+                            EndConvo();
                         }
                     }
                     else

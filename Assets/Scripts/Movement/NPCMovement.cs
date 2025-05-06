@@ -129,11 +129,12 @@ public class NPCMovement : MonoBehaviour
         An.Play("Alt");
     }
 
-    public void ShutDown()
+    public void ShutDown(bool facePlayerAfterShutdown = false)
     {
         An.SetInteger("Horizontal", 0);
         An.SetInteger("Vertical", 0);
         rb.velocity = Vector2.zero;
+        if (facePlayerAfterShutdown) Face(Stats.current.Player.transform.position);
         this.enabled = false;
     }
 }

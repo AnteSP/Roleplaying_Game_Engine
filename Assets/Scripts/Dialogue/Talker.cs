@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Talker : Resource
 {
@@ -73,8 +71,8 @@ public class Talker : Resource
 
         if (NE)
         {
-            N.Face(P.GetComponent<Rigidbody2D>().position);
-            N.ShutDown();
+            //N.Face(P.GetComponent<Rigidbody2D>().position);
+            N.ShutDown(facePlayerAfterShutdown:true);
             D.NPC = N;
         }
         D.talker = this;
