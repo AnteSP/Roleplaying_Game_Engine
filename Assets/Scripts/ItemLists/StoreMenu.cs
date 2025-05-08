@@ -68,6 +68,10 @@ public class StoreMenu : Resource
 
         foreach(ItemForSale i in ItemsForSale)
         {
+            if(i.ItemType == StoreItem.ItemType.Clothing)
+            {
+                if (Items.Contains(i.ID)) continue;
+            }
             GameObject temp = Instantiate(ItemPrefab, ItemPrefab.transform.parent);
             temp.SetActive(true);
 
