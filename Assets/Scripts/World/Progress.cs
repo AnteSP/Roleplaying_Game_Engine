@@ -297,19 +297,21 @@ public class Progress : MonoBehaviour
         }
 
         if (!data.ContainsKey("Upgrades")) data.Add("Upgrades", new JObject());
-        data["Upgrades"] = new JObject();
+        //data["Upgrades"] = new JObject();
 
         foreach (SellUpgrade u in SellUpgrade.getAllActive())
         {
-            ((JObject)data["Upgrades"]).Add(u.Name, true);
+            if(!data["Upgrades"].Contains(u.Name))
+                ((JObject)data["Upgrades"]).Add(u.Name, true);
         }
 
         if (!data.ContainsKey("SellSpots")) data.Add("SellSpots", new JObject());
-        data["SellSpots"] = new JObject();
+        //data["SellSpots"] = new JObject();
 
         foreach (string s in SellSpot.sellSpots)
         {
-            ((JObject)data["SellSpots"]).Add(s, true);
+            if (!data["SellSpots"].Contains(s))
+                ((JObject)data["SellSpots"]).Add(s, true);
         }
 
         string chapterString = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Split('-')[0];

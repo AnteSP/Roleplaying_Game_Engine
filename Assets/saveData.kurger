@@ -1,11 +1,11 @@
 {
   "FUN": 84,
   "MONEY": 155,
-  "TIME": 1271,
+  "TIME": 1980,
   "Ch2": {
     "OpeningDone": true,
     "TutorialDone": true,
-    "FredCS1": false,
+    "FredCS1": true,
     "StealerCSDone": false,
     "Final": false,
     "Vader1": false,
@@ -13,7 +13,11 @@
     "WakeUp": false,
     "GotDannyBoxItem": false,
     "FredCS3": false,
-    "FredCS4": false
+    "FredCS4": false,
+    "Vader2": false,
+    "ResistedGG": false,
+    "GGEvent": false,
+    "HelpedDanny": false
   },
   "Upgrades": {},
   "PickUps": {
@@ -29,9 +33,12 @@
   "Recipes": [
     0
   ],
-  "Deadlines": {},
+  "Deadlines": {
+    "B-Ch2": true
+  },
   "GameOver": false,
-  "SellSpots": {
-    "Ch2/Sell Spot Middle": true
-  }
+  "SellSpots": {},
+  "Ch2FredIntro": 2,
+  "FredF": 1,
+  "DannyEventFail": false
 }
