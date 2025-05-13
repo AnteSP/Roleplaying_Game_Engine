@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ad5119bd9702a4b83fef4fc054d485, type: 3}
+  m_Name: R4 - Infinite Soup
+  m_EditorClassIdentifier: 
+  Soda: {fileID: 11400000, guid: baf3c61b924311c4a8b1d35602ae7fd2, type: 2}
+  Ingredients:
+  - {fileID: 11400000, guid: f424b53506ef3d64faf516d42296f686, type: 2}
+  SodaPChange: 30
+  SodaTChange: 40
+  RecipeID: 0

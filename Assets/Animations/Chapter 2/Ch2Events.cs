@@ -166,6 +166,7 @@ public class Ch2Events : MonoBehaviour
                 break;
             case 5:
                 Stats.StartDeadline('E');
+                Progress.saveData(toFile: "saveArchiveCh2LastDay");
                 break;
 
         }

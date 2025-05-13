@@ -40214,6 +40214,7 @@ MonoBehaviour:
   - {fileID: 2107228374}
   - {fileID: 458370587}
   - {fileID: 1559310968}
+  - {fileID: 1559310968}
   enableOnlyOnFreePlay:
   - {fileID: 410251461}
   - {fileID: 466911630}

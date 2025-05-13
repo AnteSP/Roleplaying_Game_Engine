@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Playables;
 
 public class MainMenu : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class MainMenu : MonoBehaviour
     static MainMenu m = null;
     [SerializeField] UnityEngine.UI.Slider volSlider;
     static public float VOLUME = 1;
+    public PlayableDirector tvTurnOn;
+    [SerializeField] AudioSource clickNoise;
+    static readonly int FINAL_CHAPTER = 2;
 
     private void Start()
     {
@@ -38,6 +42,20 @@ public class MainMenu : MonoBehaviour
 
             play.GetComponent<Tooltip>().tooltip = "Play Story (Erase save data to play again)";
             fPlay.GetComponent<Tooltip>().tooltip = "Free Play";
+        }
+
+        bool nextChp = true;
+        for(;i < Content.transform.childCount && i <= FINAL_CHAPTER; i++)
+        {
+            GameObject g = Content.transform.GetChild(i).gameObject;
+            if (!g.name.StartsWith("Chapter ")) continue;
+
+            Transform play = g.transform.Find("Play Back").Find("Play");
+            Transform fPlay = g.transform.Find("Play Back").Find("Free Play");
+
+            play.GetComponent<Button>().interactable = nextChp;
+            fPlay.GetComponent<Button>().interactable = false;
+            nextChp = false;
         }
         int fun = Progress.getInt("FUN");
         string start = version.text.Substring(0, version.text.Length - 4);
@@ -83,23 +101,33 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    string sceneToLoad;
+    bool startedAnim = false;
     public void LoadScene(string s)
     {
+        if(!startedAnim) tvTurnOn.Play();
+        sceneToLoad = s;
         Stats.freePlay = false;
-        Stats.allTime = 0;
-        Progress.saveData();
-        SceneManager.LoadScene(s);
-        
+        clickNoise.Play();
+        NameIndic.turnOff();
     }
-
     public void LoadSceneFreePlay(string s)
     {
-        Stats.freePlay = true;
+        if (!startedAnim) tvTurnOn.Play();
+        sceneToLoad = s;
+        Stats.freePlay = false;
+        clickNoise.Play();
+        NameIndic.turnOff();
+    }
+
+
+    public void ActuallyStartGame()
+    {
         Stats.allTime = 0;
         Progress.saveData();
-        SceneManager.LoadScene(s);
-
+        SceneManager.LoadScene(sceneToLoad);
     }
+
 
     public void QuitGame()
     {

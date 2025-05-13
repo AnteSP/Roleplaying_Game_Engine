@@ -260,7 +260,7 @@ public class Progress : MonoBehaviour
         }
     }
 
-    public static void saveData()
+    public static void saveData(string toFile = "")
     {
         if (Stats.current != null)
         {
@@ -318,12 +318,19 @@ public class Progress : MonoBehaviour
 
         if (!data.ContainsKey("Deadlines")) data.Add("Deadlines", new JObject());
         data["Deadlines"] = new JObject();
-        foreach (Deadline d in Stats.current.GetComponents<Deadline>().Where(a => a.enabled))
+
+        
+        Deadline[] deds = Stats.current?.GetComponents<Deadline>();
+        if(deds != null)
         {
-            ((JObject)data["Deadlines"]).Add(d.ID + "-" + chapterString, true);
+            foreach (Deadline d in deds.Where(a => a.enabled))
+            {
+                ((JObject)data["Deadlines"]).Add(d.ID + "-" + chapterString, true);
+            }
         }
 
-        File.WriteAllText(SName,data.ToString());
+        File.WriteAllText(SName, data.ToString());
+        if(toFile != "") File.WriteAllText(Application.dataPath + "/" + toFile + ".kurger", data.ToString());
     }
 
     public static void saveOnlyThis(int ia,int ib,string s,int type)

@@ -26,16 +26,8 @@
     "*Ch2/Street Coins": "",
     "*Ch2/Street Coins (1)": ""
   },
-  "Items": {
-    "17": 1,
-    "26": 1,
-    "3": 10,
-    "15": 1
-  },
-  "Recipes": [
-    0,
-    2
-  ],
+  "Items": {},
+  "Recipes": [],
   "Deadlines": {},
   "GameOver": false,
   "SellSpots": {},

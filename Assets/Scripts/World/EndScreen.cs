@@ -33,7 +33,7 @@ public class EndScreen : MonoBehaviour
             firstFinish = true;
         }else firstFinish = false;
 
-        Progress.saveData();
+        Progress.saveData(toFile:"saveArchiveCh" + chNum);
         StartCoroutine(EndChapter());
     }
 

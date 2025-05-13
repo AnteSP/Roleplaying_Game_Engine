@@ -75,6 +75,11 @@ public class CamZoom : MonoBehaviour
         }
     }
 
+    public void MaxSize()
+    {
+        SetSize((int)Max);
+    }
+
     private void Start()
     {
         MTracker = Camera.main.orthographicSize;

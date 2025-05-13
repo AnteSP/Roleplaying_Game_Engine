@@ -198,6 +198,15 @@ public class Dialogue : MonoBehaviour
                 case 'C':
                     NPC.GetComponent<Movement>().FocusPoint = NPC.transform.position;
                     break;
+                case 'z'://zoom camera out
+                    if (Current[0] == '~')
+                    {
+                        CamZoom.cz.SetSize(4);
+                        Current = Current.Remove(0, 1);
+                    }
+                    else CamZoom.cz.MaxSize();
+
+                    break;
                 case 'S'://Start cutscene
                     CutSceneTalker cst = talker.GetComponent<CutSceneTalker>();
                     if (cst != null) Stats.current.CurrentCS = cst;
@@ -273,9 +282,11 @@ public class Dialogue : MonoBehaviour
                     break;
                 case '{'://format: {4,2}{70,1} [INSERT MESSAGE HERE]    for requiring two item 4s and one item 70.
                     //Alt format: {4,2}|{70,1}| [INSERT MESSAGE HERE]    for requiring either two item 4s or one item 70
+                    //Negative quantity to just give item. DO NOT MIX giving and checking
 
                     bool missingItems = false;
                     bool orGate = false;
+                    bool justGiving = false;
 
                     List<int> amounts = new List<int>();
                     List<int> items = new List<int>();
@@ -288,8 +299,16 @@ public class Dialogue : MonoBehaviour
                         int amount = int.Parse(Current.Substring( Current.IndexOf(',')+1 ,  Current.IndexOf('}') - Current.IndexOf(',')-1));
                         if(!new int[] { 26, 27, 28,29,30 }.Contains(item))//excepted items
                         {
-                            amounts.Add(amount);
-                            items.Add(item);
+                            if(amount < 0)
+                            {
+                                justGiving = true;
+                                Items.Add(item, -amount);
+                            }
+                            else
+                            {
+                                amounts.Add(amount);
+                                items.Add(item);
+                            }
                         }
 
                         if (!Items.Contains(item, amount)) {
@@ -307,6 +326,8 @@ public class Dialogue : MonoBehaviour
                         }
                         print("c = " + c);
                     }
+
+                    if (justGiving) break;
 
                     if (!missingItems || orGate)
                     {
@@ -413,11 +434,36 @@ public class Dialogue : MonoBehaviour
                             talker.specialObj.SetActive(!talker.specialObj.activeSelf);
                             EndConvo();
                         }
-                        else if (mode == 'E')//Teleport to, then enable special object
+                        else if (mode == 'E')//Teleport to, then enable special object + turn off music
                         {
                             Current = Current.Remove(0, 1);
-                            talker.specialObj.SetActive(true);
-                            Stats.current.Player.GetComponent<Movement>().teleportTo(talker.specialObj.transform);
+                            if(talker != null)
+                            {
+                                talker.specialObj.SetActive(true);
+                                Stats.current.Player.GetComponent<Movement>().teleportTo(talker.specialObj.transform);
+                            }
+                            else if(quickTalker != null)
+                            {
+                                quickTalker.specialObject.SetActive(true);
+                                Stats.current.Player.GetComponent<Movement>().teleportTo(quickTalker.specialObject.transform);
+                            }
+                            Stats.changeBackgroundMusic(null, true);
+                            EndConvo();
+                        }
+                        else if (mode == 'F')//Teleport to, then enable special object + continue background music
+                        {
+                            Current = Current.Remove(0, 1);
+                            if (talker != null)
+                            {
+                                talker.specialObj.SetActive(true);
+                                Stats.current.Player.GetComponent<Movement>().teleportTo(talker.specialObj.transform);
+                            }
+                            else if (quickTalker != null)
+                            {
+                                quickTalker.specialObject.SetActive(true);
+                                Stats.current.Player.GetComponent<Movement>().teleportTo(quickTalker.specialObject.transform);
+                            }
+                            Stats.changeBackgroundMusic(null);
                             EndConvo();
                         }
                     }
