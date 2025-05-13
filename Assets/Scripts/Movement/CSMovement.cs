@@ -16,7 +16,7 @@ public class CSMovement : MonoBehaviour
         foreach (NPCMovement n in Actors)
         {
             an = n.GetComponent<Animator>();
-            if (an != null || !an.enabled) an.enabled = true;//make sure animators are on and walking is correctly animated
+            if (an != null && !an.enabled) an.enabled = true;//make sure animators are on and walking is correctly animated
             //n.GetComponent<SpriteRenderer>().flipX = false;
         }
     }

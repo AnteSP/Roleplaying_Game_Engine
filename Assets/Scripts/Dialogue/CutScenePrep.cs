@@ -85,6 +85,12 @@ public class CutScenePrep : StateMachineBehaviour
                 Stats.changeBackgroundMusic(a.clip);
             }
 
+            if(cs.Index > 1)
+            {
+                cs.NextCamPos(0);
+                Stats.current.FilterColor(Color.black);
+            }
+
             Dialogue.forceGoodToGo(true);
         }
 

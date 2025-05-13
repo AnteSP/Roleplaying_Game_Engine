@@ -164,7 +164,7 @@ public class Stats : MonoBehaviour
         CurrentCS = DefaultCS;
 
         Transform overlay = DAYTEXT.transform.parent;
-        overlay.GetComponent<MakeTrans>().forceStart();
+        overlay.GetComponent<MakeTrans>()?.forceStart();
         for(int i = 0; i < 99; i++)
         {
             Transform t = overlay.Find("Deadline (" + i + ")");
@@ -192,8 +192,8 @@ public class Stats : MonoBehaviour
         //ChangeTime(TimeFromMidNight);
         MoneyAdd = MONEYTEXT.GetComponentInChildren<TextMeshProUGUI>();
         TimeAdd = TIMETEXT.GetComponentInChildren<TextMeshProUGUI>();
-        MoneyAdd.gameObject.SetActive(false);
-        TimeAdd.gameObject.SetActive(false);
+        MoneyAdd?.gameObject.SetActive(false);
+        TimeAdd?.gameObject.SetActive(false);
         dayLightCycle?.StartOverride();
         ChangeTime(0);
         ChangeMoney(0);
@@ -785,24 +785,28 @@ public class Stats : MonoBehaviour
             else return;
         }
 
-        //print("M-START " + start + " SOURCE " + source);
+        //print("M-START " + start + " SOURCE " + source + " SOURCE COUNT: " + moveSources.Count);
         int comp = 0;
         if(source != "")
         {
-            if (!start && !moveSources.Contains(source))//stopping
-            {
-                moveSources.Add(source);
-                comp = 1;
-            }
-            else//starting
+            if (start)
             {
                 if (moveSources.Contains(source))
                     moveSources.Remove(source);
+            }
+            else
+            {
+                if (!moveSources.Contains(source))
+                {
+                    moveSources.Add(source);
+                    comp = 1;
+                }
             }
         }
 
         if(moveSources.Count == comp)//accept action
         {
+            //print(start ? "STARTING MOVEMENT" + moveSources.Count: "STOPPING MOVEMENT" + moveSources.Count);
             if (start)
                 current.playerMovement.enabled = true;
             else
@@ -917,7 +921,7 @@ public class Stats : MonoBehaviour
 
     public void SceneChange(string r)
     {
-        LOADING.SetActive(true);
+        if(LOADING != null) LOADING.SetActive(true);
         Player.SetActive(false);
         SodaMachine.resetStarted();
         timeSources.Clear();
@@ -980,8 +984,12 @@ public class Stats : MonoBehaviour
     public static void changeFriendship(string Id,int amount)
     {
         //print("GOT HERE BLEGH");
-        current.SocialNotification.transform.parent.gameObject.SetActive(true);//The parent should be the social menu handle
-        current.SocialNotification.gameObject.SetActive(false);
+        if(current.SocialNotification != null)
+        {
+            current.SocialNotification.transform.parent.gameObject.SetActive(true);//The parent should be the social menu handle
+            current.SocialNotification.gameObject.SetActive(false);
+        }
+
 
         if (Progress.doesFieldExist(Id))
         {
@@ -992,19 +1000,22 @@ public class Stats : MonoBehaviour
             Progress.setInt(Id, amount);
         }
 
-        current.SocialNotification.gameObject.SetActive(true);
-        TextMeshProUGUI notif = current.SocialNotification.GetComponent<TextMeshProUGUI>();
-        if (amount < 0)
+        if (current.SocialNotification != null)
         {
-            notif.color = Color.red;
-            print("COLOR RED");
+            current.SocialNotification.gameObject.SetActive(true);
+            TextMeshProUGUI notif = current.SocialNotification.GetComponent<TextMeshProUGUI>();
+            if (amount < 0)
+            {
+                notif.color = Color.red;
+                print("COLOR RED");
+            }
+            else
+            {
+                notif.color = new Color(0, 0.73f, 1);
+                print("COLOR B");
+            }
+            current.SocialNotification.GetComponent<TextMeshProUGUI>().text = "Friendship " + (amount < 0 ? "" : "+") + amount;
         }
-        else
-        {
-            notif.color = new Color(0, 0.73f, 1);
-            print("COLOR B");
-        }
-        current.SocialNotification.GetComponent<TextMeshProUGUI>().text = "Friendship " + (amount < 0 ? "" : "+") + amount;
 
         
     }

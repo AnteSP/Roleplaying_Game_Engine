@@ -16,6 +16,7 @@ public class QuickTalker : Resource
     [SerializeField] bool stopPlayer = false;
     [SerializeField] bool justDisableComponent = false;
     [SerializeField] int stopPlayerTime = 0;
+    public GameObject specialObject;
 
     static public bool ONLYACTIVETALKER = false;
     static QuickTalker currentlyWaiting = null;
@@ -58,6 +59,7 @@ public class QuickTalker : Resource
             N.ShutDown();
             D.NPC = N;
         }
+        D.quickTalker = this;
 
         if (currentlyWaiting != null)
         {

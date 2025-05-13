@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-    RectTransform This;
+    //RectTransform This;
 
     [SerializeField] RectTransform EndPoint;
 
@@ -37,12 +37,14 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
 
     public bool stopTime = true;
 
+    RectTransform rt;
+
     // Start is called before the first frame update
     void Start()
     {
         Out = true;
-        This = GetComponent<RectTransform>();
-        start = This.position.x;
+        rt = GetComponent<RectTransform>();
+        start = rt.position.x;
 
         altStart = ObjToMove.position.x;
 
@@ -50,7 +52,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         InImage = I.sprite;
         Base = I.color;
 
-        Handles.Add(This);
+        Handles.Add(rt);
         Starts.Add(start);
     }
 
@@ -146,7 +148,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
     public void ForcePosition(bool gotostart)
     {
 
-        This.position = new Vector3(!gotostart ? EndPoint.position.x : start, This.position.y, This.position.z);
+        rt.position = new Vector3(!gotostart ? EndPoint.position.x : start, rt.position.y, rt.position.z);
         BumpSound.Play();
         
     }
@@ -155,7 +157,9 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
     {
         for(int i = 0; i < Handles.Count; i++)
         {
-            Handles[i].position = new Vector3(Starts[i], Handles[i].position.y, Handles[i].position.z);
+            //print(Starts[i] + " but " + Handles[i].position.x + " buuut " + Handles[i].anchoredPosition.x + " aaaand ");
+            //Handles[i].position = new Vector3(Starts[i], Handles[i].position.y, Handles[i].position.z);
+            
             Slider s = Handles[i].GetComponent<Slider>();
             s.ObjToMove.position = new Vector3(s.altStart, s.ObjToMove.position.y, s.ObjToMove.position.z);
             s.Out = true;

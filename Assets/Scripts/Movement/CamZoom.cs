@@ -23,6 +23,12 @@ public class CamZoom : MonoBehaviour
     CameraShake cs;
 
     static Vector2 heldZoomPos = new Vector2(999,999);
+    public int camSizeForCharacterCard = 3;
+
+    public static void PrepForCharacterCard()
+    {
+        cz.TempSetSize(cz.camSizeForCharacterCard);
+    }
 
     float old = -1;
     public void TempSetSize(int New)
@@ -109,7 +115,7 @@ public class CamZoom : MonoBehaviour
         AddToFocusPoint = Vector2.zero;
     }
 
-    bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
+    public static bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
 
     public static void setFocusPoint(Vector2 fp, int hsecs = 0, bool forceGoodToGo = false, bool ignorePhysics = false)
     {

@@ -82,6 +82,9 @@ public class Movement : MonoBehaviour
             }
 
         }
+
+        if(!IsMouseOverGameWindow) CamZoom.setFocusPoint(nextPos);
+
         if (noMouseForce) UseMouse = rememberMouse;
     }
 

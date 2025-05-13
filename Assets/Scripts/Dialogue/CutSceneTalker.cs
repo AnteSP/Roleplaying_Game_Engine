@@ -255,7 +255,12 @@ public class CutSceneTalker : MonoBehaviour
         //if (UseMouse) CamFocus = (Vector2)CamPos[cpI].position + temp * temp * temp * 40;
         //Crb.position = Vector2.Lerp(Crb.position, CamPos[cpI].position, Vector2.Distance(Crb.position, CamPos[cpI].position)/10);
         //CamZoom.setFocusPoint(CamFocus,false);
-        if (UseMouse) CamZoom.applyOffset(temp * temp * temp *40);
+        if (UseMouse)
+        {
+            if(CamZoom.IsMouseOverGameWindow)
+                CamZoom.applyOffset(temp * temp * temp * 40);
+            else CamZoom.applyOffset(Vector2.zero);
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && goodtoGo)
         {
@@ -383,8 +388,11 @@ public class CutSceneTalker : MonoBehaviour
     public void setGoodToGo(bool b)
     {
         goodtoGo = b;
-        if (b)
+        if (b && this.enabled)
+        {
             Next();
+        }
+            
     }
 
     public void setGoodToGoOnly(bool b)

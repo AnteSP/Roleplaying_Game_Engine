@@ -36,6 +36,8 @@ public class SodaMachine : MonoBehaviour
 
     static SodaMachine activeSM = null;
 
+    public bool showPrice = true;
+
     private void Start()
     {
         StartOverride();
@@ -123,7 +125,7 @@ public class SodaMachine : MonoBehaviour
         SelectRec.Selecting = !SelectRec.Selecting;
         activeSM.A.SetBool("Open", activeSM.Open);
         activeSM.A.SetTrigger("Go");
-        Slider.ForceBack();
+        //Slider.ForceBack();
         NameIndic.Indicate("");
 
         if (!activeSM.Open)
@@ -162,7 +164,7 @@ public class SodaMachine : MonoBehaviour
         {
             SodaPrev.sprite = Items.RECIPES_DB[Ind].Soda.icon;
             SodaPrev.GetComponent<Tooltip>().tooltip = Items.RECIPES_DB[Ind].Soda.Name;
-            SodaPr.text = "Base Price: " + Items.RECIPES_DB[Ind].SodaPChange;
+            SodaPr.text = activeSM.showPrice ? "Base Price: " + Items.RECIPES_DB[Ind].SodaPChange : "";
             print("Tried to change prev image");
 
             Ings = Items.RECIPES_DB[Ind].Ingredients;

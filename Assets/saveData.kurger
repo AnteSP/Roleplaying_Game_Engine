@@ -1,7 +1,7 @@
 {
   "FUN": 84,
   "MONEY": 155,
-  "TIME": 1980,
+  "TIME": 1994,
   "Ch2": {
     "OpeningDone": true,
     "TutorialDone": true,
@@ -12,7 +12,7 @@
     "FredCS2": false,
     "WakeUp": false,
     "GotDannyBoxItem": false,
-    "FredCS3": false,
+    "FredCS3": true,
     "FredCS4": false,
     "Vader2": false,
     "ResistedGG": false,
@@ -28,17 +28,24 @@
   },
   "Items": {
     "17": 1,
-    "26": 1
+    "26": 1,
+    "3": 10,
+    "15": 1
   },
   "Recipes": [
-    0
+    0,
+    2
   ],
-  "Deadlines": {
-    "B-Ch2": true
-  },
+  "Deadlines": {},
   "GameOver": false,
   "SellSpots": {},
   "Ch2FredIntro": 2,
   "FredF": 1,
-  "DannyEventFail": false
+  "DannyEventFail": false,
+  "Are you scared of me?": 2,
+  "MRespect": -3,
+  "Chapter": 1,
+  "WeekAngels": false,
+  "WeekAngelAnim": false,
+  "Biden": false
 }

@@ -14,6 +14,7 @@ public class Dialogue : MonoBehaviour
 
     public NPCMovement NPC = null;
     public Talker talker = null; 
+    public QuickTalker quickTalker = null;
     public CutSceneTalker CS = null;
     public bool noInnactiveOnStart = false;
     Image im = null;
@@ -28,6 +29,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] Animator DialogueChoiceNotif;
 
     string delayedPercEvent = null;
+    public UnityEngine.Rendering.VolumeProfile darkProfile;
 
     public void showDisplay(bool b)
     {
@@ -113,6 +115,7 @@ public class Dialogue : MonoBehaviour
     public void EndConvo()
     {
         textDisplay.text = "";
+        print("ENDED CONVO");
         gameObject.SetActive(false);
         Stats.StartStopPlayerMovement(true, "Talker");
         Stats.StartStopTime(true, "Talker");
@@ -131,6 +134,8 @@ public class Dialogue : MonoBehaviour
             Stats.releaseLockedInObject(talker.unfocusAfterUse);
             talker.resetIndex();
         }
+        talker = null;
+        quickTalker = null;
             
     }
 
@@ -322,7 +327,6 @@ public class Dialogue : MonoBehaviour
                         print("ERROR FROM LACK OF ITEM");
                         Stats.DisplayMessage(Current,true);
                         EndConvo();
-                        talker.resetIndex();
                         //throw new System.Exception();
                     }
 
@@ -377,23 +381,43 @@ public class Dialogue : MonoBehaviour
                         }
                         else if(mode == 'B')//Just make the object active and then end convo
                         {
-                            if (talker.specialObj.activeSelf)
+                            if(talker != null)
                             {
-                                talker.specialObj.SetActive(false);
+                                if (talker.specialObj.activeSelf)
+                                {
+                                    talker.specialObj.SetActive(false);
+                                }
+                                talker.specialObj.SetActive(true);
+                                talker.resetIndex();
+                            }else if(quickTalker != null)
+                            {
+                                if (quickTalker.specialObject.activeSelf)
+                                {
+                                    quickTalker.specialObject.SetActive(false);
+                                }
+                                quickTalker.specialObject.SetActive(true);
                             }
-                            talker.specialObj.SetActive(true);
-                            talker.resetIndex();
+
                             EndConvo();
                         }
                         else if(mode == 'C')//alternate special object's activeness
                         {
                             Current = Current.Remove(0, 1);
-                            talker.specialObj.SetActive(!talker.specialObj.activeSelf);
+                            if(talker != null) talker.specialObj.SetActive(!talker.specialObj.activeSelf);
+                            else if(quickTalker != null) quickTalker.specialObject.SetActive(!quickTalker.specialObject.activeSelf);
+
                         }
                         else if (mode == 'D')//alternate special object's activeness. And then end convo
                         {
                             Current = Current.Remove(0, 1);
                             talker.specialObj.SetActive(!talker.specialObj.activeSelf);
+                            EndConvo();
+                        }
+                        else if (mode == 'E')//Teleport to, then enable special object
+                        {
+                            Current = Current.Remove(0, 1);
+                            talker.specialObj.SetActive(true);
+                            Stats.current.Player.GetComponent<Movement>().teleportTo(talker.specialObj.transform);
                             EndConvo();
                         }
                     }
@@ -501,7 +525,7 @@ public class Dialogue : MonoBehaviour
                     break;
                 case 'i'://card intro seq. Do once to trigger. Once to end
 
-                    CamZoom.cz.TempSetSize(3);
+                    CamZoom.PrepForCharacterCard();
 
                     GameObject cardObj = Camera.main.transform.Find("Card").gameObject;
 
@@ -536,7 +560,7 @@ public class Dialogue : MonoBehaviour
                     Csw.enabled = !Csw.enabled;
                     break;
                 case 'D'://Dark
-                    Camera.main.GetComponent<UnityEngine.Rendering.Volume>().weight = 0.25f;
+                    Camera.main.GetComponent<UnityEngine.Rendering.Volume>().profile = darkProfile;
                     Stats.current.FilterColor(new Color(0, 0, 0,0));
 
                     break;
@@ -553,7 +577,7 @@ public class Dialogue : MonoBehaviour
                     break;
                 case '#':
                     forceGoodToGo(false);
-                    Stats.Transition(4);
+                    Stats.Transition(5);
                     Stats.current.CurrentCS.EndingChapter = true;
                     break;
                 case 'S': //Current sentene will be used to switch to next scene
