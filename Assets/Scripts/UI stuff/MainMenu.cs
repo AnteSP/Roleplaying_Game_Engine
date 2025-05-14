@@ -106,16 +106,18 @@ public class MainMenu : MonoBehaviour
     public void LoadScene(string s)
     {
         if(!startedAnim) tvTurnOn.Play();
-        sceneToLoad = s;
-        Stats.freePlay = false;
-        clickNoise.Play();
-        NameIndic.turnOff();
+        LoadSceneInternal(s, false);
     }
     public void LoadSceneFreePlay(string s)
     {
         if (!startedAnim) tvTurnOn.Play();
+        LoadSceneInternal(s, true);
+    }
+
+    void LoadSceneInternal(string s, bool doFreePlay)
+    {
         sceneToLoad = s;
-        Stats.freePlay = false;
+        Stats.freePlay = doFreePlay;
         clickNoise.Play();
         NameIndic.turnOff();
     }

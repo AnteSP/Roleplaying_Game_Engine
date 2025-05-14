@@ -33,7 +33,6 @@ public class EndScreen : MonoBehaviour
             firstFinish = true;
         }else firstFinish = false;
 
-        Progress.saveData(toFile:"saveArchiveCh" + chNum);
         StartCoroutine(EndChapter());
     }
 
@@ -49,6 +48,7 @@ public class EndScreen : MonoBehaviour
         if (firstFinish)
         {
             yield return new WaitForSeconds(Len);
+            Progress.saveData(toFile: "saveArchiveCh" + chNum);
             Freeplay.gameObject.SetActive(true);
             impact.Play();
         }

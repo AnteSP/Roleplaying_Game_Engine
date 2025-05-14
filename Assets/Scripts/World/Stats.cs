@@ -142,8 +142,8 @@ public class Stats : MonoBehaviour
             {
                 g.SetActive(false);
             }
-
-            GameObject.FindGameObjectWithTag("SPECIAL").GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0.3f;
+            Camera.main.GetComponent<UnityEngine.Rendering.Volume>().weight = 0;
+            //GameObject.FindGameObjectWithTag("SPECIAL").GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0.3f;
         }
         foreach (GameObject g in enableOnlyOnFreePlay)
         {
