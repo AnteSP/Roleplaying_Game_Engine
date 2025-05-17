@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour
 
             play.GetComponent<Button>().interactable = nextChp;
             fPlay.GetComponent<Button>().interactable = false;
+            play.GetComponent<Tooltip>().tooltip = nextChp ? "Play Story" : "Play Story (Locked)";
             nextChp = false;
         }
         int fun = Progress.getInt("FUN");

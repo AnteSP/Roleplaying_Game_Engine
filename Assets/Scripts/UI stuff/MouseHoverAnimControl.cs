@@ -19,7 +19,13 @@ public class MouseHoverAnimControl : MonoBehaviour
     {
         bool Inside = IsMouseWithinImage();
 
-        anim.speed = Inside ? 0 : 1;
+        if (Inside)
+        {
+            anim.speed = 0;
+            anim.Play(anim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, 0.4f);
+        }
+        else
+            anim.speed = 1;
 
         if (Inside && Stats.current.PassTime)
         {
@@ -36,7 +42,7 @@ public class MouseHoverAnimControl : MonoBehaviour
         Vector2 localMousePosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(img.rectTransform, Input.mousePosition, null, out localMousePosition);
 
-        return img.rectTransform.rect.Contains(localMousePosition);
+        return img.rectTransform.rect.Contains(localMousePosition) && Movement.IsMouseOverGameWindow;
     }
 
     public void TurnOn()

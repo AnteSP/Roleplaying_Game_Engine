@@ -1,0 +1,27 @@
+{
+  "FUN": 41,
+  "Items": {
+    "4": 5,
+    "1": 1,
+    "2": 6,
+    "14": 1
+  },
+  "Recipes": [
+    0,
+    2
+  ],
+  "Upgrades": {},
+  "SellSpots": {},
+  "Deadlines": {},
+  "MONEY": 0,
+  "TIME": 660,
+  "PickUps": {
+    "*Ch1/Apple sac (2)": ""
+  },
+  "Are you scared of me?": 1,
+  "MRespect": -2,
+  "Chapter": 1,
+  "WeekAngels": false,
+  "WeekAngelAnim": false,
+  "Biden": false
+}

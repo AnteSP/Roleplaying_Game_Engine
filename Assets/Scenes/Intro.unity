@@ -1470,6 +1470,7 @@ MonoBehaviour:
   noInnactiveOnStart: 1
   Current: 
   DialogueChoiceNotif: {fileID: 0}
+  darkProfile: {fileID: 0}
 --- !u!114 &119110232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4990,7 +4991,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 75337febc0cd89147a39b11a3c5320c9, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -7578,6 +7579,7 @@ MonoBehaviour:
   FocusPoint: {x: 0, y: 0}
   AddToFocusPoint: {x: 0, y: 0}
   allowZooming: 1
+  camSizeForCharacterCard: 3
 --- !u!61 &519420035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11136,7 +11138,7 @@ GameObject:
   - component: {fileID: 752452332}
   - component: {fileID: 752452333}
   m_Layer: 0
-  m_Name: Circle (1)
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19822,7 +19824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab2aaeb142817c498ed01dde3476416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  T: {fileID: 2083541687}
+  T: {fileID: 752452332}
 --- !u!95 &1417621404
 Animator:
   serializedVersion: 4
@@ -22498,7 +22500,7 @@ GameObject:
   - component: {fileID: 1597104843}
   - component: {fileID: 1597104845}
   m_Layer: 5
-  m_Name: Handle
+  m_Name: Inventory Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23290,7 +23292,7 @@ MonoBehaviour:
   ThereGoesMyHero: {fileID: 443387382}
   CanGoUp: 0
   AllowSelecting: 1
-  PassTime: 1
+  PassTime: 0
   KACHING: {fileID: 1308794026}
   timePassage: 1
   DEBUGT: {fileID: 952113393}
@@ -29056,6 +29058,7 @@ MonoBehaviour:
   - {fileID: 680135420}
   - {fileID: 1417621401}
   - {fileID: 752452331}
+  - {fileID: 1597104839}
   Enable:
   - {fileID: 1935600935}
   - {fileID: 1530303659}

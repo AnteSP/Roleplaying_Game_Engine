@@ -931,11 +931,13 @@ public class Stats : MonoBehaviour
         SellSpot.resetSellSpotsList();
         Stats.current = null;
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        moveSources.Clear();
+        timeSources.Clear();
 
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
         //UnityEngine.SceneManagement.SceneManager.LoadScene(r);
 
-        Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
+        //Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
 
         Progress.markDataAsUnloaded();
     }

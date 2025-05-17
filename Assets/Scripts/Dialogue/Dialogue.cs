@@ -209,6 +209,7 @@ public class Dialogue : MonoBehaviour
                     break;
                 case 'S'://Start cutscene
                     CutSceneTalker cst = talker.GetComponent<CutSceneTalker>();
+                    print("GOT cst: " + cst.gameObject.name);
                     if (cst != null) Stats.current.CurrentCS = cst;
                     CS = Stats.current.CurrentCS;
                     Stats.current.AllowSelecting = false;

@@ -31,6 +31,7 @@ public class ch1Events : MonoBehaviour
         cs.shakeDuration = 1.5f;
         cs.enabled = true;
         Stats.current.FilterColor(new Color(1, 0, 0,0.3f));
+        Stats.current.GetComponent<AudioSource>().Stop();
 
         foreach(Animator g in disable)
         {

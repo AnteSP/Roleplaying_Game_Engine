@@ -77,10 +77,11 @@ public class SodaMachine : MonoBehaviour
         {
             staticStarted = true;
             if (!RecipesU.Contains(0)) CreateRecipe(Items.RECIPES_DB[0]);
-            foreach (int i in RecipesU)
-            {
-                updateRecipeList(Items.RECIPES_DB[i]);
-            }
+            else
+                foreach (int i in RecipesU)
+                {
+                    updateRecipeList(Items.RECIPES_DB[i]);
+                }
         }
 
 
