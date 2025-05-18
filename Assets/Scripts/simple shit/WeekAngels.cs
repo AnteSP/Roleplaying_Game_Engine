@@ -80,8 +80,8 @@ public class WeekAngels : MonoBehaviour
     {
         intro.Play();
         Stats.current.GetComponent<AudioSource>().mute = true;
-        Camera.main.GetComponent<UnityEngine.Rendering.Volume>().weight = 0.15f;
-
+        //Camera.main.GetComponent<UnityEngine.Rendering.Volume>().weight = 0.15f;
+        FreePlay.resetCamProfile();
 
     }
 

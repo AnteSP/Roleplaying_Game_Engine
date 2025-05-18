@@ -115,11 +115,6 @@ public class Stats : MonoBehaviour
 
     public static float allTime = 0;
     public static int allTimeInGame = 600;//Starts at 10:00am on ch2
-    public static bool freePlay = false;
-    //public List<SellSodas> sodasSelling = new List<SellSodas>();
-
-    [SerializeField] GameObject[] disableOnFreePlay;
-    [SerializeField] GameObject[] enableOnlyOnFreePlay;
 
     [SerializeField] DayLightCycle dayLightCycle = null;
 
@@ -136,20 +131,6 @@ public class Stats : MonoBehaviour
     [SerializeField] GameObject SocialNotification;
     private void OnEnable()
     {
-        if (freePlay)
-        {
-            foreach (GameObject g in disableOnFreePlay)
-            {
-                g.SetActive(false);
-            }
-            Camera.main.GetComponent<UnityEngine.Rendering.Volume>().weight = 0;
-            //GameObject.FindGameObjectWithTag("SPECIAL").GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0.3f;
-        }
-        foreach (GameObject g in enableOnlyOnFreePlay)
-        {
-            g.SetActive(freePlay);
-        }
-
         QualitySettings.vSyncCount = 1;
         current = this;
         Player = GameObject.FindGameObjectWithTag("Player");

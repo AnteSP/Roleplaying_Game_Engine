@@ -118,7 +118,8 @@ public class MainMenu : MonoBehaviour
     void LoadSceneInternal(string s, bool doFreePlay)
     {
         sceneToLoad = s;
-        Stats.freePlay = doFreePlay;
+        //Stats.freePlay = doFreePlay;
+        FreePlay.StartFreePlay();
         clickNoise.Play();
         NameIndic.turnOff();
     }
