@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class Stats : MonoBehaviour
 {
@@ -131,6 +132,10 @@ public class Stats : MonoBehaviour
     [SerializeField] GameObject SocialNotification;
     private void OnEnable()
     {
+        //AudioMixer mixer = Resources.Load<AudioMixer>("Master");
+        //AudioMixerGroup masterGroup = mixer.FindMatchingGroups("Master")[0];
+
+
         QualitySettings.vSyncCount = 1;
         current = this;
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -186,24 +191,9 @@ public class Stats : MonoBehaviour
         //print("did it tho?");
 
         AudioSource aS = Stats.current.GetComponent<AudioSource>();
-        if (aS != null)
-        {
-            StartCoroutine(StartSong(aS, 0.02f, 0.5f));
-            OGVolume.Add("Stats", aS.volume);
-        }
 
         if (ObjectDepth.Space != null) space = ObjectDepth.Space.GetComponent<Animator>();
         
-        Transform card = Camera.main.transform.Find("Card");
-        if (card != null) OGVolume.Add("Card", card.GetComponent<AudioSource>().volume);
-
-        foreach (AudioSource i in Sounds.GetComponentsInChildren<AudioSource>())
-        {
-            OGVolume.Add(i.gameObject.name, i.volume);
-        }
-
-        SetVolume(Progress.getFloat("Volume"),false);
-
         foreach (Deadline.DeadlineData dd in Deadline.activeDeadlineData.Where(a=> a != null))
         {
             bool foundOne = false;
@@ -846,29 +836,6 @@ public class Stats : MonoBehaviour
         {
             i.mute = t;
         }
-    }
-
-    Dictionary<string, float> OGVolume = new Dictionary<string, float>();
-    public void SetVolume(float a, bool changeData)
-    {
-        if (float.IsNaN(a)) return;
-        if (changeData) Progress.setFloat("Volume", a);
-
-        AudioSource StatsA = Stats.current.GetComponent<AudioSource>();
-        if(StatsA != null) StatsA.volume = a * 0.5f;
-
-        Transform card = Camera.main.transform.Find("Card");
-        if(card != null) card.GetComponent<AudioSource>().volume = a* OGVolume["Card"];
-
-        foreach (AudioSource i in Sounds.GetComponentsInChildren<AudioSource>())
-        {
-            i.volume = a * OGVolume[i.gameObject.name];
-        }
-    }
-
-    public void SetVolume(float a)
-    {
-        SetVolume(a, true);
     }
 
     AudioClip OGAudio = null;

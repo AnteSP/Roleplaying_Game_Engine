@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class MainMenu : MonoBehaviour
     public PlayableDirector tvTurnOn;
     [SerializeField] AudioSource clickNoise;
     static readonly int FINAL_CHAPTER = 2;
+
+    [SerializeField] AudioMixer audioMixer;
 
     private void Start()
     {
@@ -164,15 +167,57 @@ public class MainMenu : MonoBehaviour
         m.Start();
     }
 
+    float volSpamCounter = 0;
+    bool isZero = false,evilSliderUp = false;
+
+    [SerializeField] GameObject normalVolSlider, evilVolSlider;
+
     public void ChangeVolume()
     {
         VOLUME = volSlider.value;
         Progress.setFloat("Volume", VOLUME);
         //volSlider.value;
-        GameObject g = GameObject.FindGameObjectWithTag("SPECIAL");
-        foreach(AudioSource a in g.GetComponentsInChildren<AudioSource>())
+
+        if (!evilSliderUp)
         {
-            a.volume = VOLUME;
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(VOLUME == 0 ? -0.1f : VOLUME) * 20);
+
+            if (volSlider.value == 0 && !isZero)
+            {
+                volSpamCounter++;
+                isZero = true;
+            }
+            else if (volSlider.value == 1 && isZero)
+            {
+                isZero = false;
+                volSpamCounter++;
+            }
+
+            if (volSpamCounter > 6 && VOLUME > 0.5f)
+            {
+                print("FUCK MY AAAASS");
+                evilSliderUp = true;
+                normalVolSlider.SetActive(false);
+                evilVolSlider.SetActive(true);
+                volSlider = evilVolSlider.GetComponentInChildren<UnityEngine.UI.Slider>();
+            }
         }
+        else
+        {
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(VOLUME == 0 ? -0.1f : VOLUME) * 20);
+        }
+
+
+
+    }
+
+    private void Update()
+    {
+        if(volSpamCounter > 0)
+        {
+            volSpamCounter -= 0.05f;
+        }
+        
+        
     }
 }

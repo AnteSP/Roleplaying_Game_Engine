@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Movement\NPCPath.cs" />
     <Compile Include="Assets\Scripts\World\DayLightCycle.cs" />
     <Compile Include="Assets\Scripts\Resource Variants\RandResource.cs" />
+    <Compile Include="Assets\Scripts\World\FreePlay.cs" />
     <Compile Include="Assets\Scripts\Anim triggers\SodaMake.cs" />
     <Compile Include="Assets\Scripts\ItemLists\ItemList.cs" />
     <Compile Include="Assets\Scripts\TESTING.cs" />
@@ -146,7 +147,6 @@
     <Compile Include="Assets\Scripts\Movement\Drowning.cs" />
     <Compile Include="Assets\Scripts\simple shit\WeekAngels.cs" />
     <Compile Include="Assets\Automation.cs" />
-    <Compile Include="Assets\Scripts\World\FreePlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
