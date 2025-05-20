@@ -23321,6 +23321,7 @@ MonoBehaviour:
   stickyNotes: []
   DeadlineNotification: {fileID: 0}
   SocialNotification: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 92a9407211718374fa32ddba140ca912, type: 2}
 --- !u!4 &1700876590
 Transform:
   m_ObjectHideFlags: 0

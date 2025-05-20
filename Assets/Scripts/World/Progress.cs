@@ -277,23 +277,25 @@ public class Progress : MonoBehaviour
         print("SAVING DATA");
 
         if (!data.ContainsKey("Items")) data.Add("Items", new JObject());
-        data["Items"] = new JObject();
         if(Items.ITEMS != null)
-        for (int i = 0; i < Items.ITEMS.Length; i++)
         {
-            if (Items.ITEMS[i] != 0 && Items.ITEMQUANTITY[i] != 0)
+            data["Items"] = new JObject();
+            for (int i = 0; i < Items.ITEMS.Length; i++)
             {
-                ((JObject)data["Items"]).Add(Items.ITEMS[i] + "", Items.ITEMQUANTITY[i]);
+                if (Items.ITEMS[i] != 0 && Items.ITEMQUANTITY[i] != 0)
+                {
+                    ((JObject)data["Items"]).Add(Items.ITEMS[i] + "", Items.ITEMQUANTITY[i]);
+                }
             }
         }
 
-        if (!data.ContainsKey("Recipes")) data.Add("Recipes", new JObject());
-        data["Recipes"] = new JArray();
 
+        if (!data.ContainsKey("Recipes")) data.Add("Recipes", new JObject());
+        //data["Recipes"] = new JArray();
         foreach(int i in SodaMachine.getUnlockedRecipes())
         {
+            if(!data["Recipes"].Contains(i)) ((JArray)data["Recipes"]).Add(i);
             //print("GOT " + r + " AND " + r.Name);
-            ((JArray)data["Recipes"]).Add( i);
         }
 
         if (!data.ContainsKey("Upgrades")) data.Add("Upgrades", new JObject());

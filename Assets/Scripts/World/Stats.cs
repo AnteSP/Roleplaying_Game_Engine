@@ -130,11 +130,10 @@ public class Stats : MonoBehaviour
     List<Deadline> Deds = new List<Deadline>();
     [SerializeField] GameObject DeadlineNotification;
     [SerializeField] GameObject SocialNotification;
+
+    [SerializeField] AudioMixer audioMixer;
     private void OnEnable()
     {
-        //AudioMixer mixer = Resources.Load<AudioMixer>("Master");
-        //AudioMixerGroup masterGroup = mixer.FindMatchingGroups("Master")[0];
-
 
         QualitySettings.vSyncCount = 1;
         current = this;
@@ -189,6 +188,7 @@ public class Stats : MonoBehaviour
         if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
         if (!Player.activeSelf) AllowSelecting = false;
         //print("did it tho?");
+        SetVolume(Progress.getFloat("VOLUME"));
 
         AudioSource aS = Stats.current.GetComponent<AudioSource>();
 
@@ -262,6 +262,12 @@ public class Stats : MonoBehaviour
         }
 
         //Debug("TIME: " + allTimeInGame);
+    }
+
+    public void SetVolume(float val)
+    {
+        Progress.setFloat("Volume", val);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(val == 0 ? -0.1f : val) * 20);
     }
 
     public uint getTime() => (uint)allTimeInGame;
@@ -852,18 +858,6 @@ public class Stats : MonoBehaviour
         {
             aS.mute = true;
             aS.Stop();
-        }
-    }
-
-    IEnumerator StartSong(AudioSource a,float time,float toVol)
-    {
-        float v = Progress.getFloat("Volume");
-        if (!float.IsNaN(v)) toVol *= v;
-        a.volume = 0;
-        for(int i = 0; i < 100; i++)
-        {
-            yield return new WaitForSeconds(time);
-            a.volume += 0.01f*toVol;
         }
     }
 

@@ -16,7 +16,7 @@ public class Frame : MonoBehaviour
     Image TB;
     Text T;
 
-    static Color Norm1, High, Pressed, NormT, NormTB;
+    static Color Norm1 = Color.clear, High, Pressed, NormT, NormTB;
 
     int Heir;
 
@@ -41,7 +41,8 @@ public class Frame : MonoBehaviour
             Pressed = new Color(0.3f, 0.3f, 0.3f, 1);
 
             NormT = T.color;
-            NormTB = TB.color;
+            NormTB = Items.TxtBackBase;
+            //print("GOT NormTB: " + TB.color + " " + TB.gameObject.name);
         }
 
         
@@ -123,7 +124,7 @@ public class Frame : MonoBehaviour
 
     public void GoOut()
     {
-       // print("Go out triggered" + T.text);
+       //print("Go out triggered (" + T.text + ") " + gameObject.name);
 
 
         I1.color= Norm1;
@@ -132,6 +133,7 @@ public class Frame : MonoBehaviour
         if (T.text != "")
         {
             TB.color = NormTB;
+            //print("GOING " + NormTB);
         }
         
 
