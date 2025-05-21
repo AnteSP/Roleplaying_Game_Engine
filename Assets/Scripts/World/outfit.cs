@@ -41,6 +41,11 @@ public class outfit : MonoBehaviour
         return outfitsOwned[outfitInd];
     }
 
+    public static void ResetOutfitStuff()
+    {
+        outfitInd = 0;
+    }
+
     static void resetOutfitsOwned()
     {
         outfitsOwned = new List<int>() { noItemNeeded };

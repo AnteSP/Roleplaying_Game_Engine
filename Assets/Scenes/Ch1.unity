@@ -1640,10 +1640,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 92a9407211718374fa32ddba140ca912,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6360ad4d2ce810544b2afddd9cee4a51, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
-  m_Pitch: 1
+  m_Pitch: -3
   Loop: 0
   Mute: 1
   Spatialize: 0
@@ -4067,7 +4067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -117.26999, y: -149}
+  m_AnchoredPosition: {x: -349, y: -149}
   m_SizeDelta: {x: 212.63284, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &170417094
@@ -7640,6 +7640,39 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &280926264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280926265}
+  m_Layer: 0
+  m_Name: Angel shit parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &280926265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280926264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1160062761}
+  - {fileID: 1443755266}
+  m_Father: {fileID: 282622428}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282622426
 GameObject:
   m_ObjectHideFlags: 0
@@ -7747,8 +7780,7 @@ Transform:
   - {fileID: 1394418808}
   - {fileID: 1448246677}
   - {fileID: 1629301961}
-  - {fileID: 1160062761}
-  - {fileID: 1443755266}
+  - {fileID: 280926265}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25509,7 +25541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -352, y: -149}
+  m_AnchoredPosition: {x: -123, y: -149}
   m_SizeDelta: {x: 212.63284, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007734334
@@ -28158,7 +28190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1160062761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28172,8 +28204,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 353780018}
-  m_Father: {fileID: 282622428}
-  m_RootOrder: 24
+  m_Father: {fileID: 280926265}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -32483,11 +32515,10 @@ MonoBehaviour:
   D: {fileID: 119110231}
   sentences:
   - Open letter from Father John
-  - The demon from the possessed girl I was tasked with exorcising was much more
-    powerful than I thought
-  - It was a battle, but I was able to expel the demon from that poor girl's body
-  - Unfortunately I could not destroy the demon. I had to seal it away in the nearest
-    thing that happened to be there at the time, the trash can in Kipling Park
+  - Recently, I was exorcizing a most powerful demon
+  - Although succesful, I could not destroy the demon. I had to seal it away in the
+    nearest thing that happened to be there at the time-
+  - the trash can in Kipling Park
   - It should now be safely sealed away in there
   - The only thing that could free it is if something crazy happened, like if a tank
     ran it over or something
@@ -33074,8 +33105,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1692310264}
-  m_Father: {fileID: 282622428}
-  m_RootOrder: 25
+  m_Father: {fileID: 280926265}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33180,7 +33211,7 @@ MonoBehaviour:
   - '%M'
   final:
   - We meet again, my child
-  - 'You: Ya know, this doesn''t make much canonical sense'
+  - '%qYou: Ya know, this doesn''t make much canonical sense'
   - '%~Silence smart ass!'
   - For your reward awaits you
   - REJOICE! FOR YOUR REWARD AWAITS YOU!
@@ -41243,7 +41274,7 @@ MonoBehaviour:
   on: 0
   enable:
   - {fileID: 1379849951}
-  - {fileID: 1160062760}
+  - {fileID: 280926264}
   disable:
   - {fileID: 972935964}
   - {fileID: 1940957582}

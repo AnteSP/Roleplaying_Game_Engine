@@ -132,6 +132,7 @@ public class Stats : MonoBehaviour
     [SerializeField] GameObject SocialNotification;
 
     [SerializeField] AudioMixer audioMixer;
+    AudioSource backGroundMusic = null;
     private void OnEnable()
     {
 
@@ -188,9 +189,9 @@ public class Stats : MonoBehaviour
         if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
         if (!Player.activeSelf) AllowSelecting = false;
         //print("did it tho?");
-        SetVolume(Progress.getFloat("VOLUME"));
+        SetVolume(Progress.getFloat("Volume"));
 
-        AudioSource aS = Stats.current.GetComponent<AudioSource>();
+        backGroundMusic = Stats.current.GetComponent<AudioSource>();
 
         if (ObjectDepth.Space != null) space = ObjectDepth.Space.GetComponent<Animator>();
         
@@ -315,9 +316,12 @@ public class Stats : MonoBehaviour
 
         if(timeSources.Count == comp)
         {
-            current.PassTime = start;
+            if (current != null)
+            {
+                current.PassTime = start;
+                UpdateTimeColor();
+            }
             //current.TIMETEXT.color = start ? Color.black : Color.gray;
-            UpdateTimeColor();
             NameIndic.Indicate("");
         }
         else
@@ -464,7 +468,7 @@ public class Stats : MonoBehaviour
 
     public static void releaseLockedInObject(bool removeFromNearby = true)
     {
-        if (current.lockedInConvoWith == null) return;
+        if (current == null || current.lockedInConvoWith == null) return;
         //print("Released locked in");
         GameObject lockedInObjectPointer = current.lockedInConvoWith.gameObject;
         current.lockedInConvoWith = null;
@@ -847,7 +851,8 @@ public class Stats : MonoBehaviour
     AudioClip OGAudio = null;
     public static void changeBackgroundMusic(AudioClip a,bool justStopIt = false)
     {
-        AudioSource aS = Stats.current.GetComponent<AudioSource>();
+        if (current == null || current.backGroundMusic == null) return;
+        AudioSource aS = Stats.current.backGroundMusic;
 
         if (current.OGAudio == null) current.OGAudio = aS.clip;
         aS.clip = a;
@@ -864,6 +869,7 @@ public class Stats : MonoBehaviour
     public void SceneChange(string r)
     {
         if(LOADING != null) LOADING.SetActive(true);
+        if (backGroundMusic != null) backGroundMusic.Stop();
         Player.SetActive(false);
         SodaMachine.resetStarted();
         timeSources.Clear();
@@ -875,14 +881,25 @@ public class Stats : MonoBehaviour
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         moveSources.Clear();
         timeSources.Clear();
+        outfit.ResetOutfitStuff();
 
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
+        StartCoroutine(DelaySceneLoad(r));
+
+
+        //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
         //UnityEngine.SceneManagement.SceneManager.LoadScene(r);
 
         //Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
 
         Progress.markDataAsUnloaded();
     }
+
+    public IEnumerator DelaySceneLoad(string scene)
+    {
+        yield return new WaitForSeconds(0.4f);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scene);
+    }
+
 
     public void FilterColor(Color c)
     {

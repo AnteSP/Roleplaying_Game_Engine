@@ -290,11 +290,11 @@ public class Progress : MonoBehaviour
         }
 
 
-        if (!data.ContainsKey("Recipes")) data.Add("Recipes", new JObject());
+        if (!data.ContainsKey("Recipes")) data.Add("Recipes", new JArray());
         //data["Recipes"] = new JArray();
         foreach(int i in SodaMachine.getUnlockedRecipes())
         {
-            if(!data["Recipes"].Contains(i)) ((JArray)data["Recipes"]).Add(i);
+            if(!((JArray)data["Recipes"]).Any(token => token.Type == JTokenType.Integer && (int)token == i)) ((JArray)data["Recipes"]).Add(i);
             //print("GOT " + r + " AND " + r.Name);
         }
 
@@ -312,7 +312,7 @@ public class Progress : MonoBehaviour
 
         foreach (string s in SellSpot.sellSpots)
         {
-            if (!data["SellSpots"].Contains(s))
+            if (!((JObject)data["SellSpots"]).ContainsKey(s))
                 ((JObject)data["SellSpots"]).Add(s, true);
         }
 
@@ -321,7 +321,8 @@ public class Progress : MonoBehaviour
         if (!data.ContainsKey("Deadlines")) data.Add("Deadlines", new JObject());
         data["Deadlines"] = new JObject();
 
-        
+        if (!data.ContainsKey("Volume")) data.Add("Volume", 1);
+
         Deadline[] deds = Stats.current?.GetComponents<Deadline>();
         if(deds != null)
         {

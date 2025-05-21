@@ -8,7 +8,7 @@ public class SpaceBUp : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        if (Stats.current.CanGoUp)
+        if (Stats.current != null && Stats.current.CanGoUp)
         {
             ObjectDepth.Space.GetComponent<Animator>().SetBool("Pressed", false);
             Stats.current.CanGoUp = false;

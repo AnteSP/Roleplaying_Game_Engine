@@ -122,7 +122,9 @@ public class MainMenu : MonoBehaviour
     {
         sceneToLoad = s;
         //Stats.freePlay = doFreePlay;
-        FreePlay.StartFreePlay();
+        if(doFreePlay) FreePlay.StartFreePlay();
+        else FreePlay.resetFreePlay();
+
         clickNoise.Play();
         NameIndic.turnOff();
     }

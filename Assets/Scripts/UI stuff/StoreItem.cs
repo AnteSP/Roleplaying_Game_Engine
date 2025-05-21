@@ -61,6 +61,10 @@ public class StoreItem : MonoBehaviour
             {
                 switch (ItemID)
                 {
+                    case 16:
+                        Stats.ChangeMoney(-Cost);
+                        Stats.DisplayMessage("No! You could never buy the product of your sworn enemy");
+                        break;
                     case 35:
                         Ch2Events.current.startDrug1();
                         break;

@@ -190,6 +190,8 @@ public class CutSceneTalker : MonoBehaviour
         else if(setAsCurrent_InstaPlay)//if entering && instaplaying
         {
             D.noInnactiveOnStart = true;
+            //D.gameObject.SetActive(true);
+            //D.ForceToDefaultText();
         }
 
         

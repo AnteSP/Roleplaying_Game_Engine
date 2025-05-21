@@ -16,7 +16,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 347e0e81283ff5849ab3a5e61927fb9f, type: 3}
   description: The mere sight of this thing fills you with immense hatred and searing
     anger
-  price: 3
+  price: 50
   MLevel: 0
   SodaPChange: 0
   SodaTChange: 0
+  ItemID: 16

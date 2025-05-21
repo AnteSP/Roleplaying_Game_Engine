@@ -103,9 +103,14 @@ public class Dialogue : MonoBehaviour
         QuickTalker.ONLYACTIVETALKER = false;
         textDisplay.text = "";
         StopAllCoroutines();
-        if(TypeNoise != null) TypeNoise.Stop();
+        if (TypeNoise != null)
+        {
+            TypeNoise.mute = false;
+            TypeNoise.Stop();
+        }
         End = false;
         textDisplay.enableWordWrapping = true;
+        
 
         if (CS == null) ProcessPerc(); else ProcessPercCS();
         
@@ -216,6 +221,7 @@ public class Dialogue : MonoBehaviour
                     talker.gameObject.tag = "Untagged";
                     talker = null;
                     Stats.releaseLockedInObject();
+                    Stats.StartStopPlayerMovement(true, "Talker");
                     Stats.Transition(0);
                     //Stats.current.CurrentCS.enabled = true;
                     break;
@@ -339,6 +345,7 @@ public class Dialogue : MonoBehaviour
                         else
                         {
                             Current = " * You have the required items to continue!";
+                            TypeNoise.mute = true;
                         }
 
                         for(int i = 0; i < amounts.Count; i++)
@@ -503,6 +510,9 @@ public class Dialogue : MonoBehaviour
                     Stats.GameOver();
                     Dialogue.d.showDisplay(false);
                     Stats.doSelecting(false);
+                    break;
+                case 'q'://quiet
+                    if(TypeNoise != null)TypeNoise.mute = true;
                     break;
             }
 

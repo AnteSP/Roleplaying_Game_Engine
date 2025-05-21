@@ -7,12 +7,14 @@ public class MouseHoverAnimControl : MonoBehaviour
     Animator anim;
     Image img;
     public bool Inside = false;
+    Color OGColor;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         img = GetComponent<Image>();
+        OGColor = img.color;
     }
 
     private void Update()
@@ -22,10 +24,15 @@ public class MouseHoverAnimControl : MonoBehaviour
         if (Inside)
         {
             anim.speed = 0;
-            anim.Play(anim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, 0.4f);
+            anim.Play(anim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, 0.54f);
+            img.color = Color.white;
         }
         else
+        {
+            img.color = OGColor;
             anim.speed = 1;
+        }
+            
 
         if (Inside && Stats.current.PassTime)
         {
