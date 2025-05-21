@@ -142,23 +142,28 @@ public class Items : MonoBehaviour
     /// <returns></returns>
     public static bool Add(int ID,int Quantity)
     {
-        if(ID == 0) return true;
         if (ITEMS[0] == 0 && Quantity != 0) Stats.EnableInventory();//If there's no items. This is the first item. Enable inventory
 
         print("Fuckin with Item #" + ID);
+        bool outp = AddNoAnim(ID, Quantity);
+        if(outp && Quantity > 0) ItemAnim(ID, Quantity);
+        return outp;
+    }
+
+    public static bool AddNoAnim(int ID, int Quantity)
+    {
+        if (ID == 0) return true;
         bool Giving = Quantity > 0;
 
         //Check if player already has item specified
-        for(int i = 0; i < ITEMS.Length; i++)
-        { 
-            if(ID == ITEMS[i])
+        for (int i = 0; i < ITEMS.Length; i++)
+        {
+            if (ID == ITEMS[i])
             {
-                if(Giving)
+                if (Giving)
                 {
                     ITEMQUANTITY[i] += Quantity;
                     UpdatePics();
-
-                    if (ID != 0) ItemAnim(ID,Quantity);
 
                     return (true);
                 }
@@ -171,7 +176,7 @@ public class Items : MonoBehaviour
                     }
 
                     ITEMQUANTITY[i] += Quantity;
-                    
+
 
                     ITEMS[i] = (ID != 0 && ITEMQUANTITY[i] == 0) ? 0 : ITEMS[i];
                     UpdatePics();
@@ -192,31 +197,11 @@ public class Items : MonoBehaviour
                 ITEMQUANTITY[i] = Quantity;
                 UpdatePics();
 
-                if (ID != 0) ItemAnim(ID,Quantity);
-
                 return (true);
             }
         }
 
         //This only happens if player got a new item and has no room for it in the inventory
-        UpdatePics();
-        return (false);
-    }
-
-    public static bool AddNoAnim(int ID, int Quantity)
-    {
-        for (int i = 0; i < ITEMS.Length; i++)
-        {
-            if (0 == ITEMS[i] || ID == ITEMS[i])
-            {
-                ITEMS[i] = ID;
-                ITEMQUANTITY[i] += Quantity;
-                UpdatePics();
-
-                return (true);
-            }
-        }
-
         UpdatePics();
         return (false);
     }

@@ -345,7 +345,7 @@ public class Dialogue : MonoBehaviour
                         else
                         {
                             Current = " * You have the required items to continue!";
-                            TypeNoise.mute = true;
+                            if(TypeNoise != null)TypeNoise.mute = true;
                         }
 
                         for(int i = 0; i < amounts.Count; i++)

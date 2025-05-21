@@ -173,6 +173,18 @@ public class ChooseSellSoda : Resource
                 DeleteCell(BeingSold[i].transform.parent.gameObject, i);
                 i -= 1;
             }
+
+            switch (i)
+            {
+                case 34:
+                    if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
+                    {
+                        BeingSold[i].GetComponent<Button>().interactable = false;
+                        if (Progress.getBool("Ch2VaderFail")) BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
+                        else BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
+                    }
+                    break;
+            }
         }
         EmptyNotif.SetActive(showEmptyNotif);
     }

@@ -54,6 +54,7 @@ public class CutSceneTalker : MonoBehaviour
     public int dayToStart = -1;
     public int hourToStartA = -1, hourToStartB = -1;
     //TriggerAtMinute = ((day - 1) * 24 * 60) + (((hour) * 60));
+    bool removedItem = false;
 
     bool WeCanStart()
     {
@@ -65,11 +66,13 @@ public class CutSceneTalker : MonoBehaviour
                 Stats.current.GetComponent<Items>().enabled = true;
             }
 
-            if (Items.Contains(itemRequiredToStart))
+            if (Items.Contains(itemRequiredToStart) && !removedItem)
             {
+                print("REMOVED SPECIFIED ITEM");
+                removedItem = true;
                 Items.AddNoAnim(31, -1);
             }
-            else
+            else if(!removedItem)
             {
                 this.enabled = false;
                 print("Did not have item to start. Stopiing cs " + gameObject.name);

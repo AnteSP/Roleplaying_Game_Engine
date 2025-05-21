@@ -1,37 +1,37 @@
 {
   "FUN": 20,
   "Items": {
-    "4": 3,
+    "4": 11,
     "13": 3,
-    "2": 102,
+    "2": 92,
     "14": 1,
     "17": 1,
     "26": 1,
-    "3": 10,
-    "33": 10,
-    "31": 1
+    "29": 1,
+    "5": 6
   },
   "Recipes": [
     0,
     2,
-    3
+    3,
+    1
   ],
   "Upgrades": {
     "Cardboard Sign": true,
     "Bristol Board Sign": true,
-    "Balloons": true
+    "Balloons": true,
+    "Foldable Table": true
   },
   "SellSpots": {
     "Ch2/Sell Spot Middle": true,
     "Ch2/Sell Spot Bottom": true
   },
   "Deadlines": {
-    "C-Ch2": true,
-    "F-Ch2": true
+    "D-Ch2": true
   },
   "Volume": 1,
-  "MONEY": 20,
-  "TIME": 3420,
+  "MONEY": 850,
+  "TIME": 5101,
   "PickUps": {
     "*Ch1/Apple sac (1)": "",
     "*Ch2/Park Coins (High FUN)": "",
@@ -50,25 +50,30 @@
     "OpeningDone": true,
     "TutorialDone": true,
     "FredCS1": true,
-    "StealerCSDone": false,
+    "StealerCSDone": true,
     "Final": false,
     "Vader1": true,
     "FredCS2": true,
-    "FredCS3": false,
+    "FredCS3": true,
     "FredCS4": false,
     "GaveBeans": false,
     "Medli": false,
-    "WakeUp": true,
+    "WakeUp": false,
     "GotDannyBoxItem": true,
     "Newspaper1": true,
     "Vader2": true,
     "ResistedGG": false,
-    "GGEvent": false,
-    "HelpedDanny": false
+    "GGEvent": true,
+    "HelpedDanny": false,
+    "VaderTrue": true,
+    "GGEventFail": true
   },
   "GameOver": false,
   "Ch2FredIntro": 2,
-  "FredF": 2,
+  "FredF": 3,
   "DannyEventFail": false,
-  "Ch2FredConvoDecision1": 2
+  "Ch2FredConvoDecision1": 2,
+  "Ch2VaderDecision": 2,
+  "Ch2FredConvoDecision2": 2,
+  "Ch2ResistedGG": 2
 }

@@ -56,6 +56,7 @@ class Deadline : MonoBehaviour
         TriggerAtMinute = ((day - 1) * 24 * 60) + (((hour) * 60));
 
         stickyNote = Stats.GetStickyNote();
+        print("ASSIGNING   sticky note:" + stickyNote + "   Deadline:" + ID);
         if (stickyNote == -1) print("DEADLINE GET STICKY NOTES FUCKED UP ");
         foreach (TextMeshProUGUI t in Stats.current.stickyNotes[stickyNote].GetComponentsInChildren<TextMeshProUGUI>())
         {
@@ -71,8 +72,10 @@ class Deadline : MonoBehaviour
 
     public void Refresh()
     {
+        print("REFRESHING   sticky note:" + stickyNote + "   Deadline:" + ID);
         if (MinutesLeft == TriggerAtMinute - Stats.allTimeInGame) return;
         if (time == null) return;
+        print("PROCESSING   sticky note:" + stickyNote + "   Deadline:" + ID);
         MinutesLeft = TriggerAtMinute - Stats.allTimeInGame;
         bool Lessthan3days = MinutesLeft < 24 * 60 * 3;
         bool Lessthanhour = MinutesLeft < 61;

@@ -111,7 +111,7 @@ public class Progress : MonoBehaviour
         //ensureProgressCompsGood();
         foreach (Progress p in progressComps.Where(a=> a.on))
         {
-            foreach(GameObject g in p.enable) gameObjsToSet[g] = true;
+            foreach(GameObject g in p.enable) if(!gameObjsToSet.ContainsKey(g)) gameObjsToSet[g] = true;
             foreach (GameObject g in p.disable) gameObjsToSet[g] = false;
         }
 
@@ -303,7 +303,7 @@ public class Progress : MonoBehaviour
 
         foreach (SellUpgrade u in SellUpgrade.getAllActive())
         {
-            if(!data["Upgrades"].Contains(u.Name))
+            if(!((JObject)data["Upgrades"]).ContainsKey(u.Name))
                 ((JObject)data["Upgrades"]).Add(u.Name, true);
         }
 

@@ -711,7 +711,7 @@ public class Stats : MonoBehaviour
     {
         for(int i = 0; i < current.stickyNotes.Count; i++)
         {
-            if (current.stickyNotes[i].gameObject.activeInHierarchy) continue;
+            if (current.stickyNotes[i].gameObject.activeSelf) continue;
             current.stickyNotes[i].gameObject.SetActive(true);
             return i;
         }

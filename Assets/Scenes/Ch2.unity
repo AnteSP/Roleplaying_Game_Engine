@@ -6384,7 +6384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149614425}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.894, y: 0.172, z: -1.18}
+  m_LocalPosition: {x: 0.56, y: 0.172, z: -1.18}
   m_LocalScale: {x: 0.8092131, y: 0.8092131, z: 0.8092131}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21297,7 +21297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   APos:
-  - {fileID: 2021893377}
+  - {fileID: 1092925151}
   - {fileID: 1733056301}
   Actors:
   - {fileID: 1006859899}
@@ -33291,7 +33291,7 @@ Transform:
   - {fileID: 1020953393}
   - {fileID: 550815937}
   m_Father: {fileID: 297144617}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &714285736
 MonoBehaviour:
@@ -51935,6 +51935,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1092925150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092925151}
+  m_Layer: 0
+  m_Name: Darth pos (1.5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1092925151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092925150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.08, y: -2.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 297144617}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093064826
 GameObject:
   m_ObjectHideFlags: 0
@@ -66073,7 +66104,7 @@ Transform:
   - {fileID: 11691545}
   - {fileID: 2091414705}
   m_Father: {fileID: 297144617}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1357206196
 MonoBehaviour:
@@ -72060,6 +72091,7 @@ MonoBehaviour:
   - {fileID: 8304182048988680599}
   - {fileID: 8304182047924542995}
   - {fileID: 8304182047998490265}
+  - {fileID: 297144618}
   CamPos:
   - {fileID: 276641968}
   Movements:
@@ -99471,7 +99503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824852086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025, y: 0.009, z: -0.62}
+  m_LocalPosition: {x: 0.15, y: 0, z: -0.62}
   m_LocalScale: {x: 0.5082358, y: 0.5082358, z: 0.5082358}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103022,21 +103054,8 @@ MonoBehaviour:
   D: {fileID: 119110231}
   DBoxOnTop: 0
   Sentences:
-  - YOU FAILED BITCH AHAHA
-  - 'Darth Vader Guy: Uh... Yeah...?'
-  - 'Darth Vader Guy: Oh no... I guess, um... I''ll have to retreat in the presence
-    of such a powerful force user'
-  - '%NDarth Vader Guy: Aggh you dastardly villian! I will return though mark my
-    words!'
-  - 'Random Kid: Whoa! You scared off Darth Vader!? Please don''t hurt us, you can
-    have our money!'
-  - 'You: Um, no... Uh...'
-  - 'You: (Damn, stealing money would NOT be a good look for me)'
-  - 'You: Listen, uh, if YOU wanna buy THE soda that defeated the great Lord Vader,
-    then come to my soda shop!'
-  - 'You: Magnet Fizz is what I call it! Buy it to be powerful like me!'
-  - 'Kid: Whoa really!? Thats brilliant!! If you''re selling it, we''ll be sure to
-    buy it right away, Darth Soda Lad!'
+  - You failed to make magnet fizz soda on time
+  - Now Vader will continue to steal kids's money unimpeded. Good job dingus
   - '%%'
   As:
   - {fileID: 0}
@@ -103077,12 +103096,10 @@ MonoBehaviour:
   alt: {fileID: 0}
   goodtoGo: 1
   CamSize: 3
-  anims:
-  - {fileID: 1634733505}
-  - {fileID: 1005743643}
+  anims: []
   musicsQueue:
-  - {fileID: 102899172}
   - {fileID: 959580572}
+  - {fileID: 102899172}
   - {fileID: 0}
   destroyAfter: []
   Ending: 0
@@ -113289,7 +113306,6 @@ MonoBehaviour:
   animsToAlsoChange:
   - {fileID: 194505763}
   - {fileID: 332728966}
-  - {fileID: 128287881}
 --- !u!1 &2062431873
 GameObject:
   m_ObjectHideFlags: 0
@@ -114897,7 +114913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077716975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0.488, z: 1}
+  m_LocalPosition: {x: 0.008, y: 0.25, z: 1}
   m_LocalScale: {x: 0.61993, y: 0.61993, z: 0.61993}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117124,7 +117140,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 297144617}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2107228374
 GameObject:
@@ -120477,7 +120493,7 @@ Transform:
   - {fileID: 8304182048562710896}
   - {fileID: 1795944574}
   m_Father: {fileID: 297144617}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8304182047721277058
 GameObject:
@@ -120578,7 +120594,7 @@ Transform:
   - {fileID: 8304182048785484041}
   - {fileID: 1517860636}
   m_Father: {fileID: 297144617}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8304182047924542995
 GameObject:
@@ -120717,7 +120733,7 @@ Transform:
   - {fileID: 8304182047134392707}
   - {fileID: 954110337}
   m_Father: {fileID: 297144617}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8304182047998490265
 GameObject:
@@ -120920,7 +120936,7 @@ Transform:
   - {fileID: 8304182047721277069}
   - {fileID: 976537008}
   m_Father: {fileID: 297144617}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8304182048988680599
 GameObject:

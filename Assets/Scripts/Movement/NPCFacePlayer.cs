@@ -10,6 +10,6 @@ public class NPCFacePlayer : NPCMovement
 
     private void Update()
     {
-        if (FacePlayer) Face(Stats.current.Player.transform.position);
+        if (FacePlayer && Stats.current != null && Stats.current.Player != null) Face(Stats.current.Player.transform.position);
     }
 }
