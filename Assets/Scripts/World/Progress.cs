@@ -266,6 +266,7 @@ public class Progress : MonoBehaviour
         {
             setInt("MONEY", Stats.current.Money);
             setInt("TIME", (int)Stats.current.getTime());
+            setInt("IRLTIME", (int)Stats.current.getIRLTime());
         }
 
         if(progressComps != null)
@@ -385,6 +386,10 @@ public class Progress : MonoBehaviour
             if(data.ContainsKey("TIME"))
                 Stats.ChangeTime(data["TIME"].Value<uint>() - Stats.current.getTime());
             else data.Add("TIME", (int)Stats.current.getTime());
+
+            if (data.ContainsKey("IRLTIME"))
+                Stats.current.setIRLTime(data["IRLTIME"].Value<int>());
+            else data.Add("IRLTIME", (int)Stats.current.getIRLTime());
         }
 
         //ensureProgressCompsGood();

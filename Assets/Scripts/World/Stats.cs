@@ -272,6 +272,8 @@ public class Stats : MonoBehaviour
     }
 
     public uint getTime() => (uint)allTimeInGame;
+    public int getIRLTime() => (int)allTime;
+    public void setIRLTime(int toThis) => allTime = toThis;
 
     public void SetupShop()
     {
