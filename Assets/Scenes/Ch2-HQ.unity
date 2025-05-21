@@ -11331,6 +11331,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &311976365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 311976366}
+  m_Layer: 5
+  m_Name: Campos 3mile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &311976366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311976365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.48, y: 1.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1429292625}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319491352
 GameObject:
   m_ObjectHideFlags: 0
@@ -12416,6 +12447,8 @@ MonoBehaviour:
   - {fileID: 432882899}
   - {fileID: 1387306269}
   - {fileID: 124292546}
+  - {fileID: 2115953603}
+  - {fileID: 1769266802}
   CamPos:
   - {fileID: 47949359}
   - {fileID: 1035228167}
@@ -12442,8 +12475,8 @@ MonoBehaviour:
   switchWhenDone: Ch2DannyEvent
   itemRequiredToStart: -1
   dayToStart: 5
-  hourToStartA: 19
-  hourToStartB: 21
+  hourToStartA: 18
+  hourToStartB: 20
 --- !u!1 &367966883
 GameObject:
   m_ObjectHideFlags: 0
@@ -45806,6 +45839,7 @@ Transform:
   - {fileID: 352785243}
   - {fileID: 2104860970}
   - {fileID: 1672474589}
+  - {fileID: 311976366}
   m_Father: {fileID: 365873923}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57087,10 +57121,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -57498,14 +57532,14 @@ MonoBehaviour:
     you? Nothing?'
   - '%C%3 months ago...'
   - '%C%You: ...'
-  - 'You: Heh heh heh...'
+  - '%mYou: Heh heh heh...'
   - 'You: Those dummies didn''t see me come in, and now I can take aaall this copper
     for myself'
   - '%A ...?'
   - '%A ...!'
   - '%C%You: No! Never even got so much as a speeding ticket'
-  - 'Commissioner: Listen, if you''ve been kidnapped by these people, just come with
-    me, I can get you out'
+  - '%mCommissioner: Listen, if you''ve been kidnapped by these people, just come
+    with me, I can get you out'
   - 'You: Wait... Really?'
   - 'Danny: Sigh... Soda Lad, you''re wanted by interpol, they''ll just lock you
     up'
@@ -57558,10 +57592,12 @@ MonoBehaviour:
   - {fileID: 1305253076}
   - {fileID: 1017571913}
   - {fileID: 124292546}
+  - {fileID: 2115953603}
+  - {fileID: 1769266802}
   CamPos:
   - {fileID: 47949359}
   - {fileID: 1035228167}
-  - {fileID: 1429292625}
+  - {fileID: 311976366}
   - {fileID: 47949359}
   Movements:
   - {fileID: 1773755284}
@@ -57573,7 +57609,9 @@ MonoBehaviour:
   anims:
   - {fileID: 1046952576}
   - {fileID: 500828509}
-  musicsQueue: []
+  musicsQueue:
+  - {fileID: 1563324217}
+  - {fileID: 102899172}
   destroyAfter: []
   Ending: 0
   skipPacking: 0
