@@ -9451,7 +9451,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1843517881, guid: 9db174ff36bc374478cd495f69151394, type: 3}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -25825,7 +25825,7 @@ GameObject:
   - component: {fileID: 769845492}
   - component: {fileID: 769845495}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart ch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25895,7 +25895,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 769845493}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1700876589}
+        m_TargetAssemblyTypeName: Stats, Assembly-CSharp
+        m_MethodName: GameoverRestartChapter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &769845493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31477,8 +31489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17, y: -566.12}
-  m_SizeDelta: {x: 500, y: 682.1}
+  m_AnchoredPosition: {x: -48.5743, y: -504.54}
+  m_SizeDelta: {x: 436.8514, y: 558.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967299578
 MonoBehaviour:
@@ -31536,8 +31548,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aaaecea2b19e7ee4ca4c1a1d24c32972, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8d45fb6443efb6e418e8b5bc129fc3bf, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -41947,7 +41959,7 @@ MonoBehaviour:
   D: {fileID: 119110231}
   DBoxOnTop: 0
   Sentences:
-  - 'Uncle Tony (whispering): Well I''ll be damned, that really is my nephew'
+  - '%mUncle Tony (whispering): Well I''ll be damned, that really is my nephew'
   - 'Uncle Tony: ahem...'
   - '%AUncle Tony: COME OVER HERE AN'' GIVE YOUR UNCLE A BIG OL'' STINKIN HUG IT''S
     BEEN SO LONG!!!!'
@@ -41980,6 +41992,7 @@ MonoBehaviour:
   Disable:
   - {fileID: 1874756022}
   - {fileID: 372954409}
+  - {fileID: 157420286}
   Enable: []
   CamPos:
   - {fileID: 1302096152}
@@ -41991,8 +42004,10 @@ MonoBehaviour:
   - {fileID: 233339677}
   - {fileID: 1218513840}
   - {fileID: 122543170}
-  musicsQueue: []
-  destroyAfter: []
+  musicsQueue:
+  - {fileID: 1563324217}
+  destroyAfter:
+  - {fileID: 157420286}
   Ending: 0
   skipPacking: 0
   setAsCurrent: 1
@@ -49393,6 +49408,7 @@ MonoBehaviour:
   D: {fileID: 119110231}
   sentences:
   - '%#C...'
+  - ...
   - '%G'
   - '%%'
   TypeNoise: {fileID: 0}
@@ -50131,7 +50147,7 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - E was a rookie. Bound to 'appen
+  - '''e was a rookie. Bound to ''appen'
   - Good riddance honestly
   - '%%'
   TypeNoise: {fileID: 1345590412}
@@ -50265,7 +50281,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2097232426, guid: 0060b4c29c631624db4f6333d38f6ce1, type: 3}
-  m_Color: {r: 0.4509804, g: 0.4509804, b: 0.4509804, a: 1}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -57688,7 +57704,7 @@ GameObject:
   - component: {fileID: 1783164686}
   - component: {fileID: 1783164689}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Restart day
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57758,7 +57774,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1783164687}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1700876589}
+        m_TargetAssemblyTypeName: Stats, Assembly-CSharp
+        m_MethodName: GameOverRestartLastDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1783164687
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -996,4 +996,34 @@ public class Stats : MonoBehaviour
         Application.targetFrameRate = RTXOn ? 5 : -1;
     }
 
+    public void GameoverRestartChapter()
+    {
+        int chNum = GetChapterNumberFromScene();
+        //"saveArchiveCh2LastDay"
+        //"saveArchiveCh1"
+        Progress.loadData(fromFile: "saveArchiveCh" + (chNum - 1) + ".kurger");
+        Progress.saveData();
+        SceneChange("Ch" + chNum);
+    }
+
+    public void GameOverRestartLastDay()
+    {
+        int chNum = GetChapterNumberFromScene();
+        //"saveArchiveCh2LastDay"
+        //"saveArchiveCh1"
+        Progress.loadData(fromFile: "saveArchiveCh" + chNum + "LastDay.kurger");
+        Progress.saveData();
+        SceneChange("Ch" + chNum);
+    }
+
+    public static int GetChapterNumberFromScene()
+    {
+        string input = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
+        int endIndex = input.IndexOf('-');
+        endIndex = (endIndex == -1) ? input.Length : endIndex;
+
+        string numberString = input.Substring(2, endIndex - 2);
+        return int.Parse(input.Substring(2, endIndex - 2));
+    }
+
 }

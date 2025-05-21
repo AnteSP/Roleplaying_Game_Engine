@@ -1,5 +1,5 @@
 {
-  "FUN": 20,
+  "FUN": 56,
   "Items": {
     "4": 2,
     "13": 3,
@@ -18,67 +18,27 @@
     3,
     1
   ],
-  "Upgrades": {
-    "Cardboard Sign": true,
-    "Bristol Board Sign": true,
-    "Balloons": true,
-    "Foldable Table": true,
-    "Letter-Block Sign": true
-  },
-  "SellSpots": {
-    "Ch2/Sell Spot Middle": true,
-    "Ch2/Sell Spot Bottom": true
-  },
+  "Upgrades": {},
+  "SellSpots": {},
   "Deadlines": {},
   "Volume": 1,
-  "MONEY": 15721,
-  "TIME": 7072,
+  "MONEY": 0,
+  "TIME": 600,
   "PickUps": {
-    "*Ch1/Apple sac (1)": "",
-    "*Ch2/Park Coins (High FUN)": "",
-    "*Ch2/WifeBeater": "",
-    "*Ch2/Street Coins (1)": "",
-    "*Ch2/Street Coins": "",
-    "*Ch2-Pub/FerroFluid": ""
+    "*Ch1/Apple sac (1)": ""
   },
   "Are you scared of me?": 2,
-  "MRespect": 1,
-  "Chapter": 2,
+  "MRespect": -1,
+  "Chapter": 1,
   "WeekAngels": false,
   "WeekAngelAnim": false,
   "Biden": false,
   "Ch2": {
-    "OpeningDone": true,
-    "TutorialDone": true,
-    "FredCS1": true,
-    "StealerCSDone": true,
-    "Final": true,
-    "Vader1": true,
-    "FredCS2": true,
-    "FredCS3": true,
-    "FredCS4": true,
-    "GaveBeans": true,
-    "Medli": true,
+    "OpeningDone": false,
     "WakeUp": false,
-    "GotDannyBoxItem": true,
-    "Newspaper1": true,
-    "Vader2": true,
-    "ResistedGG": false,
-    "GGEvent": true,
-    "HelpedDanny": false,
-    "VaderTrue": true,
-    "GGEventFail": true,
-    "DannyEvent": true
+    "FredCS1": false,
+    "GotDannyBoxItem": false,
+    "FredCS2": false
   },
-  "GameOver": false,
-  "Ch2FredIntro": 2,
-  "FredF": 10,
-  "DannyEventFail": false,
-  "Ch2FredConvoDecision1": 2,
-  "Ch2VaderDecision": 2,
-  "Ch2FredConvoDecision2": 2,
-  "Ch2ResistedGG": 2,
-  "ch2HatmanVisited": true,
-  "Ch2FredConvoDecision3": 2,
-  "Ch2HelpedDanny": 2
+  "GameOver": false
 }

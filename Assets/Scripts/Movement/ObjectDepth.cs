@@ -49,7 +49,7 @@ public class ObjectDepth : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //SetDepth(collision.gameObject);
-        if (transform.hasChanged && Stats.current.AllowSelecting)
+        if (transform.hasChanged && Stats.current != null && Stats.current.AllowSelecting)
         {
             NearestSelect();
         }

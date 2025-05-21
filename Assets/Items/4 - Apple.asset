@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: Apple
   icon: {fileID: 21300000, guid: d6073f620b7133e45a682d1590397372, type: 3}
   description: A nice crunchy apple
-  price: 4
+  price: 10
   MLevel: 0
   SodaPChange: 0
   SodaTChange: 0
+  ItemID: 0

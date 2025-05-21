@@ -54,13 +54,13 @@ public class Progress : MonoBehaviour
         MainMenu.ForceStart();
     }
 
-    public static void readData()
+    public static void readData(string fromFile = "")
     {
         //print("READING DATA");
         if (SName == "U") SName = Application.dataPath + "/saveData.kurger";
         if (!File.Exists(SName)) File.WriteAllText(SName, "{}");
 
-        string content = File.ReadAllText(SName);
+        string content = File.ReadAllText(fromFile == "" ? SName : Application.dataPath + "/" + fromFile);
 
         try
         {
@@ -370,11 +370,11 @@ public class Progress : MonoBehaviour
         print(data["Upgrades"]);
     }
 
-    public static void loadData(bool excludeItems = false)
+    public static void loadData(bool excludeItems = false,string fromFile = "")
     {
         print(excludeItems ? "LOADING JUST DATA" : "LOADING ITEMS + DATA");
         loaded = true;
-        readData();
+        readData(fromFile);
 
         if(Stats.current != null)
         {

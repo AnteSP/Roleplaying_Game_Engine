@@ -17,6 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9eb909d2f1907a842961b4b047af1459, type: 2}
   - {fileID: 11400000, guid: ffd1bb6f0dfb0e04da5692e91b5170b2, type: 2}
   - {fileID: 11400000, guid: d4354d5777b26ad498372c5695c1ad6d, type: 2}
-  SodaPChange: 35
+  SodaPChange: 45
   SodaTChange: 35
   RecipeID: 0
