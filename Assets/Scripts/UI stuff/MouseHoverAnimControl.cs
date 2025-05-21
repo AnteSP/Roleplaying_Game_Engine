@@ -8,6 +8,13 @@ public class MouseHoverAnimControl : MonoBehaviour
     Image img;
     public bool Inside = false;
     Color OGColor;
+    static int boxesOut = 0;
+    bool started = false;
+
+    public static void resetBoxesCount()
+    {
+        boxesOut = 0;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -55,10 +62,16 @@ public class MouseHoverAnimControl : MonoBehaviour
     public void TurnOn()
     {
         enabled = true;
+        if(!started) boxesOut++;
+        else anim.Play(anim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, 0.54f);
+        started = true;
     }
 
     public void TurnOff()
     {
+        boxesOut -= 1;
         enabled = false;
+        started = false;
+        if (boxesOut == 0) Items.allShiftBoxesClear();
     }
 }

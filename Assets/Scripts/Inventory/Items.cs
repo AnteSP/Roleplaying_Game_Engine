@@ -222,21 +222,37 @@ public class Items : MonoBehaviour
 
     }
 
+    public static void allShiftBoxesClear() => lastAnimName = "";
+
+    static string lastAnimName = "";
+    static int lastAnimCount = 0;
     static void ItemAnim(int ItemID,int Amount)
     {
         Item item = ITEMS_DB[ItemID];
-        ShiftAnim(item.icon, item.Name + " x" + Amount, item.description);
+        if (item.Name == lastAnimName)
+        {
+            lastAnimCount += Amount;
+            ShiftAnim(item.icon, item.Name + " x" + lastAnimCount, item.description,plusOne:true);
+        }
+        else
+        {
+            lastAnimCount = Amount;
+            ShiftAnim(item.icon, item.Name + " x" + lastAnimCount, item.description);
+        }
+        lastAnimName = item.Name;
     }
 
-    static public void ShiftAnim(Sprite s,string name,string description)
+    
+    static public void ShiftAnim(Sprite s,string name,string description,bool plusOne = false)
     {
-        Curser = Curser == NewItem.Length - 1 ? 0 : Curser + 1;
+        if (!plusOne) Curser = Curser == NewItem.Length - 1 ? 0 : Curser + 1;
 
         NewItem[Curser].SetTrigger("Go");
 
         Transform T = NewItem[Curser].transform;
         float H = T.GetComponent<RectTransform>().sizeDelta.y;
 
+        if(!plusOne)
         for (int i = 0; i < NewItem.Length; i++)
         {
             NewItem[i].transform.localPosition = i == Curser ? new Vector3(NewItem[i].transform.localPosition.x, Inity, NewItem[i].transform.localPosition.z) : NewItem[i].transform.localPosition + new Vector3(0, H, 0);

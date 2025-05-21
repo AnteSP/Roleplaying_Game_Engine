@@ -882,6 +882,7 @@ public class Stats : MonoBehaviour
         moveSources.Clear();
         timeSources.Clear();
         outfit.ResetOutfitStuff();
+        MouseHoverAnimControl.resetBoxesCount();
 
         StartCoroutine(DelaySceneLoad(r));
 
