@@ -147,9 +147,28 @@ public class ChooseSellSoda : Resource
 
     public void UpdateNumbers()
     {
+        //print("UPDATINTG SODA SELLING NUMBERS");
         bool showEmptyNotif = true;
         for (int i = 0; i < BeingSold.Count; i++)
         {
+            switch (BeingSold[i].ID)
+            {
+                case 34:
+                    //print("GOT HERE");
+                    if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
+                    {
+                        BeingSold[i].GetComponent<Button>().interactable = false;
+                        if (Progress.getBool("Ch2VaderFail")) BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
+                        else BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
+                    }
+                    else
+                    {
+                        BeingSold[i].GetComponent<Button>().interactable = true;
+                        BeingSold[i].GetComponent<Tooltip>().tooltip = Items.ITEMS_DB[BeingSold[i].ID].Name;
+                    }
+                    break;
+            }
+
             print(Items.Contains(BeingSold[i].ID) + BeingSold[i].TimeLeft.ToString());
             if ( Items.Contains(BeingSold[i].ID) || BeingSold[i].TimeLeft != 0)
             {
@@ -174,17 +193,7 @@ public class ChooseSellSoda : Resource
                 i -= 1;
             }
 
-            switch (i)
-            {
-                case 34:
-                    if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
-                    {
-                        BeingSold[i].GetComponent<Button>().interactable = false;
-                        if (Progress.getBool("Ch2VaderFail")) BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
-                        else BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
-                    }
-                    break;
-            }
+
         }
         EmptyNotif.SetActive(showEmptyNotif);
     }

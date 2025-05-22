@@ -29,6 +29,7 @@ public class Ch2Events : MonoBehaviour
     public static Ch2Events current;
     [SerializeField] PlayableDirector drug3;
     [SerializeField] List<GameObject> EnableOnDrug3, DisableOnDrug3;
+    [SerializeField] SellSpot HQSellSpot;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +90,21 @@ public class Ch2Events : MonoBehaviour
         {
             if (calcFredCost() > Stats.current.Money) FredSecret.sentence = "%[GameOver]Fred (disguised): I'm sorry lad, you don't have enough cash. Not worth the risk";
             else FredSecret.sentence = "%[Ch2Final]Fred (disguised): Oi! Sh! Don't look, it's me. I see you got the money... Restroom door... Climb out the window... Boot o' my car";
+        }
+
+        if(HQSellSpot != null)
+        {
+            if (Progress.getInt("MRespect") >= 0)
+            {
+                HQSellSpot.CostToPrep = 0;
+                if (!Progress.getBool("Ch2HQSpotFree"))
+                {
+                    Stats.DisplayMessage("Your friendship with the mafia is no longer negative! That means they're no longer actively resentful of you hooray!\n\nThe sell spot by the mafia HQ is now FREE! Go set up there");
+                    Progress.switchInPlay("Ch2HQSpotFree", true);
+                }
+            }
+
+
         }
     }
 
@@ -315,7 +331,7 @@ public class Ch2Events : MonoBehaviour
         yield return new WaitForSeconds(15);
         Stats.DisplayMessage("Your connection to this world loosens... You will soon leave. But you feel as though a piece of this will remain with you");
         yield return new WaitForSeconds(10);
-        Progress.saveOnlyThis(38, 1, "ch2HatmanVisited", 0);
+        Progress.saveOnlyThis(38, 1, "Ch2HatmanVisited", 0);
         Application.Quit();
         print("APP QUITTED");
     }

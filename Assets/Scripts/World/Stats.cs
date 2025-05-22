@@ -337,6 +337,7 @@ public class Stats : MonoBehaviour
 
     public static void UpdateTimeColor()
     {
+        if (current == null) return;
         current.TIMETEXT.color = current.PassTime ? Color.black : Color.gray;
     }
 
@@ -482,7 +483,7 @@ public class Stats : MonoBehaviour
     public static void setLockedInObject(Resource r)
     {
         //print("Locked in " + r.gameObject.name);
-        current.lockedInConvoWith = r;
+        if(current != null)current.lockedInConvoWith = r;
     }
     /*
     void UpdateSelectableIcon()
@@ -593,6 +594,15 @@ public class Stats : MonoBehaviour
         {
             Stats.DisplayMessage("CANNOT GO BACK IN TIME");
             return;
+        }
+
+        foreach(Deadline.DeadlineData d in Deadline.activeDeadlineData.Where(a=> a != null))
+        {
+            if(d.GetTriggerAtMinute() < Amount + allTimeInGame)
+            {
+                if (d.GetTriggerAtMinute() < allTimeInGame) Amount = 0;
+                else Amount = d.GetTriggerAtMinute() - allTimeInGame;
+            }
         }
 
         if (Amount > 1)

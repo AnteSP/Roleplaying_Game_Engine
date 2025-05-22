@@ -55,7 +55,7 @@ public class StoreMenu : Resource
         else
             obj.GetComponent<Tooltip>().tooltip = item.Name + "\n(" + item.description + ")";
 
-        temp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = -SMen.Cost + "¢";
+        temp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = -SMen.Cost + "p";
     }
 
     public void UpdateShop()

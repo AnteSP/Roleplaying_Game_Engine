@@ -51,7 +51,7 @@ public class SellSpot : Resource
         Transform t = SellSpotPrompt.transform.GetChild(0);
 
         t.Find("Time").GetComponent<Text>().text = "Setup Time: " + MinsToPrep + " mins";
-        t.Find("Cost").GetComponent<Text>().text = "Setup Cost: " + CostToPrep.ToString("#,##0") + "¢";
+        t.Find("Cost").GetComponent<Text>().text = "Setup Cost: " + CostToPrep.ToString("#,##0") + "p";
         t.Find("Foot Traffic").GetComponent<Text>().text = "Foot Traffic: " + (int)(MLevel * 100) + "%";
         t.Find("Security").GetComponent<Text>().text = "Thief chance: " + (int)(SLevel * 100) + "%";
     }

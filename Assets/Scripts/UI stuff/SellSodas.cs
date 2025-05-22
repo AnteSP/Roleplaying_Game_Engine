@@ -16,6 +16,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
     public Text text;
     Button But;
     public static float SLevel;
+    bool firstSell = false;
 
     public void StartOverride()
     {
@@ -24,6 +25,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         But = GetComponent<Button>();
 
         text = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        firstSell = Progress.getBool("Ch2FirstSell");
     }
 
     bool justGotStolenFrom = true;
@@ -32,7 +34,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         TimeLeft = 0;
         if (Random.Range(0f, 1f) < SLevel && !( SLevel < 0.5f && justGotStolenFrom ))//if stolen AND (The following is false: Stealing should be rare And we just got stolen from)
         {
-            Stats.DisplayMessage("Oh no! The soda you were selling got randomly stolen. ( " + (int)(SLevel*100) + "% chance of happening). You can move to a different spot or buy upgrades to decrease these chances",true);
+            Stats.DisplayMessage("Oh no! The soda you were selling got randomly stolen. ( " + (int)(SLevel*100) + "% chance of happening).\n\nHOW TO STOP THIS: find a spot with a lower thief chance",true);
             justGotStolenFrom = true;
         }
         else
@@ -64,6 +66,13 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         else
         {
             Stats.ChangeTimeAnim(Mathf.CeilToInt(recipe.SodaTChange * (1f / List.TimeMult)) );
+            if (!firstSell)
+            {
+                Progress.switchInPlay("Ch2FirstSell",true);
+                firstSell = true;
+                Stats.DisplayMessage("WHOA!\n\nCheck the time! Your first soda took a long time to sell. Way too long. Go explore, talk to people, and find upgrades to make sodas sell faster");
+            }
+
             finishSell();
             
         }
@@ -96,6 +105,6 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         }
         
 
-        List.Money.text = "Sell Price: " + recipe.SodaPChange;
+        List.Money.text = "Sell Price: " + recipe.SodaPChange + " p";
     }
 }

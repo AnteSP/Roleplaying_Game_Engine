@@ -97,7 +97,7 @@ public class EndScreen : MonoBehaviour
                 else if (Progress.getBool("WeekAngels")) return "WAITING...";
                 else return "NOT FOUND";
             case 2:
-                if (Progress.getBool("ch2HatmanVisited")) return "FOUND";
+                if (Progress.getBool("Ch2HatmanVisited")) return "FOUND";
                 else return "NOT FOUND";
             default:
                 return "Fuck goin on twin :(";

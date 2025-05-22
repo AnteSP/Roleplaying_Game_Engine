@@ -87,7 +87,13 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         */
 
         I.color = Selected;
-        NewForcePosition(Out = !Out);
+        toggleSlider(Out = !Out);
+
+    }
+
+    void toggleSlider(bool Out)
+    {
+        NewForcePosition(Out);
         I.sprite = Out ? Retracted : Detracted;
         if (stopTime)
         {
@@ -95,7 +101,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
             Stats.StartStopTime(Out, "Slider_" + ObjToMove.name);
             Stats.StartStopPlayerMovement(Out, "Slider_" + ObjToMove.name);
         }
-
+        this.Out = Out;
     }
     /*
     public void Going()
@@ -161,8 +167,10 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
             //Handles[i].position = new Vector3(Starts[i], Handles[i].position.y, Handles[i].position.z);
             
             Slider s = Handles[i].GetComponent<Slider>();
-            s.ObjToMove.position = new Vector3(s.altStart, s.ObjToMove.position.y, s.ObjToMove.position.z);
-            s.Out = true;
+            s.toggleSlider(true);
+            //s.IPointerDownHandler.OnPointerDown(null);
+            //s.ObjToMove.position = new Vector3(s.altStart, s.ObjToMove.position.y, s.ObjToMove.position.z);
+            
         }
 
     }

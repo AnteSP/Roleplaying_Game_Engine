@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "Drugs\u2122"
   icon: {fileID: 21300000, guid: c54d5e4f45fee644998ba6b99464c587, type: 3}
-  description: Makes you feel alive. 3x speed
+  description: Makes you feel alive. 3x walk speed
   price: 100
   MLevel: 0
   SodaPChange: 0

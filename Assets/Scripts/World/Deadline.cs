@@ -22,6 +22,11 @@ class Deadline : MonoBehaviour
             d.day = this.day;
             return d;
         }
+
+        public int GetTriggerAtMinute()
+        {
+            return ((day - 1) * 24 * 60) + (((hour) * 60));
+        }
     }
 
     public char ID = 'A';
@@ -87,6 +92,7 @@ class Deadline : MonoBehaviour
             print("THROWING AWAY DEADLINE " + MinutesLeft + " / " + TriggerAtMinute);
             Slider.ForceBack();
             Stats.ForceMenusClosed();
+            Stats.StartStopTime(false, "Cutscene");
 
             if (SuccessCutScene == null && FailCutScene == null)
             {

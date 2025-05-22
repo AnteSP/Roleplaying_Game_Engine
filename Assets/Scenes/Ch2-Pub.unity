@@ -3123,7 +3123,7 @@ MonoBehaviour:
     days with all these mafia blokes'
   - 'You: Yeah... Same here I really want to get out of here...  Why''s your uh...
     Nan, here?'
-  - 'Fred: Same reason most people are here, a combination of povery and stubborness'
+  - 'Fred: Same reason most people are here, a combination of pover''y and stubborness'
   - 'Fred: Her husband was killed in a theatre fire in ''58 and she''s refused to
     leave since. Poor bird'
   - '%dYou: ...'
@@ -3327,7 +3327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.76}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &111640034
@@ -4020,7 +4020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.73}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &130449437
@@ -5176,7 +5176,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7240186, y: -0.6660969}
+  m_Offset: {x: -0.22518015, y: -0.95283437}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5187,7 +5187,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4480371, y: 2.3321939}
+  m_Size: {x: 0.5496397, y: 1.758719}
   m_EdgeRadius: 0
 --- !u!114 &168107207
 MonoBehaviour:
@@ -5213,9 +5213,9 @@ MonoBehaviour:
   sentence: 'Fred (disguised): Oi! Sh! Don''t look, it''s me... '
   TypeNoise: {fileID: 1570525495}
   messageTime: 10
-  stopPlayer: 0
+  stopPlayer: 1
   justDisableComponent: 1
-  stopPlayerTime: 0
+  stopPlayerTime: 1
   specialObject: {fileID: 0}
   dPosition: 1
 --- !u!1 &168391688
@@ -11880,7 +11880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.82}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &437306396
@@ -43792,6 +43792,7 @@ MonoBehaviour:
   drug3: {fileID: 0}
   EnableOnDrug3: []
   DisableOnDrug3: []
+  HQSellSpot: {fileID: 0}
 --- !u!114 &1700876595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50461,7 +50462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.05}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2006060176
