@@ -12,22 +12,23 @@ public class outfit : MonoBehaviour
     static List<int> outfitsOwned = new List<int>() { noItemNeeded };
     static int outfitInd = 0;
 
-    static GameObject current;
+    public static GameObject current;
 
     [SerializeField]TextMeshProUGUI title;
     [SerializeField] Image img;
-    Tooltip desc;
+    Tooltip desc = null;
 
     public List<RuntimeAnimatorController> playerOutfitAnims;
 
     public List<Animator> animsToAlsoChange = new List<Animator>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         current = gameObject;
-        checkOutfits();
+        
         desc = img.GetComponent<Tooltip>();
+
+        //checkOutfits();
     }
 
     public static List<int> getOutfitsOwned()
@@ -37,13 +38,14 @@ public class outfit : MonoBehaviour
 
     public static int getActiveOutfit()
     {
-        print("Giving " + outfitInd);
+        print("Giving outfit ind " + outfitInd);
         return outfitsOwned[outfitInd];
     }
 
     public static void ResetOutfitStuff()
     {
-        outfitInd = 0;
+        //outfitInd = 0;
+        current = null;
     }
 
     static void resetOutfitsOwned()
@@ -78,6 +80,7 @@ public class outfit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Stats.Debug("Ind: " + outfitInd);
     }
 
     public void incrementOutfit(bool decrement = false)
@@ -85,21 +88,38 @@ public class outfit : MonoBehaviour
         outfitInd = outfitInd + ( decrement ? -1 : 1);
         if (outfitInd < 0) outfitInd = outfitsOwned.Count-1;
         outfitInd = outfitInd % outfitsOwned.Count;
-        int itemInd = outfitsOwned[outfitInd];
+        SetOutfit(outfitsOwned[outfitInd]);
 
+    }
+
+    public void SetOutfit(int itemInd)
+    {
+        print("BEFORE: " + outfitInd);
+        for(int i = 0; i < outfitsOwned.Count;i++)
+        {
+            print("CHECK: " + outfitInd + " " + i + " " + outfitsOwned[i] + " " + outfitsOwned[outfitInd]);
+            if (outfitsOwned[i] == itemInd)
+            {
+                outfitInd = i;
+                continue;
+            }
+        }
+        print("AFTER: " + outfitInd);
+        print("ITEMID: " + itemInd);
         Item selectedOutfit = Items.ITEMS_DB[itemInd];
+        //print("OUTFIT GOT " + selectedOutfit);
 
         img.sprite = selectedOutfit.icon;
         title.text = selectedOutfit.Name;
-        desc.tooltip = selectedOutfit.description;
+        if(desc != null)desc.tooltip = selectedOutfit.description;
         NameIndic.Indicate("");
-        print("ID = " + outfitInd + " AND " + itemInd);
+        //print("ID = " + outfitInd + " AND " + itemInd);
 
-        if(Stats.current.Player != null)
+        if (Stats.current.Player != null)
         {
             Animator anim = Stats.current.Player.GetComponent<Animator>();
             //print("X IN Y " + Items.IndexOfXinY(itemInd, outfitItemIDs));
-            anim.runtimeAnimatorController = playerOutfitAnims[ Items.IndexOfXinY(itemInd, outfitItemIDs) ];
+            anim.runtimeAnimatorController = playerOutfitAnims[Items.IndexOfXinY(itemInd, outfitItemIDs)];
         }
 
         foreach (Animator a in animsToAlsoChange)
@@ -120,7 +140,5 @@ public class outfit : MonoBehaviour
 
             //a.gameObject.SetActive(false);
         }
-
-
     }
 }

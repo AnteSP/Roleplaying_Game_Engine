@@ -33,8 +33,8 @@
   "Deadlines": {},
   "Volume": 1.0,
   "MONEY": 22760,
-  "TIME": 6920,
-  "IRLTIME": 4906,
+  "TIME": 6927,
+  "IRLTIME": 4918,
   "PickUps": {
     "*Ch1/Apple sac": "",
     "*Ch2/Street Coins": "",
@@ -77,5 +77,6 @@
   "Ch2FredConvoDecision1": 2,
   "Ch2FredConvoDecision2": 2,
   "Ch2FredConvoDecision3": 2,
-  "ch2HatmanVisited": true
+  "ch2HatmanVisited": true,
+  "OUTFIT": 26
 }

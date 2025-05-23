@@ -269,6 +269,8 @@ public class Progress : MonoBehaviour
             setInt("IRLTIME", (int)Stats.current.getIRLTime());
         }
 
+        setInt("OUTFIT", outfit.getActiveOutfit());
+
         if(progressComps != null)
         foreach (Progress p in progressComps)
         {
@@ -289,7 +291,6 @@ public class Progress : MonoBehaviour
                 }
             }
         }
-
 
         if (!data.ContainsKey("Recipes")) data.Add("Recipes", new JArray());
         //data["Recipes"] = new JArray();
@@ -459,6 +460,13 @@ public class Progress : MonoBehaviour
                     Items.AddNoAnim(int.Parse(key), value);
                 }
                 loadedItems = true;
+            }
+            outfit.checkOutfits();
+            if (outfit.current != null)
+            {
+                if (data.ContainsKey("OUTFIT"))
+                    outfit.current.GetComponent<outfit>().SetOutfit(data["OUTFIT"].Value<int>());
+                else data.Add("OUTFIT", outfit.getActiveOutfit());
             }
         }
 
