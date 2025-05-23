@@ -22,6 +22,11 @@ public class TimeSanctum : MonoBehaviour
     {
         if(collision.gameObject.name == "Player" && !collision.isTrigger)
         {
+            if (!Progress.getBool("Ch2EnteredTimeSanctum"))
+            {
+                Stats.DisplayMessage("Ding!\n\nTime stopped progressing when you entered this park. This is so you can just relax and explore without worrying about wasting precious time that could be used to sell more soda");
+                Progress.switchInPlay("Ch2EnteredTimeSanctum", true);
+            }
             Stats.StartStopTime(false, "sanctum");
             DingNoise.pitch = 2;
             DingNoise.Play();

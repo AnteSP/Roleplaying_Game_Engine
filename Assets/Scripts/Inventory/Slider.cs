@@ -87,13 +87,13 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         */
 
         I.color = Selected;
-        toggleSlider(Out = !Out);
+        toggleSlider(Out = !Out,true);
 
     }
 
-    void toggleSlider(bool Out)
+    void toggleSlider(bool Out,bool withSound = false)
     {
-        NewForcePosition(Out);
+        NewForcePosition(Out, withSound);
         I.sprite = Out ? Retracted : Detracted;
         if (stopTime)
         {
@@ -159,7 +159,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         
     }
 
-    public static void ForceBack()
+    public static void ForceBack(bool withSound = false)
     {
         for(int i = 0; i < Handles.Count; i++)
         {
@@ -167,12 +167,20 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
             //Handles[i].position = new Vector3(Starts[i], Handles[i].position.y, Handles[i].position.z);
             
             Slider s = Handles[i].GetComponent<Slider>();
-            s.toggleSlider(true);
+            s.toggleSlider(true, withSound);
             //s.IPointerDownHandler.OnPointerDown(null);
             //s.ObjToMove.position = new Vector3(s.altStart, s.ObjToMove.position.y, s.ObjToMove.position.z);
             
         }
 
+    }
+
+    public void NewForcePosition(bool gotostart, bool withSound = false)
+    {
+
+        ObjToMove.position = new Vector3(!gotostart ? EndPoint.position.x : altStart, ObjToMove.position.y, ObjToMove.position.z);
+        if(withSound) BumpSound.Play();
+        outfit.checkOutfits();
     }
 
     public void NewForcePosition(bool gotostart)
@@ -182,7 +190,7 @@ public class Slider : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, 
         BumpSound.Play();
         outfit.checkOutfits();
     }
-    
+
     public static void EmptyList()
     {
         Handles.Clear();

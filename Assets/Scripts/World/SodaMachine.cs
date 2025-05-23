@@ -126,7 +126,7 @@ public class SodaMachine : MonoBehaviour
         SelectRec.Selecting = !SelectRec.Selecting;
         activeSM.A.SetBool("Open", activeSM.Open);
         activeSM.A.SetTrigger("Go");
-        Slider.ForceBack();
+        Slider.ForceBack(true);
         NameIndic.Indicate("");
 
         if (!activeSM.Open)

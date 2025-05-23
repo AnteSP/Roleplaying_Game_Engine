@@ -292,6 +292,7 @@ public class Stats : MonoBehaviour
             Stats.DisplayMessage("You don't have enough money to setup shop here");
         }
         Stats.StartStopTime(true,"SellSpot");
+        Stats.StartStopPlayerMovement(true, "SellSpot");
     }
     /// <summary>
     /// 
@@ -1025,7 +1026,12 @@ public class Stats : MonoBehaviour
         //"saveArchiveCh1"
         Progress.loadData(fromFile: "saveArchiveCh" + chNum + "LastDay.kurger");
         Progress.saveData();
-        SceneChange("Ch" + chNum);
+        if(chNum == 2)
+        {
+            SceneChange("Ch" + chNum + "-HQ");
+        }
+        else SceneChange("Ch" + chNum);
+
     }
 
     public static int GetChapterNumberFromScene()

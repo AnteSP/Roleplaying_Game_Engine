@@ -5140,6 +5140,7 @@ GameObject:
   - component: {fileID: 168107205}
   - component: {fileID: 168107206}
   - component: {fileID: 168107207}
+  - component: {fileID: 168107208}
   m_Layer: 0
   m_Name: Secret Trigger
   m_TagString: Untagged
@@ -5173,10 +5174,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22518015, y: -0.95283437}
+  m_Offset: {x: -0.22518015, y: -1.4439077}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5187,7 +5188,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5496397, y: 1.758719}
+  m_Size: {x: 0.5496397, y: 0.7765722}
   m_EdgeRadius: 0
 --- !u!114 &168107207
 MonoBehaviour:
@@ -5218,6 +5219,32 @@ MonoBehaviour:
   stopPlayerTime: 1
   specialObject: {fileID: 0}
   dPosition: 1
+--- !u!61 &168107208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168107204}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.588661, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1790042, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &168391688
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,8 +7651,9 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - Oi! You, soda lad. We'll get ya a free drink. But only one! Danny said you got
-    a drinking problem
+  - Oi! You, soda lad. You got a drinking problem? Well I got a drinking solution
+  - You're allowed a drink. But only one! Danny said he doesn't particularly fancy
+    you getting drunk
   - '%%'
   TypeNoise: {fileID: 1345590412}
   talkOnAwake: 0
@@ -18873,7 +18901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 0.15
   SlowDownCoefficent: 10
-  AnimSpeed: 8
+  AnimSpeed: 1.5
   FObj: {fileID: 1256241658}
   SlowDown: 1
   FocusPoint: {x: 0, y: 0}
@@ -43851,6 +43879,7 @@ MonoBehaviour:
   - {fileID: 1715922621}
   - {fileID: 1866800986}
   - {fileID: 497314955}
+  - {fileID: 1958525261}
 --- !u!114 &1700876597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45309,10 +45338,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

@@ -77,6 +77,15 @@ public class EndScreen : MonoBehaviour
         impact.Play();
         for(int i = 0; i < decisionIDs.Count; i++)
         {
+            if (!Progress.doesFieldExist(decisionIDs[i]))
+            {
+                yield return new WaitForSeconds(Len/3);
+                decisions[i].transform.parent.gameObject.SetActive(true);
+                decisions[i].transform.parent.parent.gameObject.SetActive(true);
+                decisions[i].text = "[!] You missed a cutscene";
+                decisions[i].gameObject.SetActive(true);
+                continue;
+            }
             yield return new WaitForSeconds(Len);
             impact.Play();
             decisions[i].transform.parent.gameObject.SetActive(true);

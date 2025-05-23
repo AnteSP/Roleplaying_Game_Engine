@@ -2,16 +2,22 @@
   "FUN": 97,
   "Items": {
     "17": 1,
-    "2": 72,
+    "2": 156,
     "26": 1,
-    "4": 126,
     "29": 1,
-    "33": 10
+    "33": 10,
+    "1": 4,
+    "3": 1,
+    "38": 1,
+    "13": 4,
+    "14": 1,
+    "34": 69
   },
   "Recipes": [
     0,
     2,
-    3
+    3,
+    1
   ],
   "Upgrades": {
     "Balloons": true,
@@ -24,13 +30,11 @@
     "Ch2/Sell Spot Middle": true,
     "Ch2/Sell Spot Bottom": true
   },
-  "Deadlines": {
-    "E-Ch2": true
-  },
+  "Deadlines": {},
   "Volume": 1.0,
   "MONEY": 19290,
   "TIME": 6300,
-  "IRLTIME": 3694,
+  "IRLTIME": 3725,
   "PickUps": {
     "*Ch1/Apple sac": "",
     "*Ch2/Street Coins": "",
@@ -69,5 +73,6 @@
   "DannyEventFail": false,
   "Ch2FredConvoDecision1": 2,
   "Ch2FredConvoDecision2": 2,
-  "Ch2FredConvoDecision3": 2
+  "Ch2FredConvoDecision3": 2,
+  "OUTFIT": 30
 }

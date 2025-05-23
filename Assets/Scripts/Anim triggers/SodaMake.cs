@@ -16,17 +16,18 @@ public class SodaMake : StateMachineBehaviour
     //    
     //}
 
+    bool failed = false;
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        for(int i = 0; i < SodaMachine.Ings.Length; i++)
+        failed = false;
+        for (int i = 0; i < SodaMachine.Ings.Length; i++)
         {
             Debug.Log("Taking Item " + SodaMachine.Ings[i] + " at " + i);
 
             if(!Items.Add(SodaMachine.Ings[i].ItemID, -1))
             {
-
+                failed = true;
                 Stats.DisplayMessage("Inventory Error! You don't have enough stuff to do that",true);
                 
 
@@ -35,12 +36,12 @@ public class SodaMake : StateMachineBehaviour
                 {
                     Items.AddNoAnim(SodaMachine.Ings[j].ItemID, 1);
                 }
-                SodaMachine.ChooseRecipe(-1);
+                //SodaMachine.ChooseRecipe(-1);
                 break;
             }
         }
 
-        if(SodaMachine.ActiveSoda > -1)
+        if(!failed)
         {
 
             if (!Items.Add(Items.RECIPES_DB[SodaMachine.ActiveSoda].Soda.ItemID, 1))
@@ -56,7 +57,7 @@ public class SodaMake : StateMachineBehaviour
 
                 }
 
-                SodaMachine.ChooseRecipe(-1);
+                //SodaMachine.ChooseRecipe(-1);
 
             }
 

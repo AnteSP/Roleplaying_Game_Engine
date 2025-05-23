@@ -56,7 +56,15 @@ public class Frame : MonoBehaviour
         I1.color = Pressed;
 
         GoodPos = Rect.position;
-        
+
+        switch (Items.ITEMS[Target])
+        {
+            case 26: outfit.current.GetComponent<outfit>().SetOutfit(26);break;
+            case 27: outfit.current.GetComponent<outfit>().SetOutfit(27); break;
+            case 28: outfit.current.GetComponent<outfit>().SetOutfit(28); break;
+            case 29: outfit.current.GetComponent<outfit>().SetOutfit(29); break;
+            case 30: outfit.current.GetComponent<outfit>().SetOutfit(30); break;
+        }
     }
 
     public void Drag()

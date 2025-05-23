@@ -45,6 +45,7 @@ public class SellSpot : Resource
     public override void Use(float Amount)
     {
         Stats.StartStopTime(false,"SellSpot");
+        Stats.StartStopPlayerMovement(false, "SellSpot");
         current = this;
         
         SellSpotPrompt.SetActive(true);
@@ -89,6 +90,7 @@ public class SellSpot : Resource
     public static void closeSetUpScreen()
     {
         Stats.StartStopTime(true, "SellSpot");
+        Stats.StartStopPlayerMovement(true, "SellSpot");
     }
 
 }

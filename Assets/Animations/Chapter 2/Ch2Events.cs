@@ -80,6 +80,7 @@ public class Ch2Events : MonoBehaviour
 
     private void OnEnable()
     {
+        bool doingMessage = false;
         if (openOnStart != null)
         {
             openOnStart.Use(0);
@@ -100,11 +101,16 @@ public class Ch2Events : MonoBehaviour
                 if (!Progress.getBool("Ch2HQSpotFree"))
                 {
                     Stats.DisplayMessage("Your friendship with the mafia is no longer negative! That means they're no longer actively resentful of you hooray!\n\nThe sell spot by the mafia HQ is now FREE! Go set up there");
+                    doingMessage = true;
                     Progress.switchInPlay("Ch2HQSpotFree", true);
                 }
             }
-
-
+            
+            if(!doingMessage && Stats.current.Money > calcFredCost())
+            {
+                Stats.DisplayMessage("You already have enough money to pay Fred to smuggle you out! Congrats! You can just spend time exploring now. Or if you're done that, go into Settings > Accelerate passage of time");
+                doingMessage = true;
+            }
         }
     }
 
@@ -157,6 +163,7 @@ public class Ch2Events : MonoBehaviour
 
     public void takePlayerToTPSpot()
     {
+        if (Stats.current == null || Stats.current.Player == null) return;
         Stats.current.Player.GetComponent<SpriteRenderer>().enabled = false;
         
         Stats.current.Player.transform.position = playerTPSpot.transform.position;
@@ -182,8 +189,8 @@ public class Ch2Events : MonoBehaviour
                 Stats.StartDeadline('D');
                 break;
             case 5:
-                Stats.StartDeadline('E');
                 Progress.saveData(toFile: "saveArchiveCh2LastDay");
+                Stats.StartDeadline('E');
                 break;
 
         }
