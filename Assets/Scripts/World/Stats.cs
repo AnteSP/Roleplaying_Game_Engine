@@ -377,6 +377,8 @@ public class Stats : MonoBehaviour
     {
         current.AllowSelecting = b;
     }
+
+    public bool currentlyTransitioning = false;
     /// <summary>
     /// 
     /// </summary>
@@ -385,7 +387,9 @@ public class Stats : MonoBehaviour
     {
         if (current.CurrentCS == null) return;
         Dialogue.d.showDisplay(false);
+        Dialogue.indicateSpaceBarPress(false);
         current.AllowSelecting = false;
+        current.currentlyTransitioning = true;
 
         Stats.StartStopPlayerMovement(false,"Transition");
 

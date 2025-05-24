@@ -97,7 +97,7 @@ public class CSMovement : MonoBehaviour
 
         if (APos.Count == 0)
         {
-            if(!n)Dad.goodtoGo = true;
+            if (!n) Dad.setGoodToGoOnly(true);
             this.enabled = false;
         }
     }

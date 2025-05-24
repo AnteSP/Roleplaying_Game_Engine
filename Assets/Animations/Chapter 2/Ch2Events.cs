@@ -106,7 +106,7 @@ public class Ch2Events : MonoBehaviour
                 }
             }
             
-            if(!doingMessage && Stats.current.Money > calcFredCost())
+            if(!doingMessage && Stats.current.Money > calcFredCost() && !Progress.getBool("Ch2Final"))
             {
                 Stats.DisplayMessage("You already have enough money to pay Fred to smuggle you out! Congrats! You can just spend time exploring now. Or if you're done that, go into Settings > Accelerate passage of time");
                 doingMessage = true;

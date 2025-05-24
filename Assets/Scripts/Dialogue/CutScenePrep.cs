@@ -20,6 +20,7 @@ public class CutScenePrep : StateMachineBehaviour
     //}
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Stats.current.currentlyTransitioning = false;
         bool Ending;
         CutSceneTalker cs = Stats.current.CurrentCS;
         if (cs.EndingChapter)

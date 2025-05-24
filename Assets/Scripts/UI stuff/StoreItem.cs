@@ -34,7 +34,8 @@ public class StoreItem : MonoBehaviour
             Stats.current.KACHING.Play();
             if (Type == ItemType.Disposable)
             {
-                Items.Add(ItemID, 1);
+                if(RecipeNum != 0) Items.Add(ItemID, RecipeNum);
+                else Items.Add(ItemID, 1);
 
             } else if (Type == ItemType.Recipe)
             {

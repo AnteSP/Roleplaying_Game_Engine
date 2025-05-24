@@ -16,7 +16,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
     public Text text;
     Button But;
     public static float SLevel;
-    bool firstSell = false;
+    static bool firstSell = false;
 
     public void StartOverride()
     {
@@ -65,6 +65,7 @@ public class SellSodas : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         }
         else
         {
+            //print("FIRSTSELL: " + firstSell);
             Stats.ChangeTimeAnim(Mathf.CeilToInt(recipe.SodaTChange * (1f / List.TimeMult)) );
             if (!firstSell)
             {

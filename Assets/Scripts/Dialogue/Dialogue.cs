@@ -9,6 +9,7 @@ public class Dialogue : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI textDisplay;
+    public GameObject spaceBarIndic; 
 
     public float TypeSpeed;
 
@@ -96,10 +97,13 @@ public class Dialogue : MonoBehaviour
             TypeNoise.Stop();
         }
 
+        if(CS == null || CS.goodtoGo) indicateSpaceBarPress(true);
+
     }
 
     public void NextSentence()
     {
+        indicateSpaceBarPress(false);
         QuickTalker.ONLYACTIVETALKER = false;
         textDisplay.text = "";
         StopAllCoroutines();
@@ -762,6 +766,20 @@ public class Dialogue : MonoBehaviour
     {
         //print("SET");
         Dialogue.d.CS.goodtoGo = val;
+        indicateSpaceBarPress(true);
+    }
+
+    static public void indicateSpaceBarPress(bool on)
+    {
+        if (Dialogue.d == null || Dialogue.d.spaceBarIndic == null) return;
+
+        if(Stats.current != null && Stats.current.currentlyTransitioning)
+        {
+            Dialogue.d.spaceBarIndic.SetActive(false);
+            return;
+        }
+
+        Dialogue.d.spaceBarIndic.SetActive(on);
     }
 
 }

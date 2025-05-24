@@ -1,17 +1,17 @@
 {
-  "FUN": 18,
-  "MONEY": 999999,
-  "TIME": 600,
-  "IRLTIME": 65,
+  "FUN": 58,
+  "MONEY": 20000,
+  "TIME": 603,
+  "IRLTIME": 29,
   "Ch2": {
     "HQSpotFree": true,
     "OpeningDone": true,
-    "TutorialDone": false,
+    "TutorialDone": true,
     "FredCS1": false,
     "StealerCSDone": false,
     "Final": false,
     "Vader1": false,
-    "FredCS2": false,
+    "FredCS2": true,
     "FredCS3": false,
     "FredCS4": false,
     "GaveBeans": false,
@@ -22,14 +22,13 @@
   "OUTFIT": 30,
   "Upgrades": {},
   "PickUps": {},
-  "Items": {
-    "17": 1,
-  },
+  "Items": {"3": 4,"15": 4},
   "Recipes": [
-    0
+    0,2
   ],
   "SellSpots": {},
   "Deadlines": {},
   "Volume": 1,
+  "MRespect": -2,
   "GameOver": false
 }

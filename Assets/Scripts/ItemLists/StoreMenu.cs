@@ -43,7 +43,15 @@ public class StoreMenu : Resource
         if (SMen == null) SMen = obj.GetComponent<StoreItem>();
 
         Item item = Items.ITEMS_DB[DisplayItemID];
-        SMen.setVars(-item.price, DisplayItemID, recipeNum, type);
+
+        int quantity = 1;
+        if (recipeNum != 0 && type == StoreItem.ItemType.Disposable)//use recipe num as quantity
+        {
+            obj.transform.Find("Quantity").gameObject.SetActive(true);
+            obj.transform.Find("Quantity").GetComponent<TextMeshProUGUI>().text = "x" + recipeNum;
+            quantity = recipeNum;
+        }
+        SMen.setVars(-item.price*quantity, DisplayItemID, recipeNum, type);
 
         obj.GetComponent<Image>().sprite = item.icon;
         if(type == StoreItem.ItemType.Upgrade)
@@ -54,6 +62,8 @@ public class StoreMenu : Resource
         }
         else
             obj.GetComponent<Tooltip>().tooltip = item.Name + "\n(" + item.description + ")";
+
+
 
         temp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = -SMen.Cost + "p";
     }

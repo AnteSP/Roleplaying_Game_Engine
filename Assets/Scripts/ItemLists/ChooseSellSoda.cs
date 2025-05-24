@@ -58,6 +58,39 @@ public class ChooseSellSoda : Resource
         if(example == null) example = this;
     }
 
+    void CheckSpecialSodas(SellSodas s)
+    {
+        bool bringBack = true;
+
+        switch (s.ID)
+        {
+            case 34:
+                //print("GOT HERE");
+                if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
+                {
+                    s.GetComponent<Button>().interactable = false;
+                    bringBack = false;
+                    if (Progress.getBool("Ch2VaderFail")) s.GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
+                    else s.GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
+                }
+                break;
+            case 15://cyanide
+                if (!Progress.getBool("Ch2Cyanide"))
+                {
+                    s.GetComponent<Button>().interactable = false;
+                    bringBack = false;
+                    s.GetComponent<Tooltip>().tooltip = "Unsellable until you find something or someone";
+                }
+                break;
+        }
+
+        if (bringBack)
+        {
+            s.GetComponent<Button>().interactable = true;
+            s.GetComponent<Tooltip>().tooltip = Items.ITEMS_DB[s.ID].Name;
+        }
+    }
+
     void NewCell(int ItemID)
     {
         if (ItemsForSale.Contains(ItemID))
@@ -82,17 +115,7 @@ public class ChooseSellSoda : Resource
             BeingSold.Add(S);
             S.StartOverride();
 
-            switch (ItemID)
-            {
-                case 34:
-                    if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
-                    {
-                        obj.GetComponent<Button>().interactable = false;
-                        if (Progress.getBool("Ch2VaderFail")) obj.GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
-                        else obj.GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
-                    }
-                    break;
-            }
+            CheckSpecialSodas(S);
         }
     }
 
@@ -151,24 +174,6 @@ public class ChooseSellSoda : Resource
         bool showEmptyNotif = true;
         for (int i = 0; i < BeingSold.Count; i++)
         {
-            switch (BeingSold[i].ID)
-            {
-                case 34:
-                    //print("GOT HERE");
-                    if (!Progress.getBool("Ch2VaderTrue") && !Progress.getBool("Ch2VaderLie"))
-                    {
-                        BeingSold[i].GetComponent<Button>().interactable = false;
-                        if (Progress.getBool("Ch2VaderFail")) BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable. You failed the Vader side quest";
-                        else BeingSold[i].GetComponent<Tooltip>().tooltip = "Unsellable until story progress is made";
-                    }
-                    else
-                    {
-                        BeingSold[i].GetComponent<Button>().interactable = true;
-                        BeingSold[i].GetComponent<Tooltip>().tooltip = Items.ITEMS_DB[BeingSold[i].ID].Name;
-                    }
-                    break;
-            }
-
             print(Items.Contains(BeingSold[i].ID) + BeingSold[i].TimeLeft.ToString());
             if ( Items.Contains(BeingSold[i].ID) || BeingSold[i].TimeLeft != 0)
             {
@@ -181,8 +186,8 @@ public class ChooseSellSoda : Resource
                     BeingSold[i].text.text = "" + Items.ITEMQUANTITY[Items.IndexOfXinY(ItemsForSale[i], Items.ITEMS)];
                 }
                 
-
                 showEmptyNotif = false;
+                CheckSpecialSodas(BeingSold[i]);
             }
             else
             {

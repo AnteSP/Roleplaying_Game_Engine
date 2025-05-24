@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cardboard Sign
   icon: {fileID: 21300000, guid: e2e5b5ccc2207c546b43be3c1dc498b0, type: 3}
-  description: + 10% sell speed
+  description: + 40% sell speed
   price: 25
-  MLevel: 10
+  MLevel: 0
   SodaPChange: 0
   SodaTChange: 0
+  ItemID: 0

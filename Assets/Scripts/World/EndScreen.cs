@@ -33,6 +33,7 @@ public class EndScreen : MonoBehaviour
             firstFinish = true;
         }else firstFinish = false;
 
+        Stats.allTime = 0;
         StartCoroutine(EndChapter());
     }
 

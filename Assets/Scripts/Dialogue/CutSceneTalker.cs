@@ -397,11 +397,12 @@ public class CutSceneTalker : MonoBehaviour
         {
             Next();
         }
-            
+        Dialogue.indicateSpaceBarPress(true);
     }
 
     public void setGoodToGoOnly(bool b)
     {
         goodtoGo = b;
+        Dialogue.indicateSpaceBarPress(true);
     }
 }

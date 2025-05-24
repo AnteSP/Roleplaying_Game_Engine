@@ -45,7 +45,7 @@ public class CutSceneVarDia : MonoBehaviour
 
         if (boolVarIds != "") return Progress.getBool(boolVarIds) == expectedTrue;
 
-        if (intVarIds != "") return Progress.getInt(intVarIds) > minIntVals[0] && Progress.getInt(intVarIds) < maxIntVals[0];
+        if (intVarIds != "") return Progress.getInt(intVarIds) >= minIntVals[0] && Progress.getInt(intVarIds) <= maxIntVals[0];
 
         return true;
     }
