@@ -97,7 +97,7 @@ public class Dialogue : MonoBehaviour
             TypeNoise.Stop();
         }
 
-        if(CS == null || CS.goodtoGo) indicateSpaceBarPress(true);
+        if( quickTalker == null && (CS == null || CS.goodtoGo) ) indicateSpaceBarPress(true);
 
     }
 
@@ -747,10 +747,13 @@ public class Dialogue : MonoBehaviour
 
     }
 
+    bool waiting = false;
     IEnumerator wait(float secs)
     {
         Current = "";
+        waiting = true;
         yield return new WaitForSeconds(secs);
+        waiting = false;
         talker.Use(0);
         Stats.current.AllowSelecting = true;
     }
@@ -766,12 +769,17 @@ public class Dialogue : MonoBehaviour
     {
         //print("SET");
         Dialogue.d.CS.goodtoGo = val;
-        indicateSpaceBarPress(true);
+        if(val)indicateSpaceBarPress(true);
     }
 
     static public void indicateSpaceBarPress(bool on)
     {
         if (Dialogue.d == null || Dialogue.d.spaceBarIndic == null) return;
+        if (d.waiting)
+        {
+            Dialogue.d.spaceBarIndic.SetActive(false);
+            return;
+        }
 
         if(Stats.current != null && Stats.current.currentlyTransitioning)
         {

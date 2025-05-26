@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Stats : MonoBehaviour
 {
@@ -133,6 +135,8 @@ public class Stats : MonoBehaviour
 
     [SerializeField] AudioMixer audioMixer;
     AudioSource backGroundMusic = null;
+
+    [SerializeField] Toggle screenWarpingToggle;
     private void OnEnable()
     {
 
@@ -194,7 +198,9 @@ public class Stats : MonoBehaviour
         backGroundMusic = Stats.current.GetComponent<AudioSource>();
 
         if (ObjectDepth.Space != null) space = ObjectDepth.Space.GetComponent<Animator>();
-        
+
+        if (Progress.doesFieldExist("CAM_WARPING") && !Progress.getBool("CAM_WARPING") && screenWarpingToggle != null) screenWarpingToggle.isOn = false;
+
         foreach (Deadline.DeadlineData dd in Deadline.activeDeadlineData.Where(a=> a != null))
         {
             bool foundOne = false;
@@ -1048,4 +1054,11 @@ public class Stats : MonoBehaviour
         return int.Parse(input.Substring(2, endIndex - 2));
     }
 
+    public void ToggleScreenWarping()
+    {
+        Camera.main.GetComponent<Volume>().profile.TryGet(out PaniniProjection pp);
+        pp.active = !pp.active;
+        
+        Progress.switchInPlay("CAM_WARPING", pp.active);
+    }
 }

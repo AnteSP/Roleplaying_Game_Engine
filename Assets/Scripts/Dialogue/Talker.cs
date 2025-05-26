@@ -60,14 +60,15 @@ public class Talker : Resource
         }
         if(Stats.current != null)
         {
-            //PUT SHIT IN HERE
+            GameObject P = Stats.current.Player;
+            D.DisplayOnTop((Camera.main.transform.position.y > P.transform.position.y));
         }
-        GameObject P = Stats.current.Player;
+        
         Stats.StartStopPlayerMovement(false,"Talker");
         Camera.main.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         D.gameObject.SetActive(true);
-        D.DisplayOnTop((Camera.main.transform.position.y > P.transform.position.y));
+        
         D.SetTypeNoise(TypeNoise);
 
 

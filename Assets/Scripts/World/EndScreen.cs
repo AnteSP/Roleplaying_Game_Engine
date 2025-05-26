@@ -33,7 +33,6 @@ public class EndScreen : MonoBehaviour
             firstFinish = true;
         }else firstFinish = false;
 
-        Stats.allTime = 0;
         StartCoroutine(EndChapter());
     }
 
@@ -42,6 +41,7 @@ public class EndScreen : MonoBehaviour
         float t = 0, temp = 0, secs = 0;
         float Len = 2;
         float TSc = Stats.allTime;
+        Stats.allTime = 0;
 
         yield return new WaitForSeconds(Len);
         Complete.gameObject.SetActive(true);
