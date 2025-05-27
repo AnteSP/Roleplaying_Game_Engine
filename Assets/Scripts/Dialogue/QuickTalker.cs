@@ -11,7 +11,6 @@ public class QuickTalker : Resource
     bool NE = false;
 
     [SerializeField] AudioSource TypeNoise;
-    Collider2D col;
     public int messageTime = 5;
     [SerializeField] bool stopPlayer = false;
     [SerializeField] bool justDisableComponent = false;
@@ -29,7 +28,6 @@ public class QuickTalker : Resource
 
     private void Start()
     {
-        col = GetComponent<Collider2D>();
         if(TryGetComponent<NPCMovement>(out NPCMovement a))
         {
             N = a;
@@ -83,7 +81,7 @@ public class QuickTalker : Resource
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name != "Player") return;
-        col.enabled = false;
+        foreach (Collider2D c in GetComponents<Collider2D>()) c.enabled = false;
         
         Use(0);
         StartCoroutine(ExampleCoroutine());

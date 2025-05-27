@@ -11,7 +11,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] TextMeshProUGUI textDisplay;
     public GameObject spaceBarIndic; 
 
-    public float TypeSpeed;
+    public readonly float TypeSpeed = 0.008f;
 
     public NPCMovement NPC = null;
     public Talker talker = null; 
@@ -167,6 +167,7 @@ public class Dialogue : MonoBehaviour
         End = true;
 
         CS = null;
+        EndConvo();
     }
 
     public void forceStopSounds()
@@ -565,7 +566,7 @@ public class Dialogue : MonoBehaviour
                         EndCutScene(CS);
                     else
                         EndCutScene(CS,4);
-                    EndConvo();
+                    
 
                     break;
                 case 'F':

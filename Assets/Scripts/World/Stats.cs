@@ -339,6 +339,8 @@ public class Stats : MonoBehaviour
             else print("Time STOP rejected due to " + timeSources[0] + " and " + (timeSources.Count - 1) + " others");
         }
 
+        print("STARTSTOP TIME " + start + " SOURCE: " + source);
+
     }
     static List<string> timeSources = new List<string>();
 
@@ -902,6 +904,7 @@ public class Stats : MonoBehaviour
         SellSpot.resetSellSpotsList();
         Stats.current = null;
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        print("CLEARING TIME SORUCES");
         moveSources.Clear();
         timeSources.Clear();
         outfit.ResetOutfitStuff();

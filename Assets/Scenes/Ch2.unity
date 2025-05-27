@@ -5363,7 +5363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1326275989}
   spaceBarIndic: {fileID: 439973081}
-  TypeSpeed: 0.02
   NPC: {fileID: 0}
   talker: {fileID: 0}
   quickTalker: {fileID: 0}
@@ -78512,7 +78511,7 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - '%#'
+  - '%:Main Menu'
   - '%%'
   TypeNoise: {fileID: 662037077}
   talkOnAwake: 0

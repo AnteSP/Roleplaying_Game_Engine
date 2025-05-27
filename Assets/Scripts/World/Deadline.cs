@@ -112,7 +112,7 @@ class Deadline : MonoBehaviour
                 else
                 {
                     Stats.current.CurrentCS = SuccessCutScene;
-                    Stats.current.CurrentCS.enabled = true;
+                    //Stats.current.CurrentCS.enabled = true;
                     Stats.Transition(0);
                 }
             }
@@ -125,7 +125,7 @@ class Deadline : MonoBehaviour
                 else
                 {
                     Stats.current.CurrentCS = FailCutScene;
-                    Stats.current.CurrentCS.enabled = true;
+                    //Stats.current.CurrentCS.enabled = true;
                     Stats.Transition(0);
                 }
             }

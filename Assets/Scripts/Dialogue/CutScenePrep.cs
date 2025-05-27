@@ -63,14 +63,16 @@ public class CutScenePrep : StateMachineBehaviour
 
                     return;
                 }
-            }
-            Stats.doSelecting(true);
-            cs.PackUp(true);
-            Stats.StartStopTime(true, "Cutscene");
-            //Stats.current.PassTime = true;
+                else
+                {
+                    Stats.doSelecting(true);
+                    cs.PackUp(true);
+                    Stats.StartStopTime(true, "Transition");
+                    //Stats.current.PassTime = true;
 
-            Stats.StartStopPlayerMovement(true, "Transition");
-            //Stats.current.Player.GetComponent<Movement>().enabled = true;
+                    Stats.StartStopPlayerMovement(true, "Transition");
+                }
+            }
         }
         else//CS Starting
         {

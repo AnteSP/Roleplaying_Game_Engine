@@ -102,6 +102,7 @@ public class CutSceneTalker : MonoBehaviour
         if (!b)//if starting. Check that we can start
         {
             if (!WeCanStart()) return;
+            goingToNextScene = false;
         }
 
         Crb = Camera.main.GetComponent<Rigidbody2D>();
@@ -110,7 +111,11 @@ public class CutSceneTalker : MonoBehaviour
         Slider.ForceBack();
         Stats.current.AllowSelecting = b;
 
-        Stats.StartStopTime(b, "Cutscene");
+        if (!goingToNextScene)
+        {
+            print("STOPIING TIME HERE " + b);
+            Stats.StartStopTime(b, "Cutscene");
+        }
         //Stats.current.PassTime = b;
 
         Camera.main.GetComponent<CamZoom>().SetSize(CamSize);
@@ -284,9 +289,12 @@ public class CutSceneTalker : MonoBehaviour
         return new Vector2(Mathf.Clamp((Input.mousePosition.x - Screen.width / 2) / Screen.width, -0.5f, 0.5f), Mathf.Clamp((Input.mousePosition.y - Screen.height / 2) / Screen.height, -0.5f, 0.5f));
     }
 
+    bool goingToNextScene = false;
+
     public bool GoToNextScene()
     {
         string lastSent = Sentences.Last();
+        goingToNextScene = true;
         print("CHECKING SCENE" + lastSent);
         if (lastSent.StartsWith("%S"))
         {

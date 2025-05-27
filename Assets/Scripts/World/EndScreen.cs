@@ -33,6 +33,7 @@ public class EndScreen : MonoBehaviour
             firstFinish = true;
         }else firstFinish = false;
 
+        Dialogue.d.showDisplay(false);
         StartCoroutine(EndChapter());
     }
 
