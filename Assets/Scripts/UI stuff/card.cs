@@ -107,17 +107,20 @@ public class card : MonoBehaviour
                 else
                     Stats.changeFriendship("FredF", 0);
                 break;
-            case "Ch2ResistedGG":
+            case "Ch2ResistedGGChoice":
                 if (positive)
                     Stats.changeFriendship("MRespect", 1);
                 else
                     Stats.changeFriendship("MRespect", -1);
                 break;
-            case "Ch2HelpedDanny":
+            case "Ch2HelpedDannyChoice":
                 if (positive)
                     Stats.changeFriendship("MRespect", 2);
                 else
                     Stats.changeFriendship("MRespect", -2);
+                break;
+            default:
+                throw new System.Exception("WHAT THE FUCK!!!!! card.cs doesn't have a card ID for this. Fix that shit NOW dawg");
                 break;
         }
     }

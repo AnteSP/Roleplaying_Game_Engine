@@ -155,7 +155,7 @@ public class Progress : MonoBehaviour
             return( data[Id].Value<int>());
         else
         {
-            print("ERROR: While getting Int. Missing field [" + Id + "] in save data");
+            print("ERROR: While getting Int. Missing field [" + Id + "] in save data. Setting default value to 0");
             return 0;
         }
     }

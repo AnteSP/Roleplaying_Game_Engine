@@ -113,7 +113,7 @@ public class CutSceneTalker : MonoBehaviour
 
         if (!goingToNextScene)
         {
-            print("STOPIING TIME HERE " + b);
+            //print("STOPIING TIME HERE " + b);
             Stats.StartStopTime(b, "Cutscene");
         }
         //Stats.current.PassTime = b;
@@ -206,6 +206,16 @@ public class CutSceneTalker : MonoBehaviour
         
     }
 
+    private void OnDisable()
+    {
+        if(Stats.current.CurrentCS.gameObject.name == gameObject.name)
+        {
+            D.EndCutScene(this,-1);
+            PackUp(true);
+            Stats.doSelecting(true);
+        }
+    }
+
     private void OnEnable()
     {
         if (Stats.current == null)
@@ -258,6 +268,8 @@ public class CutSceneTalker : MonoBehaviour
             if (Sentences.Last().StartsWith("%#")) EndingChapter = true;
             Ending = true;
             skipping = true;
+            musicsQueue.Clear();
+            Stats.changeBackgroundMusic(null);
             D.EndCutScene(this);
             goodtoGo = false;
         }

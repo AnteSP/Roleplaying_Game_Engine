@@ -2248,8 +2248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 65
   Line: '%f-3[FredF]Fred: Er... I need to tell you, Soda Lad... I know you lied about
-    it being safe for me back there... I know you were in a tough spot. But I don''t
-    know how well I can trust ya now'
+    it being safe for me back there... I don''t know how well I can trust ya now'
   LineIfFalseAndFirstListed: '%f+3[FredF]Fred: Soda Lad, I really appreciated you
     tellin'' me the truth about the danger I was in the other day'
   FUNMin: 1
@@ -21789,7 +21788,7 @@ MonoBehaviour:
   - '%NDarth Vader Guy: WEAKLINGS! I RETURN! TO COLLECT THE TRIBUTE YOUR GALAXY OWES
     ME!!!'
   - 'Random Kid: Waaah I''m scared!'
-  - 'Other Kid: Hey! Sh! Don''t cry in front of lord Vader!'
+  - 'Other Kid: Hey! Sh! Don''t cry in front of Lord Vader!'
   - 'Other Kid: Here, Lord Vader, please take my money and spare us'
   - '%NYou: Whoa whoa whoa hey, don''t give him your money!'
   - '%AYou: Watch, he won''t be able to crush MY soda with the force, and that''s
@@ -45808,7 +45807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &952113392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -97775,7 +97774,7 @@ MonoBehaviour:
     ItemType: 3
   - ID: 16
     RecipeNum: 0
-    ItemType: 0
+    ItemType: 4
   CloseOnPurchase: 0
   SwitchOnPurchase: 
   swapWithThisOnPurchase: {fileID: 0}
@@ -99008,10 +99007,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37.5, y: -37.5}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

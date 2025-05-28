@@ -268,7 +268,6 @@ public class Stats : MonoBehaviour
             CloseMessage();
         }
 
-        //Debug("TIME: " + allTimeInGame);
     }
 
     public void SetVolume(float val)
@@ -309,17 +308,21 @@ public class Stats : MonoBehaviour
     {
         //print("START " + start + " source: " + source);
         int comp = 0;
-        if(source != "")
+        print("STARTSTOP TIME " + start + " SOURCE: " + source);
+        if (source != "")
         {
-            if (!start && !timeSources.Contains(source))//if stopping
+            if (start)
             {
-                timeSources.Add(source);
-                comp = 1;
-            }
-            else//if starting
-            {
-                if(timeSources.Contains(source))
+                if (timeSources.Contains(source))
                     timeSources.Remove(source);
+            }
+            else
+            {
+                if (!timeSources.Contains(source))
+                {
+                    timeSources.Add(source);
+                    comp = 1;
+                }
             }
         }
 
@@ -339,7 +342,7 @@ public class Stats : MonoBehaviour
             else print("Time STOP rejected due to " + timeSources[0] + " and " + (timeSources.Count - 1) + " others");
         }
 
-        print("STARTSTOP TIME " + start + " SOURCE: " + source);
+        
 
     }
     static List<string> timeSources = new List<string>();
@@ -373,6 +376,7 @@ public class Stats : MonoBehaviour
 
     public static void Debug(string h)
     {
+        if (current != null && current.DEBUGT != null)
         current.DEBUGT.text = h;
     }
 
@@ -533,6 +537,7 @@ public class Stats : MonoBehaviour
         CanGoUp = Input.GetKeyUp(KeyCode.Space) ? true : CanGoUp;
     }*/
 
+    static int lastMoneyChange = 0;
     public static bool ChangeMoney(int Amount)
     {
 
@@ -540,7 +545,6 @@ public class Stats : MonoBehaviour
 
         if (!temp)
         {
-
             current.Money = temp ? 0 : current.Money + Amount;
 
             string Temp = "";
@@ -572,16 +576,34 @@ public class Stats : MonoBehaviour
                 current.MoneyAdd.gameObject.SetActive(false);
                 if (Amount > 0)
                 {
-                    current.MoneyAdd.text = "+ " + Amount;
-                    current.MoneyAdd.color = Color.green;
+                    if(Math.Abs(UnityEngine.Time.frameCount - lastMoneyChange) < 3 && current.MoneyAdd.text == ("- " + Amount))//if we literally just took this much away
+                    {
+                        current.MoneyAdd.text = "+ 0";
+                        current.MoneyAdd.color = Color.white;
+                    }
+                    else
+                    {
+                        current.MoneyAdd.text = "+ " + Amount;
+                        current.MoneyAdd.color = Color.green;
+                    }
                 }
                 else
                 {
-                    current.MoneyAdd.text = "- " + -Amount;
-                    current.MoneyAdd.color = Color.red;
+                    if (Math.Abs(UnityEngine.Time.frameCount - lastMoneyChange) < 3 && current.MoneyAdd.text == ("+ " + Amount))//if we literally just added this
+                    {
+                        current.MoneyAdd.text = "+ 0";
+                        current.MoneyAdd.color = Color.white;
+                    }
+                    else
+                    {
+                        current.MoneyAdd.text = "- " + -Amount;
+                        current.MoneyAdd.color = Color.red;
+                    }
+
                 }
                 current.MoneyAdd.gameObject.SetActive(true);
             }
+            lastMoneyChange = UnityEngine.Time.frameCount;
 
         }
 
@@ -878,6 +900,7 @@ public class Stats : MonoBehaviour
     {
         if (current == null || current.backGroundMusic == null) return;
         AudioSource aS = Stats.current.backGroundMusic;
+        aS.pitch = 1;
 
         if (current.OGAudio == null) current.OGAudio = aS.clip;
         aS.clip = a;
@@ -897,7 +920,6 @@ public class Stats : MonoBehaviour
         if (backGroundMusic != null) backGroundMusic.Stop();
         Player.SetActive(false);
         SodaMachine.resetStarted();
-        timeSources.Clear();
         SellUpgrade.FlushUpgrades();
         Progress.saveData();
         Slider.EmptyList();
@@ -906,7 +928,7 @@ public class Stats : MonoBehaviour
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         print("CLEARING TIME SORUCES");
         moveSources.Clear();
-        timeSources.Clear();
+        timeSources.Clear();//TRY COMMENTING THIS OUT
         outfit.ResetOutfitStuff();
         MouseHoverAnimControl.resetBoxesCount();
 
@@ -975,6 +997,10 @@ public class Stats : MonoBehaviour
         if(current.SocialNotification != null)
         {
             current.SocialNotification.transform.parent.gameObject.SetActive(true);//The parent should be the social menu handle
+            foreach(SocialCell s in current.SocialNotification.transform.parent.parent.GetComponentsInChildren<SocialCell>())
+            {
+                s.ForceStart();
+            }
             current.SocialNotification.gameObject.SetActive(false);
         }
 
@@ -1004,8 +1030,9 @@ public class Stats : MonoBehaviour
             }
             current.SocialNotification.GetComponent<TextMeshProUGUI>().text = "Friendship " + (amount < 0 ? "" : "+") + amount;
         }
+        //SocialCell.refreshSocial();
 
-        
+
     }
 
     bool RTXOn = false;

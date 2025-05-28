@@ -158,7 +158,7 @@ public class Dialogue : MonoBehaviour
         textDisplay.text = "";
         if (cs.musicsQueue.Count > 0) cs.NextMusicInQueue();
         
-        Stats.Transition(transition);
+        if(transition >= 0)Stats.Transition(transition);
         gameObject.SetActive(false);
         forceStopSounds();
 

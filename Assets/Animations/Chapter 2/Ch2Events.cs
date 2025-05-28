@@ -111,6 +111,11 @@ public class Ch2Events : MonoBehaviour
                 Stats.DisplayMessage("You already have enough money to pay Fred to smuggle you out! Congrats! You can just spend time exploring now. Or if you're done that, go into Settings > Accelerate passage of time");
                 doingMessage = true;
             }
+
+            if (!Progress.getBool("Ch2TutorialDone"))
+            {
+                Stats.StartStopTime(false, "SellSpot");
+            }
         }
     }
 

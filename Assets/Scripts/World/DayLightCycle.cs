@@ -118,7 +118,7 @@ public class DayLightCycle : MonoBehaviour
             holdingNight = false;
             holdingDay = false;
         }
-        Stats.Debug(m + "  " + transitionProgress);
+        //Stats.Debug(m + "  " + transitionProgress);
         updateStreetLights(!isday, lightIntensity);
         updateDayLight(transitionProgress);
     }

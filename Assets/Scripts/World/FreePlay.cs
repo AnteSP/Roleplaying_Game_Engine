@@ -38,7 +38,7 @@ public class FreePlay : MonoBehaviour
                 Camera.main.GetComponent<UnityEngine.Rendering.Volume>().profile = freePlayProfile;
             }
 
-            Stats.StartStopTime(true, "freeplay");
+            Stats.StartStopTime(false, "freeplay");
             //GameObject.FindGameObjectWithTag("SPECIAL").GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0.3f;
         }
         foreach (GameObject g in enableOnlyOnFreePlay)
