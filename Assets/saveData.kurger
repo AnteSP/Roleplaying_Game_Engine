@@ -1,8 +1,8 @@
 {
-  "FUN": 44,
+  "FUN": 16,
   "MONEY": 0,
-  "TIME": 633,
-  "IRLTIME": 40,
+  "TIME": 634,
+  "IRLTIME": 27,
   "Ch2": {
     "OpeningDone": true,
     "WakeUp": false,
@@ -12,17 +12,18 @@
     "HQSpotFree": true,
     "TutorialDone": true,
     "StealerCSDone": false,
-    "Final": true,
+    "Final": false,
     "Vader1": false,
     "FredCS3": false,
     "FredCS4": false,
     "GaveBeans": false,
-    "Medli": false
+    "Medli": false,
+    "HatmanVisited": true
   },
   "OUTFIT": 30,
   "PickUps": {},
+  "WeekAngels": true,
   "GameOver": false,
-  "Chapter": 2,
   "Items": {},
   "Recipes": [
     0
@@ -31,6 +32,8 @@
   "SellSpots": {
     "Ch2/Sell Spot Middle": true
   },
-  "Deadlines": {},
+  "Deadlines": {
+    "A-Ch2": true
+  },
   "Volume": 1
 }

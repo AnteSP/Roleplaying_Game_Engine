@@ -8269,6 +8269,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &204029219
 GameObject:
   m_ObjectHideFlags: 0
@@ -12624,6 +12625,7 @@ MonoBehaviour:
   dayToStart: 5
   hourToStartA: 18
   hourToStartB: 20
+  sleeping: 0
 --- !u!1 &367966883
 GameObject:
   m_ObjectHideFlags: 0
@@ -43113,6 +43115,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!95 &1302096154
 Animator:
   serializedVersion: 4
@@ -50244,6 +50247,7 @@ MonoBehaviour:
   dayToStart: 4
   hourToStartA: 11
   hourToStartB: 13
+  sleeping: 0
 --- !u!114 &1526116800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57486,10 +57490,8 @@ MonoBehaviour:
   - {fileID: 1053999995}
   - {fileID: 680135420}
   - {fileID: 1155889266}
-  - {fileID: 636971379}
   Enable:
   - {fileID: 1310431870}
-  - {fileID: 1716821442}
   - {fileID: 736632503}
   - {fileID: 1907742720}
   - {fileID: 1155889266}
@@ -57520,6 +57522,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &1716821453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58956,6 +58959,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &1773755283
 MonoBehaviour:
   m_ObjectHideFlags: 0

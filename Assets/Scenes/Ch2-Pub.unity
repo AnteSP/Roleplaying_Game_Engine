@@ -3197,6 +3197,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &108965924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,6 +4574,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &148367907
 GameObject:
   m_ObjectHideFlags: 0
@@ -17297,7 +17299,7 @@ MonoBehaviour:
   - '%AYou: Hey, don''t... Worry...'
   - 'G.G: Hahaha... "Don''t worry" the prick says'
   - 'G.G: When I get my hands on this mothafucka i''m snappin'' his legs like glowsticks
-    and carvin'' him up like a jack o'' lantern'
+    and carvin'' him up like a pumpkin'
   - 'G.G: Do not underestimate me...'
   - '%AYou: Wha-...'
   - 'Fred: Hm? You alright? You look like you''ve seen a ghost'
@@ -17374,6 +17376,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &609281694
 GameObject:
   m_ObjectHideFlags: 0
@@ -38162,6 +38165,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1458313669
 GameObject:
   m_ObjectHideFlags: 0
@@ -38810,6 +38814,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1479595781
 GameObject:
   m_ObjectHideFlags: 0
@@ -41620,6 +41625,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &1597082575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45692,10 +45698,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -50436,6 +50442,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1977810235
 GameObject:
   m_ObjectHideFlags: 0
@@ -52423,7 +52430,7 @@ MonoBehaviour:
   - 'Fred: Hm, I see. You have seemed determined to get out of here'
   - 'You: Ever since I was a kid I knew my uncle Tony was involved with the mafia.
     Both me and my brother never wanted to get involved'
-  - 'Fred: It''s quite ludicrous that your brother''s the damned CEO of Conker Koola.
+  - 'Fred: It''s quite ludicrous that your brother''s the damned CEO of Conker Coola.
     Why won''t he help you?'
   - 'You: Haha... Help? No, that''s for sissies. A real man is able to stand on his
     own. And godamnit I''m gonna prove that I can too'
@@ -52493,6 +52500,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &2074359878
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -50,6 +50,7 @@ public class card : MonoBehaviour
                 if(gameObject.name.StartsWith("1"))//BAD
                 {
                     Stats.current.CurrentCS.HandleExit();
+                    Stats.current.CurrentCS.sleeping = true;
                     Stats.current.CurrentCS.enabled = false;
                     Stats.current.CurrentCS = Stats.current.CurrentCS.alt;
                     Stats.current.CurrentCS.skipPacking = true;
@@ -118,6 +119,8 @@ public class card : MonoBehaviour
                     Stats.changeFriendship("MRespect", 2);
                 else
                     Stats.changeFriendship("MRespect", -2);
+                break;
+            case "Ch2VaderDecision":
                 break;
             default:
                 throw new System.Exception("WHAT THE FUCK!!!!! card.cs doesn't have a card ID for this. Fix that shit NOW dawg");

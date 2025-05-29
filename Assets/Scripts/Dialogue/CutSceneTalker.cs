@@ -103,7 +103,7 @@ public class CutSceneTalker : MonoBehaviour
         {
             if (!WeCanStart()) return;
             goingToNextScene = false;
-        }
+        }else goingToNextScene = false;
 
         Crb = Camera.main.GetComponent<Rigidbody2D>();
         Anim = D.GetComponent<Animator>();
@@ -113,7 +113,7 @@ public class CutSceneTalker : MonoBehaviour
 
         if (!goingToNextScene)
         {
-            //print("STOPIING TIME HERE " + b);
+            print("STOPIING TIME HERE " + b);
             Stats.StartStopTime(b, "Cutscene");
         }
         //Stats.current.PassTime = b;
@@ -157,6 +157,7 @@ public class CutSceneTalker : MonoBehaviour
 
         if(Stats.current.Filter != null) Stats.current.Filter.GetComponent<Animator>().enabled = !b;
 
+        sleeping = true;
         this.enabled = b ? false : this.enabled; 
 
         D.gameObject.SetActive(!b);
@@ -190,7 +191,7 @@ public class CutSceneTalker : MonoBehaviour
 
             if(Index < As.Length && As[Index] != null)
             {
-                print("AUDIO STOPPING " + As[Index].name);
+                //print("AUDIO STOPPING " + As[Index].name);
                 As[Index].Stop();
             }
 
@@ -208,14 +209,19 @@ public class CutSceneTalker : MonoBehaviour
 
     private void OnDisable()
     {
-        if(Stats.current.CurrentCS.gameObject.name == gameObject.name)
+        if (Stats.current == null || Stats.current.CurrentCS == null) return;
+        if(Stats.current.CurrentCS.gameObject.name == gameObject.name && !sleeping)
         {
+            print("STOPPING THIS CS DUE TO DISABLE");
+            musicsQueue.Clear();
+            Stats.changeBackgroundMusic(null);
             D.EndCutScene(this,-1);
             PackUp(true);
             Stats.doSelecting(true);
         }
     }
 
+    public bool sleeping = false;
     private void OnEnable()
     {
         if (Stats.current == null)
@@ -230,6 +236,7 @@ public class CutSceneTalker : MonoBehaviour
             setAsCurrent = false;
             if (!setAsCurrent_InstaPlay)
             {
+                sleeping = true;
                 this.enabled = false;
                 return;
             }

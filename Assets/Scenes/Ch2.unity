@@ -2102,6 +2102,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &41891084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12295,6 +12296,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!4 &256555880
 Transform:
   m_ObjectHideFlags: 0
@@ -14075,6 +14077,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &297144626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19735,6 +19738,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &398230089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21891,6 +21895,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &462262530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30573,6 +30578,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &665499997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35867,6 +35873,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &766854505
 GameObject:
   m_ObjectHideFlags: 0
@@ -41969,19 +41976,21 @@ EdgeCollider2D:
   - {x: -23.783716, y: -23.925577}
   - {x: 43.480747, y: -23.837284}
   - {x: 43.50526, y: -3.0152588}
-  - {x: 2.703871, y: -3.16329}
-  - {x: 1.1729745, y: -2.7614155}
-  - {x: 0.32596684, y: -2.1870937}
-  - {x: -0.22167301, y: -1.9016228}
-  - {x: -0.54297876, y: -1.6391964}
-  - {x: -0.68325615, y: -1.27882}
-  - {x: -0.64018106, y: -0.83948326}
-  - {x: -0.26150584, y: -0.39704132}
-  - {x: 0.102642775, y: -0.11367798}
-  - {x: 1.2991586, y: 0.4494133}
-  - {x: 3.5775418, y: 1.7010479}
-  - {x: 6.1877794, y: 2.5078354}
-  - {x: 8.51973, y: 3.4211216}
+  - {x: 3.9439104, y: -3.198721}
+  - {x: 2.9444597, y: -2.5134068}
+  - {x: 2.4517486, y: -1.7619381}
+  - {x: 2.2938356, y: -1.1576004}
+  - {x: 2.503975, y: -0.5054455}
+  - {x: 2.7888541, y: -0.0033512115}
+  - {x: 3.540523, y: 0.5777054}
+  - {x: 4.884725, y: 1.6243439}
+  - {x: 6.453484, y: 2.807787}
+  - {x: 8.661502, y: 4.5084133}
+  - {x: 10.791137, y: 5.8098106}
+  - {x: 13.103533, y: 6.991703}
+  - {x: 15.158996, y: 7.711117}
+  - {x: 17.092554, y: 8.122768}
+  - {x: 19.415268, y: 8.6971035}
   - {x: 24.667034, y: 10.030076}
   - {x: 24.600386, y: 32.89823}
   - {x: 5.0375996, y: 34.60364}
@@ -50364,6 +50373,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1034931891
 GameObject:
   m_ObjectHideFlags: 0
@@ -52300,7 +52310,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sell
+  m_Text: Back
 --- !u!222 &1061152285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59880,6 +59890,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1231864762
 GameObject:
   m_ObjectHideFlags: 0
@@ -74192,6 +74203,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &1507847154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105817,6 +105829,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1864853614
 GameObject:
   m_ObjectHideFlags: 0
@@ -106817,6 +106830,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &1883475119
 GameObject:
   m_ObjectHideFlags: 0

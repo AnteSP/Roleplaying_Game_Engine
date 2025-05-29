@@ -2226,7 +2226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1326275989}
   spaceBarIndic: {fileID: 2144879901}
-  TypeSpeed: 0.02
   NPC: {fileID: 0}
   talker: {fileID: 0}
   quickTalker: {fileID: 0}
@@ -15613,6 +15612,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!1 &665499973
 GameObject:
   m_ObjectHideFlags: 0
@@ -15880,7 +15880,7 @@ MonoBehaviour:
   - '???: Uh... Yeah! Cheers to that! '
   - '???: Drink up everybody!'
   - '%A'
-  - 'Nazi: Hmm... Zis drink taste qvite strange... Conker Koola ist definitely better'
+  - 'Nazi: Hmm... Zis drink taste qvite strange... Conker Coola ist definitely better'
   - 'Nazi: Oh... '
   - 'Nazi: Mein stomach, it feels funny... '
   - '%ANazi: AGH'
@@ -16126,6 +16126,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &665499984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41353,6 +41354,8 @@ MonoBehaviour:
   DeadlineNotification: {fileID: 0}
   SocialNotification: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 92a9407211718374fa32ddba140ca912, type: 2}
+  screenWarpingToggle: {fileID: 0}
+  currentlyTransitioning: 0
 --- !u!4 &1700876590
 Transform:
   m_ObjectHideFlags: 0
@@ -43305,10 +43308,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:

@@ -769,6 +769,7 @@ public class Dialogue : MonoBehaviour
     static public void forceGoodToGo(bool val)
     {
         //print("SET");
+        if (d == null || d.CS == null) return;
         Dialogue.d.CS.goodtoGo = val;
         if(val)indicateSpaceBarPress(true);
     }

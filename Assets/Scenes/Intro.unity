@@ -1464,7 +1464,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1326275989}
   spaceBarIndic: {fileID: 1398523357}
-  TypeSpeed: 0.02
   NPC: {fileID: 0}
   talker: {fileID: 0}
   quickTalker: {fileID: 0}
@@ -17328,7 +17327,7 @@ MonoBehaviour:
   D: {fileID: 119110231}
   DBoxOnTop: 0
   Sentences:
-  - '%ABar tender: GET OUTTA MY PUB YOU DRUNKARD!'
+  - '%ABartender: GET OUTTA MY PUB YOU DRUNKARD!'
   - 'You: ...'
   - '%nYou: Egh... F- *hiccup* ffffffuck you'
   - '%sEveryone: HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHHAHAHAHAHAHAHAHAHA'
@@ -17394,6 +17393,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &1182572379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29427,6 +29427,7 @@ MonoBehaviour:
   dayToStart: -1
   hourToStartA: -1
   hourToStartB: -1
+  sleeping: 0
 --- !u!114 &2083541692
 MonoBehaviour:
   m_ObjectHideFlags: 0

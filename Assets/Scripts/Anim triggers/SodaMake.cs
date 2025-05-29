@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SodaMake : StateMachineBehaviour
 {
@@ -21,29 +22,21 @@ public class SodaMake : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         failed = false;
+        List<int> missingItems = new List<int>();
         for (int i = 0; i < SodaMachine.Ings.Length; i++)
         {
-            Debug.Log("Taking Item " + SodaMachine.Ings[i] + " at " + i);
+            //Debug.Log("Taking Item " + SodaMachine.Ings[i] + " at " + i);
 
             if(!Items.Add(SodaMachine.Ings[i].ItemID, -1))
             {
                 failed = true;
-                Stats.DisplayMessage("Inventory Error! You don't have enough stuff to do that",true);
-                
-
-                //return used up items to player
-                for(int j = i - 1; j != -1; j -= 1)
-                {
-                    Items.AddNoAnim(SodaMachine.Ings[j].ItemID, 1);
-                }
-                //SodaMachine.ChooseRecipe(-1);
-                break;
+                missingItems.Add(i);
+                //Stats.DisplayMessage("Inventory Error! You don't have enough stuff to do that",true);
             }
         }
 
         if(!failed)
         {
-
             if (!Items.Add(Items.RECIPES_DB[SodaMachine.ActiveSoda].Soda.ItemID, 1))
             {
 
@@ -52,16 +45,21 @@ public class SodaMake : StateMachineBehaviour
                 //return used up items to player
                 for (int i = 0; i < SodaMachine.Ings.Length; i++)
                 {
-
                     Items.Add(SodaMachine.Ings[i].ItemID, 1);
-
                 }
-
                 //SodaMachine.ChooseRecipe(-1);
 
             }
+        }
+        else//we failed. Return everything
+        {
+            for (int i = 0; i < SodaMachine.Ings.Length; i++)
+            {
+                if (missingItems.Contains(i)) continue;
+                Items.AddNoAnim(SodaMachine.Ings[i].ItemID, 1);
+            }
 
-
+            Stats.DisplayMessage("Inventory Error! Missing these item(s):\n\n" + string.Join(',', missingItems.Select(index => SodaMachine.Ings[index].Name)), true);
 
         }
         

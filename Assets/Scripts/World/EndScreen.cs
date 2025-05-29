@@ -12,13 +12,13 @@ public class EndScreen : MonoBehaviour
     bool firstFinish = false;
     [SerializeField] string friendshipID;
 
-    [SerializeField] List<string> decisionIDs,decisionDescs;
+    [SerializeField] List<string> decisionIDs, decisionDescs;
     [SerializeField] List<TextMeshProUGUI> decisions;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     int chNum;
 
@@ -27,11 +27,11 @@ public class EndScreen : MonoBehaviour
         //Progress.readData();
         chNum = int.Parse(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name.Substring(2));
 
-        if(Progress.getInt("Chapter") < chNum)//
+        if (Progress.getInt("Chapter") < chNum)//
         {
             Progress.setInt("Chapter", chNum);
             firstFinish = true;
-        }else firstFinish = false;
+        } else firstFinish = false;
 
         Dialogue.d.showDisplay(false);
         StartCoroutine(EndChapter());
@@ -67,7 +67,7 @@ public class EndScreen : MonoBehaviour
             temp = UnityEngine.Time.deltaTime;
             t += temp;
             secs = (t / Len) * TSc;
-            Time.text = "Time: " + ((int)(secs/60)).ToString("D2") + ":" + ((int)(secs%60)).ToString("D2");
+            Time.text = "Time: " + ((int)(secs / 60)).ToString("D2") + ":" + ((int)(secs % 60)).ToString("D2");
 
             yield return new WaitForSeconds(temp);
         }
@@ -77,11 +77,11 @@ public class EndScreen : MonoBehaviour
         BSecret.gameObject.SetActive(true);
         BSecret.text = "Big Secret: " + BigSecretText();
         impact.Play();
-        for(int i = 0; i < decisionIDs.Count; i++)
+        for (int i = 0; i < decisionIDs.Count; i++)
         {
             if (!Progress.doesFieldExist(decisionIDs[i]))
             {
-                yield return new WaitForSeconds(Len/3);
+                yield return new WaitForSeconds(Len / 3);
                 decisions[i].transform.parent.gameObject.SetActive(true);
                 decisions[i].transform.parent.parent.gameObject.SetActive(true);
                 decisions[i].text = "[!] You missed a cutscene";
@@ -101,17 +101,23 @@ public class EndScreen : MonoBehaviour
 
     string BigSecretText()
     {
-        switch (chNum)
+        return BIG_SECRET_STRINGS[BigSecretStatus(chNum)];
+    }
+
+    public static readonly string[] BIG_SECRET_STRINGS = new string[] {"NOT FOUND","FOUND","WAITING..."};
+    public static int BigSecretStatus(int ChNum)//0 = NOT FOUND. 1 = FOUND. 2 = WAITING
+    {
+        switch (ChNum)
         {
             case 1:
-                if (Progress.getBool("WeekAngelAnim")) return "FOUND";
-                else if (Progress.getBool("WeekAngels")) return "WAITING...";
-                else return "NOT FOUND";
+                if (Progress.getBool("WeekAngelAnim")) return 1;
+                else if (Progress.getBool("WeekAngels")) return 2;
+                else return 0;
             case 2:
-                if (Progress.getBool("Ch2HatmanVisited")) return "FOUND";
-                else return "NOT FOUND";
+                if (Progress.getBool("Ch2HatmanVisited")) return 1;
+                else return 0;
             default:
-                return "Fuck goin on twin :(";
+                return -1;
         }
     }
 

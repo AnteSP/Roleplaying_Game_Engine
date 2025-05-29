@@ -21,7 +21,10 @@ public class MainMenu : MonoBehaviour
     static readonly int FINAL_CHAPTER = 2;
 
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] List<Image> bigSecrets;
+    [SerializeField] Sprite bigSecretNotFound, bigSecretWaiting, bigSecretFound;
 
+    
     private void Start()
     {
         m = this;
@@ -102,6 +105,15 @@ public class MainMenu : MonoBehaviour
         if (Progress.getBool("ch1Catboy"))
         {
             catBoyEasteregg.SetActive(true);
+        }
+
+        Sprite[] bssSprites = new Sprite[] { bigSecretNotFound , bigSecretFound,bigSecretWaiting};
+        for (i = 1; i <= bigSecrets.Count; i++)
+        {
+            int bss = EndScreen.BigSecretStatus(i);
+            print("GOT bss " + bss);
+            bigSecrets[i-1].sprite = bssSprites[bss];
+            bigSecrets[i-1].GetComponent<Tooltip>().tooltip = "BIG SECRET: " + EndScreen.BIG_SECRET_STRINGS[bss];
         }
     }
 
