@@ -250,6 +250,12 @@ public class ChooseSellSoda : Resource
         ToggleMenu();
     }
 
+    public void LeaveMenu()
+    {
+        if (activeSellSpot == null) return;
+        activeSellSpot.Use(0);
+    }
+
     public static void ForceClosed()
     {
         if (activeSellSpot != null) activeSellSpot.ToggleMenu();
@@ -268,6 +274,11 @@ public class ChooseSellSoda : Resource
             Stats.StartStopTime(true, "ChooseSellSoda");
             print("active sell spot OFF");
             activeSellSpot = null;
+            ItemsForSale.Clear();
+            for (int i = 0; i < Content.childCount; i++)
+            {
+                Destroy(Content.GetChild(0).gameObject);
+            }
         }
         else
         {
