@@ -23,7 +23,7 @@ public class Progress : MonoBehaviour
     static List<Progress> progressComps = new List<Progress>();
     static JObject data = null;
     static string SName = "U";
-    static bool loaded = false;
+    static bool loaded  = false;
 
     static string chPattern = @"^Ch\d+[a-zA-Z]+";
     static string chPatternShort = @"^Ch\d+";
@@ -375,7 +375,7 @@ public class Progress : MonoBehaviour
     public static void loadData(bool excludeItems = false,string fromFile = "")
     {
         print(excludeItems ? "LOADING JUST DATA" : "LOADING ITEMS + DATA");
-        loaded = true;
+        
         readData(fromFile);
 
         if(Stats.current != null)
@@ -392,10 +392,11 @@ public class Progress : MonoBehaviour
                 Stats.current.setIRLTime(data["IRLTIME"].Value<int>());
             else data.Add("IRLTIME", (int)Stats.current.getIRLTime());
         }
+        loaded = true;
 
         //ensureProgressCompsGood();
 
-       // print("PROGRESSCOMPS.Count = " + progressComps.Count);
+        // print("PROGRESSCOMPS.Count = " + progressComps.Count);
         foreach (Progress p in progressComps)
         {
             //print("P = " + p.Id + " b = " + data[p.Id].Value<bool>());

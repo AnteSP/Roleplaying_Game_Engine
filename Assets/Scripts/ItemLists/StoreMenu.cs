@@ -37,6 +37,13 @@ public class StoreMenu : Resource
 
     public GameObject swapWithThisOnPurchase = null;
 
+    [NonSerialized] public TextMeshProUGUI inInventory = null;
+
+    private void Start()
+    {
+        inInventory = Menu.transform.Find("In inventory").GetComponent<TextMeshProUGUI>();
+    }
+
     public void setItem(GameObject temp, int DisplayItemID, int recipeNum, StoreItem.ItemType type, Transform obj = null, StoreItem SMen = null)
     {
         if(obj == null)obj = temp.transform.GetChild(0);
@@ -126,7 +133,7 @@ public class StoreMenu : Resource
     {
         current = this;
         Stats.StartStopPlayerMovement(Menu.activeSelf,"StoreMenu");
-
+        if (inInventory != null) inInventory.text = "";
 
         Menu.SetActive(!Menu.activeSelf);
 

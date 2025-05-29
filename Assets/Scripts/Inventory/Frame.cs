@@ -57,6 +57,7 @@ public class Frame : MonoBehaviour
 
         GoodPos = Rect.position;
 
+        //print("INFO: " + Items.ITEMS.Length + "  " + Target);
         switch (Items.ITEMS[Target])
         {
             case 26: outfit.current.GetComponent<outfit>().SetOutfit(26);break;

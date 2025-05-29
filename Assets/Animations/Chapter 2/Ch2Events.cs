@@ -100,7 +100,7 @@ public class Ch2Events : MonoBehaviour
                 HQSellSpot.CostToPrep = 0;
                 if (!Progress.getBool("Ch2HQSpotFree"))
                 {
-                    Stats.DisplayMessage("Your friendship with the mafia is no longer negative! That means they're no longer actively resentful of you hooray!\n\nThe sell spot by the mafia HQ is now FREE! Go set up there");
+                    Stats.DisplayMessage("Your friendship with the mafia is no longer negative! That means they're no longer actively resentful of you hooray!\n\nThe sell spot by the mafia HQ is now FREE! Go set up there",true);
                     doingMessage = true;
                     Progress.switchInPlay("Ch2HQSpotFree", true);
                 }
@@ -108,7 +108,7 @@ public class Ch2Events : MonoBehaviour
             
             if(!doingMessage && Stats.current.Money > calcFredCost() && !Progress.getBool("Ch2Final"))
             {
-                Stats.DisplayMessage("You already have enough money to pay Fred to smuggle you out! Congrats! You can just spend time exploring now. Or if you're done that, go into Settings > Accelerate passage of time");
+                Stats.DisplayMessage("You already have enough money to pay Fred to smuggle you out! Congrats! You can just spend time exploring now. Or if you're done that, go into Settings > Accelerate passage of time",true);
                 doingMessage = true;
             }
 

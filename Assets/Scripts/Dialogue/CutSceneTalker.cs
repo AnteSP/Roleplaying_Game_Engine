@@ -261,6 +261,7 @@ public class CutSceneTalker : MonoBehaviour
     }
 
     bool skipping = false;
+    public bool intendToSkip = false;
 
     // Update is called once per frame
     void Update()
@@ -272,13 +273,23 @@ public class CutSceneTalker : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && !Ending && alt == null && goodtoGo)
         {
-            if (Sentences.Last().StartsWith("%#")) EndingChapter = true;
-            Ending = true;
-            skipping = true;
-            musicsQueue.Clear();
-            Stats.changeBackgroundMusic(null);
-            D.EndCutScene(this);
-            goodtoGo = false;
+            if (intendToSkip)
+            {
+                if (Sentences.Last().StartsWith("%#")) EndingChapter = true;
+                Ending = true;
+                skipping = true;
+                musicsQueue.Clear();
+                Stats.changeBackgroundMusic(null);
+                D.EndCutScene(this);
+                goodtoGo = false;
+                Stats.current.CloseMessage();
+            }
+            else
+            {
+                Stats.DisplayMessage("Are you sure you want to skip this cutscene? Press Esc again to skip\n\n(Any cutscene without a decision can be skipped)");
+                intendToSkip = true;
+            }
+
         }
         Vector2 temp = Offset();
         //if (UseMouse) CamFocus = (Vector2)CamPos[cpI].position + temp * temp * temp * 40;

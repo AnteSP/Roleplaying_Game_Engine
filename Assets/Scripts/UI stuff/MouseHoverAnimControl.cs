@@ -40,15 +40,20 @@ public class MouseHoverAnimControl : MonoBehaviour
             anim.speed = 1;
         }
             
-
-        if (Inside && Stats.current.PassTime)
+        if(Stats.current != null)
         {
-            Stats.StartStopTime(false,"ItemNotification");
-            Stats.StartStopPlayerMovement(false, "ItemNotification");
-        }else if(!Inside && !Stats.current.PassTime){
-            Stats.StartStopTime(true, "ItemNotification");
-            Stats.StartStopPlayerMovement(true, "ItemNotification");
+            if (Inside && Stats.current.PassTime)
+            {
+                Stats.StartStopTime(false, "ItemNotification");
+                Stats.StartStopPlayerMovement(false, "ItemNotification");
+            }
+            else if (!Inside && !Stats.current.PassTime)
+            {
+                Stats.StartStopTime(true, "ItemNotification");
+                Stats.StartStopPlayerMovement(true, "ItemNotification");
+            }
         }
+
     }
 
     bool IsMouseWithinImage()

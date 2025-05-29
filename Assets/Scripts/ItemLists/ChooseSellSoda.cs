@@ -275,10 +275,16 @@ public class ChooseSellSoda : Resource
             print("active sell spot OFF");
             activeSellSpot = null;
             ItemsForSale.Clear();
+            /*
             for (int i = 0; i < Content.childCount; i++)
             {
                 Destroy(Content.GetChild(0).gameObject);
+            }*/
+            foreach (Transform child in Content)
+            {
+                Destroy(child.gameObject);
             }
+            //print("CHILDREN: " + Content.childCount);
         }
         else
         {

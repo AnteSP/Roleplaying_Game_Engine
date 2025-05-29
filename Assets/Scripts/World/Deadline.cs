@@ -77,10 +77,10 @@ class Deadline : MonoBehaviour
 
     public void Refresh()
     {
-        print("REFRESHING   sticky note:" + stickyNote + "   Deadline:" + ID);
+        //print("REFRESHING   sticky note:" + stickyNote + "   Deadline:" + ID);
         if (MinutesLeft == TriggerAtMinute - Stats.allTimeInGame) return;
         if (time == null) return;
-        print("PROCESSING   sticky note:" + stickyNote + "   Deadline:" + ID);
+        //print("PROCESSING   sticky note:" + stickyNote + "   Deadline:" + ID);
         MinutesLeft = TriggerAtMinute - Stats.allTimeInGame;
         bool Lessthan3days = MinutesLeft < 24 * 60 * 3;
         bool Lessthanhour = MinutesLeft < 61;

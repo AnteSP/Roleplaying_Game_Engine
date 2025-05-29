@@ -82,6 +82,7 @@ public class Stats : MonoBehaviour
     static readonly string[] endCSTips = { "Ending cutscene...",
     "Epic cutscene ending...",
     "Back to regular gameplay...",
+    "Back to regularly scheduled gaming...",
     "Unpacking cutscene...",
     "Leaving the cutscene..."};
 
@@ -571,14 +572,14 @@ public class Stats : MonoBehaviour
 
             current.MONEYTEXT.text = current.Money + "";
 
-            if (Amount != 0 && current.MoneyAdd != null)
+            if (Amount != 0 && current.MoneyAdd != null && Progress.wasDataLoaded())
             {
                 current.MoneyAdd.gameObject.SetActive(false);
                 if (Amount > 0)
                 {
                     if(Math.Abs(UnityEngine.Time.frameCount - lastMoneyChange) < 3 && current.MoneyAdd.text == ("- " + Amount))//if we literally just took this much away
                     {
-                        current.MoneyAdd.text = "+ 0";
+                        current.MoneyAdd.text = "- 0";
                         current.MoneyAdd.color = Color.white;
                     }
                     else
@@ -591,7 +592,7 @@ public class Stats : MonoBehaviour
                 {
                     if (Math.Abs(UnityEngine.Time.frameCount - lastMoneyChange) < 3 && current.MoneyAdd.text == ("+ " + Amount))//if we literally just added this
                     {
-                        current.MoneyAdd.text = "+ 0";
+                        current.MoneyAdd.text = "- 0";
                         current.MoneyAdd.color = Color.white;
                     }
                     else
@@ -869,7 +870,11 @@ public class Stats : MonoBehaviour
     {
         StartStopTime(true, "Message");
         StartStopPlayerMovement(true, "Message");
-        if (CurrentCS != null) CurrentCS.setGoodToGoOnly(true);
+        if (CurrentCS != null)
+        {
+            if (CurrentCS.intendToSkip) CurrentCS.intendToSkip = false;
+            else CurrentCS.setGoodToGoOnly(true);
+        }
 
 
         NameIndic.Indicate("");
@@ -1076,7 +1081,7 @@ public class Stats : MonoBehaviour
 
     public static int GetChapterNumberFromScene()
     {
-        string input = UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name;
+        string input = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         int endIndex = input.IndexOf('-');
         endIndex = (endIndex == -1) ? input.Length : endIndex;
 

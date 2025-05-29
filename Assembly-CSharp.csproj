@@ -69,9 +69,9 @@
     <Compile Include="Assets\Scripts\Inventory\Items.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Resource Variants\Resource.cs" />
-    <Compile Include="Assets\Items\RecipeAsset.cs" />
+    <Compile Include="Assets\Resources\Recipes\RecipeAsset.cs" />
     <Compile Include="Assets\Scripts\Anim triggers\SellAnimHelp.cs" />
-    <Compile Include="Assets\Items\Item.cs" />
+    <Compile Include="Assets\Resources\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Inventory\Frame.cs" />
     <Compile Include="Assets\Scripts\Inventory\FollowObj.cs" />
     <Compile Include="Assets\Scripts\World\MakeTrans.cs" />
@@ -144,7 +144,6 @@
     <Compile Include="Assets\Scripts\UI stuff\MouseHoverAnimControl.cs" />
     <Compile Include="Assets\Scripts\World\Progress.cs" />
     <Compile Include="Assets\Scripts\simple shit\Tooltip.cs" />
-    <Compile Include="Assets\Automation.cs" />
     <Compile Include="Assets\Scripts\Movement\Drowning.cs" />
     <Compile Include="Assets\Scripts\simple shit\WeekAngels.cs" />
   </ItemGroup>

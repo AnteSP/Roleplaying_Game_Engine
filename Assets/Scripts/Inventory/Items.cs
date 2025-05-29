@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,56 +60,47 @@ public class Items : MonoBehaviour
 
     void StartOverride()
     {
-        /*
-                NAMES = NAMESI;
-                DESCRIPTS = DESCRIPTSI;
-                PICS = PICSI;
-                Price = PRICE;
-                MLevel = MLEVEL;
-        */
         TITLE = Title;
         DESCP = Descp;
 
         NewItem = NewItemAnim;
         Inity = NewItem[0].transform.localPosition.y;
 
-        string[] guids = AssetDatabase.FindAssets("t:Item");
-        ITEMS_DB = new Item[guids.Length];
+        // Load all Item assets from Resources folder
+        Item[] allItems = Resources.LoadAll<Item>("Items"); // Assumes items are in "Resources/Items" folder
+        ITEMS_DB = new Item[allItems.Length];
 
-        foreach (string guid in guids)
+        foreach (Item item in allItems)
         {
-            string path = AssetDatabase.GUIDToAssetPath(guid);
-            string fName = Path.GetFileNameWithoutExtension(path);
+            string fName = item.name;
             int index = fName.IndexOf('-');
 
-            int id = int.Parse(fName.Substring(0, index));
-
-            Item item = AssetDatabase.LoadAssetAtPath<Item>(path);
-            item.ItemID = id;
-
-            ITEMS_DB[id] = item;
+            if (index > 0 && int.TryParse(fName.Substring(0, index), out int id))
+            {
+                item.ItemID = id;
+                ITEMS_DB[id] = item;
+            }
         }
 
-        guids = AssetDatabase.FindAssets("t:RecipeAsset");
-        RECIPES_DB = new RecipeAsset[guids.Length];
+        // Load all Recipe assets from Resources folder
+        RecipeAsset[] allRecipes = Resources.LoadAll<RecipeAsset>("Recipes"); // Assumes recipes are in "Resources/Recipes" folder
+        RECIPES_DB = new RecipeAsset[allRecipes.Length];
 
-        foreach (string guid in guids)
+        foreach (RecipeAsset recipe in allRecipes)
         {
-            string path = AssetDatabase.GUIDToAssetPath(guid);
-            string fName = Path.GetFileNameWithoutExtension(path);
+            string fName = recipe.name;
             int index = fName.IndexOf('-');
 
-            int id = int.Parse(fName.Substring(1, index-1));
-
-            RecipeAsset recipe = AssetDatabase.LoadAssetAtPath<RecipeAsset>(path);
-            recipe.RecipeID = id;
-
-            RECIPES_DB[id] = recipe;
+            if (index > 0 && int.TryParse(fName.Substring(1, index - 1), out int id))
+            {
+                recipe.RecipeID = id;
+                RECIPES_DB[id] = recipe;
+            }
         }
 
         SodaMach?.StartOverride();
-        
-        if(!Progress.wasItemDataLoaded())Progress.loadData();
+
+        if (!Progress.wasItemDataLoaded()) Progress.loadData();
         UpdatePics();
     }
 

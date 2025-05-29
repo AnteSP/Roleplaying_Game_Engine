@@ -25,7 +25,7 @@ public class EndScreen : MonoBehaviour
     private void OnEnable()
     {
         //Progress.readData();
-        chNum = int.Parse(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene().name.Substring(2));
+        chNum = int.Parse(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Substring(2));
 
         if (Progress.getInt("Chapter") < chNum)//
         {

@@ -1,62 +1,62 @@
 {
-  "FUN": 16,
-  "MONEY": 7,
-  "TIME": 2197,
-  "IRLTIME": 275,
+  "MONEY": 5,
+  "FUN": 23,
+  "TIME": 4140,
+  "IRLTIME": 485,
   "Ch2": {
     "OpeningDone": true,
     "WakeUp": false,
     "FredCS1": true,
-    "GotDannyBoxItem": false,
-    "FredCS2": false,
+    "GotDannyBoxItem": true,
+    "FredCS2": true,
     "HQSpotFree": true,
     "TutorialDone": true,
-    "StealerCSDone": false,
+    "StealerCSDone": true,
     "Final": false,
-    "Vader1": false,
+    "Vader1": true,
     "FredCS3": false,
     "FredCS4": false,
     "GaveBeans": false,
     "Medli": false,
-    "HatmanVisited": true,
-    "EnteredTimeSanctum": true,
-    "FirstSell": true,
-    "Vader2": false,
+    "Vader2": true,
     "ResistedGG": false,
     "GGEvent": false,
-    "HelpedDanny": false
+    "HelpedDanny": false,
+    "VaderFail": true
   },
   "OUTFIT": 27,
   "PickUps": {
     "*Ch2/Park Coins (Low FUN)": "",
+    "*Ch2/Apple sac (2)": "",
     "*Ch2/Street Coins": "",
     "*Ch2/Street Coins (1)": "",
-    "*Ch2/WifeBeater": ""
+    "*Ch2-Pub/FerroFluid": ""
   },
-  "WeekAngels": true,
   "GameOver": false,
   "Items": {
-    "2": 4,
-    "1": 9,
-    "26": 1,
+    "4": 8,
     "27": 1,
+    "1": 3,
+    "2": 43,
+    "5": 14,
+    "3": 1,
     "7": 1,
-    "3": 1
+    "33": 10,
+    "31": 1
   },
   "Recipes": [
     0,
-    1
+    1,
+    3
   ],
   "Upgrades": {},
   "SellSpots": {
-    "Ch2/Sell Spot Middle": true,
-    "Ch2/Sell Spot Bottom": true
+    "Ch2/Sell Spot Middle": true
   },
-  "Deadlines": {
-    "B-Ch2": true
-  },
+  "Deadlines": {},
   "Volume": 1,
   "Ch2FredIntro": 2,
-  "FredF": 1,
-  "DannyEventFail": false
+  "FredF": 2,
+  "DannyEventFail": false,
+  "Ch2FredConvoDecision1": 2
 }

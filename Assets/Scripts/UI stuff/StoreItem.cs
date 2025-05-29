@@ -29,6 +29,8 @@ public class StoreItem : MonoBehaviour
 
     public void Buy()
     {
+
+        
         if (Stats.ChangeMoney(Cost))
         {
             Stats.current.KACHING.Play();
@@ -99,6 +101,20 @@ public class StoreItem : MonoBehaviour
         else
         {
             Stats.DisplayMessage("Not enough money :(",true);
+        }
+
+        if (Menu.inInventory != null)
+        {
+            int indInInv = Items.IndexOfXinY(ItemID, Items.ITEMS);
+            if(indInInv != -1)
+            {
+                Menu.inInventory.text = Items.ITEMS_DB[ItemID].Name + " in inventory: " + Items.ITEMQUANTITY[indInInv];
+            }
+            else
+            {
+                Menu.inInventory.text = "";
+            }
+            
         }
     }
 }
