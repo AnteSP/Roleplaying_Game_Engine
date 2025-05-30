@@ -146,6 +146,7 @@ public class MainMenu : MonoBehaviour
     {
         //Stats.allTime = 0;
         //Progress.saveData();
+        Progress.saveOnlyThis((int)(volSlider.value*1000),0,"",1);
         SceneManager.LoadScene(sceneToLoad);
     }
 

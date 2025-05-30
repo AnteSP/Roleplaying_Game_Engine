@@ -338,15 +338,18 @@ public class Progress : MonoBehaviour
         if(toFile != "") File.WriteAllText(Application.dataPath + "/" + toFile + ".kurger", data.ToString());
     }
 
-    public static void saveOnlyThis(int ia,int ib,string s,int type)
+    public static void saveOnlyThis(int ia, int ib, string s, int type)
     {
         readData();
 
-        if(type == 0)
+        if (type == 0)
         {
             ((JObject)data["Items"]).Add(Items.ITEMS_DB[ia].ItemID + "", ib);
             switchInData(s, true);
             print(data);
+        } else if (type == 1)
+        {
+            data["Volume"] = (float)ia/1000f;
         }
 
 
