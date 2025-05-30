@@ -15516,6 +15516,7 @@ MonoBehaviour:
   hourToStartA: -1
   hourToStartB: -1
   sleeping: 0
+  intendToSkip: 0
 --- !u!1 &665499973
 GameObject:
   m_ObjectHideFlags: 0
@@ -16030,6 +16031,7 @@ MonoBehaviour:
   hourToStartA: -1
   hourToStartB: -1
   sleeping: 0
+  intendToSkip: 0
 --- !u!114 &665499984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38783,7 +38785,7 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - '%#'
+  - '%:>Main Menu'
   - '%%'
   TypeNoise: {fileID: 662037077}
   talkOnAwake: 0

@@ -41,7 +41,7 @@ public class StoreMenu : Resource
 
     private void Start()
     {
-        inInventory = Menu.transform.Find("In inventory").GetComponent<TextMeshProUGUI>();
+        inInventory = Menu.transform.Find("In inventory")?.GetComponent<TextMeshProUGUI>();
     }
 
     public void setItem(GameObject temp, int DisplayItemID, int recipeNum, StoreItem.ItemType type, Transform obj = null, StoreItem SMen = null)

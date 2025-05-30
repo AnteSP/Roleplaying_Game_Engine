@@ -144,8 +144,8 @@ public class MainMenu : MonoBehaviour
 
     public void ActuallyStartGame()
     {
-        Stats.allTime = 0;
-        Progress.saveData();
+        //Stats.allTime = 0;
+        //Progress.saveData();
         SceneManager.LoadScene(sceneToLoad);
     }
 
