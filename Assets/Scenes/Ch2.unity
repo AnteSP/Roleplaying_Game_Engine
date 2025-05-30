@@ -56769,6 +56769,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151932977}
   m_CullTransparentMesh: 0
+--- !u!1 &1152686056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152686057}
+  m_Layer: 0
+  m_Name: Ch2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152686057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152686056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.3, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1681766221}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153215948
 GameObject:
   m_ObjectHideFlags: 0
@@ -78435,7 +78466,7 @@ MonoBehaviour:
   unfocusAfterUse: 1
   D: {fileID: 119110231}
   sentences:
-  - '%:Main Menu'
+  - '%:>Main Menu'
   - '%%'
   TypeNoise: {fileID: 662037077}
   talkOnAwake: 0
@@ -94751,6 +94782,7 @@ Transform:
   - {fileID: 1140183509}
   - {fileID: 1714590828}
   - {fileID: 606132405}
+  - {fileID: 1152686057}
   m_Father: {fileID: 282622428}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -123215,7 +123247,7 @@ PrefabInstance:
     - target: {fileID: 8254590546648745106, guid: 7184b2a159bc0e74982f3732c77ccbf4,
         type: 3}
       propertyPath: Images.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8254590546648745106, guid: 7184b2a159bc0e74982f3732c77ccbf4,
         type: 3}
@@ -123236,22 +123268,22 @@ PrefabInstance:
         type: 3}
       propertyPath: Images.Array.data[4]
       value: 
-      objectReference: {fileID: 1828963382}
+      objectReference: {fileID: 1508137450}
     - target: {fileID: 8254590546648745106, guid: 7184b2a159bc0e74982f3732c77ccbf4,
         type: 3}
       propertyPath: Images.Array.data[5]
       value: 
-      objectReference: {fileID: 324396004}
+      objectReference: {fileID: 1828963382}
     - target: {fileID: 8254590546648745106, guid: 7184b2a159bc0e74982f3732c77ccbf4,
         type: 3}
       propertyPath: Images.Array.data[6]
       value: 
-      objectReference: {fileID: 513547235}
+      objectReference: {fileID: 324396004}
     - target: {fileID: 8254590546648745106, guid: 7184b2a159bc0e74982f3732c77ccbf4,
         type: 3}
       propertyPath: Images.Array.data[7]
       value: 
-      objectReference: {fileID: 1493192784}
+      objectReference: {fileID: 513547235}
     - target: {fileID: 8254590546648745106, guid: 7184b2a159bc0e74982f3732c77ccbf4,
         type: 3}
       propertyPath: Images.Array.data[8]

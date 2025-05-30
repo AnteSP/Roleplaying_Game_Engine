@@ -8270,6 +8270,7 @@ MonoBehaviour:
   hourToStartA: -1
   hourToStartB: -1
   sleeping: 0
+  intendToSkip: 0
 --- !u!1 &204029219
 GameObject:
   m_ObjectHideFlags: 0
@@ -12626,6 +12627,7 @@ MonoBehaviour:
   hourToStartA: 18
   hourToStartB: 20
   sleeping: 0
+  intendToSkip: 0
 --- !u!1 &367966883
 GameObject:
   m_ObjectHideFlags: 0
@@ -22166,6 +22168,7 @@ MonoBehaviour:
   - {fileID: 1497248623}
   - {fileID: 1597104841}
   - {fileID: 133178034}
+  - {fileID: 415392282}
   - {fileID: 144640473}
   - {fileID: 657733920}
   - {fileID: 30165789}
@@ -43116,6 +43119,7 @@ MonoBehaviour:
   hourToStartA: -1
   hourToStartB: -1
   sleeping: 0
+  intendToSkip: 0
 --- !u!95 &1302096154
 Animator:
   serializedVersion: 4
@@ -50248,6 +50252,7 @@ MonoBehaviour:
   hourToStartA: 11
   hourToStartB: 13
   sleeping: 0
+  intendToSkip: 0
 --- !u!114 &1526116800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57523,6 +57528,7 @@ MonoBehaviour:
   hourToStartA: -1
   hourToStartB: -1
   sleeping: 0
+  intendToSkip: 0
 --- !u!114 &1716821453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58456,10 +58462,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -58960,6 +58966,7 @@ MonoBehaviour:
   hourToStartA: -1
   hourToStartB: -1
   sleeping: 0
+  intendToSkip: 0
 --- !u!114 &1773755283
 MonoBehaviour:
   m_ObjectHideFlags: 0

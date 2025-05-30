@@ -1,14 +1,14 @@
 {
   "MONEY": 5,
   "FUN": 23,
-  "TIME": 4140,
-  "IRLTIME": 485,
+  "TIME": 4172,
+  "IRLTIME": 517,
   "Ch2": {
     "OpeningDone": true,
     "WakeUp": false,
     "FredCS1": true,
     "GotDannyBoxItem": true,
-    "FredCS2": true,
+    "FredCS2": false,
     "HQSpotFree": true,
     "TutorialDone": true,
     "StealerCSDone": true,
@@ -18,11 +18,11 @@
     "FredCS4": false,
     "GaveBeans": false,
     "Medli": false,
-    "Vader2": true,
+    "Vader2": false,
     "ResistedGG": false,
     "GGEvent": false,
     "HelpedDanny": false,
-    "VaderFail": true
+    "VaderFail": false
   },
   "OUTFIT": 27,
   "PickUps": {
@@ -58,5 +58,6 @@
   "Ch2FredIntro": 2,
   "FredF": 2,
   "DannyEventFail": false,
-  "Ch2FredConvoDecision1": 2
+  "Ch2FredConvoDecision1": 2,
+  "Chapter": 1
 }

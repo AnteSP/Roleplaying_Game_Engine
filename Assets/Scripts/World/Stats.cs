@@ -148,6 +148,7 @@ public class Stats : MonoBehaviour
 
         if( teleportPoint != "" && TeleportPointsParent != null)
         {
+            print("USING teleportPoint: " + teleportPoint);
             Vector2 targ = TeleportPointsParent.GetComponentsInChildren<Transform>().Where(a => a.name == teleportPoint).First().position;
             Player.GetComponentInParent<Transform>().position = new Vector3(targ.x, targ.y, 0);
         }
@@ -931,13 +932,12 @@ public class Stats : MonoBehaviour
         SellSpot.resetSellSpotsList();
         Stats.current = null;
         teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        print("CLEARING TIME SORUCES");
         moveSources.Clear();
-        timeSources.Clear();//TRY COMMENTING THIS OUT
+        timeSources.Clear();
         outfit.ResetOutfitStuff();
         MouseHoverAnimControl.resetBoxesCount();
 
-        StartCoroutine(DelaySceneLoad(r));
+        StartCoroutine(DelaySceneLoad(r,0.4f));
 
 
         //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
@@ -948,9 +948,35 @@ public class Stats : MonoBehaviour
         Progress.markDataAsUnloaded();
     }
 
-    public IEnumerator DelaySceneLoad(string scene)
+    public void SceneChangeNoSave(string r)
     {
-        yield return new WaitForSeconds(0.4f);
+        if (backGroundMusic != null) backGroundMusic.Stop();
+        Player.SetActive(false);
+        SodaMachine.resetStarted();
+        SellUpgrade.FlushUpgrades();
+        Slider.EmptyList();
+        SellSpot.resetSellSpotsList();
+        Stats.current = null;
+        teleportPoint = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        moveSources.Clear();
+        timeSources.Clear();
+        outfit.ResetOutfitStuff();
+        MouseHoverAnimControl.resetBoxesCount();
+
+        StartCoroutine(DelaySceneLoad(r, 0.1f));
+
+
+        //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(r);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(r);
+
+        //Stats.current = GameObject.FindGameObjectWithTag("STATS").GetComponent<Stats>();
+
+        Progress.markDataAsUnloaded();
+    }
+
+    public IEnumerator DelaySceneLoad(string scene,float by)
+    {
+        yield return new WaitForSeconds(by);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scene);
     }
 

@@ -489,8 +489,17 @@ public class Dialogue : MonoBehaviour
 
                     break;
                 case ':'://Change Scene     :SCENENAME
-                    Stats.current.SceneChange(Current);
-                    EndConvo();
+                    if (Current[0] == '>')
+                    {
+                        Current = Current.Remove(0, 1);
+                        Stats.current.SceneChangeNoSave(Current);
+                        EndConvo();
+                    }
+                    else
+                    {
+                        Stats.current.SceneChange(Current);
+                        EndConvo();
+                    }
                     break;
                 case '%':
                     EndConvo();
