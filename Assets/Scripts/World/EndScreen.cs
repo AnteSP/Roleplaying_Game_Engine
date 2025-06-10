@@ -43,6 +43,7 @@ public class EndScreen : MonoBehaviour
         float Len = 2;
         float TSc = Stats.allTime;
         Stats.allTime = 0;
+        if(firstFinish) Progress.saveData(toFile: "saveArchiveCh" + chNum);
 
         yield return new WaitForSeconds(Len);
         Complete.gameObject.SetActive(true);
@@ -50,7 +51,6 @@ public class EndScreen : MonoBehaviour
         if (firstFinish)
         {
             yield return new WaitForSeconds(Len);
-            Progress.saveData(toFile: "saveArchiveCh" + chNum);
             Freeplay.gameObject.SetActive(true);
             impact.Play();
         }

@@ -468,6 +468,7 @@ public class Progress : MonoBehaviour
             outfit.checkOutfits();
             if (outfit.current != null)
             {
+                //print("GOT TO HERE OUTFITS");
                 if (data.ContainsKey("OUTFIT"))
                     outfit.current.GetComponent<outfit>().SetOutfit(data["OUTFIT"].Value<int>());
                 else data.Add("OUTFIT", outfit.getActiveOutfit());

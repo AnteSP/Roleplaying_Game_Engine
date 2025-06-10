@@ -157,7 +157,8 @@ public class CutSceneTalker : MonoBehaviour
 
         if(Stats.current.Filter != null) Stats.current.Filter.GetComponent<Animator>().enabled = !b;
 
-        sleeping = true;
+        if(b) sleeping = true;
+
         this.enabled = b ? false : this.enabled; 
 
         D.gameObject.SetActive(!b);
@@ -209,8 +210,10 @@ public class CutSceneTalker : MonoBehaviour
 
     private void OnDisable()
     {
+        print("TRIGGERED ONDISABLE");
         if (Stats.current == null || Stats.current.CurrentCS == null) return;
-        if(Stats.current.CurrentCS.gameObject.name == gameObject.name && !sleeping)
+        print("GOT PAST THIS ONDISABLE " + !sleeping);
+        if (Stats.current.CurrentCS.gameObject.name == gameObject.name && !sleeping)
         {
             print("STOPPING THIS CS DUE TO DISABLE");
             musicsQueue.Clear();

@@ -6534,7 +6534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Letter-Block Sign
   ItemID: 23
-  Description: 2x Sell Speed
+  Description: +100% Sell Speed
   Mmod: 2
   Smod: 1
   replacedBy: {fileID: 0}
@@ -93446,7 +93446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Balloons
   ItemID: 24
-  Description: 2x Sell Speed
+  Description: +100% Sell Speed
   Mmod: 2
   Smod: 1
   replacedBy: {fileID: 0}
@@ -95878,6 +95878,7 @@ MonoBehaviour:
   SocialNotification: {fileID: 1091493819}
   audioMixer: {fileID: 24100000, guid: 92a9407211718374fa32ddba140ca912, type: 2}
   screenWarpingToggle: {fileID: 1179152827}
+  volSlider: {fileID: 1121377280}
   currentlyTransitioning: 0
 --- !u!4 &1700876590
 Transform:
@@ -98964,10 +98965,10 @@ RectTransform:
   m_Father: {fileID: 614832705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37.5, y: -37.5}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751155893
 MonoBehaviour:
@@ -118026,7 +118027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Foldable Table
   ItemID: 18
-  Description: 3x Sell Speed
+  Description: +200% Sell Speed
   Mmod: 3
   Smod: 1
   replacedBy: {fileID: 0}

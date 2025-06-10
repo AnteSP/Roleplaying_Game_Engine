@@ -56281,6 +56281,7 @@ MonoBehaviour:
   SocialNotification: {fileID: 40886706}
   audioMixer: {fileID: 24100000, guid: 92a9407211718374fa32ddba140ca912, type: 2}
   screenWarpingToggle: {fileID: 1356277071}
+  volSlider: {fileID: 1121377280}
   currentlyTransitioning: 0
 --- !u!4 &1700876590
 Transform:

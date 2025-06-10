@@ -138,6 +138,7 @@ public class Stats : MonoBehaviour
     AudioSource backGroundMusic = null;
 
     [SerializeField] Toggle screenWarpingToggle;
+    [SerializeField] UnityEngine.UI.Slider volSlider;
     private void OnEnable()
     {
 
@@ -195,7 +196,11 @@ public class Stats : MonoBehaviour
         if (!Progress.wasDataLoaded()) Progress.loadData(excludeItems:true);
         if (!Player.activeSelf) AllowSelecting = false;
         //print("did it tho?");
-        SetVolume(Progress.getFloat("Volume"));
+        //SetVolume(Progress.getFloat("Volume"));
+        if(volSlider != null)
+            volSlider.value = Progress.getFloat("Volume");
+        else
+            SetVolume(Progress.getFloat("Volume"));
 
         backGroundMusic = Stats.current.GetComponent<AudioSource>();
 
